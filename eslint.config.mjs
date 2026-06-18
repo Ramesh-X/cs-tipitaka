@@ -13,6 +13,9 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    // Submodule containing corpus data (not application code).
+    'corpus/**',
+    'lib/generated/**',
   ]),
   // Must be last so eslint-config-prettier can disable conflicting rules.
   prettierRecommended,
