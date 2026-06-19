@@ -134,3 +134,17 @@ export function nodeTypeLabel(type: NodeType): string {
       return 'Text';
   }
 }
+
+/**
+ * Secondary Pāli line to show beneath a title, or `undefined` when it would
+ * merely duplicate the title. Most corpus nodes have `title === pali`, so
+ * rendering both produced the same text twice (large + small) — pure noise.
+ * Callers should skip the secondary line entirely when this returns `undefined`.
+ */
+export function secondaryPali(
+  title: string,
+  pali: string | undefined,
+): string | undefined {
+  const trimmed = pali?.trim();
+  return trimmed && trimmed !== title.trim() ? trimmed : undefined;
+}

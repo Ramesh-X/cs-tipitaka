@@ -2,7 +2,7 @@
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CANONICAL_SCRIPT } from '@/lib/corpus';
+import { CANONICAL_SCRIPT } from '@/lib/corpus/constants';
 
 export type FontFamily = 'serif' | 'sans';
 
@@ -31,7 +31,7 @@ export interface ReaderPreferences {
 const DEFAULTS = {
   script: CANONICAL_SCRIPT,
   fontSize: 19,
-  lineHeight: 1.9,
+  lineHeight: 1.5,
   fontFamily: 'serif' as FontFamily,
   showTranslation: false,
   translation: 'sujato',
