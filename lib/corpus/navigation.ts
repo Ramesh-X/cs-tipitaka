@@ -1,6 +1,11 @@
 import 'server-only';
 
-import { CORPUS, isDocument, type CorpusNode } from '@/lib/corpus';
+import {
+  CORPUS,
+  isDocument,
+  type CorpusNode,
+  type NodeType,
+} from '@/lib/corpus';
 
 export interface CorpusEntry {
   node: CorpusNode;
@@ -27,6 +32,45 @@ export function isAncestorPath(ancestor: string[], current: string[]): boolean {
 
 export function isActiveBranch(path: string[], current: string[]): boolean {
   return isSamePath(path, current) || isAncestorPath(path, current);
+}
+
+/** Slim sidebar node — only what the tree renders, never the full CorpusNode. */
+export interface NavNode {
+  slug: string;
+  title: string;
+  pali: string;
+  type: NodeType;
+  /** Whether this node has children in CORPUS — drives the disclosure chevron. */
+  hasChildren: boolean;
+  /** Populated only for nodes on the active path (i.e. rendered expanded). */
+  children?: NavNode[];
+}
+
+/**
+ * Pruned navigation tree for the sidebar. Includes every top-level basket and,
+ * along the active path, each level's full sibling set plus the current node's
+ * direct children. Off-path branches come back collapsed (no `children`), so the
+ * rendered markup is ~100–300 nodes instead of the full ~2,870 — which is what
+ * keeps every prerendered page small (and crawlable) rather than ~30 MB.
+ */
+export function getNavTree(currentSlug: string[]): NavNode[] {
+  const prune = (nodes: CorpusNode[], prefix: string[]): NavNode[] =>
+    nodes.map((node) => {
+      const path = [...prefix, node.slug];
+      const onPath = isActiveBranch(path, currentSlug);
+      const hasChildren = Boolean(node.children?.length);
+      return {
+        slug: node.slug,
+        title: node.title,
+        pali: node.pali,
+        type: node.type,
+        hasChildren,
+        ...(onPath && hasChildren
+          ? { children: prune(node.children!, path) }
+          : {}),
+      };
+    });
+  return prune(CORPUS, []);
 }
 
 export function countDocuments(node: CorpusNode): number {

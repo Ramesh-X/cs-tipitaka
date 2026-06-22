@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { BookOpen, ChevronRight, FileText, Search } from 'lucide-react';
 
 import {
-  CORPUS,
   isDocument,
   nodeTypeLabel,
   secondaryPali,
@@ -11,9 +10,10 @@ import {
 import {
   childSummary,
   countDocuments,
-  isActiveBranch,
+  getNavTree,
   isSamePath,
   nodeHref,
+  type NavNode,
 } from '@/lib/corpus/navigation';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -28,7 +28,7 @@ function NodeLabel({
   path,
   active,
 }: {
-  node: CorpusNode;
+  node: NavNode;
   path: string[];
   active: boolean;
 }) {
@@ -61,66 +61,74 @@ function TreeNode({
   path,
   currentSlug,
 }: {
-  node: CorpusNode;
+  node: NavNode;
   path: string[];
   currentSlug: string[];
 }) {
   const active = isSamePath(path, currentSlug);
-  const hasChildren = Boolean(node.children?.length);
 
-  // Leaf (document): a plain row, no disclosure. The spacer keeps its title
-  // aligned with the titles of collapsible siblings.
-  if (!hasChildren) {
+  // Expanded branch (on the active path): a native <details>, open on load and
+  // collapsible in place with no JavaScript. Only active-path branches carry
+  // `children`, so this is the one place the rendered tree descends — which is
+  // what keeps each page small.
+  if (node.children?.length) {
     return (
       <li>
-        <div
-          className={cn(
-            'flex items-start gap-1 rounded-lg pr-1 text-sm',
-            active && 'bg-primary/10',
-          )}
-        >
-          <span className="grid size-7 shrink-0 place-items-center text-muted-foreground">
-            <FileText className="size-3.5" />
-          </span>
-          <NodeLabel node={node} path={path} active={active} />
-        </div>
+        <details open>
+          <summary
+            className={cn(
+              'flex cursor-pointer list-none items-start gap-1 rounded-lg pr-1 text-sm transition-colors marker:hidden hover:bg-muted/60 [&::-webkit-details-marker]:hidden',
+              active && 'bg-primary/10',
+            )}
+          >
+            {/* Chevron rotates only when *this* node's <details> is open. */}
+            <span className="grid size-7 shrink-0 place-items-center text-muted-foreground">
+              <ChevronRight className="size-3.5 transition-transform duration-150 in-[details[open]>summary]:rotate-90" />
+            </span>
+            <NodeLabel node={node} path={path} active={active} />
+          </summary>
+          <ul className="ml-3.5 space-y-0.5 border-l border-border pl-1.5">
+            {node.children.map((child) => (
+              <TreeNode
+                key={child.slug}
+                node={child}
+                path={[...path, child.slug]}
+                currentSlug={currentSlug}
+              />
+            ))}
+          </ul>
+        </details>
       </li>
     );
   }
 
-  // Branch (piṭaka / nikāya / collection): a native <details>. Clicking the
-  // <summary> (the chevron) toggles it open/closed with no JavaScript, so the
-  // user can expand a branch in place without navigating; the active branch is
-  // expanded on load.
-  const onActivePath = isActiveBranch(path, currentSlug);
+  // Off-path branch or leaf document: a single row, no descendants emitted.
+  // Collapsed branches get a clickable chevron (same href as the title) so
+  // clicking the arrow navigates just like clicking the text.
   return (
     <li>
-      <details open={onActivePath}>
-        <summary
-          className={cn(
-            'flex cursor-pointer list-none items-start gap-1 rounded-lg pr-1 text-sm transition-colors marker:hidden hover:bg-muted/60 [&::-webkit-details-marker]:hidden',
-            active && 'bg-primary/10',
-          )}
-        >
-          {/* Chevron rotates only when *this* node's <details> is open. Scoping
-              to `details[open]>summary` (the chevron's own summary) avoids inner
-              chevrons rotating when an outer branch is open. */}
+      <div
+        className={cn(
+          'flex items-start gap-1 rounded-lg pr-1 text-sm',
+          active && 'bg-primary/10',
+        )}
+      >
+        {node.hasChildren ? (
+          <Link
+            href={nodeHref(path)}
+            tabIndex={-1}
+            aria-hidden
+            className="grid size-7 shrink-0 place-items-center text-muted-foreground"
+          >
+            <ChevronRight className="size-3.5" />
+          </Link>
+        ) : (
           <span className="grid size-7 shrink-0 place-items-center text-muted-foreground">
-            <ChevronRight className="size-3.5 transition-transform duration-150 in-[details[open]>summary]:rotate-90" />
+            <FileText className="size-3.5" />
           </span>
-          <NodeLabel node={node} path={path} active={active} />
-        </summary>
-        <ul className="ml-3.5 space-y-0.5 border-l border-border pl-1.5">
-          {node.children!.map((child) => (
-            <TreeNode
-              key={child.slug}
-              node={child}
-              path={[...path, child.slug]}
-              currentSlug={currentSlug}
-            />
-          ))}
-        </ul>
-      </details>
+        )}
+        <NodeLabel node={node} path={path} active={active} />
+      </div>
     </li>
   );
 }
@@ -159,7 +167,7 @@ export function CorpusBrowser({
       </Link>
 
       <ul className="space-y-0.5">
-        {CORPUS.map((node) => (
+        {getNavTree(currentSlug).map((node) => (
           <TreeNode
             key={node.slug}
             node={node}
