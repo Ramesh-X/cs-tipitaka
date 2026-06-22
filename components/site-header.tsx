@@ -10,7 +10,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 
 const NAV = [
-  { label: 'Browse', href: '/vinaya' },
+  { label: 'Browse', href: '/sutta' },
   { label: 'Search', href: site.paths.search },
   { label: 'About', href: site.paths.about },
   { label: 'Glossary', href: site.paths.glossary },

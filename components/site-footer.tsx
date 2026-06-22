@@ -9,11 +9,11 @@ const COLUMNS = [
     links: CORPUS.map((p) => ({ label: p.title, href: `/${p.slug}` })),
   },
   {
-    title: 'Discover',
+    title: 'Study',
     links: [
-      { label: 'Search', href: site.paths.search },
-      { label: 'About the Tipiṭaka', href: site.paths.about },
+      { label: 'Search the Dhamma', href: site.paths.search },
       { label: 'Glossary', href: site.paths.glossary },
+      { label: 'About the Tipiṭaka', href: site.paths.about },
     ],
   },
   {
@@ -38,8 +38,8 @@ export function SiteFooter() {
             Tipiṭaka
           </div>
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-            A SEO- and AI-friendly edition of the Pāli Canon — read, switch
-            scripts, search by meaning, and cite with confidence.
+            The Chaṭṭha Saṅgāyana (Sixth Council) edition of the Pāli Canon —
+            offered freely for reading, study, reflection, and practice.
           </p>
         </div>
         {COLUMNS.map((col) => (
@@ -63,12 +63,19 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
           <p>
-            Placeholder edition — texts and features are samples for UI
-            development.
+            Chaṭṭha Saṅgāyana Tipiṭaka · digitized by the Vipassana Research
+            Institute (VRI)
           </p>
           <p>
-            Canonical text rendered in Roman/IAST · Scripts switch in your
-            browser.
+            Developed by{' '}
+            <a
+              href="https://www.fcodelabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground hover:underline"
+            >
+              Fcode Labs
+            </a>
           </p>
         </div>
       </div>

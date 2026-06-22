@@ -1,65 +1,247 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, BookOpen, Languages, Link2, Search } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { JsonLd } from '@/components/json-ld';
+import { DailyReflection } from '@/components/daily-reflection/daily-reflection';
+import { StartTextsCarousel } from '@/components/start-texts/start-texts-carousel';
+import { site } from '@/lib/site';
+
+const PURPOSES = [
+  { label: 'Read the suttas', href: '/sutta' },
+  { label: 'Search by meaning or topic', href: site.paths.search },
+  { label: 'Study Pāli vocabulary', href: site.paths.glossary },
+  { label: 'Read the Abhidhamma Piṭaka', href: '/abhidhamma' },
+  { label: 'About this edition', href: site.paths.about },
+  { label: 'Developers & open data', href: site.paths.developers },
+];
+
+const TOOLS = [
+  {
+    icon: Languages,
+    title: 'Read the Pāli clearly',
+    body: 'Roman/IAST by default. Switch to Sinhala, Devanagari, Thai, Myanmar, Khmer, or Lao — transliterated in your browser.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Study with translation',
+    body: 'Pāli and translation side by side where available — Bhikkhu Bodhi, Bhikkhu Sujato, Ṭhānissaro Bhikkhu.',
+  },
+  {
+    icon: Link2,
+    title: 'Follow by reference',
+    body: 'Stable paragraph links, breadcrumbs, and CST/PTS citations make each passage easy to return to and cite.',
+  },
+  {
+    icon: Search,
+    title: 'Search with meaning',
+    body: 'Find teachings by topic, phrase, or idea — not only by exact words in the text.',
+  },
+];
+
+const ABOUT_FACTS = [
+  { label: 'Edition', value: 'Chaṭṭha Saṅgāyana (Sixth Council)' },
+  { label: 'Convened', value: '1954–1956, Rangoon, Burma' },
+  { label: 'Source', value: 'Vipassana Research Institute (VRI)' },
+  { label: 'Script', value: 'Roman / IAST (canonical); 6 others in-browser' },
+  { label: 'Offered as', value: 'Dhammadāna — a gift of Dhamma' },
+];
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.title,
+    url: site.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${site.url}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
+    <>
+      <JsonLd data={jsonLd} />
+
+      {/* Hero + Today's reflection */}
+      <section className="border-b border-border bg-muted/20">
+        <div className="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
+            <div>
+              <p className="font-reading text-sm italic text-muted-foreground">
+                Namo tassa bhagavato arahato sammāsambuddhassa
+              </p>
+              <h1 className="mt-4 font-reading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                Read the Buddha&apos;s words with clarity and care.
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
+                The Chaṭṭha Saṅgāyana Tipiṭaka — the Sixth Council edition of
+                the Pāli Canon — in a quiet, fast, freely-given reader. For
+                study, reflection, meditation, and the preservation of the
+                Dhamma.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={<Link href="/sutta" />}
+                  className="gap-2"
+                >
+                  <BookOpen className="size-4" />
+                  Begin reading
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  nativeButton={false}
+                  render={<Link href={site.paths.search} />}
+                  className="gap-2"
+                >
+                  <Search className="size-4" />
+                  Search the Dhamma
+                </Button>
+              </div>
+            </div>
+            <div>
+              <DailyReflection />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Begin according to your purpose */}
+      <section className="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Begin according to your purpose
+          </h2>
+          <p className="mt-1 text-muted-foreground">I want to…</p>
         </div>
-      </main>
-    </div>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {PURPOSES.map((p) => (
+            <li key={p.label}>
+              <Link
+                href={p.href}
+                className="group flex items-center justify-between rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 hover:bg-muted/40"
+              >
+                <span className="font-medium">{p.label}</span>
+                <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Start with these texts */}
+      <section className="border-t border-border bg-muted/20">
+        <div className="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+          <h2 className="mb-6 text-2xl font-semibold tracking-tight">
+            Start with these texts
+          </h2>
+          <StartTextsCarousel />
+        </div>
+      </section>
+
+      {/* Tools for careful study */}
+      <section className="border-t border-border">
+        <div className="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Tools for careful study
+          </h2>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {TOOLS.map((tool) => (
+              <div key={tool.title}>
+                <span className="grid size-10 place-items-center rounded-lg bg-muted text-muted-foreground">
+                  <tool.icon className="size-5" />
+                </span>
+                <h3 className="mt-4 font-medium">{tool.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {tool.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 border-t border-border pt-6">
+            <p className="text-sm text-muted-foreground">
+              Open data, a public API, and{' '}
+              <Link
+                href={site.paths.llmsTxt}
+                className="font-medium text-foreground hover:underline"
+              >
+                llms.txt
+              </Link>{' '}
+              for developers and researchers —{' '}
+              <Link
+                href={site.paths.developers}
+                className="inline-flex items-center gap-1 font-medium text-foreground hover:underline"
+              >
+                learn more
+                <ArrowRight className="size-3" />
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About the edition */}
+      <section className="border-t border-border bg-muted/20">
+        <div className="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                About this edition
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                The Chaṭṭha Saṅgāyana (Sixth Council) Tipiṭaka was convened in
+                Rangoon, Burma, between 1954 and 1956. Modelled on five earlier
+                councils that preserved the Pāli Canon, it brought together
+                scholars from eight Theravāda countries to verify, edit, and
+                reprint the authoritative Pāli text. The digitized edition was
+                produced by the Vipassana Research Institute (VRI).
+              </p>
+              <p className="mt-4 text-muted-foreground">
+                This site presents the CST text in Roman/IAST — the
+                international scholarly standard for Pāli — with in-browser
+                transliteration to six other scripts. Paragraph-level CST and
+                PTS references are stable and citable.
+              </p>
+              <p className="mt-6 font-reading text-sm italic text-muted-foreground">
+                Sabbadānaṃ dhammadānaṃ jināti — the gift of Dhamma surpasses all
+                gifts.{' '}
+                <Link
+                  href="/sutta/kn/dhammapadapali/brahmanavaggo"
+                  className="not-italic hover:underline"
+                >
+                  Dhp 354
+                </Link>
+              </p>
+              <Link
+                href={site.paths.about}
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
+              >
+                Learn more about the edition
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <dl className="divide-y divide-border">
+                {ABOUT_FACTS.map((f) => (
+                  <div
+                    key={f.label}
+                    className="flex flex-col gap-0.5 py-3 first:pt-0 last:pb-0 sm:flex-row sm:gap-6"
+                  >
+                    <dt className="w-28 shrink-0 text-sm font-medium">
+                      {f.label}
+                    </dt>
+                    <dd className="text-sm text-muted-foreground">{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
