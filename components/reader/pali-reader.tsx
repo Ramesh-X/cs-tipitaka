@@ -1,7 +1,8 @@
 'use client';
 
 import type { Paragraph } from '@/lib/corpus/constants';
-import { SCRIPTS, TRANSLATIONS } from '@/lib/corpus/constants';
+import { CANONICAL_SCRIPT, TRANSLATIONS } from '@/lib/corpus/constants';
+import { transliterate } from '@/lib/corpus/transliterate';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { useHydrated } from '@/lib/use-hydrated';
 import { cn } from '@/lib/utils';
@@ -14,7 +15,7 @@ import {
 // client render matches the SSG HTML (no hydration mismatch). Persisted
 // preferences are applied only after mount.
 const SSR_DEFAULTS = {
-  script: 'roman',
+  script: CANONICAL_SCRIPT,
   fontSize: 19,
   lineHeight: 1.5,
   fontFamily: 'serif' as const,
@@ -35,22 +36,13 @@ export function PaliReader({ paragraphs }: { paragraphs: Paragraph[] }) {
     translation,
   } = mounted ? prefs : SSR_DEFAULTS;
 
-  const scriptName =
-    SCRIPTS.find((s) => s.id === script)?.name ?? 'Roman (IAST)';
+  const effectiveScript = mounted ? script : CANONICAL_SCRIPT;
+
   const translationName =
     TRANSLATIONS.find((t) => t.id === translation)?.title ?? '';
 
   return (
     <div>
-      {mounted && script !== 'roman' && (
-        <p className="mb-4 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm text-muted-foreground">
-          Showing{' '}
-          <span className="font-medium text-foreground">{scriptName}</span>.
-          Client-side transliteration is on the way — the canonical Roman/IAST
-          text is shown for now.
-        </p>
-      )}
-
       <article
         className={cn(
           'mx-auto flex flex-col',
@@ -67,6 +59,8 @@ export function PaliReader({ paragraphs }: { paragraphs: Paragraph[] }) {
             showTranslation={showTranslation}
             translation={translation}
             lineHeight={lineHeight}
+            script={effectiveScript}
+            transliterate={transliterate}
           />
         ))}
       </article>

@@ -4,6 +4,7 @@ import './globals.css';
 
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { ScriptAutoDetect } from '@/components/reader/script-auto-detect';
 import { themeInitScript } from '@/components/theme-toggle';
 import { site } from '@/lib/site';
 
@@ -54,6 +55,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <ScriptAutoDetect />
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />

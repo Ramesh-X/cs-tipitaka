@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-import { secondaryPali } from '@/lib/corpus';
+import { secondaryPali, titleIsPali } from '@/lib/corpus';
+import { Pali } from '@/components/reader/pali';
 import type { CorpusEntry } from '@/lib/corpus/navigation';
 
 export function DocumentPager({
@@ -36,11 +37,15 @@ export function DocumentPager({
               Previous text
             </span>
             <span className="block truncate font-medium">
-              {previous.node.title}
+              {titleIsPali(previous.node.title, previous.node.pali) ? (
+                <Pali text={previous.node.title} />
+              ) : (
+                previous.node.title
+              )}
             </span>
             {previousPali && (
               <span className="block truncate font-reading text-xs text-muted-foreground">
-                {previousPali}
+                <Pali text={previousPali} />
               </span>
             )}
           </span>
@@ -59,11 +64,15 @@ export function DocumentPager({
               Next text
             </span>
             <span className="block truncate font-medium">
-              {next.node.title}
+              {titleIsPali(next.node.title, next.node.pali) ? (
+                <Pali text={next.node.title} />
+              ) : (
+                next.node.title
+              )}
             </span>
             {nextPali && (
               <span className="block truncate font-reading text-xs text-muted-foreground">
-                {nextPali}
+                <Pali text={nextPali} />
               </span>
             )}
           </span>

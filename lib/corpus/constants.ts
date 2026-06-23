@@ -52,8 +52,6 @@ export interface CorpusNode {
 export interface Script {
   id: string;
   name: string;
-  /** Sample glyphs for the selector preview. */
-  sample: string;
 }
 
 export interface Translation {
@@ -77,17 +75,28 @@ export type { GlossaryTerm } from '@/lib/corpus/glossary';
 /* -------------------------------------------------------------------------- */
 
 export const SCRIPTS: Script[] = [
-  { id: 'roman', name: 'Roman (IAST)', sample: 'Namo' },
-  { id: 'sinhala', name: 'Sinhala', sample: 'නමෝ' },
-  { id: 'devanagari', name: 'Devanagari', sample: 'नमो' },
-  { id: 'thai', name: 'Thai', sample: 'นโม' },
-  { id: 'myanmar', name: 'Myanmar', sample: 'နမော' },
-  { id: 'khmer', name: 'Khmer', sample: 'នមោ' },
-  { id: 'lao', name: 'Lao', sample: 'ນໂມ' },
+  { id: 'latn', name: 'Roman (IAST)' },
+  { id: 'sinh', name: 'Sinhala' },
+  { id: 'deva', name: 'Devanagari' },
+  { id: 'thai', name: 'Thai' },
+  { id: 'mymr', name: 'Myanmar' },
+  { id: 'khmr', name: 'Khmer' },
+  { id: 'laoo', name: 'Lao' },
+  { id: 'beng', name: 'Bengali' },
+  { id: 'asse', name: 'Assamese' },
+  { id: 'guru', name: 'Gurmukhi' },
+  { id: 'gujr', name: 'Gujarati' },
+  { id: 'telu', name: 'Telugu' },
+  { id: 'knda', name: 'Kannada' },
+  { id: 'mlym', name: 'Malayalam' },
+  { id: 'lana', name: 'Tai Tham' },
+  { id: 'brah', name: 'Brāhmī' },
+  { id: 'tibt', name: 'Tibetan' },
+  { id: 'cyrl', name: 'Cyrillic' },
 ];
 
 /** Roman/IAST is the single canonical server-rendered script (SEO + AI). */
-export const CANONICAL_SCRIPT = 'roman';
+export const CANONICAL_SCRIPT = 'latn';
 
 /* -------------------------------------------------------------------------- */
 /*  Available translations                                                     */
@@ -147,4 +156,9 @@ export function secondaryPali(
 ): string | undefined {
   const trimmed = pali?.trim();
   return trimmed && trimmed !== title.trim() ? trimmed : undefined;
+}
+
+/** Returns true when the title IS the Pāli text (should be transliterated). */
+export function titleIsPali(title: string, pali: string | undefined): boolean {
+  return pali?.trim() === title.trim();
 }

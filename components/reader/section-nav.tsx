@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
+import { Pali } from '@/components/reader/pali';
 
 export interface Section {
   id: string;
@@ -64,7 +65,7 @@ export function SectionNav({ sections }: { sections: Section[] }) {
                   : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground',
               )}
             >
-              {section.label}
+              <Pali text={section.label} />
             </a>
           </li>
         ))}

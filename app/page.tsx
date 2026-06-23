@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { JsonLd } from '@/components/json-ld';
 import { DailyReflection } from '@/components/daily-reflection/daily-reflection';
 import { StartTextsCarousel } from '@/components/start-texts/start-texts-carousel';
+import { Pali } from '@/components/reader/pali';
 import { site } from '@/lib/site';
 
 const PURPOSES = [
@@ -20,7 +21,7 @@ const TOOLS = [
   {
     icon: Languages,
     title: 'Read the Pāli clearly',
-    body: 'Roman/IAST by default. Switch to Sinhala, Devanagari, Thai, Myanmar, Khmer, or Lao — transliterated in your browser.',
+    body: 'Roman/IAST by default. Switch to Sinhala, Devanagari, Thai, Myanmar, Khmer, Tibetan, and 12 more — all transliterated live in your browser.',
   },
   {
     icon: BookOpen,
@@ -43,7 +44,7 @@ const ABOUT_FACTS = [
   { label: 'Edition', value: 'Chaṭṭha Saṅgāyana (Sixth Council)' },
   { label: 'Convened', value: '1954–1956, Rangoon, Burma' },
   { label: 'Source', value: 'Vipassana Research Institute (VRI)' },
-  { label: 'Script', value: 'Roman / IAST (canonical); 6 others in-browser' },
+  { label: 'Script', value: 'Roman / IAST (canonical); 17 others in-browser' },
   { label: 'Offered as', value: 'Dhammadāna — a gift of Dhamma' },
 ];
 
@@ -70,7 +71,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
             <div>
               <p className="font-reading text-sm italic text-muted-foreground">
-                Namo tassa bhagavato arahato sammāsambuddhassa
+                <Pali text="Namo tassa bhagavato arahato sammāsambuddhassa" />
               </p>
               <h1 className="mt-4 font-reading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
                 Read the Buddha&apos;s words with clarity and care.
@@ -207,8 +208,8 @@ export default function Home() {
                 PTS references are stable and citable.
               </p>
               <p className="mt-6 font-reading text-sm italic text-muted-foreground">
-                Sabbadānaṃ dhammadānaṃ jināti — the gift of Dhamma surpasses all
-                gifts.{' '}
+                <Pali text="Sabbadānaṃ dhammadānaṃ jināti" /> — the gift of
+                Dhamma surpasses all gifts.{' '}
                 <Link
                   href="/sutta/kn/dhammapadapali/brahmanavaggo"
                   className="not-italic hover:underline"

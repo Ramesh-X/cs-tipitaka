@@ -7,6 +7,7 @@ import { Menu, Search, X } from 'lucide-react';
 import { site } from '@/lib/site';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { ScriptSelector } from '@/components/reader/script-selector';
 import { cn } from '@/lib/utils';
 
 const NAV = [
@@ -58,6 +59,7 @@ export function SiteHeader() {
             <Search className="size-4" />
             Search the canon…
           </Button>
+          <ScriptSelector />
           <ThemeToggle />
           <Button
             variant="ghost"

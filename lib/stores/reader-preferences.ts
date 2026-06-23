@@ -5,20 +5,18 @@ import { persist } from 'zustand/middleware';
 import { CANONICAL_SCRIPT } from '@/lib/corpus/constants';
 
 export type FontFamily = 'serif' | 'sans';
+export type ScriptSource = 'default' | 'auto' | 'user';
 
 export interface ReaderPreferences {
-  /** Display script id (see SCRIPTS). Transliteration itself is placeholder. */
   script: string;
-  /** Reading font size in px. */
+  scriptSource: ScriptSource;
   fontSize: number;
-  /** Reading line height (unitless multiplier). */
   lineHeight: number;
   fontFamily: FontFamily;
-  /** Whether the parallel translation column is shown. */
   showTranslation: boolean;
-  /** Selected translation id. */
   translation: string;
   setScript: (script: string) => void;
+  applyAutoScript: (script: string) => void;
   setFontSize: (size: number) => void;
   setLineHeight: (height: number) => void;
   setFontFamily: (family: FontFamily) => void;
@@ -28,8 +26,7 @@ export interface ReaderPreferences {
   reset: () => void;
 }
 
-const DEFAULTS = {
-  script: CANONICAL_SCRIPT,
+const DISPLAY_DEFAULTS = {
   fontSize: 19,
   lineHeight: 1.5,
   fontFamily: 'serif' as FontFamily,
@@ -37,11 +34,21 @@ const DEFAULTS = {
   translation: 'sujato',
 };
 
+const DEFAULTS = {
+  script: CANONICAL_SCRIPT,
+  scriptSource: 'default' as ScriptSource,
+  ...DISPLAY_DEFAULTS,
+};
+
 export const useReaderPreferences = create<ReaderPreferences>()(
   persist(
     (set) => ({
       ...DEFAULTS,
-      setScript: (script) => set({ script }),
+      setScript: (script) => set({ script, scriptSource: 'user' }),
+      applyAutoScript: (script) =>
+        set((s) =>
+          s.scriptSource === 'default' ? { script, scriptSource: 'auto' } : s,
+        ),
       setFontSize: (fontSize) => set({ fontSize }),
       setLineHeight: (lineHeight) => set({ lineHeight }),
       setFontFamily: (fontFamily) => set({ fontFamily }),
@@ -49,7 +56,7 @@ export const useReaderPreferences = create<ReaderPreferences>()(
         set((s) => ({ showTranslation: !s.showTranslation })),
       setShowTranslation: (showTranslation) => set({ showTranslation }),
       setTranslation: (translation) => set({ translation }),
-      reset: () => set(DEFAULTS),
+      reset: () => set(DISPLAY_DEFAULTS),
     }),
     { name: 'tipitaka-reader-preferences' },
   ),

@@ -5,6 +5,7 @@ import {
   isDocument,
   nodeTypeLabel,
   secondaryPali,
+  titleIsPali,
   type CorpusNode,
 } from '@/lib/corpus';
 import {
@@ -17,6 +18,7 @@ import {
 } from '@/lib/corpus/navigation';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { Pali } from '@/components/reader/pali';
 
 /**
  * The clickable title for a node. Clicking it navigates to the node's page;
@@ -45,11 +47,15 @@ function NodeLabel({
       )}
     >
       <span className="block truncate font-medium leading-tight">
-        {node.title}
+        {titleIsPali(node.title, node.pali) ? (
+          <Pali text={node.title} />
+        ) : (
+          node.title
+        )}
       </span>
       {pali && (
         <span className="block truncate font-reading text-xs text-muted-foreground">
-          {pali}
+          <Pali text={pali} />
         </span>
       )}
     </Link>

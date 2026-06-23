@@ -8,6 +8,7 @@ import { REFLECTIONS } from './reflections';
 import { useHydrated } from '@/lib/use-hydrated';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Pali } from '@/components/reader/pali';
 import {
   Card,
   CardContent,
@@ -49,7 +50,7 @@ export function DailyReflection() {
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="font-reading text-xl leading-relaxed whitespace-pre-line text-foreground sm:text-2xl">
-          {reflection.pali}
+          <Pali text={reflection.pali} />
         </p>
         <p className="text-muted-foreground">{reflection.gloss}</p>
       </CardContent>

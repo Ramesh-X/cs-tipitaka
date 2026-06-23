@@ -96,14 +96,19 @@ export function ParagraphBlock({
   showTranslation,
   translation,
   lineHeight,
+  script,
+  transliterate,
 }: {
   paragraph: Paragraph;
   prevClass: RendClass | null;
   showTranslation: boolean;
   translation: string;
   lineHeight: number;
+  script: string;
+  transliterate: (text: string, scriptId: string) => string;
 }) {
   const klass = classifyRend(p.rend);
+  const pali = transliterate(p.pali, script);
 
   if (klass === 'banner') {
     return (
@@ -111,7 +116,7 @@ export function ParagraphBlock({
         id={p.id}
         className="mt-2 scroll-mt-32 text-center font-reading text-sm font-medium tracking-wide text-muted-foreground uppercase first:mt-0"
       >
-        {p.pali}
+        {pali}
       </p>
     );
   }
@@ -122,7 +127,7 @@ export function ParagraphBlock({
         id={p.id}
         className="mt-10 mb-2 scroll-mt-32 text-center font-reading text-2xl font-semibold tracking-tight first:mt-0"
       >
-        {p.pali}
+        {pali}
       </h2>
     );
   }
@@ -136,7 +141,7 @@ export function ParagraphBlock({
           id={p.id}
           className="scroll-mt-32 text-center font-reading text-xl font-semibold tracking-tight"
         >
-          {p.pali}
+          {pali}
         </h3>
         <span className="h-px flex-1 bg-border" />
       </div>
@@ -149,7 +154,7 @@ export function ParagraphBlock({
         id={p.id}
         className="mt-6 mb-1 scroll-mt-32 text-center font-reading text-base font-semibold text-foreground/90 first:mt-0"
       >
-        {p.pali}
+        {pali}
       </h4>
     );
   }
@@ -160,7 +165,7 @@ export function ParagraphBlock({
         id={p.id}
         className="my-5 scroll-mt-32 text-center font-reading text-sm font-medium text-muted-foreground"
       >
-        {p.pali}
+        {pali}
       </p>
     );
   }
@@ -194,7 +199,7 @@ export function ParagraphBlock({
           style={{ lineHeight }}
         >
           {p.num && <ParaNum id={p.id} num={p.num} />}
-          {p.pali}
+          {pali}
         </p>
         {showTranslation && (
           <p className="font-sans text-[0.9em] leading-relaxed text-muted-foreground">

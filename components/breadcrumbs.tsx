@@ -2,9 +2,11 @@ import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 
 import type { Crumb } from '@/lib/corpus';
+import { titleIsPali } from '@/lib/corpus';
 import { JsonLd } from '@/components/json-ld';
 import { cn } from '@/lib/utils';
 import { site } from '@/lib/site';
+import { Pali } from '@/components/reader/pali';
 
 export function Breadcrumbs({
   crumbs,
@@ -53,11 +55,19 @@ export function Breadcrumbs({
                   aria-current="page"
                   className="font-medium text-foreground"
                 >
-                  {c.title}
+                  {titleIsPali(c.title, c.pali) ? (
+                    <Pali text={c.title} />
+                  ) : (
+                    c.title
+                  )}
                 </span>
               ) : (
                 <Link href={c.href} className="hover:text-foreground">
-                  {c.title}
+                  {titleIsPali(c.title, c.pali) ? (
+                    <Pali text={c.title} />
+                  ) : (
+                    c.title
+                  )}
                 </Link>
               )}
             </li>

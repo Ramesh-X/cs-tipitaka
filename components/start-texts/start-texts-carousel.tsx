@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { Pali } from '@/components/reader/pali';
 
 interface StartText {
   title: string;
@@ -173,7 +174,7 @@ export function StartTextsCarousel() {
               <span className="flex flex-col">
                 <span className="font-medium">{t.title}</span>
                 <span className="font-reading text-sm text-muted-foreground">
-                  {t.pali}
+                  <Pali text={t.pali} />
                 </span>
                 <span className="mt-1 text-xs text-muted-foreground">
                   {t.note}

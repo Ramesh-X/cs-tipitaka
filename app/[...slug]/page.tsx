@@ -7,11 +7,13 @@ import {
   isDocument,
   nodeTypeLabel,
   secondaryPali,
+  titleIsPali,
 } from '@/lib/corpus';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Badge } from '@/components/ui/badge';
 import { TocList } from '@/components/toc-list';
-import { ReadingToolbar } from '@/components/reader/reading-toolbar';
+import { CorpusToolbar } from '@/components/corpus/corpus-toolbar';
+import { CorpusLayout } from '@/components/corpus/corpus-layout';
 import { PaliReader } from '@/components/reader/pali-reader';
 import { SectionNav } from '@/components/reader/section-nav';
 import { JsonLd } from '@/components/json-ld';
@@ -20,6 +22,7 @@ import {
   CorpusBrowserDisclosure,
 } from '@/components/corpus-browser';
 import { DocumentPager } from '@/components/document-pager';
+import { Pali } from '@/components/reader/pali';
 import { getAdjacentDocuments } from '@/lib/corpus/navigation';
 import { loadDocument } from '@/lib/corpus/loader';
 
@@ -90,14 +93,13 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
     return (
       <main className="w-full px-4 py-6 sm:px-6 lg:px-8">
         <JsonLd data={jsonLd} />
-        <div className="mx-auto grid w-full max-w-[1800px] gap-6 xl:grid-cols-[320px_minmax(0,1fr)_260px]">
-          <aside className="hidden xl:block">
-            <CorpusBrowser
-              currentSlug={slug}
-              className="sticky top-20 max-h-[calc(100svh_-_6rem)] overflow-y-auto"
-            />
-          </aside>
-
+        <CorpusLayout
+          variant="document"
+          nav={<CorpusBrowser currentSlug={slug} />}
+          outline={
+            sections.length > 0 ? <SectionNav sections={sections} /> : undefined
+          }
+        >
           <div className="min-w-0">
             <Breadcrumbs crumbs={crumbs} className="mb-6" />
 
@@ -106,11 +108,15 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
                 <Badge variant="muted">{nodeTypeLabel(node.type)}</Badge>
               </div>
               <h1 className="mt-2 font-reading text-3xl font-semibold tracking-tight lg:text-4xl">
-                {node.title}
+                {titleIsPali(node.title, node.pali) ? (
+                  <Pali text={node.title} />
+                ) : (
+                  node.title
+                )}
               </h1>
               {pali && (
                 <p className="mt-1 font-reading text-lg text-muted-foreground">
-                  {pali}
+                  <Pali text={pali} />
                 </p>
               )}
               {node.blurb && (
@@ -122,17 +128,19 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
 
             <div className="mb-6 grid gap-3 md:grid-cols-2 xl:hidden">
               <CorpusBrowserDisclosure currentSlug={slug} />
-              <details className="rounded-2xl border border-border bg-card shadow-sm">
-                <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium marker:hidden">
-                  On this page
-                </summary>
-                <div className="border-t border-border p-4">
-                  <SectionNav sections={sections} />
-                </div>
-              </details>
+              {sections.length > 0 && (
+                <details className="rounded-2xl border border-border bg-card shadow-sm">
+                  <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium marker:hidden">
+                    On this page
+                  </summary>
+                  <div className="border-t border-border p-4">
+                    <SectionNav sections={sections} />
+                  </div>
+                </details>
+              )}
             </div>
 
-            <ReadingToolbar />
+            <CorpusToolbar />
 
             <div className="mt-6">
               {paragraphs.length > 0 ? (
@@ -145,13 +153,7 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
               <DocumentPager {...adjacentDocuments} />
             </div>
           </div>
-
-          <aside className="hidden xl:block">
-            <div className="sticky top-36 max-h-[calc(100svh_-_10rem)] overflow-y-auto">
-              <SectionNav sections={sections} />
-            </div>
-          </aside>
-        </div>
+        </CorpusLayout>
       </main>
     );
   }
@@ -168,25 +170,22 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
   return (
     <main className="w-full px-4 py-6 sm:px-6 lg:px-8">
       <JsonLd data={jsonLd} />
-      <div className="mx-auto grid w-full max-w-[1800px] gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <aside className="hidden lg:block">
-          <CorpusBrowser
-            currentSlug={slug}
-            className="sticky top-20 max-h-[calc(100svh_-_6rem)] overflow-y-auto"
-          />
-        </aside>
-
+      <CorpusLayout variant="toc" nav={<CorpusBrowser currentSlug={slug} />}>
         <div className="min-w-0">
           <Breadcrumbs crumbs={crumbs} className="mb-6" />
 
-          <header className="mb-8">
+          <header className="mb-4">
             <Badge variant="muted">{nodeTypeLabel(node.type)}</Badge>
             <h1 className="mt-2 font-reading text-3xl font-semibold tracking-tight lg:text-4xl">
-              {node.title}
+              {titleIsPali(node.title, node.pali) ? (
+                <Pali text={node.title} />
+              ) : (
+                node.title
+              )}
             </h1>
             {pali && (
               <p className="mt-1 font-reading text-lg text-muted-foreground">
-                {pali}
+                <Pali text={pali} />
               </p>
             )}
             {node.blurb && (
@@ -200,13 +199,17 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
             <CorpusBrowserDisclosure currentSlug={slug} />
           </div>
 
-          {node.children && node.children.length > 0 ? (
-            <TocList nodes={node.children} basePath={basePath} />
-          ) : (
-            <p className="text-muted-foreground">No sections available yet.</p>
-          )}
+          <div className="mt-6">
+            {node.children && node.children.length > 0 ? (
+              <TocList nodes={node.children} basePath={basePath} />
+            ) : (
+              <p className="text-muted-foreground">
+                No sections available yet.
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      </CorpusLayout>
     </main>
   );
 }
