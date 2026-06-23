@@ -22,7 +22,7 @@ export interface Paragraph {
   cst?: string;
   /** Canonical Pāli text (Roman/IAST). */
   pali: string;
-  /** Translation text keyed by translation id. */
+  /** Translation text keyed by language code (e.g. 'en', 'si', 'th', 'my'). */
   translations: Record<string, string>;
 }
 
@@ -47,6 +47,8 @@ export interface CorpusNode {
    * consumed only server-side.
    */
   href?: string;
+  /** Wikidata entity URI for this node (e.g. https://www.wikidata.org/wiki/Q845392). */
+  wikidata?: string;
 }
 
 export interface Script {
@@ -54,11 +56,10 @@ export interface Script {
   name: string;
 }
 
-export interface Translation {
-  id: string;
-  title: string;
-  translator: string;
-  license: string;
+export interface Language {
+  code: string;
+  name: string;
+  endonym: string;
 }
 
 export interface Crumb {
@@ -99,28 +100,14 @@ export const SCRIPTS: Script[] = [
 export const CANONICAL_SCRIPT = 'latn';
 
 /* -------------------------------------------------------------------------- */
-/*  Available translations                                                     */
+/*  Available AI translation languages                                        */
 /* -------------------------------------------------------------------------- */
 
-export const TRANSLATIONS: Translation[] = [
-  {
-    id: 'bodhi',
-    title: 'Bhikkhu Bodhi',
-    translator: 'Bhikkhu Bodhi',
-    license: 'Licensed',
-  },
-  {
-    id: 'sujato',
-    title: 'Bhikkhu Sujato',
-    translator: 'Bhikkhu Sujato',
-    license: 'CC0 (public domain)',
-  },
-  {
-    id: 'thanissaro',
-    title: 'Ṭhānissaro Bhikkhu',
-    translator: 'Ṭhānissaro Bhikkhu',
-    license: 'Public domain',
-  },
+export const LANGUAGES: Language[] = [
+  { code: 'en', name: 'English', endonym: 'English' },
+  { code: 'si', name: 'Sinhala', endonym: 'සිංහල' },
+  { code: 'th', name: 'Thai', endonym: 'ภาษาไทย' },
+  { code: 'my', name: 'Burmese', endonym: 'မြန်မာ' },
 ];
 
 /* -------------------------------------------------------------------------- */

@@ -18,7 +18,8 @@ export const useLayoutPreferences = create<LayoutPreferences>()(
       navCollapsed: false,
       outlineCollapsed: false,
       toggleNav: () => set((s) => ({ navCollapsed: !s.navCollapsed })),
-      toggleOutline: () => set((s) => ({ outlineCollapsed: !s.outlineCollapsed })),
+      toggleOutline: () =>
+        set((s) => ({ outlineCollapsed: !s.outlineCollapsed })),
       setNavCollapsed: (navCollapsed) => set({ navCollapsed }),
       setOutlineCollapsed: (outlineCollapsed) => set({ outlineCollapsed }),
     }),

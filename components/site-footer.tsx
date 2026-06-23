@@ -28,7 +28,7 @@ const COLUMNS = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-border bg-muted/30">
+    <footer className="mt-16 border-t border-border bg-muted/30 print:hidden">
       <div className="mx-auto grid w-full max-w-[1800px] grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
         <div className="col-span-2 md:col-span-1">
           <div className="flex items-center gap-2 font-semibold">
@@ -65,6 +65,21 @@ export function SiteFooter() {
           <p>
             Chaṭṭha Saṅgāyana Tipiṭaka · digitized by the Vipassana Research
             Institute (VRI)
+          </p>
+          <p>
+            <a
+              href="https://creativecommons.org/publicdomain/zero/1.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+              title="Content is dedicated to the public domain under CC0"
+            >
+              CC0 Public Domain
+            </a>
+            {' · '}
+            <Link href={site.paths.usageRights} className="hover:underline">
+              Usage Rights
+            </Link>
           </p>
           <p>
             Developed by{' '}

@@ -18,7 +18,10 @@ export function ScriptSelector() {
   const setScript = useReaderPreferences((s) => s.setScript);
 
   return (
-    <Select value={script} onValueChange={(value) => setScript(value as string)}>
+    <Select
+      value={script}
+      onValueChange={(value) => setScript(value as string)}
+    >
       <SelectTrigger className="gap-2 w-auto" aria-label="Display script">
         <Languages className="size-4 shrink-0 text-muted-foreground" />
         <SelectValue />

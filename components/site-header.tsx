@@ -22,7 +22,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur print:hidden">
       <div className="mx-auto flex h-14 w-full max-w-[1800px] items-center gap-3 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"

@@ -20,15 +20,22 @@ interface CorpusLayoutProps {
   children: React.ReactNode;
 }
 
-function getDocumentGridCols(navCollapsed: boolean, outlineCollapsed: boolean, hasOutline: boolean): string {
+function getDocumentGridCols(
+  navCollapsed: boolean,
+  outlineCollapsed: boolean,
+  hasOutline: boolean,
+): string {
   if (!hasOutline) {
     return navCollapsed
       ? 'xl:grid-cols-[3rem_minmax(0,1fr)]'
       : 'xl:grid-cols-[320px_minmax(0,1fr)]';
   }
-  if (!navCollapsed && !outlineCollapsed) return 'xl:grid-cols-[320px_minmax(0,1fr)_260px]';
-  if (navCollapsed && !outlineCollapsed)  return 'xl:grid-cols-[3rem_minmax(0,1fr)_260px]';
-  if (!navCollapsed && outlineCollapsed)  return 'xl:grid-cols-[320px_minmax(0,1fr)_3rem]';
+  if (!navCollapsed && !outlineCollapsed)
+    return 'xl:grid-cols-[320px_minmax(0,1fr)_260px]';
+  if (navCollapsed && !outlineCollapsed)
+    return 'xl:grid-cols-[3rem_minmax(0,1fr)_260px]';
+  if (!navCollapsed && outlineCollapsed)
+    return 'xl:grid-cols-[320px_minmax(0,1fr)_3rem]';
   return 'xl:grid-cols-[3rem_minmax(0,1fr)_3rem]';
 }
 
@@ -38,9 +45,15 @@ function getTocGridCols(navCollapsed: boolean): string {
     : 'lg:grid-cols-[320px_minmax(0,1fr)]';
 }
 
-export function CorpusLayout({ variant, nav, outline, children }: CorpusLayoutProps) {
+export function CorpusLayout({
+  variant,
+  nav,
+  outline,
+  children,
+}: CorpusLayoutProps) {
   const mounted = useHydrated();
-  const { navCollapsed, outlineCollapsed, toggleNav, toggleOutline } = useLayoutPreferences();
+  const { navCollapsed, outlineCollapsed, toggleNav, toggleOutline } =
+    useLayoutPreferences();
 
   // SSR: always expanded so first paint matches SSG HTML (no hydration mismatch).
   const navIsCollapsed = mounted && navCollapsed;
@@ -52,12 +65,13 @@ export function CorpusLayout({ variant, nav, outline, children }: CorpusLayoutPr
       ? getDocumentGridCols(navIsCollapsed, outlineIsCollapsed, hasOutline)
       : getTocGridCols(navIsCollapsed);
 
-  const leftBreakpoint = variant === 'document' ? 'hidden xl:block' : 'hidden lg:block';
+  const leftBreakpoint =
+    variant === 'document' ? 'hidden xl:block' : 'hidden lg:block';
 
   return (
     <div className={`mx-auto grid w-full max-w-[1800px] gap-6 ${gridCols}`}>
       {/* Left nav pane */}
-      <aside className={leftBreakpoint}>
+      <aside className={`${leftBreakpoint} print:hidden`}>
         {navIsCollapsed ? (
           <div className="sticky top-20 flex justify-center pt-2">
             <Button
@@ -90,7 +104,7 @@ export function CorpusLayout({ variant, nav, outline, children }: CorpusLayoutPr
 
       {/* Right outline pane — document variant only, when sections exist */}
       {variant === 'document' && hasOutline && (
-        <aside className="hidden xl:block">
+        <aside className="hidden xl:block print:hidden">
           {outlineIsCollapsed ? (
             <div className="sticky top-36 flex justify-center pt-2">
               <Button

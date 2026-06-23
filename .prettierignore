@@ -1,2 +1,12 @@
-corpus/**
-lib/corpus/generated/**
+.next
+out
+build
+/.claude
+/.github
+/.kilo
+/.open-next
+/.wrangler
+/corpus
+/lib/corpus/generated
+node_modules
+public

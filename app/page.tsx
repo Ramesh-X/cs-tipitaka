@@ -7,6 +7,11 @@ import { DailyReflection } from '@/components/daily-reflection/daily-reflection'
 import { StartTextsCarousel } from '@/components/start-texts/start-texts-carousel';
 import { Pali } from '@/components/reader/pali';
 import { site } from '@/lib/site';
+import {
+  organizationNode,
+  webSiteNode,
+  webApplicationNode,
+} from '@/lib/corpus/schema';
 
 const PURPOSES = [
   { label: 'Read the suttas', href: '/sutta' },
@@ -25,8 +30,8 @@ const TOOLS = [
   },
   {
     icon: BookOpen,
-    title: 'Study with translation',
-    body: 'Pāli and translation side by side where available — Bhikkhu Bodhi, Bhikkhu Sujato, Ṭhānissaro Bhikkhu.',
+    title: 'Study with AI translation',
+    body: 'Pāli and AI-generated translation side by side — available in English, Sinhala, Thai, and Burmese, rendered live in your browser.',
   },
   {
     icon: Link2,
@@ -51,14 +56,30 @@ const ABOUT_FACTS = [
 export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: site.title,
-    url: site.url,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${site.url}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    '@graph': [
+      organizationNode(),
+      webSiteNode(),
+      webApplicationNode(),
+      {
+        '@type': 'Dataset',
+        '@id': `${site.url}/#dataset`,
+        name: 'Chaṭṭha Saṅgāyana Tipiṭaka — Complete Pāli Canon',
+        description:
+          'The complete Pāli Canon in the Chaṭṭha Saṅgāyana (Sixth Council) edition, digitized by the Vipassana Research Institute.',
+        url: site.url,
+        inLanguage: 'pi',
+        license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+        isAccessibleForFree: true,
+        creator: { '@id': `${site.url}/#organization` },
+        keywords: [
+          'Pāli Canon',
+          'Tipiṭaka',
+          'Theravāda Buddhism',
+          'Buddhist scriptures',
+          'Dhamma',
+        ],
+      },
+    ],
   };
 
   return (

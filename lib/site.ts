@@ -1,5 +1,5 @@
 export const site = {
-  url: 'https://tipitaka.example',
+  url: 'https://tipitakaonline.org',
   name: 'Tipiṭaka',
   title: 'Tipiṭaka — The Pāli Canon',
   titleTemplate: '%s · Tipiṭaka',
@@ -16,6 +16,7 @@ export const site = {
     about: '/about',
     glossary: '/glossary',
     developers: '/developers',
+    usageRights: '/usage-rights',
     llmsTxt: '/llms.txt',
     sitemap: '/sitemap.xml',
   },

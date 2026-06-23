@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Link2 } from 'lucide-react';
 
 import type { Paragraph } from '@/lib/corpus/constants';
+import { linkGlossaryTerms } from '@/lib/corpus/glossary-linker';
 import { cn } from '@/lib/utils';
 
 /**
@@ -61,11 +63,24 @@ function ParaMeta({
   id,
   cst,
   pts,
+  basePath,
 }: {
   id: string;
   cst?: string;
   pts?: string;
+  basePath?: string;
 }) {
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy(e: React.MouseEvent) {
+    e.preventDefault();
+    const url = `${basePath ?? ''}#${id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  }
+
   if (!cst && !pts) return null;
   // absolute so it doesn't add height to the paragraph box — keeps inter-paragraph
   // spacing consistent whether or not a citation exists.
@@ -73,10 +88,16 @@ function ParaMeta({
     <div className="absolute top-full left-0 z-10 mt-0.5 flex items-center gap-2 text-[0.7em] text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
       <a
         href={`#${id}`}
-        aria-label={`Link to paragraph ${cst ?? pts ?? id}`}
+        onClick={handleCopy}
+        aria-label={`Copy link to paragraph ${cst ?? pts ?? id}`}
         className="hover:text-foreground"
+        title={copied ? 'Copied!' : 'Copy link'}
       >
-        <Link2 className="size-3" />
+        {copied ? (
+          <span className="text-[0.9em]">✓</span>
+        ) : (
+          <Link2 className="size-3" />
+        )}
       </a>
       {cst && <span className="font-mono">CST {cst}</span>}
       {pts && <span className="font-mono">PTS {pts}</span>}
@@ -94,18 +115,20 @@ export function ParagraphBlock({
   paragraph: p,
   prevClass,
   showTranslation,
-  translation,
+  language,
   lineHeight,
   script,
   transliterate,
+  basePath,
 }: {
   paragraph: Paragraph;
   prevClass: RendClass | null;
   showTranslation: boolean;
-  translation: string;
+  language: string;
   lineHeight: number;
   script: string;
   transliterate: (text: string, scriptId: string) => string;
+  basePath?: string;
 }) {
   const klass = classifyRend(p.rend);
   const pali = transliterate(p.pali, script);
@@ -180,6 +203,9 @@ export function ParagraphBlock({
       ? 'mt-6' // numbered paragraph — full gap
       : 'mt-2'; // sub-paragraph — tighter gap
 
+  // Link glossary terms when rendering Roman/IAST script
+  const paliContent = script === 'latn' ? linkGlossaryTerms(pali) : pali;
+
   return (
     <div
       id={p.id}
@@ -199,15 +225,15 @@ export function ParagraphBlock({
           style={{ lineHeight }}
         >
           {p.num && <ParaNum id={p.id} num={p.num} />}
-          {pali}
+          {paliContent}
         </p>
         {showTranslation && (
           <p className="font-sans text-[0.9em] leading-relaxed text-muted-foreground">
-            {p.translations[translation] ?? '[Translation unavailable]'}
+            {p.translations[language] ?? '[Translation unavailable]'}
           </p>
         )}
       </div>
-      <ParaMeta id={p.id} cst={p.cst} pts={p.pts} />
+      <ParaMeta id={p.id} cst={p.cst} pts={p.pts} basePath={basePath} />
     </div>
   );
 }

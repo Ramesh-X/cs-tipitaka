@@ -2,7 +2,7 @@
 
 import { BookOpenText } from 'lucide-react';
 
-import { TRANSLATIONS } from '@/lib/corpus/constants';
+import { LANGUAGES } from '@/lib/corpus/constants';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +15,7 @@ import {
 import { cn } from '@/lib/utils';
 
 export function TranslationPicker() {
-  const { showTranslation, toggleTranslation, translation, setTranslation } =
+  const { showTranslation, toggleTranslation, language, setLanguage } =
     useReaderPreferences();
 
   return (
@@ -31,23 +31,23 @@ export function TranslationPicker() {
         <span className="hidden sm:inline">Translation</span>
       </Button>
       <Select
-        value={translation}
-        onValueChange={(value) => setTranslation(value as string)}
+        value={language}
+        onValueChange={(value) => setLanguage(value as string)}
         disabled={!showTranslation}
       >
         <SelectTrigger
           className={cn('gap-2', !showTranslation && 'opacity-50')}
-          aria-label="Choose translation"
+          aria-label="Choose translation language"
         >
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {TRANSLATIONS.map((t) => (
-            <SelectItem key={t.id} value={t.id}>
+          {LANGUAGES.map((lang) => (
+            <SelectItem key={lang.code} value={lang.code}>
               <span className="flex flex-col">
-                <span>{t.title}</span>
+                <span>{lang.name}</span>
                 <span className="text-xs text-muted-foreground">
-                  {t.license}
+                  {lang.endonym}
                 </span>
               </span>
             </SelectItem>

@@ -1,8 +1,9 @@
 'use client';
 
 import type { Paragraph } from '@/lib/corpus/constants';
-import { CANONICAL_SCRIPT, TRANSLATIONS } from '@/lib/corpus/constants';
+import { CANONICAL_SCRIPT, LANGUAGES } from '@/lib/corpus/constants';
 import { transliterate } from '@/lib/corpus/transliterate';
+import { useLayoutPreferences } from '@/lib/stores/layout-preferences';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { useHydrated } from '@/lib/use-hydrated';
 import { cn } from '@/lib/utils';
@@ -20,11 +21,20 @@ const SSR_DEFAULTS = {
   lineHeight: 1.5,
   fontFamily: 'serif' as const,
   showTranslation: false,
-  translation: 'sujato',
+  language: 'en',
 };
 
-export function PaliReader({ paragraphs }: { paragraphs: Paragraph[] }) {
+export function PaliReader({
+  paragraphs,
+  basePath,
+}: {
+  paragraphs: Paragraph[];
+  basePath?: string;
+}) {
   const mounted = useHydrated();
+
+  const { navCollapsed, outlineCollapsed } = useLayoutPreferences();
+  const panesCollapsed = mounted && (navCollapsed || outlineCollapsed);
 
   const prefs = useReaderPreferences();
   const {
@@ -33,20 +43,19 @@ export function PaliReader({ paragraphs }: { paragraphs: Paragraph[] }) {
     lineHeight,
     fontFamily,
     showTranslation,
-    translation,
+    language,
   } = mounted ? prefs : SSR_DEFAULTS;
 
   const effectiveScript = mounted ? script : CANONICAL_SCRIPT;
 
-  const translationName =
-    TRANSLATIONS.find((t) => t.id === translation)?.title ?? '';
+  const languageName = LANGUAGES.find((l) => l.code === language)?.name ?? '';
 
   return (
     <div>
       <article
         className={cn(
           'mx-auto flex flex-col',
-          !showTranslation && 'max-w-5xl',
+          !showTranslation && !panesCollapsed && 'max-w-5xl',
           fontFamily === 'serif' ? 'font-reading' : 'font-sans',
         )}
         style={{ fontSize: `${fontSize}px`, lineHeight }}
@@ -57,17 +66,19 @@ export function PaliReader({ paragraphs }: { paragraphs: Paragraph[] }) {
             paragraph={p}
             prevClass={i > 0 ? classifyRend(paragraphs[i - 1].rend) : null}
             showTranslation={showTranslation}
-            translation={translation}
+            language={language}
             lineHeight={lineHeight}
             script={effectiveScript}
             transliterate={transliterate}
+            basePath={basePath}
           />
         ))}
       </article>
 
-      {mounted && showTranslation && translationName && (
+      {mounted && showTranslation && languageName && (
         <p className="mt-4 text-xs text-muted-foreground">
-          Translation: {translationName}. Pāli aligned segment-by-segment.
+          AI translation: {languageName}. Rendered in browser — not part of
+          indexed content.
         </p>
       )}
     </div>

@@ -14,7 +14,7 @@ export interface ReaderPreferences {
   lineHeight: number;
   fontFamily: FontFamily;
   showTranslation: boolean;
-  translation: string;
+  language: string;
   setScript: (script: string) => void;
   applyAutoScript: (script: string) => void;
   setFontSize: (size: number) => void;
@@ -22,7 +22,7 @@ export interface ReaderPreferences {
   setFontFamily: (family: FontFamily) => void;
   toggleTranslation: () => void;
   setShowTranslation: (show: boolean) => void;
-  setTranslation: (id: string) => void;
+  setLanguage: (id: string) => void;
   reset: () => void;
 }
 
@@ -31,7 +31,7 @@ const DISPLAY_DEFAULTS = {
   lineHeight: 1.5,
   fontFamily: 'serif' as FontFamily,
   showTranslation: false,
-  translation: 'sujato',
+  language: 'en',
 };
 
 const DEFAULTS = {
@@ -55,7 +55,7 @@ export const useReaderPreferences = create<ReaderPreferences>()(
       toggleTranslation: () =>
         set((s) => ({ showTranslation: !s.showTranslation })),
       setShowTranslation: (showTranslation) => set({ showTranslation }),
-      setTranslation: (translation) => set({ translation }),
+      setLanguage: (language) => set({ language }),
       reset: () => set(DISPLAY_DEFAULTS),
     }),
     { name: 'tipitaka-reader-preferences' },

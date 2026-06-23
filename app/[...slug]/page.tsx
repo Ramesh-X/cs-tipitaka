@@ -9,6 +9,7 @@ import {
   secondaryPali,
   titleIsPali,
 } from '@/lib/corpus';
+import { bookNode, collectionNode } from '@/lib/corpus/schema';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Badge } from '@/components/ui/badge';
 import { TocList } from '@/components/toc-list';
@@ -80,15 +81,14 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
       .filter((p) => HEADING_RENDS.has(p.rend ?? ''))
       .map((p) => ({ id: p.id, label: p.pali }));
 
-    const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'CreativeWork',
+    const jsonLd = bookNode({
       name: node.title,
-      alternateName: pali,
-      inLanguage: 'pi',
-      isPartOf: crumbs.slice(0, -1).map((c) => c.title),
+      pali: pali,
       description: node.blurb,
-    };
+      url: basePath,
+      isPartOfUrl: crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/',
+      wikidata: node.wikidata,
+    });
 
     return (
       <main className="w-full px-4 py-6 sm:px-6 lg:px-8">
@@ -144,7 +144,7 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
 
             <div className="mt-6">
               {paragraphs.length > 0 ? (
-                <PaliReader paragraphs={paragraphs} />
+                <PaliReader paragraphs={paragraphs} basePath={basePath} />
               ) : (
                 <p className="text-muted-foreground">
                   The text for this section is not yet available.
@@ -159,13 +159,15 @@ export default async function CorpusPage(props: PageProps<'/[...slug]'>) {
   }
 
   /* --------------------------- TOC / landing page ------------------------- */
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
+  const childUrls = node.children?.map((c) => `${basePath}/${c.slug}`) ?? [];
+  const jsonLd = collectionNode({
     name: node.title,
-    alternateName: pali,
+    pali: pali,
     description: node.blurb,
-  };
+    url: basePath,
+    slug: slug[0],
+    childUrls: childUrls.slice(0, 20),
+  });
 
   return (
     <main className="w-full px-4 py-6 sm:px-6 lg:px-8">

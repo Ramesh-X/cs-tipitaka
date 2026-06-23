@@ -2,6 +2,7 @@ export interface GlossaryTerm {
   term: string;
   pali: string;
   definition: string;
+  wikidata?: string;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -14,6 +15,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     pali: 'dhamma',
     definition:
       'The teaching of the Buddha; also: phenomenon, mental object, law.',
+    wikidata: 'https://www.wikidata.org/wiki/Q169459',
   },
   {
     term: 'Sutta',
@@ -25,12 +27,14 @@ export const GLOSSARY: GlossaryTerm[] = [
     pali: 'nibbāna',
     definition:
       'The unconditioned; the cessation of greed, hatred and delusion.',
+    wikidata: 'https://www.wikidata.org/wiki/Q7048',
   },
   {
     term: 'Saṅgha',
     pali: 'saṅgha',
     definition:
       'The community of monastics; the noble community of realized beings.',
+    wikidata: 'https://www.wikidata.org/wiki/Q134809',
   },
   {
     term: 'Mettā',
@@ -53,6 +57,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: 'Vinaya',
     pali: 'vinaya',
     definition: 'The code of monastic discipline.',
+    wikidata: 'https://www.wikidata.org/wiki/Q845392',
   },
 ];
 

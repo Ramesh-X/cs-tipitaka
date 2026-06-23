@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       reason:
-        description: "Reason for this deploy (for the audit log)"
+        description: 'Reason for this deploy (for the audit log)'
         required: false
-        default: "Manual production deploy"
+        default: 'Manual production deploy'
 
 # Prevent concurrent deploys; never cancel a deploy that's in progress.
 concurrency:
