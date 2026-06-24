@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link2 } from 'lucide-react';
+import { Check, Copy, Link2 } from 'lucide-react';
 
 import type { Paragraph } from '@/lib/corpus/constants';
 import { linkGlossaryTerms } from '@/lib/corpus/glossary-linker';
@@ -44,61 +46,88 @@ export function classifyRend(rend?: string): RendClass {
   }
 }
 
-/** Leading paragraph number ("1.") that doubles as the deep-link anchor. */
-function ParaNum({ id, num }: { id: string; num: string }) {
+/** Leading paragraph number ("1.") — plain text, no navigation. */
+function ParaNum({ num }: { num: string }) {
   return (
-    <a
-      href={`#${id}`}
-      className="mr-1.5 font-semibold tabular-nums text-primary/80 no-underline hover:text-primary"
-      aria-label={`Paragraph ${num}`}
-    >
+    <span className="mr-1.5 font-semibold tabular-nums text-primary/80">
       {num}.
-    </a>
+    </span>
   );
 }
 
-/** Hover-revealed citation refs (CST / PTS page) + copy-link — kept out of the
- *  reading flow so prose isn't broken up, but still available for citation. */
-function ParaMeta({
-  id,
-  cst,
-  pts,
-  basePath,
-}: {
-  id: string;
-  cst?: string;
-  pts?: string;
-  basePath?: string;
-}) {
-  const [copied, setCopied] = useState(false);
+/** Clipboard write with a textarea-execCommand fallback for HTTP contexts. */
+function copyToClipboard(text: string): Promise<void> {
+  if (navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject) => {
+    const el = document.createElement('textarea');
+    el.value = text;
+    el.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(el);
+    if (ok) resolve();
+    else reject(new Error('copy failed'));
+  });
+}
 
-  function handleCopy(e: React.MouseEvent) {
-    e.preventDefault();
-    const url = `${basePath ?? ''}#${id}`;
-    navigator.clipboard.writeText(url).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    });
+type ParaAction = {
+  key: string;
+  icon: React.ReactNode;
+  /** Icon shown for ~1.5 s after a successful action (e.g. a checkmark). */
+  activeIcon?: React.ReactNode;
+  label: string;
+  onAction: () => Promise<void>;
+};
+
+/**
+ * Hover-revealed vertical strip of icon buttons on the left of a paragraph.
+ * Add new actions by passing them in the `actions` array — the strip grows
+ * downward automatically.
+ */
+function ParaActions({ actions }: { actions: ParaAction[] }) {
+  const [activeKey, setActiveKey] = useState<string | null>(null);
+
+  function handleClick(action: ParaAction) {
+    action
+      .onAction()
+      .then(() => {
+        setActiveKey(action.key);
+        setTimeout(() => setActiveKey(null), 1500);
+      })
+      .catch((err: unknown) => console.error('[ParaActions] copy failed', err));
   }
 
+  return (
+    <div className="absolute -left-7 top-0 flex flex-col gap-0.5 opacity-0 transition-opacity group-hover:opacity-100">
+      {actions.map((action) => (
+        <button
+          key={action.key}
+          onClick={() => handleClick(action)}
+          aria-label={action.label}
+          title={action.label}
+          className="flex size-6 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+        >
+          {activeKey === action.key && action.activeIcon
+            ? action.activeIcon
+            : action.icon}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Hover-revealed citation refs (CST / PTS page) — kept out of the reading flow
+ *  so prose isn't broken up, but still available for citation. */
+function ParaMeta({ cst, pts }: { cst?: string; pts?: string }) {
   if (!cst && !pts) return null;
   // absolute so it doesn't add height to the paragraph box — keeps inter-paragraph
   // spacing consistent whether or not a citation exists.
   return (
     <div className="absolute top-full left-0 z-10 mt-0.5 flex items-center gap-2 text-[0.7em] text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
-      <a
-        href={`#${id}`}
-        onClick={handleCopy}
-        aria-label={`Copy link to paragraph ${cst ?? pts ?? id}`}
-        className="hover:text-foreground"
-        title={copied ? 'Copied!' : 'Copy link'}
-      >
-        {copied ? (
-          <span className="text-[0.9em]">✓</span>
-        ) : (
-          <Link2 className="size-3" />
-        )}
-      </a>
       {cst && <span className="font-mono">CST {cst}</span>}
       {pts && <span className="font-mono">PTS {pts}</span>}
     </div>
@@ -133,63 +162,92 @@ export function ParagraphBlock({
   const klass = classifyRend(p.rend);
   const pali = transliterate(p.pali, script);
 
+  const paraActions: ParaAction[] = [
+    {
+      key: 'copy-link',
+      icon: <Link2 className="size-3.5" />,
+      activeIcon: <Check className="size-3.5" />,
+      label: 'Copy link',
+      onAction: () =>
+        copyToClipboard(
+          `${window.location.origin}${basePath ?? window.location.pathname}#${p.id}`,
+        ),
+    },
+    {
+      key: 'copy-text',
+      icon: <Copy className="size-3.5" />,
+      activeIcon: <Check className="size-3.5" />,
+      label: 'Copy paragraph',
+      onAction: () => copyToClipboard(pali),
+    },
+  ];
+
   if (klass === 'banner') {
     return (
-      <p
-        id={p.id}
-        className="mt-2 scroll-mt-32 text-center font-reading text-sm font-medium tracking-wide text-muted-foreground uppercase first:mt-0"
-      >
-        {pali}
-      </p>
+      <div id={p.id} className="group relative mt-2 scroll-mt-32 first:mt-0">
+        <ParaActions actions={paraActions} />
+        <p className="text-center font-reading text-sm font-medium tracking-wide text-muted-foreground uppercase">
+          {pali}
+        </p>
+      </div>
     );
   }
 
   if (klass === 'chapter') {
     return (
-      <h2
+      <div
         id={p.id}
-        className="mt-10 mb-2 scroll-mt-32 text-center font-reading text-2xl font-semibold tracking-tight first:mt-0"
+        className="group relative mt-10 mb-2 scroll-mt-32 first:mt-0"
       >
-        {pali}
-      </h2>
+        <ParaActions actions={paraActions} />
+        <h2 className="text-center font-reading text-2xl font-semibold tracking-tight">
+          {pali}
+        </h2>
+      </div>
     );
   }
 
   if (klass === 'subhead') {
     // Centred subtitle flanked by rules (———  Title  ———) for clear separation.
     return (
-      <div className="mt-12 mb-1 flex items-center gap-4 first:mt-0">
-        <span className="h-px flex-1 bg-border" />
-        <h3
-          id={p.id}
-          className="scroll-mt-32 text-center font-reading text-xl font-semibold tracking-tight"
-        >
-          {pali}
-        </h3>
-        <span className="h-px flex-1 bg-border" />
+      <div
+        id={p.id}
+        className="group relative mt-12 mb-1 scroll-mt-32 first:mt-0"
+      >
+        <ParaActions actions={paraActions} />
+        <div className="flex items-center gap-4">
+          <span className="h-px flex-1 bg-border" />
+          <h3 className="text-center font-reading text-xl font-semibold tracking-tight">
+            {pali}
+          </h3>
+          <span className="h-px flex-1 bg-border" />
+        </div>
       </div>
     );
   }
 
   if (klass === 'subsubhead') {
     return (
-      <h4
+      <div
         id={p.id}
-        className="mt-6 mb-1 scroll-mt-32 text-center font-reading text-base font-semibold text-foreground/90 first:mt-0"
+        className="group relative mt-6 mb-1 scroll-mt-32 first:mt-0"
       >
-        {pali}
-      </h4>
+        <ParaActions actions={paraActions} />
+        <h4 className="text-center font-reading text-base font-semibold text-foreground/90">
+          {pali}
+        </h4>
+      </div>
     );
   }
 
   if (klass === 'centre') {
     return (
-      <p
-        id={p.id}
-        className="my-5 scroll-mt-32 text-center font-reading text-sm font-medium text-muted-foreground"
-      >
-        {pali}
-      </p>
+      <div id={p.id} className="group relative my-5 scroll-mt-32">
+        <ParaActions actions={paraActions} />
+        <p className="text-center font-reading text-sm font-medium text-muted-foreground">
+          {pali}
+        </p>
+      </div>
     );
   }
 
@@ -214,6 +272,7 @@ export function ParagraphBlock({
         topGap,
       )}
     >
+      <ParaActions actions={paraActions} />
       <div
         className={cn(
           'grid gap-x-10 gap-y-2',
@@ -224,7 +283,7 @@ export function ParagraphBlock({
           className={cn('text-foreground', isVerse && 'pl-6 italic')}
           style={{ lineHeight }}
         >
-          {p.num && <ParaNum id={p.id} num={p.num} />}
+          {p.num && <ParaNum num={p.num} />}
           {paliContent}
         </p>
         {showTranslation && (
@@ -233,7 +292,7 @@ export function ParagraphBlock({
           </p>
         )}
       </div>
-      <ParaMeta id={p.id} cst={p.cst} pts={p.pts} basePath={basePath} />
+      <ParaMeta cst={p.cst} pts={p.pts} />
     </div>
   );
 }

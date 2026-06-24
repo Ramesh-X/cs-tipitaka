@@ -1,15 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { normalizeTerm } from '@/lib/text/normalize';
 import { GLOSSARY } from './glossary';
-
-function termId(term: string): string {
-  return term
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
 
 // Sorted longest-first to prefer longer matches
 // (e.g. "Paṭiccasamuppāda" before "Sutta")
@@ -25,7 +17,7 @@ const PATTERN = new RegExp(
 );
 
 const TERM_ID_MAP = new Map(
-  GLOSSARY.map((t) => [t.term.toLowerCase(), termId(t.term)]),
+  GLOSSARY.map((t) => [t.term.toLowerCase(), normalizeTerm(t.term)]),
 );
 
 function isWordChar(ch: string): boolean {
