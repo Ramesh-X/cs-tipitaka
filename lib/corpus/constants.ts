@@ -103,6 +103,9 @@ export const CANONICAL_SCRIPT = 'latn';
 /*  Available AI translation languages                                        */
 /* -------------------------------------------------------------------------- */
 
+export const LANG_CODES = ['en', 'si', 'th', 'my'] as const;
+export type LangCode = (typeof LANG_CODES)[number];
+
 export const LANGUAGES: Language[] = [
   { code: 'en', name: 'English', endonym: 'English' },
   { code: 'si', name: 'Sinhala', endonym: 'සිංහල' },

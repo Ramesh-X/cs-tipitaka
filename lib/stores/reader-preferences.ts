@@ -26,7 +26,7 @@ export interface ReaderPreferences {
   reset: () => void;
 }
 
-const DISPLAY_DEFAULTS = {
+export const DISPLAY_DEFAULTS = {
   fontSize: 19,
   lineHeight: 1.5,
   fontFamily: 'serif' as FontFamily,

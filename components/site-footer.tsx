@@ -68,7 +68,7 @@ export function SiteFooter() {
           </p>
           <p>
             <a
-              href="https://creativecommons.org/publicdomain/zero/1.0/"
+              href={site.license}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"

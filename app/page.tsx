@@ -68,7 +68,7 @@ export default function Home() {
           'The complete Pāli Canon in the Chaṭṭha Saṅgāyana (Sixth Council) edition, digitized by the Vipassana Research Institute.',
         url: site.url,
         inLanguage: 'pi',
-        license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+        license: site.license,
         isAccessibleForFree: true,
         creator: { '@id': `${site.url}/#organization` },
         keywords: [

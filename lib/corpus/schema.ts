@@ -1,10 +1,9 @@
 import { site } from '@/lib/site';
 import { WIKIDATA_MAP } from './wikidata-map';
 
-const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
-const WIKIDATA_TIPITAKA = 'https://www.wikidata.org/wiki/Q1373225';
-const WIKIDATA_BUDDHA = 'https://www.wikidata.org/wiki/Q9441';
-const WIKIDATA_VRI = 'https://www.wikidata.org/wiki/Q4994680';
+export const WIKIDATA_TIPITAKA = 'https://www.wikidata.org/wiki/Q1373225';
+export const WIKIDATA_BUDDHA = 'https://www.wikidata.org/wiki/Q9441';
+export const WIKIDATA_VRI = 'https://www.wikidata.org/wiki/Q4994680';
 
 export function organizationNode() {
   return {
@@ -14,7 +13,7 @@ export function organizationNode() {
     url: site.url,
     logo: { '@type': 'ImageObject', url: `${site.url}/icon.svg` },
     sameAs: ['https://en.wikipedia.org/wiki/Pali_Canon', WIKIDATA_TIPITAKA],
-    license: CC0,
+    license: site.license,
   };
 }
 
@@ -72,7 +71,7 @@ export function bookNode(opts: {
     inLanguage: 'pi',
     bookFormat: 'EBook',
     isAccessibleForFree: true,
-    license: CC0,
+    license: site.license,
     author: {
       '@type': 'Person',
       name: 'The Buddha (Siddhattha Gotama)',
@@ -114,7 +113,7 @@ export function collectionNode(opts: {
     name: opts.name,
     inLanguage: 'pi',
     isAccessibleForFree: true,
-    license: CC0,
+    license: site.license,
     url: `${site.url}${opts.url}`,
   };
   if (opts.pali) node.alternateName = opts.pali;

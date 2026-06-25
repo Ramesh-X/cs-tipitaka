@@ -1,5 +1,6 @@
 export const site = {
   url: 'https://tipitakaonline.org',
+  license: 'https://creativecommons.org/publicdomain/zero/1.0/',
   name: 'Tipiṭaka',
   title: 'Tipiṭaka — The Pāli Canon',
   titleTemplate: '%s · Tipiṭaka',

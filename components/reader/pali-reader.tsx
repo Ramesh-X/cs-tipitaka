@@ -4,7 +4,10 @@ import type { Paragraph } from '@/lib/corpus/constants';
 import { CANONICAL_SCRIPT, LANGUAGES } from '@/lib/corpus/constants';
 import { transliterate } from '@/lib/corpus/transliterate';
 import { useLayoutPreferences } from '@/lib/stores/layout-preferences';
-import { useReaderPreferences } from '@/lib/stores/reader-preferences';
+import {
+  DISPLAY_DEFAULTS,
+  useReaderPreferences,
+} from '@/lib/stores/reader-preferences';
 import { useHydrated } from '@/lib/use-hydrated';
 import { cn } from '@/lib/utils';
 import {
@@ -12,17 +15,9 @@ import {
   ParagraphBlock,
 } from '@/components/reader/paragraph-block';
 
-// Server-rendered defaults — kept in sync with the store defaults so the first
-// client render matches the SSG HTML (no hydration mismatch). Persisted
-// preferences are applied only after mount.
-const SSR_DEFAULTS = {
-  script: CANONICAL_SCRIPT,
-  fontSize: 19,
-  lineHeight: 1.5,
-  fontFamily: 'serif' as const,
-  showTranslation: false,
-  language: 'en',
-};
+// Server-rendered defaults — matches store defaults to avoid hydration mismatch.
+// Persisted preferences apply only after mount.
+const SSR_DEFAULTS = { script: CANONICAL_SCRIPT, ...DISPLAY_DEFAULTS };
 
 export function PaliReader({
   paragraphs,

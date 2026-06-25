@@ -25,7 +25,7 @@ export default function UsageRightsPage() {
     name: 'Usage Rights — Tipiṭaka Online',
     url: `${site.url}/usage-rights`,
     description: metadata.description,
-    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    license: site.license,
     isAccessibleForFree: true,
   };
 
@@ -51,7 +51,7 @@ export default function UsageRightsPage() {
             All canonical Pāli texts and AI-generated translations on this site
             are dedicated to the <strong>public domain</strong> under the{' '}
             <a
-              href="https://creativecommons.org/publicdomain/zero/1.0/"
+              href={site.license}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-foreground hover:underline"
