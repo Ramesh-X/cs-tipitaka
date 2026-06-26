@@ -25,3 +25,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Don't read/delete/write `.env` files. Those files are out of your scope. Read only example env files.
 - Condense your (agent's) context (with `/compact`) when the token usage exceeds 128K tokens.
 - Don't create files larger than 400 lines. Run `./file_length.sh` to check files with more than 400 lines. (Use `FileSplitPrompt.md` for guidance on how to split files.)
+
+## Documentations Helpers
+
+Hono: https://hono.dev/llms.txt
+Cloudflare: https://developers.cloudflare.com/llms.txt
+Next.js: https://nextjs.org/llms.txt
+Shadcn: https://ui.shadcn.com/llms.txt

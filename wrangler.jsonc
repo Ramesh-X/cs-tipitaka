@@ -8,4 +8,16 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS",
   },
+  "routes": [
+    {
+      "pattern": "tipitakaonline.org/*",
+      "zone_name": "tipitakaonline.org",
+    },
+  ],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+    },
+  },
 }

@@ -1,7 +1,17 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'public, s-maxage=86400, stale-while-revalidate=604800',
+        },
+      ],
+    },
+  ],
 };
 
 export default nextConfig;

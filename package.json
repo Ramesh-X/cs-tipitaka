@@ -22,7 +22,7 @@
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@hookform/resolvers": "^5.4.0",
-    "@opennextjs/cloudflare": "^1.19.11",
+    "@opennextjs/cloudflare": "^1.20.0",
     "@pnfo/pali-converter": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
@@ -51,6 +51,6 @@
     "prettier": "^3.8.4",
     "tailwindcss": "^4",
     "typescript": "^6.0.3",
-    "wrangler": "^4.103.0"
+    "wrangler": "^4.104.0"
   }
 }
