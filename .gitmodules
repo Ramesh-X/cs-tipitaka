@@ -1,4 +1,4 @@
 [submodule "corpus"]
-	path = corpus
+	path = data/corpus
 	url = git@github.com:VipassanaTech/tipitaka-xml.git
 	branch = main

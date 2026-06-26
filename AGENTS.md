@@ -1,20 +1,14 @@
 # AGENTS.MD
 
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-
-<!-- END:nextjs-agent-rules -->
-
 ## Tech Stack
 
-- Read the `package.json` file and understand which packages are being used. Use those packages for implementing features. Read the documentation of those packages for guidance on how to use them. Use latest versions.
+- This is a pnpm monorepo. Read the root `package.json`, `pnpm-workspace.yaml`, and the relevant app or package `package.json` before implementing features.
+- Current production behavior is still served by `apps/legacy-next` until the Astro migration is complete.
+- Use the packages already declared in the relevant workspace package. Read latest package documentation before making framework or dependency changes.
 
 ## Guidelines
 
-- Always use `npm run fix-all` followed by `npm run build` after editing files.
+- Always use `pnpm run fix-all` followed by `pnpm run build` after editing files.
 - Always use `shadcn` and `tailwindcss` for UI components and styling. Don't use custom CSS or any other UI libraries.
 - Always use documentation from latest package versions (use `context7` and `brave-search` tools).
 - Use feature-based packaging.
@@ -30,5 +24,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Hono: https://hono.dev/llms.txt
 Cloudflare: https://developers.cloudflare.com/llms.txt
-Next.js: https://nextjs.org/llms.txt
 Shadcn: https://ui.shadcn.com/llms.txt

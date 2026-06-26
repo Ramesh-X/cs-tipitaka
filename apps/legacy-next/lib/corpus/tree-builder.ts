@@ -13,7 +13,7 @@ import { readUtf16Json } from './utf16.ts';
 
 export const TREE_JSON_PATH = path.join(
   process.cwd(),
-  'corpus',
+  '../../data/corpus',
   'tipitaka.org',
   'romn',
   'tree.json',

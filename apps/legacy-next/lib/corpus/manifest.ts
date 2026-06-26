@@ -3,7 +3,7 @@
  *
  * ## What this file controls
  *
- * The build script (`scripts/build-corpus.ts`) reads `corpus/tipitaka.org/romn/tree.json`
+ * The build script (`scripts/build-corpus.ts`) reads `data/corpus/tipitaka.org/romn/tree.json`
  * and auto-generates URL slugs by slugifying every node's `text` field. This file provides:
  *
  *   1. `CATEGORY_ROOT_IDS`  — the four top-level section IDs in tree.json
@@ -15,10 +15,10 @@
  * ## How to update when the corpus submodule is updated
  *
  * 1. Pull the latest corpus:
- *      cd corpus && git pull && cd ..
+ *      cd data/corpus && git pull && cd ../..
  *
  * 2. Inspect the new tree.json to find changed or new node IDs:
- *      iconv -f UTF-16 -t UTF-8 corpus/tipitaka.org/romn/tree.json \
+ *      iconv -f UTF-16 -t UTF-8 data/corpus/tipitaka.org/romn/tree.json \
  *        | python3 -c "
  *            import json, sys
  *            data = json.load(sys.stdin)
@@ -36,11 +36,11 @@
  *    correct nodes. Add new entries if new piṭaka/nikāya nodes were introduced.
  *
  * 5. Check for slug collisions by running the prebuild and reviewing the output:
- *      npm run prebuild 2>&1 | grep -i "collision\|duplicate\|warn"
+ *      pnpm run prebuild 2>&1 | grep -i "collision\|duplicate\|warn"
  *    Add any colliding node IDs to `SLUG_OVERRIDES` with a unique slug.
  *
  * 6. Regenerate and rebuild:
- *      npm run prebuild && npm run build
+ *      pnpm run prebuild && pnpm run build
  *
  * ## Slug override format
  *

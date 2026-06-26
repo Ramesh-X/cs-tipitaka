@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+dist-server/
+
+# Cloudflare
+.wrangler/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# local env files
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/launch.json
+!.vscode/*.code-snippets

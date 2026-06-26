@@ -15,7 +15,7 @@ import {
 
 export type { ParsedParagraph } from './xml-nodes.ts';
 
-const CORPUS_ROMN_DIR = path.join(process.cwd(), 'corpus', 'romn');
+const CORPUS_ROMN_DIR = path.join(process.cwd(), '../../data/corpus', 'romn');
 
 /** preserveOrder keeps mixed text/`<hi>` content in document order. */
 const xmlParser = new XMLParser({

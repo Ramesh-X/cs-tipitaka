@@ -2,7 +2,7 @@
  * Prebuild script — generates the static corpus data consumed by Next.js at build time.
  *
  * Run via:  node --experimental-strip-types scripts/build-corpus.ts
- * Or:       npm run prebuild  (runs automatically before `npm run build`)
+ * Or:       pnpm run prebuild  (runs automatically before `pnpm run build`)
  *
  * Outputs:
  *   lib/corpus/generated/corpus-tree.json  — full CorpusNode hierarchy (no document content)
