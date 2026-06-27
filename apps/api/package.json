@@ -9,8 +9,10 @@
     "preview": "$npm_execpath run build && vite preview",
     "deploy": "$npm_execpath run build && wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write . --config ../../.prettierrc --ignore-path ../../.prettierignore",
-    "fix-all": "pnpm run format"
+    "fix-all": "pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
     "hono": "^4.12.27"

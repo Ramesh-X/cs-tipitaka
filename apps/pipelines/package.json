@@ -1,0 +1,25 @@
+{
+  "name": "@cs-tipitaka/pipelines",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@cs-tipitaka/corpus": "workspace:*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "corpus:seed:local": "node --experimental-strip-types src/corpus/seed.ts",
+    "corpus:seed:remote": "node --experimental-strip-types src/corpus/seed.ts --remote",
+    "translations:seed:local": "node --experimental-strip-types src/translations/seed.ts",
+    "translations:seed:remote": "node --experimental-strip-types src/translations/seed.ts --remote",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write . --config ../../.prettierrc --ignore-path ../../.prettierignore",
+    "fix-all": "pnpm run lint:fix && pnpm run format"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "fast-xml-parser": "^5.9.3",
+    "wrangler": "^4.17.0"
+  }
+}

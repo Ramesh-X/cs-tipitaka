@@ -8,6 +8,7 @@
 
 ## Guidelines
 
+- All apps and packages must have `lint`, `lint:fix`, `format`, and `fix-all` scripts in their `package.json`. If they don't, add them.
 - Always use `pnpm run fix-all` followed by `pnpm run build` after editing files.
 - Always use `shadcn` and `tailwindcss` for UI components and styling. Don't use custom CSS or any other UI libraries.
 - Always use documentation from latest package versions (use `context7` and `brave-search` tools).

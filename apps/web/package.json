@@ -11,8 +11,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write . --config ../../.prettierrc --ignore-path ../../.prettierignore",
-    "fix-all": "pnpm run format"
+    "fix-all": "pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
     "astro": "^7.0.3"

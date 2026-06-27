@@ -16,19 +16,20 @@
     "build:legacy-next": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run build",
     "build:web": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run build",
     "build:api": "pnpm --filter @cs-tipitaka/api --fail-if-no-match run build",
-    "lint": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run lint",
-    "lint:fix": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run lint:fix",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "fix-all": "pnpm run lint:fix && pnpm run format",
-    "fix-all:legacy-next": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run fix-all",
-    "fix-all:web": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run fix-all",
-    "fix-all:api": "pnpm --filter @cs-tipitaka/api --fail-if-no-match run fix-all",
+    "fix-all": "pnpm -r run fix-all && pnpm run format",
     "preview": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run preview",
     "deploy": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run deploy",
     "file-length": "./file_length.sh"
   },
   "devDependencies": {
-    "prettier": "^3.8.4"
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "^3.8.4",
+    "typescript-eslint": "^8.0.0"
   }
 }
