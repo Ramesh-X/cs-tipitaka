@@ -3,4 +3,11 @@
   "name": "api",
   "compatibility_date": "2025-08-03",
   "main": "./src/index.tsx",
+  "d1_databases": [
+    {
+      "binding": "CORPUS_DB",
+      "database_name": "corpus-db",
+      "database_id": "71d51db2-a884-4fbc-a298-78b688522663",
+    },
+  ],
 }

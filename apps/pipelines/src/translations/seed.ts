@@ -68,9 +68,6 @@ function main(): void {
   let failures = 0;
   let fileErrors = 0;
 
-  writer.writeLine('BEGIN;');
-  writer.writeLine('');
-
   for (const filePath of files) {
     const data = readTranslationFile(filePath);
     if (!data) {
@@ -115,8 +112,6 @@ function main(): void {
     );
   }
 
-  writer.writeLine('');
-  writer.writeLine('COMMIT;');
   writer.close();
 
   ok(`${totalRows} translation row(s) written to SQL`);

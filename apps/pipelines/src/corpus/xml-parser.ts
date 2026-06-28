@@ -134,10 +134,41 @@ function collectLeafSections(div: ON): ON[] {
   return children.flatMap(collectLeafSections);
 }
 
+/** Nodes of a div that appear before its first child `<div>` (its intro head). */
+function headBeforeFirstDiv(div: ON): ON[] {
+  const kids = childrenOf(div);
+  const firstDiv = kids.findIndex((c) => tagOf(c) === 'div');
+  return firstDiv === -1 ? kids : kids.slice(0, firstDiv);
+}
+
+/** True when the leading nodes contain a non-label `<p>` — i.e. a real section. */
+function hasContentIntro(nodes: ON[]): boolean {
+  return nodes.some(
+    (c) => tagOf(c) === 'p' && !LABEL_RENDS.has(attrOf(c, 'rend')),
+  );
+}
+
+/** Paragraphs of a book div that precede its first chapter sub-div. */
+function extractIntroSection(bookDiv: ON): ParsedParagraph[] {
+  const results: ParsedParagraph[] = [];
+  for (const node of headBeforeFirstDiv(bookDiv)) {
+    const tag = tagOf(node);
+    if (tag === 'head') {
+      const para = paragraphFrom(node, 'chapter');
+      if (para) results.push(para);
+    } else if (tag === 'p') {
+      const para = paragraphFrom(node, 'bodytext');
+      if (para) results.push(para);
+    }
+  }
+  return results;
+}
+
 type LeafEntry = {
   node: ON;
   hybridSub?: number;
   flatSub?: number;
+  intro?: boolean;
 };
 
 type FileSections =
@@ -151,6 +182,17 @@ function planSections(body: ON): FileSections {
   const leaves: LeafEntry[] = [];
   for (const bookDiv of bodyDivs) {
     const bookChildren = elemChildren(bookDiv, 'div');
+
+    // A book div may carry content (e.g. vatthugāthā / base verses) before its
+    // first chapter sub-div. The TOC treats that as its own leaf, so emit it as
+    // an intro section instead of dropping it.
+    if (
+      bookChildren.length > 0 &&
+      hasContentIntro(headBeforeFirstDiv(bookDiv))
+    ) {
+      leaves.push({ node: bookDiv, intro: true });
+    }
+
     const leafDivs =
       bookChildren.length === 0
         ? [bookDiv]
@@ -241,7 +283,8 @@ export function parseSection(
     return [];
   }
 
-  const { node, hybridSub, flatSub } = plan.leaves[sectionIdx];
+  const { node, hybridSub, flatSub, intro } = plan.leaves[sectionIdx];
+  if (intro) return extractIntroSection(node);
   if (hybridSub !== undefined) return extractHybridSection(node, hybridSub);
   if (flatSub !== undefined) {
     return extractFlatSection(

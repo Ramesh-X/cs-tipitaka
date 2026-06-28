@@ -1,0 +1,26 @@
+{
+  "name": "@cs-tipitaka/corpus",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply corpus-db --local --persist-to ../../.wrangler/state --config ../../wrangler.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply corpus-db --remote --config ../../wrangler.jsonc",
+    "cf-typegen": "wrangler types --config ../../wrangler.jsonc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write . --config ../../.prettierrc --ignore-path ../../.prettierignore",
+    "fix-all": "pnpm run lint:fix && pnpm run format"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "wrangler": "^4.17.0"
+  }
+}

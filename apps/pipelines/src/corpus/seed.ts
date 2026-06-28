@@ -27,6 +27,40 @@ function parseHref(
   return null;
 }
 
+function findDuplicates(values: string[]): { value: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
+
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => a.value.localeCompare(b.value));
+}
+
+function assertUniqueSlugs(allNodes: FlatNode[], docRefs: DocRef[]): void {
+  const duplicateNodes = findDuplicates(allNodes.map((node) => node.slug));
+  const duplicateDocs = findDuplicates(docRefs.map((doc) => doc.slug));
+
+  if (duplicateNodes.length === 0 && duplicateDocs.length === 0) return;
+
+  if (duplicateNodes.length > 0) {
+    warn(`${duplicateNodes.length} duplicate node slug(s):`);
+    for (const { value, count } of duplicateNodes) {
+      warn(`  ${value} (${count} occurrences)`);
+    }
+  }
+
+  if (duplicateDocs.length > 0) {
+    warn(`${duplicateDocs.length} duplicate document slug(s):`);
+    for (const { value, count } of duplicateDocs) {
+      warn(`  ${value} (${count} occurrences)`);
+    }
+  }
+
+  fail('Duplicate corpus slug(s) detected — aborting before SQL generation');
+  process.exit(1);
+}
+
 function main(): void {
   step('Building corpus node tree…');
   const tree = buildCorpusTree();
@@ -34,6 +68,7 @@ function main(): void {
   const allNodes: FlatNode[] = [];
   const docRefs: DocRef[] = [];
   flattenForDb(tree, null, [], allNodes, docRefs);
+  assertUniqueSlugs(allNodes, docRefs);
 
   const typeCounts = { pitaka: 0, nikaya: 0, collection: 0, document: 0 };
   for (const n of allNodes) {
@@ -105,9 +140,6 @@ function main(): void {
   let totalParas = 0;
   const emptyDocs: string[] = [];
 
-  writer.writeLine('BEGIN;');
-  writer.writeLine('');
-
   for (const node of allNodes) {
     if (!writeNodeRow(writer, node, args.conflict)) {
       nodeFailures++;
@@ -148,8 +180,6 @@ function main(): void {
     }
   }
 
-  writer.writeLine('');
-  writer.writeLine('COMMIT;');
   writer.close();
 
   const failures = nodeFailures + paraFailures;

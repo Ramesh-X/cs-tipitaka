@@ -1,0 +1,17 @@
+{
+  // Shared, repository-root Wrangler config.
+  // NOT a deployed Worker — used only by supplementary D1 CLI work
+  // (corpus migrations, pipelines seeds) via `--config ../../wrangler.jsonc`.
+  // Deployed Workers (apps/web, apps/api) keep their own configs.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cs-tipitaka-shared",
+  "compatibility_date": "2025-08-03",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "corpus-db",
+      "database_id": "71d51db2-a884-4fbc-a298-78b688522663",
+      "migrations_dir": "packages/corpus/migrations",
+    },
+  ],
+}

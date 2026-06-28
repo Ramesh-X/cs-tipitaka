@@ -3,6 +3,8 @@
 ## Tech Stack
 
 - This is a pnpm monorepo. Read the root `package.json`, `pnpm-workspace.yaml`, and the relevant app or package `package.json` before implementing features.
+- Only `apps/web` and `apps/api` are deployed Cloudflare Workers. Everything else (e.g. `apps/pipelines`, `packages/corpus`) is a helper that only uses `wrangler` for D1/CLI operations, not for deploying a Worker.
+- The repo-root `wrangler.jsonc` is a shared, non-deployed config for supplementary D1 CLI work only (corpus migrations, pipelines seeds). Helpers reference it with `--config ../../wrangler.jsonc`; don't give them their own wrangler config. Deployed Workers (`apps/web`, `apps/api`) keep their own configs and must hold their own bindings — keep their `database_name`/`database_id` in sync with the root config.
 - Current production behavior is still served by `apps/legacy-next` until the Astro migration is complete.
 - Use the packages already declared in the relevant workspace package. Read latest package documentation before making framework or dependency changes.
 

@@ -20,3 +20,4 @@ node_modules
 **/node_modules
 **/next-env.d.ts
 **/public
+pnpm-lock.yaml

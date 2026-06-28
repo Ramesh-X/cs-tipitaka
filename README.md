@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# cs-tipitaka
 
-## Getting Started
+Pāli Canon (Tipiṭaka) web application — a pnpm monorepo of Cloudflare apps and
+shared packages backed by a Cloudflare D1 database (`corpus-db`).
 
-First, run the development server:
+> Production is currently served by `apps/legacy-next` until the Astro migration
+> (`apps/web`) is complete.
+
+## Prerequisites
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Remote (`--remote`) commands require an authenticated Cloudflare account:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm exec wrangler login
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Wrangler configs
 
-## Learn More
+There are three `wrangler.jsonc` files. Keep their `database_name` /
+`database_id` in sync — a deployed Worker must carry its own bindings and cannot
+reference the shared root config.
 
-To learn more about Next.js, take a look at the following resources:
+| File                              | Purpose                                                                                                                                                                                                      |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrangler.jsonc` (repo root)      | **Shared, non-deployed** config used only by supplementary D1 CLI work (migrations, seeds). Defines the `corpus-db` database and `migrations_dir`. Helpers reference it via `--config ../../wrangler.jsonc`. |
+| `apps/api/wrangler.jsonc`         | The **API Worker**. Binds `corpus-db` as `CORPUS_DB`. Deployed.                                                                                                                                              |
+| `apps/legacy-next/wrangler.jsonc` | The **current production Worker** (Next.js via OpenNext) serving `tipitakaonline.org` until the Astro migration completes.                                                                                   |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database migrations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Apply the schema in `packages/corpus/migrations` to the D1 database.
 
-## Deploy on Vercel
+```bash
+# Local D1 (state under .wrangler/state)
+pnpm --filter @cs-tipitaka/corpus run db:migrate:local
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Remote D1
+pnpm --filter @cs-tipitaka/corpus run db:migrate:remote
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Corpus syncing
+
+Run migrations first, then seed. Seeding is handled by `apps/pipelines`.
+
+### Seed the corpus
+
+```bash
+# Local
+pnpm --filter @cs-tipitaka/pipelines run corpus:seed:local
+
+# Remote
+pnpm --filter @cs-tipitaka/pipelines run corpus:seed:remote
+```
+
+### Seed corpus translations
+
+```bash
+# Local
+pnpm --filter @cs-tipitaka/pipelines run translations:seed:local
+
+# Remote
+pnpm --filter @cs-tipitaka/pipelines run translations:seed:remote
+```
+
+### Monitoring a local seed
+
+A local seed loads the whole dataset in a single transaction, so committed rows
+aren't visible until it finishes. Use this proxy (run from the repo root) to
+confirm it's progressing — the `-wal` file grows and the process `TIME` advances
+while it works:
+
+```bash
+watch -n 5 'ls -lh .wrangler/state/v3/d1/miniflare-D1DatabaseObject/*.sqlite-wal 2>/dev/null; ps -o etime,time,rss -p $(pgrep -f "d1 execute") 2>/dev/null'
+```
+
+After it completes, verify the committed row counts:
+
+```bash
+pnpm exec wrangler d1 execute corpus-db --local \
+  --persist-to .wrangler/state --config wrangler.jsonc \
+  --command "SELECT (SELECT count(*) FROM nodes) AS nodes, (SELECT count(*) FROM paragraphs) AS paragraphs"
+```
+
+> Don't run another `wrangler d1 execute --local` against `.wrangler/state` while
+> a seed is running — it contends with the writer and can stall or error.
+
+> More execution steps (dev servers, builds, deploys) will be added as
+> development progresses.
