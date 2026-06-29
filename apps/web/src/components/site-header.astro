@@ -1,0 +1,180 @@
+---
+import { site } from '@/lib/site';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/theme-toggle';
+
+const NAV = [
+  { label: 'Browse', href: '/sutta' },
+  { label: 'Search', href: site.paths.search },
+  { label: 'About', href: site.paths.about },
+  { label: 'Glossary', href: site.paths.glossary },
+  { label: 'Developers', href: site.paths.developers },
+];
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  pathname === href || pathname.startsWith(href + '/');
+
+const ghostSmClass = buttonVariants({ variant: 'ghost', size: 'sm' });
+const ghostIconClass = buttonVariants({ variant: 'ghost', size: 'icon' });
+const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
+---
+
+<header
+  class="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur print:hidden"
+>
+  <div
+    class="mx-auto flex h-14 w-full max-w-[1800px] items-center gap-3 px-4 sm:px-6 lg:px-8"
+  >
+    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span
+        class="grid size-7 place-items-center rounded-md bg-primary text-sm text-primary-foreground"
+      >
+        ☸
+      </span>
+      <span>Tipiṭaka</span>
+    </a>
+
+    <nav class="ml-4 hidden items-center gap-1 md:flex">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class={cn(
+              ghostSmClass,
+              isActive(item.href) ? 'bg-muted text-foreground' : '',
+            )}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="ml-auto flex items-center gap-1">
+      <a
+        href={site.paths.search}
+        class={cn(
+          outlineSmClass,
+          'hidden gap-2 text-muted-foreground sm:inline-flex',
+        )}
+        aria-label="Search the canon"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        Search the canon…
+      </a>
+      {/* M4.3: ScriptSelector mount point */}
+      <ThemeToggle client:idle />
+      <button
+        id="menu-toggle"
+        class={cn(ghostIconClass, 'md:hidden')}
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          id="menu-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg
+          id="close-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          class="hidden"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-border md:hidden">
+    <nav
+      class="mx-auto flex w-full max-w-[1800px] flex-col gap-2 px-4 py-3 sm:px-6 lg:px-8"
+    >
+      <span
+        class="px-2 pt-1 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+      >
+        Menu
+      </span>
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      menuIcon?.classList.toggle('hidden', !isOpen);
+      closeIcon?.classList.toggle('hidden', isOpen);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        toggle.focus();
+      }
+    });
+  });
+</script>

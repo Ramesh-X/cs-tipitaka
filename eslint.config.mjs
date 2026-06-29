@@ -29,5 +29,13 @@ export { prettierRecommended as prettierConfig };
 export default tseslint.config(
   { ignores: SHARED_IGNORES },
   ...tseslint.configs.recommended,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: false,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   prettierRecommended,
 );

@@ -1,3 +1,5 @@
+import * as prettierPluginAstro from 'prettier-plugin-astro';
+
 /** @type {import("prettier").Config} */
 export default {
   semi: true,
@@ -5,7 +7,7 @@ export default {
   trailingComma: 'all',
   printWidth: 80,
   tabWidth: 2,
-  plugins: ['prettier-plugin-astro'],
+  plugins: [prettierPluginAstro],
   overrides: [
     {
       files: '*.astro',

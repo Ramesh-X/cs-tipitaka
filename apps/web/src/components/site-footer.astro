@@ -1,0 +1,105 @@
+---
+import { getCorpusTree } from '@/lib/corpus/tree';
+import { site } from '@/lib/site';
+
+const tree = await getCorpusTree();
+
+const COLUMNS = [
+  {
+    title: 'Read',
+    links: tree.map((node) => ({ label: node.title, href: `/${node.slug}` })),
+  },
+  {
+    title: 'Study',
+    links: [
+      { label: 'Search the Dhamma', href: site.paths.search },
+      { label: 'Glossary', href: site.paths.glossary },
+      { label: 'About the Tipiṭaka', href: site.paths.about },
+    ],
+  },
+  {
+    title: 'For developers & AI',
+    links: [
+      { label: 'API & MCP', href: site.paths.developers },
+      { label: 'llms.txt', href: site.paths.llmsTxt },
+      { label: 'Open data export', href: `${site.paths.developers}#data` },
+    ],
+  },
+];
+---
+
+<footer class="mt-16 border-t border-border bg-muted/30 print:hidden">
+  <div
+    class="mx-auto grid w-full max-w-[1800px] grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8"
+  >
+    <div class="col-span-2 md:col-span-1">
+      <div class="flex items-center gap-2 font-semibold">
+        <span
+          class="grid size-7 place-items-center rounded-md bg-primary text-sm text-primary-foreground"
+        >
+          ☸
+        </span>
+        Tipiṭaka
+      </div>
+      <p class="mt-3 max-w-xs text-sm text-muted-foreground">
+        The Chaṭṭha Saṅgāyana (Sixth Council) edition of the Pāli Canon —
+        offered freely for reading, study, reflection, and practice.
+      </p>
+    </div>
+    {
+      COLUMNS.map((col) => (
+        <div>
+          <h3 class="text-sm font-medium">{col.title}</h3>
+          <ul class="mt-3 flex flex-col gap-2">
+            {col.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-muted-foreground hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div class="border-t border-border">
+    <div
+      class="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8"
+    >
+      <p>
+        Chaṭṭha Saṅgāyana Tipiṭaka · digitized by the Vipassana Research
+        Institute (VRI)
+      </p>
+      <p>
+        <a
+          href={site.license}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:underline"
+          title="Content is dedicated to the public domain under CC0"
+        >
+          CC0 Public Domain
+        </a>
+        {' · '}
+        <a href={site.paths.usageRights} class="hover:underline">
+          Usage Rights
+        </a>
+      </p>
+      <p>
+        Developed by{' '}
+        <a
+          href="https://www.fcodelabs.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-foreground hover:underline"
+        >
+          Fcode Labs
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
