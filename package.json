@@ -18,9 +18,10 @@
     "build:api": "pnpm --filter @cs-tipitaka/api --fail-if-no-match run build",
     "lint": "pnpm -r run lint",
     "lint:fix": "pnpm -r run lint:fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "fix-all": "pnpm -r run fix-all && pnpm run format",
+    "format": "pnpm -r run format && pnpm run format:root",
+    "format:root": "prettier --write --config ./.prettierrc --ignore-unknown \".prettierrc\" \"*.{cjs,css,html,js,json,jsonc,md,mjs,ts,yaml,yml}\"",
+    "format:check": "prettier --check --config ./.prettierrc --ignore-unknown \".prettierrc\" \"*.{cjs,css,html,js,json,jsonc,md,mjs,ts,yaml,yml}\"",
+    "fix-all": "pnpm -r run fix-all && pnpm run format:root",
     "preview": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run preview",
     "deploy": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run deploy",
     "file-length": "./file_length.sh"
@@ -30,6 +31,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "prettier": "^3.8.4",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.0.0"
   }
 }

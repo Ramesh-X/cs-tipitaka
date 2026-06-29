@@ -1,17 +1,48 @@
 ---
-
+import '../styles/global.css';
+import { Button } from '../components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../components/ui/card';
+import Counter from '../components/_smoke/Counter';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="en" class="h-full antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>CS Tipitaka</title>
+  </head>
+  <body class="min-h-screen bg-background p-8 text-foreground">
+    <div class="mx-auto max-w-2xl space-y-8">
+      <h1 class="text-3xl font-bold">Phase 0 Scaffold</h1>
+      <Card>
+        <CardHeader>
+          <CardTitle>shadcn base-nova Buttons</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div class="flex gap-2">
+            <Button>Default</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="ghost">Ghost</Button>
+          </div>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>React Island (hydrated)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Counter client:load />
+        </CardContent>
+      </Card>
+    </div>
+  </body>
 </html>

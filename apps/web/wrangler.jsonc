@@ -1,0 +1,14 @@
+{
+  // Staging static-assets Worker for apps/web.
+  // Production route is attached at cutover (Phase 8), NOT now.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cs-tipitaka-web",
+  "compatibility_date": "2025-08-03",
+  "assets": {
+    "directory": "./dist",
+  },
+  "observability": {
+    "logs": { "enabled": true },
+  },
+  // "routes": [{ "pattern": "tipitakaonline.org/*", "zone_name": "tipitakaonline.org" }]
+}
