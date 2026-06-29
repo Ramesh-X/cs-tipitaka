@@ -143,12 +143,19 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
 </header>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  // Dual-trigger bootstrap: runs on initial load (ESM execution) and on
+  // astro:page-load (forward-compat when ClientRouter is added).
+  // init() is idempotent — a double-fire on first load is harmless.
+  function init() {
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
     if (!toggle || !menu) return;
+
+    // Guard against re-binding on re-fire
+    if ((toggle as HTMLElement & { _menuBound?: boolean })._menuBound) return;
+    (toggle as HTMLElement & { _menuBound?: boolean })._menuBound = true;
 
     toggle.addEventListener('click', () => {
       const isOpen = !menu.classList.contains('hidden');
@@ -176,5 +183,8 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
         toggle.focus();
       }
     });
-  });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
 </script>

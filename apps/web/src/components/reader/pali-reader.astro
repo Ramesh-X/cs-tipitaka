@@ -1,0 +1,32 @@
+---
+import ParagraphBlock from '@/components/reader/paragraph-block.astro';
+import { classifyRend } from '@/components/reader/rend.ts';
+import type { Paragraph } from '@/lib/corpus';
+
+interface Props {
+  paragraphs: Paragraph[];
+  basePath: string;
+}
+
+const { paragraphs } = Astro.props;
+---
+
+{
+  paragraphs.length === 0 ? (
+    <p class="py-8 text-center text-muted-foreground">
+      This text is not yet available.
+    </p>
+  ) : (
+    <article
+      data-reader-article
+      class="mx-auto flex flex-col max-w-5xl font-reading"
+    >
+      {paragraphs.map((p, i) => (
+        <ParagraphBlock
+          paragraph={p}
+          prevClass={i > 0 ? classifyRend(paragraphs[i - 1].rend) : null}
+        />
+      ))}
+    </article>
+  )
+}

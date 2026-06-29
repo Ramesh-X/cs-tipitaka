@@ -1,0 +1,212 @@
+---
+import Base from '@/layouts/Base.astro';
+import JsonLd from '@/components/json-ld.astro';
+import Breadcrumbs from '@/components/breadcrumbs.astro';
+import CorpusBrowser from '@/components/corpus-browser.astro';
+import CorpusBrowserDisclosure from '@/components/corpus-browser-disclosure.astro';
+import CorpusLayout from '@/components/corpus/corpus-layout.astro';
+import TocList from '@/components/toc-list.astro';
+import PaliReader from '@/components/reader/pali-reader.astro';
+import SectionNav from '@/components/reader/section-nav.astro';
+import DocumentPager from '@/components/document-pager.astro';
+import {
+  getAllPaths,
+  findNode,
+  getBreadcrumbs,
+  getAdjacentDocuments,
+  isDocument,
+  nodeHref,
+  nodeTypeLabel,
+  secondaryPali,
+  deriveReaderSections,
+  type Paragraph,
+  type CorpusNode,
+  type CorpusEntry,
+} from '@/lib/corpus';
+import type { ReaderSection } from '@/lib/corpus';
+import { loadDocument } from '@/lib/corpus/loader.ts';
+import { bookNode, collectionNode } from '@/lib/corpus/schema.ts';
+
+export async function getStaticPaths() {
+  const paths = await getAllPaths();
+  return paths.map((p) => ({ params: { slug: p.join('/') } }));
+}
+
+const { slug } = Astro.params;
+const slugArr = slug.split('/');
+
+const node = await findNode(slugArr);
+if (!node) {
+  return Astro.redirect('/404', 404);
+}
+
+const crumbs = await getBreadcrumbs(slugArr);
+const basePath = nodeHref(slugArr);
+
+const paliSuffix = secondaryPali(node.title, node.pali);
+const pageTitle = paliSuffix ? `${node.title} (${paliSuffix})` : node.title;
+const pageDescription = `${nodeTypeLabel(node.type)} — Tipiṭaka Online`;
+
+const isDocumentNode = isDocument(node);
+
+// Document branch data
+let paragraphs: Paragraph[] = [];
+let sections: ReaderSection[] = [];
+let previous: CorpusEntry | undefined;
+let next: CorpusEntry | undefined;
+let docJsonLd: Record<string, unknown> | null = null;
+
+// TOC branch data
+let children: CorpusNode[] = [];
+let tocJsonLd: Record<string, unknown> | null = null;
+
+if (isDocumentNode) {
+  const [content, adjacent] = await Promise.all([
+    loadDocument(slug), // joined string — loadDocument signature takes string, not string[]
+    getAdjacentDocuments(slugArr),
+  ]);
+
+  const derived = deriveReaderSections(content.paragraphs, node.title);
+  paragraphs = derived.paragraphs;
+  sections = derived.sections;
+  previous = adjacent.previous;
+  next = adjacent.next;
+
+  const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
+
+  docJsonLd = {
+    '@context': 'https://schema.org',
+    ...bookNode({
+      name: node.title,
+      pali: paliSuffix,
+      description: node.blurb ?? undefined,
+      url: basePath,
+      isPartOfUrl,
+      wikidata: node.wikidata ?? undefined,
+    }),
+  };
+} else {
+  children = node.children ?? [];
+  const childUrls = children
+    .slice(0, 20)
+    .map((c) => nodeHref([...slugArr, c.slug]));
+
+  tocJsonLd = {
+    '@context': 'https://schema.org',
+    ...collectionNode({
+      name: node.title,
+      pali: paliSuffix,
+      description: node.blurb ?? undefined,
+      url: basePath,
+      wikidata: node.wikidata ?? undefined,
+      childUrls,
+    }),
+  };
+}
+
+const ogType = isDocumentNode ? 'book' : 'website';
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  canonical={basePath}
+  ogType={ogType}
+>
+  {docJsonLd && <JsonLd data={docJsonLd} />}
+  {tocJsonLd && <JsonLd data={tocJsonLd} />}
+
+  <div
+    class="border-b border-border bg-background/80 px-4 py-3 sm:px-6 lg:px-8"
+  >
+    <Breadcrumbs crumbs={crumbs} />
+  </div>
+
+  {
+    isDocumentNode ? (
+      <CorpusLayout variant="document">
+        <CorpusBrowser slot="nav" currentSlug={slugArr} />
+        {sections.length > 0 && (
+          <SectionNav slot="outline" sections={sections} />
+        )}
+
+        <div class="pb-16">
+          {/* M4.2: CorpusToolbar island mount */}
+
+          <div class="mb-4 xl:hidden">
+            <CorpusBrowserDisclosure currentSlug={slugArr} />
+          </div>
+
+          {sections.length > 0 && (
+            <details class="mb-4 rounded-lg border border-border xl:hidden">
+              <summary class="flex cursor-pointer select-none list-none items-center gap-2 px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-4 text-muted-foreground"
+                  aria-hidden="true"
+                >
+                  <path d="M3 12h.01" />
+                  <path d="M3 18h.01" />
+                  <path d="M3 6h.01" />
+                  <path d="M8 12h13" />
+                  <path d="M8 18h13" />
+                  <path d="M8 6h13" />
+                </svg>
+                On this page
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="ml-auto size-3.5 text-muted-foreground transition-transform in-[details[open]>summary]:rotate-90"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </summary>
+              <div class="border-t border-border p-4">
+                <SectionNav sections={sections} />
+              </div>
+            </details>
+          )}
+
+          <PaliReader paragraphs={paragraphs} basePath={basePath} />
+          <DocumentPager previous={previous} next={next} />
+        </div>
+      </CorpusLayout>
+    ) : (
+      <CorpusLayout variant="toc">
+        <CorpusBrowser slot="nav" currentSlug={slugArr} />
+
+        <div class="pb-16">
+          <div class="mb-4 lg:hidden">
+            <CorpusBrowserDisclosure currentSlug={slugArr} />
+          </div>
+
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold tracking-tight">{node.title}</h1>
+            {paliSuffix && (
+              <p class="mt-1 text-lg font-reading text-muted-foreground">
+                {paliSuffix}
+              </p>
+            )}
+            {node.blurb && (
+              <p class="mt-3 text-muted-foreground">{node.blurb}</p>
+            )}
+          </div>
+
+          <TocList nodes={children} basePath={basePath} />
+        </div>
+      </CorpusLayout>
+    )
+  }
+</Base>

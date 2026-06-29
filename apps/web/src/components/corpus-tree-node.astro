@@ -1,0 +1,122 @@
+---
+import {
+  isSamePath,
+  isActiveBranch,
+  nodeHref,
+  secondaryPali,
+  titleIsPali,
+  type NavNode,
+} from '@/lib/corpus';
+import { cn } from '@/lib/utils';
+import Pali from '@/components/reader/pali.astro';
+import Self from '@/components/corpus-tree-node.astro';
+
+interface Props {
+  node: NavNode;
+  path: string[];
+  currentSlug: string[];
+}
+
+const { node, path, currentSlug } = Astro.props;
+
+const isActive = isSamePath(path, currentSlug);
+const isAncestor = isActiveBranch(path, currentSlug) && !isActive;
+const onActiveBranch = isActive || isAncestor;
+const hasChildren = node.hasChildren;
+const isExpanded = onActiveBranch && Boolean(node.children?.length);
+const href = nodeHref(path);
+
+const pali = secondaryPali(node.title, node.pali);
+const isPali = titleIsPali(node.title, node.pali);
+
+const labelClasses = cn(
+  'flex flex-1 items-center gap-1.5 rounded px-2 py-1 text-sm leading-snug',
+  'transition-colors hover:bg-muted',
+  isActive && 'bg-primary/10 font-medium text-foreground',
+  !isActive && 'text-muted-foreground',
+);
+---
+
+{
+  isExpanded && node.children ? (
+    <li>
+      <details open>
+        <summary
+          class={cn(
+            'flex cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden',
+          )}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-3.5 shrink-0 text-muted-foreground transition-transform in-[details[open]>summary]:rotate-90"
+            aria-hidden="true"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+          <a href={href} class={labelClasses}>
+            <span>{node.title}</span>
+            {pali && !isPali && (
+              <span class="text-xs text-muted-foreground/70">
+                · <Pali text={pali} />
+              </span>
+            )}
+          </a>
+        </summary>
+        <ul class="ml-4 border-l border-border/50 pl-2">
+          {node.children.map((child) => (
+            <Self
+              node={child}
+              path={[...path, child.slug]}
+              currentSlug={currentSlug}
+            />
+          ))}
+        </ul>
+      </details>
+    </li>
+  ) : hasChildren ? (
+    <li>
+      <div class="flex items-center gap-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-3.5 shrink-0 text-muted-foreground"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+        <a href={href} class={labelClasses}>
+          <span>{node.title}</span>
+          {pali && !isPali && (
+            <span class="text-xs text-muted-foreground/70">
+              · <Pali text={pali} />
+            </span>
+          )}
+        </a>
+      </div>
+    </li>
+  ) : (
+    <li>
+      <div class="flex items-center gap-1 pl-5">
+        <a href={href} class={labelClasses}>
+          <span>{node.title}</span>
+          {pali && !isPali && (
+            <span class="text-xs text-muted-foreground/70">
+              · <Pali text={pali} />
+            </span>
+          )}
+        </a>
+      </div>
+    </li>
+  )
+}

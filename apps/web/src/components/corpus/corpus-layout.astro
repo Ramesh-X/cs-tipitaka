@@ -1,0 +1,68 @@
+---
+import { cn } from '@/lib/utils';
+
+interface Props {
+  variant: 'document' | 'toc';
+}
+
+const { variant } = Astro.props;
+
+const hasOutline = Astro.slots.has('outline');
+const isDocument = variant === 'document';
+
+// Grid columns: expanded state (M4.1 adds collapse via data-* attribute toggle)
+const gridCols = isDocument
+  ? hasOutline
+    ? 'xl:grid-cols-[320px_minmax(0,1fr)_260px]'
+    : 'xl:grid-cols-[320px_minmax(0,1fr)]'
+  : 'lg:grid-cols-[320px_minmax(0,1fr)]';
+---
+
+<div
+  class={cn('grid grid-cols-1 gap-0', gridCols)}
+  data-corpus-layout
+  data-variant={variant}
+  data-nav-collapsed="false"
+  data-outline-collapsed="false"
+>
+  <!-- Left pane: corpus navigation -->
+  <aside
+    data-pane="nav"
+    class={cn(
+      'border-r border-border',
+      isDocument ? 'hidden xl:block' : 'hidden lg:block',
+    )}
+  >
+    <div class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto p-4">
+      {/* M4.1: collapse toggle mount */}
+      <slot name="nav" />
+    </div>
+  </aside>
+
+  <!-- Center pane: main content -->
+  <main class="min-w-0 px-4 py-6 sm:px-6 lg:px-8">
+    <slot />
+  </main>
+
+  <!-- Right pane: document outline (document variant only) -->
+  {
+    hasOutline && isDocument && (
+      <aside data-pane="outline" class="hidden xl:block border-l border-border">
+        <div class="sticky top-36 max-h-[calc(100vh-9rem)] overflow-y-auto p-4">
+          {/* M4.1: collapse toggle mount */}
+          <slot name="outline" />
+        </div>
+      </aside>
+    )
+  }
+</div>
+
+<style>
+  /* Dormant collapsed-width CSS — M4.1 activates by flipping data-* attributes */
+  [data-corpus-layout][data-nav-collapsed='true'] {
+    --nav-width: 3rem;
+  }
+  [data-corpus-layout][data-outline-collapsed='true'] {
+    --outline-width: 3rem;
+  }
+</style>

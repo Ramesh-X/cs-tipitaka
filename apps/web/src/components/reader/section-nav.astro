@@ -1,0 +1,116 @@
+---
+import Pali from '@/components/reader/pali.astro';
+import type { ReaderSection } from '@/lib/corpus';
+
+interface Props {
+  sections: ReaderSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav aria-label="On this page" data-section-nav>
+  <p
+    class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+  >
+    On this page
+  </p>
+  <ul class="space-y-1 text-sm">
+    {
+      sections.map((s) => (
+        <li>
+          <a
+            href={`#${s.id}`}
+            data-section-link
+            class="block border-l-2 border-transparent py-1 pl-3 text-muted-foreground transition-colors hover:border-border hover:text-foreground"
+          >
+            <Pali text={s.label} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  // Dual-trigger bootstrap: init() on ESM execution + astro:page-load for
+  // forward-compat if ClientRouter is added. Idempotent to handle double-fire.
+  function init() {
+    const navEls = document.querySelectorAll<HTMLElement>('[data-section-nav]');
+    if (!navEls.length) return;
+
+    // Bind click handlers (once per nav, guarded by dataset flag)
+    navEls.forEach((nav) => {
+      if (nav.dataset.bound) return;
+      nav.dataset.bound = '1';
+      nav.addEventListener('click', (e) => {
+        const link = (e.target as Element).closest<HTMLAnchorElement>(
+          '[data-section-link]',
+        );
+        if (!link) return;
+        const id = link.getAttribute('href')?.slice(1);
+        if (!id) return;
+        e.preventDefault();
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, '', `#${id}`);
+        }
+        setActive(id);
+      });
+    });
+
+    // Single IntersectionObserver for all section heading paragraphs
+    // Updates active class across ALL section-nav lists on the page
+    const allLinks = document.querySelectorAll<HTMLAnchorElement>(
+      '[data-section-nav] [data-section-link]',
+    );
+    if (!allLinks.length) return;
+
+    function setActive(id: string) {
+      allLinks.forEach((a) => {
+        const isActive = a.getAttribute('href') === `#${id}`;
+        a.classList.toggle('border-primary', isActive);
+        a.classList.toggle('font-semibold', isActive);
+        a.classList.toggle('text-foreground', isActive);
+        a.classList.toggle('border-transparent', !isActive);
+        a.classList.toggle('text-muted-foreground', !isActive);
+      });
+    }
+
+    // Collect all heading elements referenced by section links
+    const sectionIds = Array.from(
+      new Set(
+        Array.from(allLinks)
+          .map((a) => a.getAttribute('href')?.slice(1))
+          .filter(Boolean) as string[],
+      ),
+    );
+
+    const targets = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!targets.length) return;
+
+    // Set initial active state to first section
+    setActive(sectionIds[0]);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+            break;
+          }
+        }
+      },
+      { rootMargin: '-25% 0px -65% 0px' },
+    );
+
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

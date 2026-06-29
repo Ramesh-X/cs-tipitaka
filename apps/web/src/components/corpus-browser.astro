@@ -1,0 +1,28 @@
+---
+import { getNavTree, type NavNode } from '@/lib/corpus';
+import TreeNode from '@/components/corpus-tree-node.astro';
+import { cn } from '@/lib/utils';
+
+interface Props {
+  currentSlug: string[];
+  class?: string;
+  bare?: boolean;
+}
+
+const { currentSlug, class: className, bare = false } = Astro.props;
+
+const navTree: NavNode[] = await getNavTree(currentSlug);
+---
+
+<nav
+  aria-label="Browse Tipiṭaka"
+  class={cn(!bare && 'rounded-lg border border-border bg-card p-3', className)}
+>
+  <ul class="space-y-0.5">
+    {
+      navTree.map((node) => (
+        <TreeNode node={node} path={[node.slug]} currentSlug={currentSlug} />
+      ))
+    }
+  </ul>
+</nav>
