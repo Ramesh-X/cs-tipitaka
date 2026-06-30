@@ -81,6 +81,8 @@
   --chart-3: oklch(0.58 0.122 38.6);
   --chart-4: oklch(0.86 0.098 94.9);
   --chart-5: oklch(0.46 0.105 30.7);
+  --reader-font-size: 19px;
+  --reader-line-height: 1.5;
   --radius: 0.625rem;
   --sidebar: oklch(0.968 0.028 89.8);
   --sidebar-foreground: oklch(0.232 0.045 46.2);
@@ -136,4 +138,15 @@
   html {
     @apply font-sans;
   }
+}
+
+/*
+ * Hide Pāli spans until the Transliterator island rewrites them.
+ * Prevents a flash of Roman text for users with a non-Roman script saved.
+ * data-pending-script is set by an inline <head> script that reads
+ * localStorage synchronously — crawlers never run it, so SEO always
+ * sees canonical Roman/IAST text.
+ */
+:root[data-pending-script] [data-pali] {
+  visibility: hidden;
 }

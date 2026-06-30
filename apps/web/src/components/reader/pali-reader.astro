@@ -20,6 +20,7 @@ const { paragraphs } = Astro.props;
     <article
       data-reader-article
       class="mx-auto flex flex-col max-w-5xl font-reading"
+      style="font-size: var(--reader-font-size, 19px); line-height: var(--reader-line-height, 1.5);"
     >
       {paragraphs.map((p, i) => (
         <ParagraphBlock

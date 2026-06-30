@@ -30,7 +30,7 @@ const pali = secondaryPali(node.title, node.pali);
 const isPali = titleIsPali(node.title, node.pali);
 
 const labelClasses = cn(
-  'flex flex-1 items-center gap-1.5 rounded px-2 py-1 text-sm leading-snug',
+  'flex flex-1 items-center gap-1.5 rounded px-2 py-1 text-sm leading-snug whitespace-nowrap',
   'transition-colors hover:bg-muted',
   isActive && 'bg-primary/10 font-medium text-foreground',
   !isActive && 'text-muted-foreground',
@@ -60,7 +60,7 @@ const labelClasses = cn(
             <path d="m9 18 6-6-6-6" />
           </svg>
           <a href={href} class={labelClasses}>
-            <span>{node.title}</span>
+            <Pali text={node.title} />
             {pali && !isPali && (
               <span class="text-xs text-muted-foreground/70">
                 · <Pali text={pali} />
@@ -96,7 +96,7 @@ const labelClasses = cn(
           <path d="m9 18 6-6-6-6" />
         </svg>
         <a href={href} class={labelClasses}>
-          <span>{node.title}</span>
+          <Pali text={node.title} />
           {pali && !isPali && (
             <span class="text-xs text-muted-foreground/70">
               · <Pali text={pali} />
@@ -109,7 +109,7 @@ const labelClasses = cn(
     <li>
       <div class="flex items-center gap-1 pl-5">
         <a href={href} class={labelClasses}>
-          <span>{node.title}</span>
+          <Pali text={node.title} />
           {pali && !isPali && (
             <span class="text-xs text-muted-foreground/70">
               · <Pali text={pali} />

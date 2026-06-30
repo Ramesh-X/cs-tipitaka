@@ -85,7 +85,7 @@ function cardHref(node: CorpusNode): string {
                   )}
                   <div class="min-w-0">
                     <span class="block font-medium leading-snug">
-                      {node.title}
+                      <Pali text={node.title} />
                     </span>
                     {pali && !isPali && (
                       <span class="block text-sm text-muted-foreground leading-snug">

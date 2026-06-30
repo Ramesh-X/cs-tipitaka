@@ -88,7 +88,7 @@ const breadcrumbJsonLd = {
             <li class="flex items-center gap-1">
               {isLast ? (
                 <span aria-current="page" class="font-medium text-foreground">
-                  {crumb.title}
+                  <Pali text={crumb.title} />
                   {showPali && (
                     <span class="ml-1 text-muted-foreground font-normal">
                       (<Pali text={crumb.pali} />)
@@ -100,7 +100,7 @@ const breadcrumbJsonLd = {
                   href={crumb.href}
                   class="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {crumb.title}
+                  <Pali text={crumb.title} />
                   {showPali && (
                     <span class="ml-1 text-muted-foreground/70">
                       (<Pali text={crumb.pali} />)

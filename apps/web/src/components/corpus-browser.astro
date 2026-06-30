@@ -16,7 +16,11 @@ const navTree: NavNode[] = await getNavTree(currentSlug);
 
 <nav
   aria-label="Browse Tipiṭaka"
-  class={cn(!bare && 'rounded-lg border border-border bg-card p-3', className)}
+  class={cn(
+    !bare && 'rounded-lg border border-border bg-card p-3',
+    'min-w-max',
+    className,
+  )}
 >
   <ul class="space-y-0.5">
     {

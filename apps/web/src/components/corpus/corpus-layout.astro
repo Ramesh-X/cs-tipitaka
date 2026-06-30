@@ -1,5 +1,6 @@
 ---
 import { cn } from '@/lib/utils';
+import PaneCollapseToggle from '@/components/corpus/pane-collapse-toggle';
 
 interface Props {
   variant: 'document' | 'toc';
@@ -10,12 +11,12 @@ const { variant } = Astro.props;
 const hasOutline = Astro.slots.has('outline');
 const isDocument = variant === 'document';
 
-// Grid columns: expanded state (M4.1 adds collapse via data-* attribute toggle)
+// Grid columns use CSS variables so M4.1 collapse islands can resize panes
 const gridCols = isDocument
   ? hasOutline
-    ? 'xl:grid-cols-[320px_minmax(0,1fr)_260px]'
-    : 'xl:grid-cols-[320px_minmax(0,1fr)]'
-  : 'lg:grid-cols-[320px_minmax(0,1fr)]';
+    ? 'xl:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)_var(--outline-width,260px)]'
+    : 'xl:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)]'
+  : 'lg:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)]';
 ---
 
 <div
@@ -33,9 +34,11 @@ const gridCols = isDocument
       isDocument ? 'hidden xl:block' : 'hidden lg:block',
     )}
   >
-    <div class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto p-4">
-      {/* M4.1: collapse toggle mount */}
-      <slot name="nav" />
+    <div class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-auto p-4">
+      <PaneCollapseToggle pane="nav" client:load />
+      <div data-pane-content="nav">
+        <slot name="nav" />
+      </div>
     </div>
   </aside>
 
@@ -49,8 +52,10 @@ const gridCols = isDocument
     hasOutline && isDocument && (
       <aside data-pane="outline" class="hidden xl:block border-l border-border">
         <div class="sticky top-36 max-h-[calc(100vh-9rem)] overflow-y-auto p-4">
-          {/* M4.1: collapse toggle mount */}
-          <slot name="outline" />
+          <PaneCollapseToggle pane="outline" client:load />
+          <div data-pane-content="outline">
+            <slot name="outline" />
+          </div>
         </div>
       </aside>
     )
@@ -58,11 +63,19 @@ const gridCols = isDocument
 </div>
 
 <style>
-  /* Dormant collapsed-width CSS — M4.1 activates by flipping data-* attributes */
+  /* Collapsed pane widths — M4.1 islands flip data-* attributes to activate */
   [data-corpus-layout][data-nav-collapsed='true'] {
     --nav-width: 3rem;
   }
   [data-corpus-layout][data-outline-collapsed='true'] {
     --outline-width: 3rem;
+  }
+  /* Hide pane content when collapsed */
+  [data-corpus-layout][data-nav-collapsed='true'] [data-pane-content='nav'] {
+    display: none;
+  }
+  [data-corpus-layout][data-outline-collapsed='true']
+    [data-pane-content='outline'] {
+    display: none;
   }
 </style>

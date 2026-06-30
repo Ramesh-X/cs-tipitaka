@@ -85,7 +85,54 @@ function topGap(): string {
         topGap(),
       )}
     >
-      {/* M4.x: ParaActions mount */}
+      <div
+        class="absolute right-0 top-0 flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100"
+        aria-hidden="true"
+      >
+        <button
+          type="button"
+          data-para-action="link"
+          class="rounded p-1 text-muted-foreground/60 hover:bg-muted hover:text-muted-foreground"
+          title="Copy link to paragraph"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-3.5"
+            aria-hidden="true"
+          >
+            <path d="M9 17H7A5 5 0 0 1 7 7h2" />
+            <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
+            <line x1="8" x2="16" y1="12" y2="12" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          data-para-action="text"
+          class="rounded p-1 text-muted-foreground/60 hover:bg-muted hover:text-muted-foreground"
+          title="Copy paragraph text"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-3.5"
+            aria-hidden="true"
+          >
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+        </button>
+      </div>
       <div class="grid gap-x-10 gap-y-2" data-para-body>
         <p class={cn('text-foreground', isVerse && 'pl-6 italic')}>
           {p.num && (
@@ -105,3 +152,57 @@ function topGap(): string {
     </div>
   )
 }
+
+<script>
+  type ArticleWithInit = HTMLElement & { _copyInit?: boolean };
+
+  function init() {
+    const article = document.querySelector(
+      '[data-reader-article]',
+    ) as ArticleWithInit | null;
+    if (!article || article._copyInit) return;
+    article._copyInit = true;
+
+    article.addEventListener('click', async (e) => {
+      const btn = (e.target as HTMLElement).closest(
+        '[data-para-action]',
+      ) as HTMLElement | null;
+      if (!btn) return;
+
+      const action = btn.dataset.paraAction;
+      const paraEl = btn.closest('[id^="para-"]') as HTMLElement | null;
+      if (!paraEl) return;
+
+      const id = paraEl.id;
+      let textToCopy = '';
+
+      if (action === 'link') {
+        textToCopy = location.origin + location.pathname + '#' + id;
+      } else {
+        const paliEl = paraEl.querySelector(
+          '[data-pali]',
+        ) as HTMLElement | null;
+        textToCopy =
+          paliEl?.dataset.latn ??
+          paliEl?.textContent ??
+          paraEl.textContent ??
+          '';
+      }
+
+      await navigator.clipboard.writeText(textToCopy);
+
+      // 1.5s check-mark feedback
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        const orig = svg.innerHTML;
+        svg.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+        setTimeout(() => {
+          svg.innerHTML = orig;
+        }, 1500);
+      }
+    });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

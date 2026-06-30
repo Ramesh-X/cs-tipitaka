@@ -1,9 +1,12 @@
 ---
 import '@/styles/global.css';
 import { themeInitScript } from '@/lib/theme';
+import { transliterateInitScript } from '@/lib/transliterate-init';
 import BaseHead from '@/components/base-head.astro';
 import SiteHeader from '@/components/site-header.astro';
 import SiteFooter from '@/components/site-footer.astro';
+import ScriptAutoDetect from '@/components/reader/script-auto-detect';
+import Transliterator from '@/components/reader/transliterator';
 
 interface Props {
   title?: string;
@@ -22,6 +25,7 @@ const { title, description, canonical, ogType } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <script is:inline set:html={themeInitScript} />
+    <script is:inline set:html={transliterateInitScript} />
     <BaseHead
       title={title}
       description={description}
@@ -30,7 +34,8 @@ const { title, description, canonical, ogType } = Astro.props;
     />
   </head>
   <body class="flex min-h-full flex-col">
-    {/* M4.3: ScriptAutoDetect island */}
+    <ScriptAutoDetect client:idle />
+    <Transliterator client:load />
     <SiteHeader />
     <main class="flex-1">
       <slot />

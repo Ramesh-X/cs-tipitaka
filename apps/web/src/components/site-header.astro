@@ -3,6 +3,7 @@ import { site } from '@/lib/site';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
+import ScriptSelector from '@/components/reader/script-selector';
 
 const NAV = [
   { label: 'Browse', href: '/sutta' },
@@ -76,7 +77,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
         </svg>
         Search the canon…
       </a>
-      {/* M4.3: ScriptSelector mount point */}
+      <ScriptSelector client:load />
       <ThemeToggle client:idle />
       <button
         id="menu-toggle"
