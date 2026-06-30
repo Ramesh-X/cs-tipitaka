@@ -4,10 +4,13 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@cs-tipitaka/corpus": "workspace:*"
+    "@cs-tipitaka/corpus": "workspace:*",
+    "fast-xml-parser": "^5.9.3"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply corpus-db --local --persist-to ../../.wrangler/state --config ../../wrangler.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply corpus-db --remote --config ../../wrangler.jsonc",
     "corpus:seed:local": "node --experimental-strip-types src/corpus/seed.ts",
     "corpus:seed:remote": "node --experimental-strip-types src/corpus/seed.ts --remote",
     "translations:seed:local": "node --experimental-strip-types src/translations/seed.ts",
@@ -19,7 +22,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "fast-xml-parser": "^5.9.3",
     "wrangler": "^4.17.0"
   }
 }

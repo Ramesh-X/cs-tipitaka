@@ -1,9 +1,3 @@
-/**
- * Helpers for fast-xml-parser's `preserveOrder` node shape.
- * Node shape: `{ tag: [children], ':@': { '@_attr': value } }`
- * Text nodes: `{ '#text': value }`
- */
-
 export interface ParsedParagraph {
   rend: string;
   pali: string;
@@ -45,10 +39,6 @@ export function chapterCount(node: ON, tag: string): number {
     .length;
 }
 
-/**
- * Concatenates a paragraph's inline content in document order.
- * Drops `<hi rend="paranum">`, `<hi rend="dot">`, `<pb>`, and `<note>`.
- */
 export function extractText(children: ON[]): string {
   let out = '';
   for (const child of children) {
@@ -75,10 +65,6 @@ export function extractParanum(children: ON[]): string | undefined {
   return undefined;
 }
 
-/**
- * Collects PTS (`ed="P"`) and CST/Myanmar (`ed="M"`) page references.
- * Recurses into `<hi>` so refs nested inside inline markup are not missed.
- */
 export function extractRefs(children: ON[]): { pts?: string; cst?: string } {
   const pts: string[] = [];
   const cst: string[] = [];

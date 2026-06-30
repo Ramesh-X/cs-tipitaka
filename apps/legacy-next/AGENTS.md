@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Guidelines
 
-- This app is the temporary production app while the Astro migration is in progress.
+- This app is the legacy Next.js app. It must not add or own a Wrangler config.
 - Run validation from the repository root with `pnpm run fix-all` followed by `pnpm run build` after editing files.
 - Keep app-specific dependencies in `apps/legacy-next/package.json`.
 - The local corpus submodule lives at `apps/legacy-next/corpus`, and generated corpus data lives at `apps/legacy-next/lib/corpus/generated`.

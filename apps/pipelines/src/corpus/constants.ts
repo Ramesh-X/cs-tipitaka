@@ -62,5 +62,3 @@ export const NIKAYA_IDS: Set<number> = new Set(
 );
 
 export const SLUG_OVERRIDES: Record<number, string> = {};
-
-export const LABEL_RENDS = new Set(['nikaya', 'book', 'centre', 'title']);

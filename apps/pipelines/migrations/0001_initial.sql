@@ -32,4 +32,3 @@ CREATE TABLE IF NOT EXISTS translations (
   PRIMARY KEY (document_slug, para_position, lang),
   FOREIGN KEY (document_slug, para_position) REFERENCES paragraphs(document_slug, position)
 );
-

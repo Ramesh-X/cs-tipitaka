@@ -3,8 +3,8 @@
 Pāli Canon (Tipiṭaka) web application — a pnpm monorepo of Cloudflare apps and
 shared packages backed by a Cloudflare D1 database (`corpus-db`).
 
-> Production is currently served by `apps/legacy-next` until the Astro migration
-> (`apps/web`) is complete.
+> `apps/legacy-next` is retained as the legacy app while the Astro web app
+> (`apps/web`) continues development.
 
 ## Prerequisites
 
@@ -24,22 +24,22 @@ There are three `wrangler.jsonc` files. Keep their `database_name` /
 `database_id` in sync — a deployed Worker must carry its own bindings and cannot
 reference the shared root config.
 
-| File                              | Purpose                                                                                                                                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `wrangler.jsonc` (repo root)      | **Shared, non-deployed** config used only by supplementary D1 CLI work (migrations, seeds). Defines the `corpus-db` database and `migrations_dir`. Helpers reference it via `--config ../../wrangler.jsonc`. |
-| `apps/api/wrangler.jsonc`         | The **API Worker**. Binds `corpus-db` as `CORPUS_DB`. Deployed.                                                                                                                                              |
-| `apps/legacy-next/wrangler.jsonc` | The **current production Worker** (Next.js via OpenNext) serving `tipitakaonline.org` until the Astro migration completes.                                                                                   |
+| File                         | Purpose                                                                                                                                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wrangler.jsonc` (repo root) | **Shared, non-deployed** config used only by supplementary D1 CLI work (migrations, seeds). Defines the `corpus-db` database and `migrations_dir`. Helpers reference it via `--config ../../wrangler.jsonc`. |
+| `apps/web/wrangler.jsonc`    | The **Web Worker**. Deployed.                                                                                                                                                                                |
+| `apps/api/wrangler.jsonc`    | The **API Worker**. Binds `corpus-db` as `CORPUS_DB`. Deployed.                                                                                                                                              |
 
 ## Database migrations
 
-Apply the schema in `packages/corpus/migrations` to the D1 database.
+Apply the schema in `apps/pipelines/migrations` to the D1 database.
 
 ```bash
 # Local D1 (state under .wrangler/state)
-pnpm --filter @cs-tipitaka/corpus run db:migrate:local
+pnpm --filter @cs-tipitaka/pipelines run db:migrate:local
 
 # Remote D1
-pnpm --filter @cs-tipitaka/corpus run db:migrate:remote
+pnpm --filter @cs-tipitaka/pipelines run db:migrate:remote
 ```
 
 ## Corpus syncing

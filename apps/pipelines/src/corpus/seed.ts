@@ -1,8 +1,11 @@
 import { parseArgs } from '../shared/args.ts';
+import { splitSafeTitleSubhead } from './xml/index.ts';
+import type { ParsedParagraph, SplitDocument } from './xml/index.ts';
 import { EMPTY_TOLERANCE } from './constants.ts';
 import { done, fail, info, ok, step, warn } from '../shared/logger.ts';
 import { SqlWriter, writeNodeRow, writeParagraphRow } from '../shared/sql.ts';
 import {
+  type CorpusNode,
   type DocRef,
   type FlatNode,
   buildCorpusTree,
@@ -10,6 +13,7 @@ import {
 } from './tree.ts';
 import { parseSection, sectionCount } from './xml-parser.ts';
 import { executeSqlFile } from '../shared/wrangler.ts';
+import { slugify } from './slug.ts';
 
 const args = parseArgs();
 
@@ -61,31 +65,108 @@ function assertUniqueSlugs(allNodes: FlatNode[], docRefs: DocRef[]): void {
   process.exit(1);
 }
 
+function uniqueGeneratedSlug(
+  text: string,
+  taken: Set<string>,
+  fallback: string,
+): string {
+  const base = slugify(text) || fallback;
+  let slug = base;
+  let suffix = 2;
+  while (taken.has(slug)) {
+    slug = `${base}-${suffix}`;
+    suffix++;
+  }
+  taken.add(slug);
+  return slug;
+}
+
+function buildGeneratedChildren(
+  parentSlug: string,
+  documents: SplitDocument[],
+  paragraphMap: Map<string, ParsedParagraph[]>,
+): CorpusNode[] {
+  const documentSlugs = new Set<string>();
+
+  return documents.map((document, documentIndex) => {
+    const documentSlug = uniqueGeneratedSlug(
+      document.title,
+      documentSlugs,
+      `section-${documentIndex + 1}`,
+    );
+    paragraphMap.set(`${parentSlug}/${documentSlug}`, document.paragraphs);
+
+    return {
+      slug: documentSlug,
+      pali: document.title,
+      type: 'document',
+    };
+  });
+}
+
+function promoteSafeTitleSubheadDocuments(
+  nodes: CorpusNode[],
+  sourceParagraphs: Map<string, ParsedParagraph[]>,
+): {
+  paragraphMap: Map<string, ParsedParagraph[]>;
+  promoted: number;
+  skipped: number;
+} {
+  const finalParagraphs = new Map<string, ParsedParagraph[]>();
+  let promoted = 0;
+  let skipped = 0;
+
+  const walk = (items: CorpusNode[], prefix: string[]) => {
+    for (const node of items) {
+      const pathParts = [...prefix, node.slug];
+      const fullSlug = pathParts.join('/');
+
+      if (node.type === 'document') {
+        const paragraphs = sourceParagraphs.get(fullSlug) ?? [];
+        const split = splitSafeTitleSubhead(paragraphs, node.pali);
+
+        if (split.kind === 'documents') {
+          node.type = 'collection';
+          delete node.href;
+          node.children = buildGeneratedChildren(
+            fullSlug,
+            split.documents,
+            finalParagraphs,
+          );
+          promoted++;
+        } else {
+          finalParagraphs.set(fullSlug, paragraphs);
+          if (split.reason) {
+            skipped++;
+            warn(`not promoting ${fullSlug}: ${split.reason}`);
+          }
+        }
+        continue;
+      }
+
+      if (node.children?.length) walk(node.children, pathParts);
+    }
+  };
+
+  walk(nodes, []);
+  return { paragraphMap: finalParagraphs, promoted, skipped };
+}
+
 function main(): void {
   step('Building corpus node tree…');
   const tree = buildCorpusTree();
 
-  const allNodes: FlatNode[] = [];
-  const docRefs: DocRef[] = [];
-  flattenForDb(tree, null, [], allNodes, docRefs);
-  assertUniqueSlugs(allNodes, docRefs);
-
-  const typeCounts = { pitaka: 0, nikaya: 0, collection: 0, document: 0 };
-  for (const n of allNodes) {
-    typeCounts[n.type as keyof typeof typeCounts]++;
-  }
-  info(
-    `tree: ${allNodes.length} nodes ` +
-      `(${typeCounts.pitaka} pitaka / ${typeCounts.nikaya} nikaya / ` +
-      `${typeCounts.collection} collection / ${typeCounts.document} document)`,
-  );
+  const sourceNodes: FlatNode[] = [];
+  const sourceDocRefs: DocRef[] = [];
+  flattenForDb(tree, null, [], sourceNodes, sourceDocRefs);
+  assertUniqueSlugs(sourceNodes, sourceDocRefs);
 
   step('Grouping documents by source file…');
   type Ref = { slug: string; idx: number };
   const byFile = new Map<string, Ref[]>();
   let missingHref = 0;
 
-  for (const { slug, href } of docRefs) {
+  for (const { slug, href } of sourceDocRefs) {
     const parsed = href ? parseHref(href) : null;
     if (!parsed) {
       missingHref++;
@@ -99,10 +180,7 @@ function main(): void {
   if (missingHref > 0) info(`${missingHref} document(s) with missing href`);
 
   step('Parsing XML sections (fold heuristic applied per file)…');
-  const paragraphMap = new Map<
-    string,
-    { rend: string; pali: string; num?: string; pts?: string; cst?: string }[]
-  >();
+  const sourceParagraphMap = new Map<string, ParsedParagraph[]>();
 
   for (const [filename, refs] of byFile) {
     const refCount = Math.max(...refs.map((r) => r.idx)) + 1;
@@ -128,10 +206,36 @@ function main(): void {
         fold && idx === 0
           ? [...parseSection(filename, 0), ...parseSection(filename, 1)]
           : parseSection(filename, fold ? idx + 1 : idx);
-      paragraphMap.set(slug, paragraphs);
+      sourceParagraphMap.set(slug, paragraphs);
       info(`    ${slug} → ${paragraphs.length} paragraphs`);
     }
   }
+
+  step('Promoting safe title/subhead documents…');
+  const {
+    paragraphMap,
+    promoted,
+    skipped: skippedPromotions,
+  } = promoteSafeTitleSubheadDocuments(tree, sourceParagraphMap);
+  info(
+    `${promoted} document(s) promoted to title-section documents; ` +
+      `${skippedPromotions} unsafe mixed document(s) left unchanged`,
+  );
+
+  const allNodes: FlatNode[] = [];
+  const docRefs: DocRef[] = [];
+  flattenForDb(tree, null, [], allNodes, docRefs);
+  assertUniqueSlugs(allNodes, docRefs);
+
+  const typeCounts = { pitaka: 0, nikaya: 0, collection: 0, document: 0 };
+  for (const n of allNodes) {
+    typeCounts[n.type as keyof typeof typeCounts]++;
+  }
+  info(
+    `tree: ${allNodes.length} nodes ` +
+      `(${typeCounts.pitaka} pitaka / ${typeCounts.nikaya} nikaya / ` +
+      `${typeCounts.collection} collection / ${typeCounts.document} document)`,
+  );
 
   step('Streaming SQL to temp file…');
   const writer = new SqlWriter();
@@ -139,6 +243,11 @@ function main(): void {
   let paraFailures = 0;
   let totalParas = 0;
   const emptyDocs: string[] = [];
+
+  writer.writeLine('DELETE FROM translations;');
+  writer.writeLine('DELETE FROM paragraphs;');
+  writer.writeLine('DELETE FROM nodes;');
+  writer.writeLine('');
 
   for (const node of allNodes) {
     if (!writeNodeRow(writer, node, args.conflict)) {
