@@ -29,6 +29,12 @@ importers:
 
   apps/api:
     dependencies:
+      '@cs-tipitaka/corpus':
+        specifier: workspace:*
+        version: link:../../packages/corpus
+      '@cs-tipitaka/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       hono:
         specifier: ^4.12.27
         version: 4.12.27
@@ -152,6 +158,9 @@ importers:
       '@cs-tipitaka/corpus':
         specifier: workspace:*
         version: link:../../packages/corpus
+      '@cs-tipitaka/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@fontsource-variable/geist':
         specifier: ^5.2.9
         version: 5.2.9
@@ -219,6 +228,9 @@ importers:
 
   packages/corpus:
     dependencies:
+      '@cs-tipitaka/shared':
+        specifier: workspace:*
+        version: link:../shared
       better-sqlite3:
         specifier: ^12.11.1
         version: 12.11.1
@@ -229,6 +241,12 @@ importers:
       '@types/better-sqlite3':
         specifier: ^7.6.13
         version: 7.6.13
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.0
+
+  packages/shared:
+    devDependencies:
       '@types/node':
         specifier: ^22.0.0
         version: 22.20.0

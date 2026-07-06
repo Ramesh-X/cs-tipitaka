@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CANONICAL_SCRIPT } from '@/lib/corpus/constants';
+import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
 
 export type FontFamily = 'serif' | 'sans';
 export type ScriptSource = 'default' | 'auto' | 'user';

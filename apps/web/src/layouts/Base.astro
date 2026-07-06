@@ -2,20 +2,24 @@
 import '@/styles/global.css';
 import { themeInitScript } from '@/lib/theme';
 import { transliterateInitScript } from '@/lib/transliterate-init';
+import { getCorpusTree } from '@/lib/corpus/tree';
 import BaseHead from '@/components/base-head.astro';
 import SiteHeader from '@/components/site-header.astro';
 import SiteFooter from '@/components/site-footer.astro';
 import ScriptAutoDetect from '@/components/reader/script-auto-detect';
 import Transliterator from '@/components/reader/transliterator';
+import type { CorpusDB } from '@cs-tipitaka/corpus';
 
 interface Props {
+  db: CorpusDB;
   title?: string;
   description?: string;
   canonical?: string;
   ogType?: string;
 }
 
-const { title, description, canonical, ogType } = Astro.props;
+const { db, title, description, canonical, ogType } = Astro.props;
+const tree = await getCorpusTree(db);
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -40,6 +44,6 @@ const { title, description, canonical, ogType } = Astro.props;
     <main class="flex-1">
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter tree={tree} />
   </body>
 </html>

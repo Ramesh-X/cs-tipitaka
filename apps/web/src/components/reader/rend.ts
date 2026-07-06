@@ -7,7 +7,7 @@ export type RendClass =
   | 'verse'
   | 'body';
 
-export function classifyRend(rend: string | undefined): RendClass {
+export function classifyRend(rend: string | null | undefined): RendClass {
   switch (rend) {
     case 'nikaya':
     case 'book':

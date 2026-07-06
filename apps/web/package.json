@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@cs-tipitaka/corpus": "workspace:*",
+    "@cs-tipitaka/shared": "workspace:*",
     "@astrojs/react": "^6.0.0",
     "@base-ui/react": "^1.6.0",
     "@fontsource-variable/geist": "^5.2.9",

@@ -2,16 +2,18 @@
 import { getNavTree, type NavNode } from '@/lib/corpus';
 import TreeNode from '@/components/corpus-tree-node.astro';
 import { cn } from '@/lib/utils';
+import type { CorpusDB } from '@cs-tipitaka/corpus';
 
 interface Props {
+  db: CorpusDB;
   currentSlug: string[];
   class?: string;
   bare?: boolean;
 }
 
-const { currentSlug, class: className, bare = false } = Astro.props;
+const { db, currentSlug, class: className, bare = false } = Astro.props;
 
-const navTree: NavNode[] = await getNavTree(currentSlug);
+const navTree: NavNode[] = await getNavTree(db, currentSlug);
 ---
 
 <nav

@@ -1,5 +1,5 @@
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
-import { SCRIPTS } from '@/lib/corpus/constants';
+import { SCRIPTS } from '@cs-tipitaka/shared';
 import { transliterate } from '@/lib/corpus/transliterate';
 import {
   Select,
@@ -19,7 +19,7 @@ export default function ScriptSelector() {
       onValueChange={(v: unknown) => setScript(v as string)}
     >
       <SelectTrigger
-        className="h-8 w-auto min-w-28 text-xs"
+        className="h-7 w-auto min-w-28 text-xs"
         aria-label="Select Pāli script"
       >
         <SelectValue />

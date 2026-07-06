@@ -1,7 +1,7 @@
 ---
 import Pali from '@/components/reader/pali.astro';
 import { classifyRend, type RendClass } from '@/components/reader/rend.ts';
-import type { Paragraph } from '@/lib/corpus';
+import type { Paragraph } from '@cs-tipitaka/corpus';
 import { cn } from '@/lib/utils';
 
 interface Props {
@@ -24,7 +24,10 @@ function topGap(): string {
 
 {
   rc === 'banner' && (
-    <div id={p.id} class="group relative mt-2 scroll-mt-32 first:mt-0">
+    <div
+      id={`para-${p.position}`}
+      class="group relative mt-2 scroll-mt-32 first:mt-0"
+    >
       <p class="text-center font-reading text-sm font-medium tracking-wide text-muted-foreground uppercase">
         <Pali text={p.pali} />
       </p>
@@ -34,7 +37,10 @@ function topGap(): string {
 
 {
   rc === 'chapter' && (
-    <div id={p.id} class="group relative mt-10 mb-2 scroll-mt-32 first:mt-0">
+    <div
+      id={`para-${p.position}`}
+      class="group relative mt-10 mb-2 scroll-mt-32 first:mt-0"
+    >
       <h2 class="text-center font-reading text-2xl font-semibold tracking-tight">
         <Pali text={p.pali} />
       </h2>
@@ -44,7 +50,10 @@ function topGap(): string {
 
 {
   rc === 'subhead' && (
-    <div id={p.id} class="group relative mt-12 mb-1 scroll-mt-32 first:mt-0">
+    <div
+      id={`para-${p.position}`}
+      class="group relative mt-12 mb-1 scroll-mt-32 first:mt-0"
+    >
       <div class="flex items-center gap-4">
         <span class="h-px flex-1 bg-border" aria-hidden="true" />
         <h3 class="text-center font-reading text-xl font-semibold tracking-tight">
@@ -58,7 +67,10 @@ function topGap(): string {
 
 {
   rc === 'subsubhead' && (
-    <div id={p.id} class="group relative mt-6 mb-1 scroll-mt-32 first:mt-0">
+    <div
+      id={`para-${p.position}`}
+      class="group relative mt-6 mb-1 scroll-mt-32 first:mt-0"
+    >
       <h4 class="text-center font-reading text-base font-semibold text-foreground/90">
         <Pali text={p.pali} />
       </h4>
@@ -68,7 +80,7 @@ function topGap(): string {
 
 {
   rc === 'centre' && (
-    <div id={p.id} class="group relative my-5 scroll-mt-32">
+    <div id={`para-${p.position}`} class="group relative my-5 scroll-mt-32">
       <p class="text-center font-reading text-sm font-medium text-muted-foreground">
         <Pali text={p.pali} />
       </p>
@@ -79,7 +91,7 @@ function topGap(): string {
 {
   (rc === 'body' || rc === 'verse') && (
     <div
-      id={p.id}
+      id={`para-${p.position}`}
       class={cn(
         'group relative scroll-mt-32 target:rounded-md target:bg-muted/30',
         topGap(),

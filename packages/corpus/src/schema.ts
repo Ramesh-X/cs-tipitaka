@@ -1,10 +1,18 @@
 /**
  * Zod schemas for the corpus database tables.
- * Each schema must remain a 1:1 match with its corresponding table in migrations/0001_initial.sql —
+ * Each schema must remain a 1:1 match with its corresponding table in apps/pipelines/migrations/0001_initial.sql —
  * column names, types, and nullability must stay in sync.
  */
 
 import { z } from 'zod';
+
+const NodeTypeSchema = z
+  .enum(['pitaka', 'nikaya', 'collection', 'document'] as const)
+  .describe(
+    'Node level in the corpus hierarchy: pitaka → nikaya → collection → document. XML title headings can become document nodes; only document nodes have paragraphs.',
+  );
+
+export type NodeType = z.infer<typeof NodeTypeSchema>;
 
 export const NodeSchema = z.object({
   slug: z
@@ -22,11 +30,7 @@ export const NodeSchema = z.object({
     .number()
     .int()
     .describe('Zero-based sort order among siblings with the same parent'),
-  type: z
-    .enum(['pitaka', 'nikaya', 'collection', 'document'])
-    .describe(
-      "Node level in the corpus hierarchy: pitaka → nikaya → collection → document. Only 'document' nodes have paragraphs.",
-    ),
+  type: NodeTypeSchema,
   pali: z
     .string()
     .describe(

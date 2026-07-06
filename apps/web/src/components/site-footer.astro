@@ -1,8 +1,12 @@
 ---
-import { getCorpusTree } from '@/lib/corpus/tree';
 import { site } from '@/lib/site';
+import type { CorpusNode } from '@/lib/corpus';
 
-const tree = await getCorpusTree();
+interface Props {
+  tree: CorpusNode[];
+}
+
+const { tree } = Astro.props;
 
 const COLUMNS = [
   {

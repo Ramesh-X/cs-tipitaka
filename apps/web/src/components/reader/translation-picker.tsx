@@ -1,6 +1,6 @@
 import { BookOpenText } from 'lucide-react';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
-import { LANGUAGES } from '@/lib/corpus/constants';
+import { LANGUAGES } from '@cs-tipitaka/shared';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -34,7 +34,7 @@ export default function TranslationPicker() {
           onValueChange={(v: unknown) => setLanguage(v as string)}
         >
           <SelectTrigger
-            className="h-8 w-auto min-w-28 text-xs"
+            className="h-7 w-auto min-w-28 text-xs"
             aria-label="Translation language"
           >
             <SelectValue />

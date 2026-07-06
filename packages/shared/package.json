@@ -1,16 +1,10 @@
 {
-  "name": "@cs-tipitaka/corpus",
+  "name": "@cs-tipitaka/shared",
   "version": "0.0.1",
   "type": "module",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
-    "./local": "./src/local.ts"
-  },
-  "dependencies": {
-    "@cs-tipitaka/shared": "workspace:*",
-    "better-sqlite3": "^12.11.1",
-    "zod": "^3.25.76"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -20,7 +14,6 @@
     "fix-all": "pnpm run lint:fix && pnpm run format"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.0.0"
   }
 }

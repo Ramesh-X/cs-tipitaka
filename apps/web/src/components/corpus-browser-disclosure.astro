@@ -1,11 +1,13 @@
 ---
 import CorpusBrowser from '@/components/corpus-browser.astro';
+import type { CorpusDB } from '@cs-tipitaka/corpus';
 
 interface Props {
+  db: CorpusDB;
   currentSlug: string[];
 }
 
-const { currentSlug } = Astro.props;
+const { db, currentSlug } = Astro.props;
 ---
 
 <details class="rounded-lg border border-border">
@@ -43,6 +45,6 @@ const { currentSlug } = Astro.props;
     </svg>
   </summary>
   <div class="border-t border-border p-3">
-    <CorpusBrowser currentSlug={currentSlug} bare />
+    <CorpusBrowser db={db} currentSlug={currentSlug} bare />
   </div>
 </details>
