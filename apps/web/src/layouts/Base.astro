@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import { ClientRouter, fade } from 'astro:transitions';
 import { themeInitScript } from '@/lib/theme';
 import { transliterateInitScript } from '@/lib/transliterate-init';
 import { getCorpusTree } from '@/lib/corpus/tree';
@@ -22,7 +23,11 @@ const { db, title, description, canonical, ogType } = Astro.props;
 const tree = await getCorpusTree(db);
 ---
 
-<html lang="en" class="h-full antialiased">
+<html
+  lang="en"
+  class="h-full antialiased"
+  transition:animate={fade({ duration: '0.1s' })}
+>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -30,6 +35,7 @@ const tree = await getCorpusTree(db);
     <meta name="generator" content={Astro.generator} />
     <script is:inline set:html={themeInitScript} />
     <script is:inline set:html={transliterateInitScript} />
+    <ClientRouter />
     <BaseHead
       title={title}
       description={description}
@@ -45,5 +51,65 @@ const tree = await getCorpusTree(db);
       <slot />
     </main>
     <SiteFooter tree={tree} />
+
+    <script>
+      import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
+      import { useReaderPreferences } from '@/lib/stores/reader-preferences';
+      import { useLayoutPreferences } from '@/lib/stores/layout-preferences';
+      import { transliterate } from '@/lib/corpus/transliterate';
+      import { applyStoredTheme } from '@/lib/theme';
+      import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
+
+      const NAV_SCROLL = '[data-nav-scroll]';
+      let navScrollTop = 0;
+
+      // Applies persisted prefs to the INCOMING document while it's still
+      // off-screen, so soft navigation never paints default/Roman content.
+      function applyPrefs(doc: Document): void {
+        const { script, fontSize, lineHeight, fontFamily } =
+          useReaderPreferences.getState();
+
+        if (script !== CANONICAL_SCRIPT) {
+          doc.querySelectorAll<HTMLElement>('[data-pali]').forEach((s) => {
+            if (!s.dataset.latn) s.dataset.latn = s.textContent ?? '';
+            s.textContent = transliterate(s.dataset.latn, script);
+          });
+        }
+
+        const article = doc.querySelector<HTMLElement>('[data-reader-article]');
+        if (article) {
+          article.style.setProperty('--reader-font-size', `${fontSize}px`);
+          article.style.setProperty('--reader-line-height', String(lineHeight));
+          article.classList.toggle('font-reading', fontFamily === 'serif');
+          article.classList.toggle('font-sans', fontFamily === 'sans');
+        }
+
+        const layout = doc.querySelector('[data-corpus-layout]');
+        if (layout) {
+          const { navCollapsed, outlineCollapsed } =
+            useLayoutPreferences.getState();
+          layout.setAttribute('data-nav-collapsed', String(navCollapsed));
+          layout.setAttribute(
+            'data-outline-collapsed',
+            String(outlineCollapsed),
+          );
+        }
+      }
+
+      function onBeforeSwap(event: TransitionBeforeSwapEvent): void {
+        applyPrefs(event.newDocument);
+        navScrollTop =
+          document.querySelector<HTMLElement>(NAV_SCROLL)?.scrollTop ?? 0;
+      }
+
+      function onAfterSwap(): void {
+        applyStoredTheme();
+        const el = document.querySelector<HTMLElement>(NAV_SCROLL);
+        if (el) el.scrollTop = navScrollTop;
+      }
+
+      document.addEventListener('astro:before-swap', onBeforeSwap);
+      document.addEventListener('astro:after-swap', onAfterSwap);
+    </script>
   </body>
 </html>

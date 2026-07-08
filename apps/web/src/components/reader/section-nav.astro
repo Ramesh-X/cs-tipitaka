@@ -33,8 +33,10 @@ const { sections } = Astro.props;
 </nav>
 
 <script>
-  // Dual-trigger bootstrap: init() on ESM execution + astro:page-load for
-  // forward-compat if ClientRouter is added. Idempotent to handle double-fire.
+  // Dual-trigger bootstrap: init() on ESM execution + astro:page-load, which
+  // now also fires on every ClientRouter soft navigation. Idempotent.
+  let observer: IntersectionObserver | null = null;
+
   function init() {
     const navEls = document.querySelectorAll<HTMLElement>('[data-section-nav]');
     if (!navEls.length) return;
@@ -96,7 +98,8 @@ const { sections } = Astro.props;
     // Set initial active state to first section
     setActive(sectionIds[0]);
 
-    const observer = new IntersectionObserver(
+    observer?.disconnect();
+    const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
@@ -108,7 +111,8 @@ const { sections } = Astro.props;
       { rootMargin: '-25% 0px -65% 0px' },
     );
 
-    targets.forEach((el) => observer.observe(el));
+    targets.forEach((el) => io.observe(el));
+    observer = io;
   }
 
   init();

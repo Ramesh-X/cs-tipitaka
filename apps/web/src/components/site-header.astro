@@ -77,8 +77,8 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
         </svg>
         Search the canon…
       </a>
-      <ScriptSelector client:load />
-      <ThemeToggle client:idle />
+      <ScriptSelector client:load transition:persist />
+      <ThemeToggle client:idle transition:persist />
       <button
         id="menu-toggle"
         class={cn(ghostIconClass, 'md:hidden')}
@@ -145,7 +145,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
 
 <script>
   // Dual-trigger bootstrap: runs on initial load (ESM execution) and on
-  // astro:page-load (forward-compat when ClientRouter is added).
+  // astro:page-load, which now also fires on every ClientRouter soft nav.
   // init() is idempotent — a double-fire on first load is harmless.
   function init() {
     const toggle = document.getElementById('menu-toggle');

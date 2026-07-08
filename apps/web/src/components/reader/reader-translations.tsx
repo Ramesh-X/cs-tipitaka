@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { site } from '@/lib/site';
 import type { Translation } from '@cs-tipitaka/corpus';
@@ -13,6 +13,10 @@ const MAX_WIDTH_ATTR = 'data-translation-removed-max-width';
 const UNAVAILABLE_TEXT = '[Translation unavailable]';
 
 type TranslationMap = Map<number, string>;
+
+// Module-scoped so translations survive island re-mounts across
+// ClientRouter soft navigations instead of refetching every nav.
+const translationCache = new Map<string, TranslationMap>();
 
 interface TranslationResponse {
   translations?: Translation[];
@@ -117,7 +121,6 @@ async function fetchTranslationMap(
 export default function ReaderTranslations({ slug }: Props) {
   const showTranslation = useReaderPreferences((s) => s.showTranslation);
   const language = useReaderPreferences((s) => s.language);
-  const cacheRef = useRef<Map<string, TranslationMap>>(new Map());
 
   useEffect(() => {
     const article = getArticle();
@@ -129,7 +132,7 @@ export default function ReaderTranslations({ slug }: Props) {
     }
 
     const cacheKey = `${slug}:${language}`;
-    const cached = cacheRef.current.get(cacheKey);
+    const cached = translationCache.get(cacheKey);
     if (cached) {
       injectTranslations(article, cached, language);
       return;
@@ -142,7 +145,7 @@ export default function ReaderTranslations({ slug }: Props) {
     fetchTranslationMap(slug, language, controller.signal)
       .then((posMap) => {
         if (ignore) return;
-        cacheRef.current.set(cacheKey, posMap);
+        translationCache.set(cacheKey, posMap);
         injectTranslations(article, posMap, language);
       })
       .catch((error: unknown) => {

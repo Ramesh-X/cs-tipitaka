@@ -34,7 +34,10 @@ const gridCols = isDocument
       isDocument ? 'hidden xl:block' : 'hidden lg:block',
     )}
   >
-    <div class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-auto p-4">
+    <div
+      data-nav-scroll
+      class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-auto p-4"
+    >
       <PaneCollapseToggle pane="nav" client:load />
       <div data-pane-content="nav">
         <slot name="nav" />
