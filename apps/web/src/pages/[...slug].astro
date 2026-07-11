@@ -29,7 +29,7 @@ import { getLocalDb } from '@cs-tipitaka/corpus/local';
 import { loadDocument } from '@/lib/corpus/loader.ts';
 import CorpusToolbar from '@/components/corpus/corpus-toolbar';
 import ReaderTranslations from '@/components/reader/reader-translations';
-import { bookNode, collectionNode } from '@/lib/corpus/schema.ts';
+import { documentNode, collectionNode } from '@/lib/corpus/schema.ts';
 
 export async function getStaticPaths() {
   const paths = await getAllPaths(getLocalDb());
@@ -47,6 +47,13 @@ if (!node) {
 
 const crumbs = await getBreadcrumbs(db, slugArr);
 const basePath = nodeHref(slugArr);
+const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
+const parentSlugArr = slugArr.slice(0, -1);
+const parentNode =
+  parentSlugArr.length > 0 ? await findNode(db, parentSlugArr) : null;
+const isPartOfType = parentNode?.children?.every((c) => c.type === 'document')
+  ? 'Book'
+  : 'BookSeries';
 
 const paliSuffix = secondaryPali(node.title, node.pali);
 const pageTitle = paliSuffix ? `${node.title} (${paliSuffix})` : node.title;
@@ -76,16 +83,15 @@ if (isDocumentNode) {
   previous = adjacent.previous;
   next = adjacent.next;
 
-  const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
-
   docJsonLd = {
     '@context': 'https://schema.org',
-    ...bookNode({
+    ...documentNode({
       name: node.title,
       pali: paliSuffix,
       description: node.blurb ?? undefined,
       url: basePath,
       isPartOfUrl,
+      isPartOfType,
       wikidata: node.wikidata ?? undefined,
     }),
   };
@@ -94,6 +100,8 @@ if (isDocumentNode) {
   const childUrls = children
     .slice(0, 20)
     .map((c) => nodeHref([...slugArr, c.slug]));
+  const isBook =
+    children.length > 0 && children.every((c) => c.type === 'document');
 
   tocJsonLd = {
     '@context': 'https://schema.org',
@@ -102,8 +110,11 @@ if (isDocumentNode) {
       pali: paliSuffix,
       description: node.blurb ?? undefined,
       url: basePath,
+      isPartOfUrl,
+      isPartOfType,
       wikidata: node.wikidata ?? undefined,
       childUrls,
+      isBook,
     }),
   };
 }

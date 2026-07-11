@@ -1,6 +1,6 @@
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { SCRIPTS } from '@cs-tipitaka/shared';
-import { transliterate } from '@/lib/corpus/transliterate';
+import { transliterate } from '@/lib/corpus/reader';
 import {
   Select,
   SelectContent,

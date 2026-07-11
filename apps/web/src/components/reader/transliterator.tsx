@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
-import { transliterate } from '@/lib/corpus/transliterate';
+import { transliterate } from '@/lib/corpus/reader';
 
 export default function Transliterator() {
   const script = useReaderPreferences((s) => s.script);

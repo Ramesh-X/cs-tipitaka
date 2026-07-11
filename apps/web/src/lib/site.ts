@@ -13,6 +13,10 @@ export const site = {
   twitter: {
     card: 'summary_large_image' as const,
   },
+  developer: {
+    name: 'Fcode Labs',
+    url: 'https://www.fcodelabs.com',
+  },
   paths: {
     search: '/search',
     about: '/about',
