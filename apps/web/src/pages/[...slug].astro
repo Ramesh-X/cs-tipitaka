@@ -14,50 +14,50 @@ import {
   getAllPaths,
   findNode,
   getBreadcrumbs,
+  getChildren,
   getAdjacentDocuments,
   isDocument,
-  nodeHref,
   nodeTypeLabel,
-  secondaryPali,
   deriveReaderSections,
-  type CorpusNode,
+  type NodeWithMeta,
   type CorpusEntry,
 } from '@/lib/corpus';
 import type { ReaderSection } from '@/lib/corpus';
 import type { Paragraph } from '@cs-tipitaka/corpus';
 import { getLocalDb } from '@cs-tipitaka/corpus/local';
-import { loadDocument } from '@/lib/corpus/loader.ts';
+import { asHref } from '@cs-tipitaka/shared';
+import { loadDocument } from '@/lib/corpus/data';
 import CorpusToolbar from '@/components/corpus/corpus-toolbar';
 import ReaderTranslations from '@/components/reader/reader-translations';
 import { documentNode, collectionNode } from '@/lib/corpus/schema.ts';
 
 export async function getStaticPaths() {
-  const paths = await getAllPaths(getLocalDb());
-  return paths.map((p) => ({ params: { slug: p.join('/') } }));
+  const paths: string[] = await getAllPaths(getLocalDb());
+  return paths.map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
+const href = asHref(slug);
 const slugArr = slug.split('/');
 const db = getLocalDb();
 
-const node = await findNode(db, slugArr);
+const node = await findNode(db, slug);
 if (!node) {
   return Astro.redirect('/404', 404);
 }
 
-const crumbs = await getBreadcrumbs(db, slugArr);
-const basePath = nodeHref(slugArr);
+const crumbs = await getBreadcrumbs(db, slug);
 const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
-const parentSlugArr = slugArr.slice(0, -1);
-const parentNode =
-  parentSlugArr.length > 0 ? await findNode(db, parentSlugArr) : null;
-const isPartOfType = parentNode?.children?.every((c) => c.type === 'document')
-  ? 'Book'
-  : 'BookSeries';
+const parentNode = node.parent_slug
+  ? await findNode(db, node.parent_slug)
+  : null;
+const parentChildren = parentNode ? await getChildren(db, parentNode) : null;
+const isPartOfType = parentChildren?.every(isDocument) ? 'Book' : 'BookSeries';
 
-const paliSuffix = secondaryPali(node.title, node.pali);
-const pageTitle = paliSuffix ? `${node.title} (${paliSuffix})` : node.title;
-const pageDescription = `${nodeTypeLabel(node.type)} — Tipiṭaka Online`;
+const pageTitle = `${node.pali} · Browse`;
+const pageDescription = node.blurb
+  ? `${node.blurb} — ${nodeTypeLabel(node.type)} — Tipiṭaka Online`
+  : `${nodeTypeLabel(node.type)} — Tipiṭaka Online`;
 
 const isDocumentNode = isDocument(node);
 
@@ -68,7 +68,7 @@ let previous: CorpusEntry | undefined;
 let next: CorpusEntry | undefined;
 let docJsonLd: Record<string, unknown> | null = null;
 // TOC branch data
-let children: CorpusNode[] = [];
+let children: NodeWithMeta[] = [];
 let tocJsonLd: Record<string, unknown> | null = null;
 
 if (isDocumentNode) {
@@ -77,7 +77,7 @@ if (isDocumentNode) {
     getAdjacentDocuments(db, slugArr),
   ]);
 
-  const derived = deriveReaderSections(content, node.title);
+  const derived = deriveReaderSections(content, node.pali);
   paragraphs = derived.paragraphs;
   sections = derived.sections;
   previous = adjacent.previous;
@@ -86,30 +86,25 @@ if (isDocumentNode) {
   docJsonLd = {
     '@context': 'https://schema.org',
     ...documentNode({
-      name: node.title,
-      pali: paliSuffix,
+      name: node.pali,
       description: node.blurb ?? undefined,
-      url: basePath,
+      url: href,
       isPartOfUrl,
       isPartOfType,
       wikidata: node.wikidata ?? undefined,
     }),
   };
 } else {
-  children = node.children ?? [];
-  const childUrls = children
-    .slice(0, 20)
-    .map((c) => nodeHref([...slugArr, c.slug]));
-  const isBook =
-    children.length > 0 && children.every((c) => c.type === 'document');
+  children = await getChildren(db, node);
+  const childUrls = children.slice(0, 20).map((c) => asHref(c.slug));
+  const isBook = children.length > 0 && children.every(isDocument);
 
   tocJsonLd = {
     '@context': 'https://schema.org',
     ...collectionNode({
-      name: node.title,
-      pali: paliSuffix,
+      name: node.pali,
       description: node.blurb ?? undefined,
-      url: basePath,
+      url: href,
       isPartOfUrl,
       isPartOfType,
       wikidata: node.wikidata ?? undefined,
@@ -126,7 +121,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
   db={db}
   title={pageTitle}
   description={pageDescription}
-  canonical={basePath}
+  canonical={slug}
   ogType={ogType}
 >
   {docJsonLd && <JsonLd data={docJsonLd} />}
@@ -149,13 +144,8 @@ const ogType = isDocumentNode ? 'book' : 'website';
         <div class="pb-16">
           <div class="mb-6">
             <h1 class="text-2xl font-bold tracking-tight">
-              <Pali text={node.title} />
+              <Pali text={node.pali} />
             </h1>
-            {paliSuffix && (
-              <p class="mt-1 text-lg font-reading text-muted-foreground">
-                <Pali text={paliSuffix} />
-              </p>
-            )}
             {node.blurb && (
               <p class="mt-3 text-muted-foreground">{node.blurb}</p>
             )}
@@ -209,7 +199,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
             </details>
           )}
 
-          <PaliReader paragraphs={paragraphs} basePath={basePath} />
+          <PaliReader paragraphs={paragraphs} />
           <ReaderTranslations client:load slug={slug} />
           <DocumentPager previous={previous} next={next} />
         </div>
@@ -225,19 +215,14 @@ const ogType = isDocumentNode ? 'book' : 'website';
 
           <div class="mb-6">
             <h1 class="text-2xl font-bold tracking-tight">
-              <Pali text={node.title} />
+              <Pali text={node.pali} />
             </h1>
-            {paliSuffix && (
-              <p class="mt-1 text-lg font-reading text-muted-foreground">
-                <Pali text={paliSuffix} />
-              </p>
-            )}
             {node.blurb && (
               <p class="mt-3 text-muted-foreground">{node.blurb}</p>
             )}
           </div>
 
-          <TocList nodes={children} basePath={basePath} />
+          <TocList db={db} nodes={children} />
         </div>
       </CorpusLayout>
     )

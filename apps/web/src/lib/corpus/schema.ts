@@ -1,4 +1,5 @@
 import { site } from '@/lib/site';
+import { urlMerge } from '@cs-tipitaka/shared';
 
 export const WIKIDATA_VRI = 'https://www.wikidata.org/wiki/Q136657047';
 export const WIKIDATA_BUDDHAVACANA = 'https://www.wikidata.org/wiki/Q13018285';
@@ -7,13 +8,13 @@ export const PALI_CANON_WIKIPEDIA = 'https://en.wikipedia.org/wiki/Pali_Canon';
 export function organizationNode() {
   return {
     '@type': 'Organization',
-    '@id': `${site.url}/#organization`,
+    '@id': urlMerge(site.url, '#organization'),
     name: site.name,
     url: site.url,
     description: site.shortDescription,
     logo: {
       '@type': 'ImageObject',
-      url: `${site.url}/logo.png`,
+      url: urlMerge(site.url, 'logo.png'),
       width: 512,
       height: 512,
     },
@@ -24,7 +25,7 @@ export function organizationNode() {
 export function developerNode() {
   return {
     '@type': 'Organization',
-    '@id': `${site.url}/#developer`,
+    '@id': urlMerge(site.url, '#developer'),
     name: site.developer.name,
     url: site.developer.url,
   };
@@ -33,19 +34,19 @@ export function developerNode() {
 export function webSiteNode() {
   return {
     '@type': 'WebSite',
-    '@id': `${site.url}/#website`,
+    '@id': urlMerge(site.url, '#website'),
     name: site.name,
     url: site.url,
     description: site.shortDescription,
     inLanguage: ['en', 'pi'],
     license: site.license,
-    publisher: { '@id': `${site.url}/#organization` },
-    creator: { '@id': `${site.url}/#developer` },
+    publisher: { '@id': urlMerge(site.url, '#organization') },
+    creator: { '@id': urlMerge(site.url, '#developer') },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${site.url}${site.paths.search}?q={search_term_string}`,
+        urlTemplate: `${urlMerge(site.url, site.paths.search)}?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -55,7 +56,7 @@ export function webSiteNode() {
 export function webApplicationNode() {
   return {
     '@type': 'WebApplication',
-    '@id': `${site.url}/#webapp`,
+    '@id': urlMerge(site.url, '#webapp'),
     name: 'Tipiṭaka Online Reader',
     url: site.url,
     inLanguage: ['en', 'pi'],
@@ -71,7 +72,7 @@ export function webApplicationNode() {
       price: '0',
       priceCurrency: 'USD',
     },
-    creator: { '@id': `${site.url}/#developer` },
+    creator: { '@id': urlMerge(site.url, '#developer') },
     featureList: [
       'Transliteration into 18 scripts (Sinhala, Devanagari, Thai, Myanmar, Khmer, and more) — rendered live in the browser',
       'AI-assisted translation into English, Sinhala, Thai, and Burmese — rendered in the browser',
@@ -80,7 +81,7 @@ export function webApplicationNode() {
       'Dark mode',
       'Adjustable font size, line height, and font family',
     ],
-    publisher: { '@id': `${site.url}/#organization` },
+    publisher: { '@id': urlMerge(site.url, '#organization') },
   };
 }
 
@@ -100,7 +101,6 @@ export function siteJsonLd() {
 /** NodeType 'document' → Chapter, always a leaf. See collectionNode() for the isPartOfType rule. */
 export function documentNode(opts: {
   name: string;
-  pali?: string;
   description?: string;
   url: string;
   isPartOfUrl?: string;
@@ -109,7 +109,7 @@ export function documentNode(opts: {
   author?: string;
   authorWikidata?: string;
 }) {
-  const bookUrl = `${site.url}${opts.url}`;
+  const bookUrl = urlMerge(site.url, opts.url);
   const author: Record<string, unknown> = {
     '@type': 'Person',
     name: opts.author ?? 'Unknown',
@@ -137,12 +137,11 @@ export function documentNode(opts: {
     },
     url: bookUrl,
   };
-  if (opts.pali) node.alternateName = opts.pali;
   if (opts.description) node.description = opts.description;
   if (opts.isPartOfUrl) {
     node.isPartOf = {
       '@type': opts.isPartOfType ?? 'BookSeries',
-      '@id': `${site.url}${opts.isPartOfUrl}`,
+      '@id': urlMerge(site.url, opts.isPartOfUrl),
     };
   }
   if (opts.wikidata) {
@@ -169,7 +168,7 @@ export function collectionNode(opts: {
   childUrls?: string[];
   isBook?: boolean;
 }) {
-  const collectionUrl = `${site.url}${opts.url}`;
+  const collectionUrl = urlMerge(site.url, opts.url);
   const node: Record<string, unknown> = {
     '@type': opts.isBook ? 'Book' : 'BookSeries',
     '@id': collectionUrl,
@@ -184,12 +183,14 @@ export function collectionNode(opts: {
   if (opts.isPartOfUrl) {
     node.isPartOf = {
       '@type': opts.isPartOfType ?? 'BookSeries',
-      '@id': `${site.url}${opts.isPartOfUrl}`,
+      '@id': urlMerge(site.url, opts.isPartOfUrl),
     };
   }
   if (opts.wikidata) node.sameAs = opts.wikidata;
   if (opts.childUrls?.length) {
-    node.hasPart = opts.childUrls.map((u) => ({ '@id': `${site.url}${u}` }));
+    node.hasPart = opts.childUrls.map((u) => ({
+      '@id': urlMerge(site.url, u),
+    }));
   }
   return node;
 }

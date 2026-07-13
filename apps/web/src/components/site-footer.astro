@@ -1,6 +1,8 @@
 ---
 import { site } from '@/lib/site';
 import type { CorpusNode } from '@/lib/corpus';
+import { asHref } from '@cs-tipitaka/shared';
+import Pali from '@/components/reader/pali.astro';
 
 interface Props {
   tree: CorpusNode[];
@@ -11,22 +13,30 @@ const { tree } = Astro.props;
 const COLUMNS = [
   {
     title: 'Read',
-    links: tree.map((node) => ({ label: node.title, href: `/${node.slug}` })),
+    links: tree.map((node) => ({
+      label: node.node.pali,
+      href: asHref(node.node.slug),
+      pali: true,
+    })),
   },
   {
     title: 'Study',
     links: [
-      { label: 'Search the Dhamma', href: site.paths.search },
-      { label: 'Glossary', href: site.paths.glossary },
-      { label: 'About the Tipiṭaka', href: site.paths.about },
+      { label: 'Search the Dhamma', href: site.paths.search, pali: false },
+      { label: 'Glossary', href: site.paths.glossary, pali: false },
+      { label: 'About the Tipiṭaka', href: site.paths.about, pali: false },
     ],
   },
   {
     title: 'For developers & AI',
     links: [
-      { label: 'API & MCP', href: site.paths.developers },
-      { label: 'llms.txt', href: site.paths.llmsTxt },
-      { label: 'Open data export', href: `${site.paths.developers}#data` },
+      { label: 'API & MCP', href: site.paths.developers, pali: false },
+      { label: 'llms.txt', href: site.paths.llmsTxt, pali: false },
+      {
+        label: 'Open data export',
+        href: `${site.paths.developers}#data`,
+        pali: false,
+      },
     ],
   },
 ];
@@ -61,7 +71,7 @@ const COLUMNS = [
                   href={link.href}
                   class="text-sm text-muted-foreground hover:text-foreground"
                 >
-                  {link.label}
+                  {link.pali ? <Pali text={link.label} /> : link.label}
                 </a>
               </li>
             ))}

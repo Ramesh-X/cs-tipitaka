@@ -1,9 +1,9 @@
 ---
 import { site } from '@/lib/site';
+import { urlMerge } from '@cs-tipitaka/shared';
 import JsonLd from '@/components/json-ld.astro';
 import Pali from '@/components/reader/pali.astro';
 import { cn } from '@/lib/utils';
-import { titleIsPali } from '@/lib/corpus';
 import type { Crumb } from '@/lib/corpus';
 
 interface Props {
@@ -26,8 +26,8 @@ const breadcrumbJsonLd = {
     ...crumbs.map((crumb, i) => ({
       '@type': 'ListItem',
       position: i + 2,
-      name: crumb.title,
-      item: `${site.url}${crumb.href}`,
+      name: crumb.pali,
+      item: urlMerge(site.url, crumb.href),
     })),
   ],
 };
@@ -67,7 +67,6 @@ const breadcrumbJsonLd = {
     {
       crumbs.map((crumb, i) => {
         const isLast = i === crumbs.length - 1;
-        const showPali = !titleIsPali(crumb.title, crumb.pali);
         return (
           <>
             <li aria-hidden="true" class="text-muted-foreground/50">
@@ -88,24 +87,14 @@ const breadcrumbJsonLd = {
             <li class="flex items-center gap-1">
               {isLast ? (
                 <span aria-current="page" class="font-medium text-foreground">
-                  <Pali text={crumb.title} />
-                  {showPali && (
-                    <span class="ml-1 text-muted-foreground font-normal">
-                      (<Pali text={crumb.pali} />)
-                    </span>
-                  )}
+                  <Pali text={crumb.pali} />
                 </span>
               ) : (
                 <a
                   href={crumb.href}
                   class="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Pali text={crumb.title} />
-                  {showPali && (
-                    <span class="ml-1 text-muted-foreground/70">
-                      (<Pali text={crumb.pali} />)
-                    </span>
-                  )}
+                  <Pali text={crumb.pali} />
                 </a>
               )}
             </li>

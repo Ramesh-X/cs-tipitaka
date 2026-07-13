@@ -1,6 +1,6 @@
 ---
 import Pali from '@/components/reader/pali.astro';
-import { secondaryPali, titleIsPali, type CorpusEntry } from '@/lib/corpus';
+import type { CorpusEntry } from '@/lib/corpus';
 import { cn } from '@/lib/utils';
 
 interface Props {
@@ -45,13 +45,9 @@ if (!previous && !next) {
           </svg>
           Previous text
         </div>
-        <span class="font-medium leading-snug">{previous.node.title}</span>
-        {secondaryPali(previous.node.title, previous.node.pali) &&
-          !titleIsPali(previous.node.title, previous.node.pali) && (
-            <span class="text-sm text-muted-foreground">
-              <Pali text={previous.node.pali} />
-            </span>
-          )}
+        <span class="font-medium leading-snug">
+          <Pali text={previous.node.node.pali} />
+        </span>
       </a>
     ) : (
       <div />
@@ -85,13 +81,9 @@ if (!previous && !next) {
             <path d="m12 5 7 7-7 7" />
           </svg>
         </div>
-        <span class="font-medium leading-snug">{next.node.title}</span>
-        {secondaryPali(next.node.title, next.node.pali) &&
-          !titleIsPali(next.node.title, next.node.pali) && (
-            <span class="text-sm text-muted-foreground">
-              <Pali text={next.node.pali} />
-            </span>
-          )}
+        <span class="font-medium leading-snug">
+          <Pali text={next.node.node.pali} />
+        </span>
       </a>
     )
   }
