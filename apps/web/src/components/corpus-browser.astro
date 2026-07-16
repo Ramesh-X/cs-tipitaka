@@ -1,5 +1,5 @@
 ---
-import { getNavTree, type NavNode } from '@/lib/corpus';
+import { getRootNodes } from '@/lib/corpus';
 import TreeNode from '@/components/corpus-tree-node.astro';
 import { cn } from '@/lib/utils';
 import type { CorpusDB } from '@cs-tipitaka/corpus';
@@ -13,7 +13,7 @@ interface Props {
 
 const { db, currentSlug, class: className, bare = false } = Astro.props;
 
-const navTree: NavNode[] = await getNavTree(db, currentSlug);
+const rootNodes = await getRootNodes(db);
 ---
 
 <nav
@@ -25,6 +25,10 @@ const navTree: NavNode[] = await getNavTree(db, currentSlug);
   )}
 >
   <ul class="space-y-0.5">
-    {navTree.map((node) => <TreeNode node={node} currentSlug={currentSlug} />)}
+    {
+      rootNodes.map((node) => (
+        <TreeNode db={db} node={node} currentSlug={currentSlug} />
+      ))
+    }
   </ul>
 </nav>

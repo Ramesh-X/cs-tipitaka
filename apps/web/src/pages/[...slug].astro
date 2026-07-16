@@ -21,7 +21,6 @@ import {
   nodeTypeLabel,
   deriveReaderSections,
   type NodeWithMeta,
-  type CorpusEntry,
 } from '@/lib/corpus';
 import type { ReaderSection } from '@/lib/corpus';
 import type { Paragraph } from '@cs-tipitaka/corpus';
@@ -39,7 +38,6 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const href = asHref(slug);
-const slugArr = slug.split('/');
 const db = getLocalDb();
 
 const node = await findNode(db, slug);
@@ -62,8 +60,8 @@ const isDocumentNode = isDocument(node);
 // Document branch data
 let paragraphs: Paragraph[] = [];
 let sections: ReaderSection[] = [];
-let previous: CorpusEntry | undefined;
-let next: CorpusEntry | undefined;
+let previous: NodeWithMeta | undefined;
+let next: NodeWithMeta | undefined;
 let docJsonLd: Record<string, unknown> | null = null;
 // TOC branch data
 let children: NodeWithMeta[] = [];
@@ -72,7 +70,7 @@ let tocJsonLd: Record<string, unknown> | null = null;
 if (isDocumentNode) {
   const [content, adjacent] = await Promise.all([
     loadDocument(db, slug),
-    getAdjacentDocuments(db, slugArr),
+    getAdjacentDocuments(db, slug),
   ]);
 
   const derived = deriveReaderSections(content, node.pali);

@@ -1,22 +1,25 @@
 ---
-import { type NavNode } from '@/lib/corpus';
+import { getChildren, type NodeWithMeta } from '@/lib/corpus';
 import { cn } from '@/lib/utils';
+import type { CorpusDB } from '@cs-tipitaka/corpus';
 import { asHref } from '@cs-tipitaka/shared';
 import Pali from '@/components/reader/pali.astro';
 import Self from '@/components/corpus-tree-node.astro';
 
 interface Props {
-  node: NavNode;
+  db: CorpusDB;
+  node: NodeWithMeta;
   currentSlug: string;
 }
 
-const { node, currentSlug } = Astro.props;
+const { db, node, currentSlug } = Astro.props;
 
 const isActive = currentSlug === node.slug;
 const isAncestor = currentSlug.startsWith(node.slug) && !isActive;
 const onActiveBranch = isActive || isAncestor;
-const hasChildren = node.hasChildren;
-const isExpanded = onActiveBranch && Boolean(node.children?.length);
+const children = await getChildren(db, node);
+const hasChildren = children.length > 0;
+const isExpanded = onActiveBranch && hasChildren;
 const href = asHref(node.slug);
 
 const labelClasses = cn(
@@ -28,7 +31,7 @@ const labelClasses = cn(
 ---
 
 {
-  isExpanded && node.children ? (
+  isExpanded && hasChildren ? (
     <li>
       <details open>
         <summary
@@ -54,8 +57,8 @@ const labelClasses = cn(
           </a>
         </summary>
         <ul class="ml-4 border-l border-border/50 pl-2">
-          {node.children.map((child) => (
-            <Self node={child} currentSlug={currentSlug} />
+          {children.map((child) => (
+            <Self db={db} node={child} currentSlug={currentSlug} />
           ))}
         </ul>
       </details>

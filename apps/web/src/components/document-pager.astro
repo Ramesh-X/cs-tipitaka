@@ -1,11 +1,12 @@
 ---
 import Pali from '@/components/reader/pali.astro';
-import type { CorpusEntry } from '@/lib/corpus';
+import type { NodeWithMeta } from '@/lib/corpus';
+import { asHref } from '@cs-tipitaka/shared';
 import { cn } from '@/lib/utils';
 
 interface Props {
-  previous?: CorpusEntry;
-  next?: CorpusEntry;
+  previous?: NodeWithMeta;
+  next?: NodeWithMeta;
 }
 
 const { previous, next } = Astro.props;
@@ -22,7 +23,7 @@ if (!previous && !next) {
   {
     previous ? (
       <a
-        href={previous.href}
+        href={asHref(previous.slug)}
         class={cn(
           'group flex flex-col gap-1 rounded-lg border border-border p-4',
           'transition-colors hover:border-primary/40 hover:bg-accent/30',
@@ -46,7 +47,7 @@ if (!previous && !next) {
           Previous text
         </div>
         <span class="font-medium leading-snug">
-          <Pali text={previous.node.pali} />
+          <Pali text={previous.pali} />
         </span>
       </a>
     ) : (
@@ -57,7 +58,7 @@ if (!previous && !next) {
   {
     next && (
       <a
-        href={next.href}
+        href={asHref(next.slug)}
         class={cn(
           'group flex flex-col gap-1 rounded-lg border border-border p-4 text-right',
           'transition-colors hover:border-primary/40 hover:bg-accent/30',
@@ -82,7 +83,7 @@ if (!previous && !next) {
           </svg>
         </div>
         <span class="font-medium leading-snug">
-          <Pali text={next.node.pali} />
+          <Pali text={next.pali} />
         </span>
       </a>
     )
