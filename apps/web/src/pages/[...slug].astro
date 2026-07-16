@@ -15,6 +15,7 @@ import {
   findNode,
   getBreadcrumbs,
   getChildren,
+  getSiblingsAndSelf,
   getAdjacentDocuments,
   isDocument,
   nodeTypeLabel,
@@ -48,11 +49,8 @@ if (!node) {
 
 const crumbs = await getBreadcrumbs(db, slug);
 const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
-const parentNode = node.parent_slug
-  ? await findNode(db, node.parent_slug)
-  : null;
-const parentChildren = parentNode ? await getChildren(db, parentNode) : null;
-const isPartOfType = parentChildren?.every(isDocument) ? 'Book' : 'BookSeries';
+const siblingNodes = await getSiblingsAndSelf(db, node);
+const isPartOfType = siblingNodes.every(isDocument) ? 'Book' : 'BookSeries';
 
 const pageTitle = `${node.pali} · Browse`;
 const pageDescription = node.blurb
@@ -136,7 +134,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
   {
     isDocumentNode ? (
       <CorpusLayout variant="document">
-        <CorpusBrowser slot="nav" db={db} currentSlug={slugArr} />
+        <CorpusBrowser slot="nav" db={db} currentSlug={slug} />
         {sections.length > 0 && (
           <SectionNav slot="outline" sections={sections} />
         )}
@@ -154,7 +152,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
           <CorpusToolbar client:load />
 
           <div class="mb-4 xl:hidden">
-            <CorpusBrowserDisclosure db={db} currentSlug={slugArr} />
+            <CorpusBrowserDisclosure db={db} currentSlug={slug} />
           </div>
 
           {sections.length > 0 && (
@@ -206,11 +204,11 @@ const ogType = isDocumentNode ? 'book' : 'website';
       </CorpusLayout>
     ) : (
       <CorpusLayout variant="toc">
-        <CorpusBrowser slot="nav" db={db} currentSlug={slugArr} />
+        <CorpusBrowser slot="nav" db={db} currentSlug={slug} />
 
         <div class="pb-16">
           <div class="mb-4 lg:hidden">
-            <CorpusBrowserDisclosure db={db} currentSlug={slugArr} />
+            <CorpusBrowserDisclosure db={db} currentSlug={slug} />
           </div>
 
           <div class="mb-6">

@@ -6,7 +6,7 @@ import type { CorpusDB } from '@cs-tipitaka/corpus';
 
 interface Props {
   db: CorpusDB;
-  currentSlug: string[];
+  currentSlug: string;
   class?: string;
   bare?: boolean;
 }
@@ -25,10 +25,6 @@ const navTree: NavNode[] = await getNavTree(db, currentSlug);
   )}
 >
   <ul class="space-y-0.5">
-    {
-      navTree.map((node) => (
-        <TreeNode node={node} path={[node.slug]} currentSlug={currentSlug} />
-      ))
-    }
+    {navTree.map((node) => <TreeNode node={node} currentSlug={currentSlug} />)}
   </ul>
 </nav>

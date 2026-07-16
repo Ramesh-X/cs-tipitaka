@@ -1,21 +1,22 @@
 ---
 import { site } from '@/lib/site';
-import type { CorpusNode } from '@/lib/corpus';
+import type { NodeWithMeta } from '@/lib/corpus';
 import { asHref } from '@cs-tipitaka/shared';
 import Pali from '@/components/reader/pali.astro';
 
 interface Props {
-  tree: CorpusNode[];
+  nodes: NodeWithMeta[];
 }
 
-const { tree } = Astro.props;
+const { nodes } = Astro.props;
+const rootNodes = nodes.filter((node) => node.parent_slug === null);
 
 const COLUMNS = [
   {
     title: 'Read',
-    links: tree.map((node) => ({
-      label: node.node.pali,
-      href: asHref(node.node.slug),
+    links: rootNodes.map((node) => ({
+      label: node.pali,
+      href: asHref(node.slug),
       pali: true,
     })),
   },

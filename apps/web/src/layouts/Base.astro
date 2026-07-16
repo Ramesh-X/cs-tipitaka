@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import { ClientRouter, fade } from 'astro:transitions';
 import { themeInitScript } from '@/lib/theme';
 import { transliterateInitScript } from '@/lib/transliterate-init';
-import { getCorpusTree } from '@/lib/corpus/data';
+import { loadNodes } from '@/lib/corpus/data';
 import BaseHead from '@/components/base-head.astro';
 import SiteHeader from '@/components/site-header.astro';
 import SiteFooter from '@/components/site-footer.astro';
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { db, title, description, canonical, ogType } = Astro.props;
-const tree = await getCorpusTree(db);
+const nodes = await loadNodes(db);
 ---
 
 <html
@@ -50,7 +50,7 @@ const tree = await getCorpusTree(db);
     <main class="flex-1">
       <slot />
     </main>
-    <SiteFooter tree={tree} />
+    <SiteFooter nodes={nodes} />
 
     <script>
       import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
