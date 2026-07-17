@@ -1,9 +1,10 @@
 ---
 interface Props {
   text: string;
+  html?: string | null;
 }
 
-const { text } = Astro.props;
+const { text, html } = Astro.props;
 ---
 
-<span data-pali>{text}</span>
+{html ? <span data-pali set:html={html} /> : <span data-pali>{text}</span>}

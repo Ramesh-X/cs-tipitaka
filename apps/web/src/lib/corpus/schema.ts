@@ -86,7 +86,7 @@ export function webApplicationNode() {
 }
 
 // Renders as one <JsonLd> call so the publisher/creator @id references below resolve.
-export function siteJsonLd() {
+export function siteJsonLd(extraNodes: Record<string, unknown>[] = []) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -94,6 +94,7 @@ export function siteJsonLd() {
       developerNode(),
       webSiteNode(),
       webApplicationNode(),
+      ...extraNodes,
     ],
   };
 }

@@ -1,15 +1,54 @@
 ---
 import Base from '@/layouts/Base.astro';
+import JsonLd from '@/components/json-ld.astro';
+import HomeHero from '@/components/home/home-hero.astro';
+import PurposeGrid from '@/components/home/purpose-grid.astro';
+import ToolsSection from '@/components/home/tools-section.astro';
+import AboutEdition from '@/components/home/about-edition.astro';
+import { StartTextsCarousel } from '@/components/start-texts/start-texts-carousel';
+import { siteJsonLd } from '@/lib/corpus/schema';
+import { site } from '@/lib/site';
 import { getLocalDb } from '@cs-tipitaka/corpus/local';
 
 const db = getLocalDb();
+
+const datasetNode = {
+  '@type': 'Dataset',
+  '@id': `${site.url}/#dataset`,
+  name: 'Chaṭṭha Saṅgāyana Tipiṭaka — Complete Pāli Canon',
+  description:
+    'The complete Pāli Canon in the Chaṭṭha Saṅgāyana (Sixth Council) edition, digitized by the Vipassana Research Institute.',
+  url: site.url,
+  inLanguage: 'pi',
+  license: site.license,
+  isAccessibleForFree: true,
+  creator: { '@id': `${site.url}/#organization` },
+  keywords: [
+    'Pāli Canon',
+    'Tipiṭaka',
+    'Theravāda Buddhism',
+    'Buddhist scriptures',
+    'Dhamma',
+  ],
+};
+
+const jsonLd = siteJsonLd([datasetNode]);
 ---
 
 <Base db={db}>
-  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold">Tipiṭaka — The Pāli Canon</h1>
-    <p class="mt-4 text-muted-foreground">
-      Phase 2 placeholder — home page arrives in M5.1.
-    </p>
-  </div>
+  <JsonLd data={jsonLd} />
+  <HomeHero />
+  <PurposeGrid />
+
+  <section class="border-t border-border bg-muted/20">
+    <div class="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+      <h2 class="mb-6 text-2xl font-semibold tracking-tight">
+        Start with these texts
+      </h2>
+      <StartTextsCarousel client:visible />
+    </div>
+  </section>
+
+  <ToolsSection />
+  <AboutEdition />
 </Base>

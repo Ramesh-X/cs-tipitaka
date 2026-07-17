@@ -65,13 +65,17 @@ const nodes = await loadNodes(db);
 
       // Applies persisted prefs to the INCOMING document while it's still
       // off-screen, so soft navigation never paints default/Roman content.
+      // Keep in lockstep with src/components/reader/transliterator.tsx.
       function applyPrefs(doc: Document): void {
         const { script, fontSize, lineHeight, fontFamily } =
           useReaderPreferences.getState();
 
         if (script !== CANONICAL_SCRIPT) {
           doc.querySelectorAll<HTMLElement>('[data-pali]').forEach((s) => {
-            if (!s.dataset.latn) s.dataset.latn = s.textContent ?? '';
+            if (!s.dataset.latn) {
+              s.dataset.latn = s.textContent ?? '';
+              if (s.children.length > 0) s.dataset.latnHtml = s.innerHTML;
+            }
             s.textContent = transliterate(s.dataset.latn, script);
           });
         }

@@ -1,0 +1,86 @@
+---
+import Base from '@/layouts/Base.astro';
+import JsonLd from '@/components/json-ld.astro';
+import Pali from '@/components/reader/pali.astro';
+import { GLOSSARY } from '@/lib/corpus/glossary';
+import { normalizeTerm } from '@/lib/text/normalize';
+import { site } from '@/lib/site';
+import { getLocalDb } from '@cs-tipitaka/corpus/local';
+
+const db = getLocalDb();
+
+const title = 'Glossary';
+const description =
+  'Short definitions of recurring Pāli and Buddhist terms, deep-linkable from anywhere in the text.';
+
+const terms = [...GLOSSARY].sort((a, b) => a.term.localeCompare(b.term));
+
+const glossaryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  '@id': `${site.url}/glossary`,
+  name: 'Pāli Buddhist Glossary',
+  description:
+    'Key Pāli and Buddhist terms used in the Tipiṭaka, with stable deep-linkable anchors.',
+  url: `${site.url}/glossary`,
+  inLanguage: 'pi',
+  license: site.license,
+  hasDefinedTerm: terms.map((t) => {
+    const id = normalizeTerm(t.term);
+    const node: Record<string, unknown> = {
+      '@type': 'DefinedTerm',
+      '@id': `${site.url}/glossary#${id}`,
+      name: t.term,
+      termCode: id,
+      description: t.definition,
+      inDefinedTermSet: `${site.url}/glossary`,
+      inLanguage: 'pi',
+    };
+    if (t.wikidata) node.sameAs = t.wikidata;
+    return node;
+  }),
+};
+---
+
+<Base db={db} title={title} description={description}>
+  <JsonLd data={glossaryJsonLd} />
+  <div class="mx-auto w-full max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8">
+    <header class="max-w-4xl">
+      <h1 class="font-reading text-4xl font-semibold tracking-tight">
+        Glossary
+      </h1>
+      <p class="mt-3 text-lg text-muted-foreground">
+        Key Pāli and Buddhist terms. Each entry has a stable anchor, so it can
+        be linked from anywhere in the texts — e.g.{' '}
+        <code class="font-mono text-sm">/glossary#dhamma</code>.
+      </p>
+    </header>
+
+    <dl class="mt-10 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      {
+        terms.map((t) => {
+          const id = normalizeTerm(t.term);
+          return (
+            <div
+              id={id}
+              class="scroll-mt-24 rounded-xl border border-border bg-card p-5 target:bg-muted/40"
+            >
+              <dt class="flex items-baseline gap-2">
+                <a
+                  href={`#${id}`}
+                  class="font-reading text-xl font-medium hover:underline"
+                >
+                  {t.term}
+                </a>
+                <span class="font-reading text-sm text-muted-foreground">
+                  (<Pali text={t.pali} />)
+                </span>
+              </dt>
+              <dd class="mt-1 text-muted-foreground">{t.definition}</dd>
+            </div>
+          );
+        })
+      }
+    </dl>
+  </div>
+</Base>

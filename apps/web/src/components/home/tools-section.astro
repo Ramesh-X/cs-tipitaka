@@ -1,0 +1,149 @@
+---
+import { site } from '@/lib/site';
+
+type ToolIcon = 'languages' | 'book-open' | 'link-2' | 'search';
+
+const TOOLS: Array<{ icon: ToolIcon; title: string; body: string }> = [
+  {
+    icon: 'languages',
+    title: 'Read the Pāli clearly',
+    body: 'Roman/IAST by default. Switch to Sinhala, Devanagari, Thai, Myanmar, Khmer, Tibetan, and 12 more — all transliterated live in your browser.',
+  },
+  {
+    icon: 'book-open',
+    title: 'Study with AI translation',
+    body: 'Pāli and AI-generated translation side by side — available in English, Sinhala, Thai, and Burmese, rendered live in your browser.',
+  },
+  {
+    icon: 'link-2',
+    title: 'Follow by reference',
+    body: 'Stable paragraph links, breadcrumbs, and CST/PTS citations make each passage easy to return to and cite.',
+  },
+  {
+    icon: 'search',
+    title: 'Search with meaning',
+    body: 'Find teachings by topic, phrase, or idea — not only by exact words in the text.',
+  },
+];
+---
+
+<section class="border-t border-border">
+  <div class="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-semibold tracking-tight">
+      Tools for careful study
+    </h2>
+    <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        TOOLS.map((tool) => (
+          <div>
+            <span class="grid size-10 place-items-center rounded-lg bg-muted text-muted-foreground">
+              {tool.icon === 'languages' && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-5"
+                  aria-hidden="true"
+                >
+                  <path d="m5 8 6 6" />
+                  <path d="m4 14 6-6 2-3" />
+                  <path d="M2 5h12" />
+                  <path d="M7 2h1" />
+                  <path d="m22 22-5-10-5 10" />
+                  <path d="M14 18h6" />
+                </svg>
+              )}
+              {tool.icon === 'book-open' && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 7v14" />
+                  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+                </svg>
+              )}
+              {tool.icon === 'link-2' && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-5"
+                  aria-hidden="true"
+                >
+                  <path d="M9 17H7A5 5 0 0 1 7 7h2" />
+                  <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
+                  <line x1="8" x2="16" y1="12" y2="12" />
+                </svg>
+              )}
+              {tool.icon === 'search' && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-5"
+                  aria-hidden="true"
+                >
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg>
+              )}
+            </span>
+            <h3 class="mt-4 font-medium">{tool.title}</h3>
+            <p class="mt-1 text-sm text-muted-foreground">{tool.body}</p>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-10 border-t border-border pt-6">
+      <p class="text-sm text-muted-foreground">
+        Open data, a public API, and{' '}
+        <a
+          href={site.paths.llmsTxt}
+          class="font-medium text-foreground hover:underline"
+        >
+          llms.txt
+        </a>{' '}
+        for developers and researchers —{' '}
+        <a
+          href={site.paths.developers}
+          class="inline-flex items-center gap-1 font-medium text-foreground hover:underline"
+        >
+          learn more
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-3"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

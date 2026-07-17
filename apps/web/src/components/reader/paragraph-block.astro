@@ -1,6 +1,7 @@
 ---
 import Pali from '@/components/reader/pali.astro';
 import { classifyRend, type RendClass } from '@/components/reader/rend.ts';
+import { linkGlossaryTermsHtml } from '@/lib/corpus/glossary-linker';
 import type { Paragraph } from '@cs-tipitaka/corpus';
 import { cn } from '@/lib/utils';
 
@@ -13,6 +14,9 @@ const { paragraph: p, prevClass } = Astro.props;
 
 const rc = classifyRend(p.rend);
 const isVerse = rc === 'verse';
+// Only body/verse text is linked to the glossary — matches legacy.
+const paliHtml =
+  rc === 'body' || rc === 'verse' ? linkGlossaryTermsHtml(p.pali) : null;
 
 // Top gap for body/verse paragraphs
 function topGap(): string {
@@ -152,7 +156,7 @@ function topGap(): string {
               {p.num}.
             </span>
           )}
-          <Pali text={p.pali} />
+          <Pali text={p.pali} html={paliHtml} />
         </p>
       </div>
       {(p.cst || p.pts) && (

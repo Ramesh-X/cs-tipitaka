@@ -1,0 +1,78 @@
+---
+import Pali from '@/components/reader/pali.astro';
+import { DailyReflection } from '@/components/daily-reflection/daily-reflection';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { site } from '@/lib/site';
+---
+
+<section class="border-b border-border bg-muted/20">
+  <div
+    class="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+  >
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
+      <div>
+        <p class="font-reading text-sm italic text-muted-foreground">
+          <Pali text="Namo tassa bhagavato arahato sammāsambuddhassa" />
+        </p>
+        <h1
+          class="mt-4 font-reading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
+        >
+          Read the Buddha's words with clarity and care.
+        </h1>
+        <p class="mt-5 max-w-2xl text-lg text-muted-foreground">
+          The Chaṭṭha Saṅgāyana Tipiṭaka — the Sixth Council edition of the Pāli
+          Canon — in a quiet, fast, freely-given reader. For study, reflection,
+          meditation, and the preservation of the Dhamma.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/sutta" class={cn(buttonVariants({ size: 'lg' }), 'gap-2')}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4"
+              aria-hidden="true"
+            >
+              <path d="M12 7v14"></path>
+              <path
+                d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+              ></path>
+            </svg>
+            Begin reading
+          </a>
+          <a
+            href={site.paths.search}
+            class={cn(
+              buttonVariants({ size: 'lg', variant: 'outline' }),
+              'gap-2',
+            )}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4"
+              aria-hidden="true"
+            >
+              <path d="m21 21-4.34-4.34"></path>
+              <circle cx="11" cy="11" r="8"></circle>
+            </svg>
+            Search the Dhamma
+          </a>
+        </div>
+      </div>
+      <div>
+        <DailyReflection client:idle />
+      </div>
+    </div>
+  </div>
+</section>

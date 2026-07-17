@@ -1,0 +1,49 @@
+---
+import { site } from '@/lib/site';
+
+const PURPOSES = [
+  { label: 'Read the suttas', href: '/sutta' },
+  { label: 'Search by meaning or topic', href: site.paths.search },
+  { label: 'Study Pāli vocabulary', href: site.paths.glossary },
+  { label: 'Read the Abhidhamma Piṭaka', href: '/abhidhamma' },
+  { label: 'About this edition', href: site.paths.about },
+  { label: 'Developers & open data', href: site.paths.developers },
+];
+---
+
+<section class="mx-auto w-full max-w-[1800px] px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold tracking-tight">
+      Begin according to your purpose
+    </h2>
+    <p class="mt-1 text-muted-foreground">I want to…</p>
+  </div>
+  <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      PURPOSES.map((p) => (
+        <li>
+          <a
+            href={p.href}
+            class="group flex items-center justify-between rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 hover:bg-muted/40"
+          >
+            <span class="font-medium">{p.label}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
