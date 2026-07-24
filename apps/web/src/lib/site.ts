@@ -17,6 +17,7 @@ export const site = {
     name: 'Fcode Labs',
     url: 'https://www.fcodelabs.com',
   },
+  ogImage: '/og-image.png',
   paths: {
     search: '/search',
     about: '/about',
@@ -24,6 +25,6 @@ export const site = {
     developers: '/developers',
     usageRights: '/usage-rights',
     llmsTxt: '/llms.txt',
-    sitemap: '/sitemap.xml',
+    sitemap: '/sitemap-index.xml',
   },
 };

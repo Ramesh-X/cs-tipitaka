@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,5 +24,20 @@ export default defineConfig({
     },
   },
 
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      changefreq: 'monthly',
+      priority: 0.7,
+      // Home gets 1.0; every other URL keeps the default 0.7. No lastmod is
+      // set anywhere — build-time dates are not real content freshness (see
+      // docs/SEO.md).
+      serialize(item) {
+        if (new URL(item.url).pathname === '/') item.priority = 1.0;
+        return item;
+      },
+      // llms.txt is a crawler manifest, not a page — keep it out of the sitemap.
+      filter: (page) => !page.endsWith('/llms.txt'),
+    }),
+  ],
 });

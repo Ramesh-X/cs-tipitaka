@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@cs-tipitaka/corpus": "workspace:*",
-    "fast-xml-parser": "^5.9.3"
+    "fast-xml-parser": "^5.10.1"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -21,7 +21,7 @@
     "fix-all": "pnpm run lint:fix && pnpm run format"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "wrangler": "^4.17.0"
+    "@types/node": "^24.1.0",
+    "wrangler": "^4.113.0"
   }
 }
