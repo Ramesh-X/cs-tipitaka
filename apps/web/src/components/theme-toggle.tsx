@@ -6,7 +6,6 @@ import { useHydrated } from '@/lib/use-hydrated';
 
 export function ThemeToggle() {
   const hydrated = useHydrated();
-  // `null` means "follow whatever the <head> script already set on <html>".
   const [override, setOverride] = React.useState<'light' | 'dark' | null>(null);
 
   const domDark =
@@ -30,6 +29,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggle}
       aria-label="Toggle dark mode"
+      aria-pressed={hydrated ? isDark : undefined}
     >
       {hydrated && isDark ? <Sun /> : <Moon />}
     </Button>

@@ -1,12 +1,7 @@
 export type RendClass =
-  | 'banner'
-  | 'chapter'
-  | 'subhead'
-  | 'subsubhead'
-  | 'centre'
-  | 'verse'
-  | 'body';
+  'banner' | 'chapter' | 'subhead' | 'subsubhead' | 'centre' | 'verse' | 'body';
 
+/** Maps the corpus's raw `rend` values to a small set of layout classes. */
 export function classifyRend(rend: string | null | undefined): RendClass {
   switch (rend) {
     case 'nikaya':

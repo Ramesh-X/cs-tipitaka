@@ -1,6 +1,7 @@
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
-import { SCRIPTS } from '@cs-tipitaka/shared';
+import { SCRIPTS, CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
 import { transliterate } from '@/lib/corpus/reader';
+import { useHydrated } from '@/lib/use-hydrated';
 import {
   Select,
   SelectContent,
@@ -10,8 +11,11 @@ import {
 } from '@/components/ui/select';
 
 export default function ScriptSelector() {
-  const script = useReaderPreferences((s) => s.script);
+  const hydrated = useHydrated();
+  const storeScript = useReaderPreferences((s) => s.script);
   const setScript = useReaderPreferences((s) => s.setScript);
+  // Gated on hydration to avoid a mismatch — docs/web/hydration-and-persistence.md.
+  const script = hydrated ? storeScript : CANONICAL_SCRIPT;
 
   return (
     <Select

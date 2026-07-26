@@ -47,6 +47,7 @@ export interface ReaderSection {
   label: string;
 }
 
+/** Guesses a script from timezone/language; falls back to the canonical script. */
 export function detectScript(): string {
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -58,11 +59,12 @@ export function detectScript(): string {
         : '';
     if (lang && LANG_TO_SCRIPT[lang]) return LANG_TO_SCRIPT[lang];
   } catch {
-    // Fail silently
+    /* empty */
   }
   return CANONICAL_SCRIPT;
 }
 
+/** No-op if `scriptId` is canonical or unsupported. Memoized. */
 export function transliterate(text: string, scriptId: string): string {
   if (!text || scriptId === CANONICAL_SCRIPT || !SUPPORTED.has(scriptId)) {
     return text;
@@ -80,6 +82,7 @@ export function transliterate(text: string, scriptId: string): string {
   return result;
 }
 
+/** Drops a paragraph that just repeats `title` as a heading; also extracts on-page nav sections. */
 export function deriveReaderSections(
   paragraphs: Paragraph[],
   title: string,

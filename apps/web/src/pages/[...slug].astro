@@ -42,7 +42,8 @@ const db = getLocalDb();
 
 const node = await findNode(db, slug);
 if (!node) {
-  return Astro.redirect('/404', 404);
+  // Unreachable in practice — docs/web/ui-behavior-notes.md.
+  throw new Error(`No corpus node found for slug: ${slug}`);
 }
 
 const crumbs = await getBreadcrumbs(db, slug);
@@ -50,20 +51,22 @@ const isPartOfUrl = crumbs.length > 1 ? crumbs[crumbs.length - 2].href : '/';
 const siblingNodes = await getSiblingsAndSelf(db, node);
 const isPartOfType = siblingNodes.every(isDocument) ? 'Book' : 'BookSeries';
 
-const pageTitle = `${node.pali} · Browse`;
+// Disambiguates title collisions on repeated pali names — docs/web/corpus-data-layer.md.
+const parentCrumb = crumbs.length > 1 ? crumbs[crumbs.length - 2] : null;
+const pageTitle = parentCrumb
+  ? `${node.pali} · ${parentCrumb.pali} · Browse`
+  : `${node.pali} · Browse`;
 const pageDescription = node.blurb
   ? `${node.blurb} — ${nodeTypeLabel(node.type)} — Tipiṭaka Online`
-  : `${nodeTypeLabel(node.type)} — Tipiṭaka Online`;
+  : `${node.pali} — ${nodeTypeLabel(node.type)} — Tipiṭaka Online`;
 
 const isDocumentNode = isDocument(node);
 
-// Document branch data
 let paragraphs: Paragraph[] = [];
 let sections: ReaderSection[] = [];
 let previous: NodeWithMeta | undefined;
 let next: NodeWithMeta | undefined;
 let docJsonLd: Record<string, unknown> | null = null;
-// TOC branch data
 let children: NodeWithMeta[] = [];
 let tocJsonLd: Record<string, unknown> | null = null;
 

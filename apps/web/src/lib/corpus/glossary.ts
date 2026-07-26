@@ -1,13 +1,12 @@
 export interface GlossaryTerm {
+  /** Display headword and glossary-linker match text, e.g. "Dhamma". */
   term: string;
+  /** Lowercase Pāli form shown in parentheses, transliterable to other scripts. */
   pali: string;
   definition: string;
+  /** Wikidata URL, if the term has an entry. */
   wikidata?: string;
 }
-
-/* -------------------------------------------------------------------------- */
-/*  Glossary (placeholder)                                                    */
-/* -------------------------------------------------------------------------- */
 
 export const GLOSSARY: GlossaryTerm[] = [
   {
@@ -49,7 +48,7 @@ export const GLOSSARY: GlossaryTerm[] = [
       'Aggregate; the five groups of clinging that constitute a person.',
   },
   {
-    term: 'Paṭicca­samuppāda',
+    term: 'Paṭiccasamuppāda',
     pali: 'paṭiccasamuppāda',
     definition: 'Dependent origination; the conditioned arising of phenomena.',
   },

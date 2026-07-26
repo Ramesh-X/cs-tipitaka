@@ -11,7 +11,6 @@ const { variant } = Astro.props;
 const hasOutline = Astro.slots.has('outline');
 const isDocument = variant === 'document';
 
-// Grid columns use CSS variables so M4.1 collapse islands can resize panes
 const gridCols = isDocument
   ? hasOutline
     ? 'xl:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)_var(--outline-width,260px)]'
@@ -26,7 +25,6 @@ const gridCols = isDocument
   data-nav-collapsed="false"
   data-outline-collapsed="false"
 >
-  <!-- Left pane: corpus navigation -->
   <aside
     data-pane="nav"
     class={cn(
@@ -45,12 +43,10 @@ const gridCols = isDocument
     </div>
   </aside>
 
-  <!-- Center pane: main content -->
   <main class="min-w-0 px-4 py-6 sm:px-6 lg:px-8">
     <slot />
   </main>
 
-  <!-- Right pane: document outline (document variant only) -->
   {
     hasOutline && isDocument && (
       <aside data-pane="outline" class="hidden xl:block border-l border-border">
@@ -66,18 +62,32 @@ const gridCols = isDocument
 </div>
 
 <style>
-  /* Collapsed pane widths — M4.1 islands flip data-* attributes to activate */
   [data-corpus-layout][data-nav-collapsed='true'] {
     --nav-width: 3rem;
   }
   [data-corpus-layout][data-outline-collapsed='true'] {
     --outline-width: 3rem;
   }
-  /* Hide pane content when collapsed */
   [data-corpus-layout][data-nav-collapsed='true'] [data-pane-content='nav'] {
     display: none;
   }
   [data-corpus-layout][data-outline-collapsed='true']
+    [data-pane-content='outline'] {
+    display: none;
+  }
+
+  /* Pre-paint FOUC guard — docs/web/hydration-and-persistence.md */
+  :root[data-nav-pending] [data-corpus-layout] {
+    --nav-width: 3rem;
+  }
+  :root[data-nav-pending] [data-corpus-layout] [data-pane-content='nav'] {
+    display: none;
+  }
+  :root[data-outline-pending] [data-corpus-layout] {
+    --outline-width: 3rem;
+  }
+  :root[data-outline-pending]
+    [data-corpus-layout]
     [data-pane-content='outline'] {
     display: none;
   }

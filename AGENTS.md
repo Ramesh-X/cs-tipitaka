@@ -9,6 +9,7 @@
 - `packages/corpus` owns schemas, types, repositories, DB adapters, and DB-backed transformations for web/API consumers. It must not process source files or own Wrangler D1 CLI scripts.
 - `apps/legacy-next` is the legacy app. Do not add a Wrangler config there.
 - Use the packages already declared in the relevant workspace package. Read latest package documentation before making framework or dependency changes.
+- `docs/web/` documents non-obvious `apps/web` implementation decisions (hydration/FOUC, soft navigation, the corpus tree, transliteration, the corpus data layer). Read it before changing related code, and add to it — not to inline comments — when you make a similarly non-obvious choice.
 
 ## Guidelines
 
@@ -24,6 +25,7 @@
 - Don't read/delete/write `.env` files. Those files are out of your scope. Read only example env files.
 - Condense your (agent's) context (with `/compact`) when the token usage exceeds 128K tokens.
 - Don't create files larger than 400 lines. Run `./file_length.sh` to check files with more than 400 lines. (Use `FileSplitPrompt.md` for guidance on how to split files.)
+- Keep code comments minimal to none. A comment should explain "why", never "what" or "how" — code and naming should already make those clear. Keep the "why" brief and, if it needs more than a line, put the explanation in that app's docs (e.g. `docs/web/`) and leave only a short pointer comment.
 
 ## Documentations Helpers
 

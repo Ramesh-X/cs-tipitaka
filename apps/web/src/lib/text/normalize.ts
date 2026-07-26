@@ -1,3 +1,4 @@
+/** Lowercase, diacritics stripped, non-alphanumeric runs collapsed to "-" — for glossary anchor ids. */
 export function normalizeTerm(s: string): string {
   return s
     .toLowerCase()

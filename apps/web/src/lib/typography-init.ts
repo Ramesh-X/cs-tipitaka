@@ -1,0 +1,2 @@
+/** Inline in <head> before paint — docs/web/hydration-and-persistence.md. */
+export const typographyInitScript = `(function(){try{var r=localStorage.getItem('tipitaka-reader-preferences');if(!r)return;var s=JSON.parse(r);var st=s&&s.state;if(!st)return;var d=document.documentElement;if(st.fontSize)d.style.setProperty('--reader-font-size',st.fontSize+'px');if(st.lineHeight)d.style.setProperty('--reader-line-height',String(st.lineHeight));if(st.fontFamily==='sans')d.setAttribute('data-reader-font','sans');}catch(e){}})();`;

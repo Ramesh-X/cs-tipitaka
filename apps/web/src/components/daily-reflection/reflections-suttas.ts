@@ -1,12 +1,6 @@
 /**
- * Sutta reflections — passages drawn from across the Nikāyas (Khuddakapāṭha,
- * Udāna, Itivuttaka, Suttanipāta, Theragāthā/Therīgāthā, and the four great
- * Nikāyas), in roughly canonical order.
- *
- * EDITORIAL, NOT GENERATED. Pāli is exact (Roman/IAST, CST orthography) and
- * lifted verbatim from the built corpus; verse passages join lines with `\n`,
- * prose passages quote a verbatim sentence. Every `href` resolves to the
- * containing text page. See `reflections.ts` for the shared contract.
+ * Sutta reflections — editorial, not generated. See ./reflections.ts
+ * and docs/web/ui-behavior-notes.md before adding or editing entries.
  */
 
 import type { Reflection } from './reflections';

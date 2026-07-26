@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
 
 export type FontFamily = 'serif' | 'sans';
+/** 'default' = untouched; 'auto' = set by detection; 'user' = explicit, never auto-overridden. */
 export type ScriptSource = 'default' | 'auto' | 'user';
 
 export interface ReaderPreferences {
@@ -24,10 +25,14 @@ export interface ReaderPreferences {
   reset: () => void;
 }
 
-export const DISPLAY_DEFAULTS = {
+export const TYPOGRAPHY_DEFAULTS = {
   fontSize: 19,
   lineHeight: 1.5,
   fontFamily: 'serif' as FontFamily,
+};
+
+export const DISPLAY_DEFAULTS = {
+  ...TYPOGRAPHY_DEFAULTS,
   showTranslation: false,
   language: 'en',
 };
@@ -43,6 +48,7 @@ export const useReaderPreferences = create<ReaderPreferences>()(
     (set) => ({
       ...DEFAULTS,
       setScript: (script) => set({ script, scriptSource: 'user' }),
+      // No-op unless scriptSource is still 'default'.
       applyAutoScript: (script) =>
         set((s) =>
           s.scriptSource === 'default' ? { script, scriptSource: 'auto' } : s,
@@ -54,7 +60,8 @@ export const useReaderPreferences = create<ReaderPreferences>()(
         set((s) => ({ showTranslation: !s.showTranslation })),
       setShowTranslation: (showTranslation) => set({ showTranslation }),
       setLanguage: (language) => set({ language }),
-      reset: () => set(DISPLAY_DEFAULTS),
+      // Typography only, deliberately — docs/web/ui-behavior-notes.md.
+      reset: () => set(TYPOGRAPHY_DEFAULTS),
     }),
     { name: 'tipitaka-reader-preferences' },
   ),

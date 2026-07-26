@@ -13,7 +13,11 @@ import {
   CardHeader,
 } from '@/components/ui/card';
 
-/** Uniformly random index, skipping `exclude` so "Another" never repeats. */
+function dayIndex(): number {
+  return Math.floor(Date.now() / 86_400_000) % REFLECTIONS.length;
+}
+
+/** Uniformly random index for "Another", skipping `exclude` so it never repeats. */
 function pickIndex(exclude?: number): number {
   const n = REFLECTIONS.length;
   if (n <= 1) return 0;
@@ -22,18 +26,10 @@ function pickIndex(exclude?: number): number {
   return i < exclude ? i : i + 1;
 }
 
-/**
- * A canonical passage to dwell on, drawn at random on each visit.
- *
- * SSG-safe: the server and the first client render show a fixed entry (no
- * `Math.random()` in the committed markup), so hydration matches exactly. Once
- * `useHydrated()` flips true we reveal the randomly chosen passage. With
- * JavaScript disabled the first passage and its "read in context" link remain
- * fully functional.
- */
+/** "Today's reflection" — see docs/web/ui-behavior-notes.md. */
 export function DailyReflection() {
   const hydrated = useHydrated();
-  const [index, setIndex] = React.useState(() => pickIndex());
+  const [index, setIndex] = React.useState(dayIndex);
 
   const reflection = hydrated ? REFLECTIONS[index] : REFLECTIONS[0];
 

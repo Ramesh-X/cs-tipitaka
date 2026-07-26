@@ -130,37 +130,37 @@ const TOTAL_PAGES = Math.ceil(TEXTS.length / PAGE_SIZE);
 
 export function StartTextsCarousel() {
   const [page, setPage] = React.useState(0);
+  const [hovered, setHovered] = React.useState(false);
+  const [focused, setFocused] = React.useState(false);
 
   const advance = React.useCallback(
     () => setPage((p) => (p + 1) % TOTAL_PAGES),
     [],
   );
 
-  // Auto-advance every 7 s; reset the timer on manual navigation so the
-  // interval always starts fresh from the moment the user last interacted.
-  const timerRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const resetTimer = React.useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(advance, 7000);
-  }, [advance]);
-
+  // Pausable on hover/focus + reduced-motion — docs/web/ui-behavior-notes.md.
+  const paused = hovered || focused;
   React.useEffect(() => {
-    resetTimer();
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [resetTimer]);
-
-  function go(next: number) {
-    setPage(next);
-    resetTimer();
-  }
+    if (paused) return;
+    if (
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+    const id = setInterval(advance, 7000);
+    return () => clearInterval(id);
+  }, [advance, paused, page]);
 
   const items = TEXTS.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   return (
-    <div>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+    >
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((t) => (
           <li key={t.href}>
@@ -188,7 +188,7 @@ export function StartTextsCarousel() {
           variant="outline"
           size="sm"
           className="gap-1.5"
-          onClick={() => go((page - 1 + TOTAL_PAGES) % TOTAL_PAGES)}
+          onClick={() => setPage((page - 1 + TOTAL_PAGES) % TOTAL_PAGES)}
         >
           <ChevronLeft className="size-4" />
           Previous
@@ -198,7 +198,7 @@ export function StartTextsCarousel() {
           {Array.from({ length: TOTAL_PAGES }, (_, i) => (
             <button
               key={i}
-              onClick={() => go(i)}
+              onClick={() => setPage(i)}
               aria-label={`Page ${i + 1}`}
               aria-current={i === page ? 'true' : undefined}
               className={`size-2 rounded-full transition-colors ${
@@ -214,7 +214,7 @@ export function StartTextsCarousel() {
           variant="outline"
           size="sm"
           className="gap-1.5"
-          onClick={() => go((page + 1) % TOTAL_PAGES)}
+          onClick={() => setPage((page + 1) % TOTAL_PAGES)}
         >
           Next
           <ChevronRight className="size-4" />

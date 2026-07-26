@@ -45,4 +45,6 @@ lerna-debug.log*
 *.pem
 
 # local generated docs
-docs/
+/docs/*
+!/docs/web/
+!/docs/web/**

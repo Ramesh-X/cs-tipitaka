@@ -15,28 +15,35 @@ interface Props {
 const { db, node, currentSlug } = Astro.props;
 
 const isActive = currentSlug === node.slug;
-const isAncestor = currentSlug.startsWith(node.slug) && !isActive;
+// Path-segment-safe prefix match — docs/web/corpus-navigation-tree.md.
+const isAncestor = !isActive && currentSlug.startsWith(node.slug + '/');
 const onActiveBranch = isActive || isAncestor;
 const children = await getChildren(db, node);
 const hasChildren = children.length > 0;
 const isExpanded = onActiveBranch && hasChildren;
 const href = asHref(node.slug);
 
-const labelClasses = cn(
+const rowClasses = cn(
   'flex flex-1 items-center gap-1.5 rounded px-2 py-1 text-sm leading-snug whitespace-nowrap',
   'transition-colors hover:bg-muted',
   isActive && 'bg-primary/10 font-medium text-foreground',
   !isActive && 'text-muted-foreground',
 );
+
+// Rotation follows the live details[open] state, not the SSR-computed
+// isExpanded flag — docs/web/corpus-navigation-tree.md.
+const chevronClasses =
+  'size-3.5 shrink-0 text-muted-foreground transition-transform in-[details[open]>summary]:rotate-90';
 ---
 
 {
-  isExpanded && hasChildren ? (
+  isExpanded ? (
     <li>
       <details open>
         <summary
           class={cn(
-            'flex cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden',
+            rowClasses,
+            'cursor-pointer list-none [&::-webkit-details-marker]:hidden',
           )}
         >
           <svg
@@ -47,12 +54,12 @@ const labelClasses = cn(
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="size-3.5 shrink-0 text-muted-foreground transition-transform in-[details[open]>summary]:rotate-90"
+            class={chevronClasses}
             aria-hidden="true"
           >
             <path d="m9 18 6-6-6-6" />
           </svg>
-          <a href={href} class={labelClasses}>
+          <a href={href} class="min-w-0 flex-1 truncate">
             <Pali text={node.pali} />
           </a>
         </summary>
@@ -65,35 +72,27 @@ const labelClasses = cn(
     </li>
   ) : hasChildren ? (
     <li>
-      <div class="flex items-center gap-1">
-        <a
-          href={href}
-          aria-label={`Expand ${node.pali}`}
-          class="shrink-0 rounded p-0.5 text-muted-foreground transition-colors hover:bg-muted"
+      <a href={href} class={rowClasses}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class={chevronClasses}
+          aria-hidden="true"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-3.5"
-            aria-hidden="true"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </a>
-        <a href={href} class={labelClasses}>
-          <Pali text={node.pali} />
-        </a>
-      </div>
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+        <Pali text={node.pali} />
+      </a>
     </li>
   ) : (
     <li>
       <div class="flex items-center gap-1 pl-5">
-        <a href={href} class={labelClasses}>
+        <a href={href} class={rowClasses}>
           <Pali text={node.pali} />
         </a>
       </div>

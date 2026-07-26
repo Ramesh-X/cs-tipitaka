@@ -1,0 +1,2 @@
+/** Inline in <head> before paint — docs/web/hydration-and-persistence.md. */
+export const layoutInitScript = `(function(){try{var r=localStorage.getItem('tipitaka-layout-preferences');if(!r)return;var s=JSON.parse(r);var st=s&&s.state;if(st&&st.navCollapsed)document.documentElement.setAttribute('data-nav-pending','true');if(st&&st.outlineCollapsed)document.documentElement.setAttribute('data-outline-pending','true');}catch(e){}})();`;

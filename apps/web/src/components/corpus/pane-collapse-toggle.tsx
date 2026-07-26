@@ -24,6 +24,8 @@ export default function PaneCollapseToggle({ pane }: Props) {
   const visibleCollapsed = hydrated ? isCollapsed : false;
   const toggle = pane === 'nav' ? toggleNav : toggleOutline;
   const attr = pane === 'nav' ? 'data-nav-collapsed' : 'data-outline-collapsed';
+  const pendingAttr =
+    pane === 'nav' ? 'data-nav-pending' : 'data-outline-pending';
 
   useEffect(() => {
     if (!hydrated) return;
@@ -31,7 +33,9 @@ export default function PaneCollapseToggle({ pane }: Props) {
     if (container) {
       container.setAttribute(attr, String(isCollapsed));
     }
-  }, [hydrated, isCollapsed, attr]);
+    // Clears layout-init.ts's pre-paint stand-in — docs/web/hydration-and-persistence.md.
+    document.documentElement.removeAttribute(pendingAttr);
+  }, [hydrated, isCollapsed, attr, pendingAttr]);
 
   const CollapseIcon = pane === 'nav' ? PanelLeftClose : PanelRightClose;
   const ExpandIcon = pane === 'nav' ? PanelLeftOpen : PanelRightOpen;

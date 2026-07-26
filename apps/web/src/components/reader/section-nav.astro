@@ -33,15 +33,17 @@ const { sections } = Astro.props;
 </nav>
 
 <script>
-  // Dual-trigger bootstrap: init() on ESM execution + astro:page-load, which
-  // now also fires on every ClientRouter soft navigation. Idempotent.
+  // Idempotent dual-trigger init — docs/web/soft-navigation.md.
   let observer: IntersectionObserver | null = null;
 
   function init() {
+    // Disconnected before any early return — docs/web/soft-navigation.md.
+    observer?.disconnect();
+    observer = null;
+
     const navEls = document.querySelectorAll<HTMLElement>('[data-section-nav]');
     if (!navEls.length) return;
 
-    // Bind click handlers (once per nav, guarded by dataset flag)
     navEls.forEach((nav) => {
       if (nav.dataset.bound) return;
       nav.dataset.bound = '1';
@@ -62,8 +64,6 @@ const { sections } = Astro.props;
       });
     });
 
-    // Single IntersectionObserver for all section heading paragraphs
-    // Updates active class across ALL section-nav lists on the page
     const allLinks = document.querySelectorAll<HTMLAnchorElement>(
       '[data-section-nav] [data-section-link]',
     );
@@ -80,7 +80,6 @@ const { sections } = Astro.props;
       });
     }
 
-    // Collect all heading elements referenced by section links
     const sectionIds = Array.from(
       new Set(
         Array.from(allLinks)
@@ -95,10 +94,8 @@ const { sections } = Astro.props;
 
     if (!targets.length) return;
 
-    // Set initial active state to first section
     setActive(sectionIds[0]);
 
-    observer?.disconnect();
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

@@ -1,8 +1,6 @@
 import { normalizeTerm } from '@/lib/text/normalize';
 import { GLOSSARY } from './glossary';
 
-// Sorted longest-first to prefer longer matches
-// (e.g. "Paṭiccasamuppāda" before "Sutta")
 const SORTED_TERMS = [...GLOSSARY].sort(
   (a, b) => b.term.length - a.term.length,
 );
@@ -52,7 +50,6 @@ export function linkGlossaryTermsHtml(text: string): string | null {
     const id = TERM_ID_MAP.get(key);
     if (!id || seen.has(id)) continue;
 
-    // Unicode-aware word boundary check — skip mid-word occurrences
     const before = match.index > 0 ? text[match.index - 1] : null;
     const afterIdx = match.index + match[0].length;
     const after = afterIdx < text.length ? text[afterIdx] : null;

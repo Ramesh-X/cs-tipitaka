@@ -1,9 +1,6 @@
 /**
- * Dhammapada reflections — the canonical verse anthology, in verse-number order.
- *
- * EDITORIAL, NOT GENERATED. Pāli is exact (Roman/IAST, CST orthography) and
- * lifted verbatim from the built corpus; every `href` resolves to the containing
- * vagga page. See `reflections.ts` for the shared contract and curation rules.
+ * Dhammapada reflections — editorial, not generated. See ./reflections.ts
+ * and docs/web/ui-behavior-notes.md before adding or editing entries.
  */
 
 import type { Reflection } from './reflections';

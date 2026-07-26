@@ -77,8 +77,6 @@ export function SearchExperience() {
   const [submitted, setSubmitted] = React.useState('');
   const [mode, setMode] = React.useState<Mode>('semantic');
 
-  // One-time read of ?q= from the URL on mount, so the page itself stays a
-  // static asset. This intentionally syncs external (URL) state into React.
   React.useEffect(() => {
     const q = new URLSearchParams(window.location.search).get('q') ?? '';
     if (q) {
@@ -90,14 +88,13 @@ export function SearchExperience() {
   const [nikaya, setNikaya] = React.useState<string[]>([]);
   const [speaker, setSpeaker] = React.useState<string[]>([]);
 
-  function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     setSubmitted(query);
     const url = query.trim()
       ? `?q=${encodeURIComponent(query.trim())}`
       : window.location.pathname;
-    // Preserve ClientRouter's history.state (scroll/index bookkeeping)
-    // instead of clobbering it with null.
+    // Preserves ClientRouter's history.state — docs/web/soft-navigation.md.
     window.history.replaceState(window.history.state, '', url);
   }
 
@@ -105,7 +102,6 @@ export function SearchExperience() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
-      {/* Facets */}
       <aside className="flex flex-col gap-6 lg:order-last lg:border-l lg:border-border lg:pl-8">
         <div className="flex items-center gap-2 text-sm font-medium">
           <SlidersHorizontal className="size-4" />
@@ -131,7 +127,6 @@ export function SearchExperience() {
         />
       </aside>
 
-      {/* Search + results */}
       <div className="min-w-0">
         <form onSubmit={onSubmit} className="flex gap-2">
           <div className="relative flex-1">

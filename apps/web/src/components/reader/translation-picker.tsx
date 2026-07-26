@@ -1,6 +1,7 @@
 import { BookOpenText } from 'lucide-react';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { LANGUAGES } from '@cs-tipitaka/shared';
+import { useHydrated } from '@/lib/use-hydrated';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -11,10 +12,15 @@ import {
 } from '@/components/ui/select';
 
 export default function TranslationPicker() {
-  const showTranslation = useReaderPreferences((s) => s.showTranslation);
-  const language = useReaderPreferences((s) => s.language);
+  const hydrated = useHydrated();
+  const showTranslationPref = useReaderPreferences((s) => s.showTranslation);
+  const languagePref = useReaderPreferences((s) => s.language);
   const toggleTranslation = useReaderPreferences((s) => s.toggleTranslation);
   const setLanguage = useReaderPreferences((s) => s.setLanguage);
+
+  // Gated on hydration to avoid a mismatch — docs/web/hydration-and-persistence.md.
+  const showTranslation = hydrated ? showTranslationPref : false;
+  const language = hydrated ? languagePref : 'en';
 
   return (
     <div className="flex items-center gap-2">
@@ -23,6 +29,7 @@ export default function TranslationPicker() {
         size="sm"
         onClick={toggleTranslation}
         aria-pressed={showTranslation}
+        aria-label="Toggle translation"
         className="gap-1.5"
       >
         <BookOpenText className="size-4" />

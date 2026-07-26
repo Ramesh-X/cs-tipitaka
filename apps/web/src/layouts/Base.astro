@@ -3,6 +3,8 @@ import '@/styles/global.css';
 import { ClientRouter, fade } from 'astro:transitions';
 import { themeInitScript } from '@/lib/theme';
 import { transliterateInitScript } from '@/lib/transliterate-init';
+import { layoutInitScript } from '@/lib/layout-init';
+import { typographyInitScript } from '@/lib/typography-init';
 import { loadNodes } from '@/lib/corpus/data';
 import BaseHead from '@/components/base-head.astro';
 import SiteHeader from '@/components/site-header.astro';
@@ -48,6 +50,8 @@ const nodes = await loadNodes(db);
     <meta name="generator" content={Astro.generator} />
     <script is:inline set:html={themeInitScript} />
     <script is:inline set:html={transliterateInitScript} />
+    <script is:inline set:html={layoutInitScript} />
+    <script is:inline set:html={typographyInitScript} />
     <ClientRouter />
     <BaseHead
       title={title}
@@ -76,9 +80,7 @@ const nodes = await loadNodes(db);
       const NAV_SCROLL = '[data-nav-scroll]';
       let navScrollTop = 0;
 
-      // Applies persisted prefs to the INCOMING document while it's still
-      // off-screen, so soft navigation never paints default/Roman content.
-      // Keep in lockstep with src/components/reader/transliterator.tsx.
+      // Kept in lockstep with transliterator.tsx — docs/web/soft-navigation.md.
       function applyPrefs(doc: Document): void {
         const { script, fontSize, lineHeight, fontFamily } =
           useReaderPreferences.getState();

@@ -140,13 +140,11 @@
   }
 }
 
-/*
- * Hide Pāli spans until the Transliterator island rewrites them.
- * Prevents a flash of Roman text for users with a non-Roman script saved.
- * data-pending-script is set by an inline <head> script that reads
- * localStorage synchronously — crawlers never run it, so SEO always
- * sees canonical Roman/IAST text.
- */
+/* Pre-paint FOUC guards — docs/web/hydration-and-persistence.md */
 :root[data-pending-script] [data-pali] {
   visibility: hidden;
+}
+
+:root[data-reader-font='sans'] [data-reader-article] {
+  font-family: var(--font-sans);
 }

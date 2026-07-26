@@ -3,7 +3,7 @@ import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { transliterate } from '@/lib/corpus/reader';
 import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
 
-// Keep in lockstep with the applyPrefs script in src/layouts/Base.astro.
+// Kept in lockstep with Base.astro's applyPrefs — docs/web/soft-navigation.md.
 export default function Transliterator() {
   const script = useReaderPreferences((s) => s.script);
 
@@ -11,9 +11,6 @@ export default function Transliterator() {
     const spans = document.querySelectorAll<HTMLElement>('[data-pali]');
     spans.forEach((span) => {
       if (!span.dataset.latn) {
-        // First pass: stash the canonical text, and — for spans with
-        // element children (glossary links) — the canonical HTML, before
-        // any rewrite destroys it.
         span.dataset.latn = span.textContent ?? '';
         if (span.children.length > 0) span.dataset.latnHtml = span.innerHTML;
       }
@@ -23,9 +20,7 @@ export default function Transliterator() {
         span.textContent = transliterate(span.dataset.latn, script);
       }
     });
-    // Reveal spans hidden by the inline transliterate-init script.
-    // Runs on every script change (including the initial load) so the
-    // attribute is always cleared even if the stored script is latn.
+    // Clears transliterate-init.ts's pre-paint stand-in — docs/web/hydration-and-persistence.md.
     document.documentElement.removeAttribute('data-pending-script');
   }, [script]);
 

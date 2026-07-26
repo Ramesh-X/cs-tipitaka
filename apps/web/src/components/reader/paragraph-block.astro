@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 interface Props {
   paragraph: Paragraph;
+  /** Rend class of the preceding paragraph, for spacing between them. */
   prevClass: RendClass | null;
 }
 
@@ -14,11 +15,9 @@ const { paragraph: p, prevClass } = Astro.props;
 
 const rc = classifyRend(p.rend);
 const isVerse = rc === 'verse';
-// Only body/verse text is linked to the glossary — matches legacy.
 const paliHtml =
   rc === 'body' || rc === 'verse' ? linkGlossaryTermsHtml(p.pali) : null;
 
-// Top gap for body/verse paragraphs
 function topGap(): string {
   if (isVerse) return prevClass === 'verse' ? 'mt-0' : 'mt-5';
   if (p.num) return 'mt-6';
@@ -207,13 +206,15 @@ function topGap(): string {
 
       await navigator.clipboard.writeText(textToCopy);
 
-      // 1.5s check-mark feedback
+      // Re-entry guarded — docs/web/ui-behavior-notes.md.
       const svg = btn.querySelector('svg');
-      if (svg) {
+      if (svg && !btn.dataset.copied) {
+        btn.dataset.copied = '1';
         const orig = svg.innerHTML;
         svg.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
         setTimeout(() => {
           svg.innerHTML = orig;
+          delete btn.dataset.copied;
         }, 1500);
       }
     });

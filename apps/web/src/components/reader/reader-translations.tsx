@@ -14,8 +14,7 @@ const UNAVAILABLE_TEXT = '[Translation unavailable]';
 
 type TranslationMap = Map<number, string>;
 
-// Module-scoped so translations survive island re-mounts across
-// ClientRouter soft navigations instead of refetching every nav.
+// Module-scoped cache — survives island remounts; docs/web/soft-navigation.md.
 const translationCache = new Map<string, TranslationMap>();
 
 interface TranslationResponse {
@@ -155,7 +154,6 @@ export default function ReaderTranslations({ slug }: Props) {
         ) {
           return;
         }
-        // Fail silently — translations are opt-in
         removeTranslations(article);
       });
 

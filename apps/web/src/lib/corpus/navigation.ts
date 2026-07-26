@@ -22,7 +22,7 @@ export async function getBreadcrumbs(
   return crumbs.reverse();
 }
 
-// Memoized once per build: the ordered document list and its slug→index map
+// Build-time singleton — docs/web/corpus-data-layer.md.
 let documentEntries: NodeWithMeta[] | null = null;
 let documentIndexByPath: Map<string, number> | null = null;
 

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useHydrated } from '@/lib/use-hydrated';
 import {
   useReaderPreferences,
+  TYPOGRAPHY_DEFAULTS,
   type FontFamily,
 } from '@/lib/stores/reader-preferences';
 import { cn } from '@/lib/utils';
@@ -30,6 +31,15 @@ export default function TypographyControls() {
   const setFontFamily = useReaderPreferences((s) => s.setFontFamily);
   const reset = useReaderPreferences((s) => s.reset);
 
+  // Gated on hydration to avoid a mismatch — docs/web/hydration-and-persistence.md.
+  const displayFontSize = hydrated ? fontSize : TYPOGRAPHY_DEFAULTS.fontSize;
+  const displayLineHeight = hydrated
+    ? lineHeight
+    : TYPOGRAPHY_DEFAULTS.lineHeight;
+  const displayFontFamily = hydrated
+    ? fontFamily
+    : TYPOGRAPHY_DEFAULTS.fontFamily;
+
   useEffect(() => {
     if (!hydrated) return;
     const article = document.querySelector(
@@ -45,6 +55,11 @@ export default function TypographyControls() {
       article.classList.add('font-sans');
       article.classList.remove('font-reading');
     }
+    // Clears typography-init.ts's pre-paint stand-in — docs/web/hydration-and-persistence.md.
+    const root = document.documentElement;
+    root.style.removeProperty('--reader-font-size');
+    root.style.removeProperty('--reader-line-height');
+    root.removeAttribute('data-reader-font');
   }, [hydrated, fontSize, lineHeight, fontFamily]);
 
   return (
@@ -54,6 +69,7 @@ export default function TypographyControls() {
           buttonVariants({ variant: 'ghost', size: 'sm' }),
           'gap-1.5 text-muted-foreground hover:text-foreground',
         )}
+        aria-label="Display settings"
       >
         <Type className="size-4" />
         <span className="hidden sm:inline">Display</span>
@@ -65,13 +81,13 @@ export default function TypographyControls() {
               <span className="text-xs font-medium text-muted-foreground">
                 Font size
               </span>
-              <span className="text-xs tabular-nums">{fontSize}px</span>
+              <span className="text-xs tabular-nums">{displayFontSize}px</span>
             </div>
             <Slider
               min={14}
               max={28}
               step={1}
-              value={fontSize}
+              value={displayFontSize}
               onValueChange={(v) => setFontSize(toNum(v))}
             />
           </div>
@@ -81,14 +97,14 @@ export default function TypographyControls() {
                 Line height
               </span>
               <span className="text-xs tabular-nums">
-                {lineHeight.toFixed(1)}
+                {displayLineHeight.toFixed(1)}
               </span>
             </div>
             <Slider
               min={0.9}
               max={2.4}
               step={0.1}
-              value={lineHeight}
+              value={displayLineHeight}
               onValueChange={(v) => setLineHeight(toNum(v))}
             />
           </div>
@@ -98,7 +114,7 @@ export default function TypographyControls() {
               Font
             </span>
             <ToggleGroup
-              value={[fontFamily]}
+              value={[displayFontFamily]}
               onValueChange={(vals: string[]) => {
                 const next = vals[vals.length - 1] as FontFamily | undefined;
                 if (next) setFontFamily(next);

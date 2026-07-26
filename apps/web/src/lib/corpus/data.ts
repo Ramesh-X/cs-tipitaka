@@ -3,6 +3,7 @@ import type { CorpusDB } from '@cs-tipitaka/shared';
 import type { Paragraph } from '@cs-tipitaka/corpus';
 import type { NodeWithMeta } from './constants.ts';
 
+// Build-time singleton — docs/web/corpus-data-layer.md.
 let nodesCache: NodeWithMeta[] | null = null;
 export async function loadNodes(db: CorpusDB): Promise<NodeWithMeta[]> {
   if (nodesCache) return nodesCache;
@@ -21,6 +22,7 @@ export async function loadNodes(db: CorpusDB): Promise<NodeWithMeta[]> {
 }
 
 let allNodesByParent: Map<string | null, NodeWithMeta[]> | null = null;
+/** Root nodes are keyed under `null`. */
 export async function groupAllNodesByParent(
   db: CorpusDB,
 ): Promise<Map<string | null, NodeWithMeta[]>> {
@@ -41,6 +43,7 @@ export async function groupAllNodesByParent(
   return allNodesByParent;
 }
 
+// Build-time singleton — docs/web/corpus-data-layer.md.
 const documentCache = new Map<string, Paragraph[]>();
 export async function loadDocument(
   db: CorpusDB,

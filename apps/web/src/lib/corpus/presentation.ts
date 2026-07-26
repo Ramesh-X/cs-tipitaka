@@ -33,6 +33,7 @@ async function countDocuments(
   return counts.reduce((total, count) => total + count, 0);
 }
 
+/** e.g. "3 sections · 12 texts", or "Reading page" for a document. */
 export async function childSummary(
   db: CorpusDB,
   node: NodeWithMeta,

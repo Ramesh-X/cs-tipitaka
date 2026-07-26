@@ -2,6 +2,7 @@ import type { CorpusDB } from '@cs-tipitaka/shared';
 import type { NodeWithMeta } from './constants.ts';
 import { groupAllNodesByParent, loadNodes } from './data.ts';
 
+/** Null if `slug` isn't in the corpus. */
 export async function findNode(
   db: CorpusDB,
   slug: string,
@@ -16,6 +17,7 @@ export async function getAllPaths(db: CorpusDB): Promise<string[]> {
   return nodes.map((node) => node.slug);
 }
 
+/** Direct children only, sorted by position. */
 export async function getChildren(
   db: CorpusDB,
   node: NodeWithMeta,
@@ -26,6 +28,7 @@ export async function getChildren(
     .sort((a, b) => a.position - b.position);
 }
 
+/** Includes `node` itself, sorted by position. */
 export async function getSiblingsAndSelf(
   db: CorpusDB,
   node: NodeWithMeta,
@@ -36,6 +39,7 @@ export async function getSiblingsAndSelf(
     .sort((a, b) => a.position - b.position);
 }
 
+/** Top-level piṭaka nodes, sorted by position. */
 export async function getRootNodes(db: CorpusDB): Promise<NodeWithMeta[]> {
   const nodes = await loadNodes(db);
   return nodes
@@ -43,6 +47,7 @@ export async function getRootNodes(db: CorpusDB): Promise<NodeWithMeta[]> {
     .sort((a, b) => a.position - b.position);
 }
 
+/** Full subtree, not just direct children — pre-order. */
 export async function getDescendants(
   db: CorpusDB,
   node: NodeWithMeta,
