@@ -193,8 +193,7 @@ type LeafEntry = {
 };
 
 type FileSections =
-  | { kind: 'flat'; body: ON }
-  | { kind: 'div'; leaves: LeafEntry[] };
+  { kind: 'flat'; body: ON } | { kind: 'div'; leaves: LeafEntry[] };
 
 /** Recursively collects leaf divs (no child `<div>`), unwrapping containers. */
 function collectLeafSections(div: ON): ON[] {

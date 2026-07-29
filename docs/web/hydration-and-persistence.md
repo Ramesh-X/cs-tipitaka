@@ -6,7 +6,7 @@
 
 Zustand's `persist` middleware reads `localStorage` synchronously when the store module is created, not inside an effect. So by an island's first client render, the store already holds the persisted value — while the SSR HTML was built with defaults. Rendering the persisted value directly produces a server/client mismatch.
 
-Fix: `lib/use-hydrated.ts`'s `useHydrated()` (via `useSyncExternalStore`) returns `false` on the server and on the first client render, `true` after. Every island that displays persisted state gates the *displayed* value on it:
+Fix: `lib/use-hydrated.ts`'s `useHydrated()` (via `useSyncExternalStore`) returns `false` on the server and on the first client render, `true` after. Every island that displays persisted state gates the _displayed_ value on it:
 
 ```ts
 const value = hydrated ? storeValue : DEFAULT;
@@ -16,18 +16,20 @@ Used in `ScriptSelector`, `TranslationPicker`, `TypographyControls`, `ThemeToggl
 
 ## Problem 2 — flash of default content
 
-Even once hydrated, an island only takes effect after its JS runs. Between first paint and hydration, a returning visitor would otherwise see the *default* state (Roman script, expanded panes, 19px serif) flash before snapping to their saved preference.
+Even once hydrated, an island only takes effect after its JS runs. Between first paint and hydration, a returning visitor would otherwise see the _default_ state (Roman script, expanded panes, 19px serif) flash before snapping to their saved preference.
 
 Fix: a family of inline `<script is:inline>` snippets in `Base.astro`'s `<head>`, one per preference, each reading its own `localStorage` key synchronously (before first paint) and setting an attribute/CSS variable directly on `<html>`. A paired CSS rule renders the final state immediately. The owning island clears the stand-in once it hydrates and takes over.
 
-| Preference | Script | localStorage key | `<html>` stand-in | Owning island |
-|---|---|---|---|---|
-| Theme | `lib/theme.ts` | `theme` | `.dark` class | `ThemeToggle` |
-| Script | `lib/transliterate-init.ts` | `tipitaka-reader-preferences` | `data-pending-script` | `Transliterator` |
-| Layout | `lib/layout-init.ts` | `tipitaka-layout-preferences` | `data-nav-pending` / `data-outline-pending` | `PaneCollapseToggle` |
-| Typography | `lib/typography-init.ts` | `tipitaka-reader-preferences` | `--reader-font-size` / `--reader-line-height` / `data-reader-font` | `TypographyControls` |
+| Preference | Script                      | localStorage key              | `<html>` stand-in                                                  | Owning island        |
+| ---------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------ | -------------------- |
+| Theme      | `lib/theme.ts`              | `theme`                       | `.dark` class                                                      | `ThemeToggle`        |
+| Script     | `lib/transliterate-init.ts` | `tipitaka-reader-preferences` | `data-pending-script`                                              | `Transliterator`     |
+| Layout     | `lib/layout-init.ts`        | `tipitaka-layout-preferences` | `data-nav-pending` / `data-outline-pending`                        | `PaneCollapseToggle` |
+| Typography | `lib/typography-init.ts`    | `tipitaka-reader-preferences` | `--reader-font-size` / `--reader-line-height` / `data-reader-font` | `TypographyControls` |
 
 The paired CSS lives in `styles/global.css` (script, typography) and `components/corpus/corpus-layout.astro` (layout). Adding a new persisted, visible preference means adding a fifth row here, not inventing a new mechanism.
+
+**Layout's stand-in has a third case: the island may never mount at all.** `PaneCollapseToggle` mounts with `client:media` (M7.6), not `client:load` — its pane is `hidden` below a breakpoint (`xl:`/`lg:` depending on `corpus-layout.astro`'s `variant`), so there's no reason to ship or hydrate its JS there. Below that breakpoint the effect that clears `data-nav-pending`/`data-outline-pending` never runs. This is harmless while the pane stays hidden — the pending-driven CSS only ever renders the same "collapsed" visual the real `data-nav-collapsed` attribute would — but `layouts/Base.astro` also clears both attributes on `astro:page-load` once the corresponding pane is actually visible (`getComputedStyle(...).display !== 'none'`), so a live viewport resize across the breakpoint can't leave a stale attribute sitting on `<html>` indefinitely.
 
 ## `transition:persist`
 

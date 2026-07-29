@@ -2,7 +2,7 @@
 
 Implementation-level rationale for non-obvious decisions in `apps/web` — the kind of thing that used to live as inline comments. The code is kept close to comment-free; when something looks removable, redundant, or wrong, check here before "cleaning it up."
 
-This folder explains *how the current implementation works and why*, for whoever is reading the code next.
+This folder explains _how the current implementation works and why_, for whoever is reading the code next.
 
 ## Index
 
@@ -12,3 +12,5 @@ This folder explains *how the current implementation works and why*, for whoever
 - [scripts-and-transliteration.md](./scripts-and-transliteration.md) — canonical Roman/IAST + client-side transliteration into 17 scripts, glossary linking, and the escaping rules around both.
 - [corpus-data-layer.md](./corpus-data-layer.md) — the `apps/web/src/lib/corpus` presentation layer over `packages/corpus`: shape, caching assumptions.
 - [ui-behavior-notes.md](./ui-behavior-notes.md) — smaller, self-contained decisions (reset semantics, copy-button feedback, carousel a11y, daily reflection, editorial content rules) that don't need their own page.
+- [content-parity.md](./content-parity.md) — measured divergences between `apps/legacy-next` and `apps/web`'s corpus output (the 379 reshaped URLs, 4 paragraph-count deltas, 26 source-data anomalies) and the `scripts/parity/` harness that guards them.
+- [qa-baseline.md](./qa-baseline.md) — Lighthouse/axe numbers, what they found (and what got fixed), and what this environment couldn't verify live (keyboard walkthrough, `wrangler dev`).

@@ -6,6 +6,10 @@
   "compatibility_date": "2025-08-03",
   "assets": {
     "directory": "./dist",
+    // Enforces Decision E (no trailing slash) at the edge — supersedes the
+    // Cloudflare redirect rule originally planned for M8.5.
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
   },
   "observability": {
     "logs": { "enabled": true },
