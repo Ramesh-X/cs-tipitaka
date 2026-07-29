@@ -1,26 +1,10 @@
-# Content-hashed build output — safe to cache forever.
-/_astro/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Icons, manifest, OG image — not content-hashed, but change rarely.
-/favicon.ico
-  Cache-Control: public, max-age=604800
-/favicon.svg
-  Cache-Control: public, max-age=604800
-/apple-touch-icon.png
-  Cache-Control: public, max-age=604800
-/icon.svg
-  Cache-Control: public, max-age=604800
-/icon-192.png
-  Cache-Control: public, max-age=604800
-/icon-512.png
-  Cache-Control: public, max-age=604800
-/og-image.png
-  Cache-Control: public, max-age=604800
-/logo.png
-  Cache-Control: public, max-age=604800
-/manifest.webmanifest
-  Cache-Control: public, max-age=604800
+# Cloudflare accumulates headers from every matching block in file order
+# instead of letting the most specific one win (a bare comma-join of both
+# values, which is silently wrong for two conflicting max-age directives) —
+# the catch-all must come FIRST, and every more-specific block that overlaps
+# it must clear Cache-Control with "!" before setting its own (matching
+# Cloudflare's own broad-then-specific example).
+# https://developers.cloudflare.com/workers/static-assets/headers/
 
 # Everything else (HTML pages, sitemap, robots.txt, llms.txt) — no cache-busting
 # filename, so re-validate every time and let ETag/Last-Modified do the work.
@@ -29,3 +13,37 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+# Content-hashed build output — safe to cache forever.
+/_astro/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+# Icons, manifest, OG image — not content-hashed, but change rarely.
+/favicon.ico
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/favicon.svg
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/apple-touch-icon.png
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/icon.svg
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/icon-192.png
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/icon-512.png
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/og-image.png
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/logo.png
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+/manifest.webmanifest
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
