@@ -20,7 +20,9 @@ jobs:
   deploy:
     name: Deploy (Cloudflare Workers)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # astro build reads a local D1; corpus:seed:local alone measures ~12m40s
+    # for 447,643 paragraphs on top of checkout/install/migrate/build/upload.
+    timeout-minutes: 60
     environment: production
     steps:
       - name: Checkout (with corpus submodule)
@@ -42,6 +44,31 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Get corpus submodule SHA
+        id: corpus-sha
+        run: echo "sha=$(git -C data/corpus rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # Keyed on the submodule content, not just its SHA reference, plus the
+      # migrations directory — either changing invalidates the cache.
+      # corpus:seed:local always DELETEs and reinserts every row (idempotent,
+      # not incremental), so a cache hit's only value is skipping the migrate
+      # + seed steps entirely below; restoring the cache and reseeding anyway
+      # would cost the same 12m40s as a miss.
+      - name: Cache local D1 state
+        id: cache-d1
+        uses: actions/cache@v4
+        with:
+          path: .wrangler/state
+          key: d1-state-${{ steps.corpus-sha.outputs.sha }}-${{ hashFiles('apps/pipelines/migrations/**') }}
+
+      - name: Migrate local D1
+        if: steps.cache-d1.outputs.cache-hit != 'true'
+        run: pnpm --filter @cs-tipitaka/pipelines run db:migrate:local
+
+      - name: Seed local D1 (corpus)
+        if: steps.cache-d1.outputs.cache-hit != 'true'
+        run: pnpm --filter @cs-tipitaka/pipelines run corpus:seed:local
 
       - name: Build & deploy to Cloudflare
         run: pnpm run deploy

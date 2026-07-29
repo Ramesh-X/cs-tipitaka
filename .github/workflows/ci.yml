@@ -51,8 +51,10 @@ jobs:
       - name: Typecheck (packages + apps that define it)
         run: pnpm -r run typecheck
 
-      - name: Build legacy app
-        run: pnpm run build
-
+      # apps/web is deliberately not built here: astro build needs a seeded
+      # local D1, and corpus:seed:local alone measures ~12m40s for 447,643
+      # paragraphs — on top of the steps above that risks this job's 20-minute
+      # budget. deploy.yml carries the seeded build instead, behind a cache
+      # keyed on the corpus submodule SHA.
       - name: Build API
         run: pnpm run build:api

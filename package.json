@@ -8,12 +8,10 @@
     "node": ">=20.9.0 <26"
   },
   "scripts": {
-    "dev": "pnpm run dev:legacy-next",
-    "dev:legacy-next": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run dev",
+    "dev": "pnpm run dev:web",
     "dev:web": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run dev",
     "dev:api": "pnpm --filter @cs-tipitaka/api --fail-if-no-match run dev",
-    "build": "pnpm run build:legacy-next",
-    "build:legacy-next": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run build",
+    "build": "pnpm run build:web",
     "build:web": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run build",
     "build:api": "pnpm --filter @cs-tipitaka/api --fail-if-no-match run build",
     "lint": "pnpm -r run lint",
@@ -22,8 +20,8 @@
     "format:root": "prettier --write --config ./.prettierrc --ignore-unknown \".prettierrc\" \"*.{cjs,css,html,js,json,jsonc,md,mjs,ts,yaml,yml}\"",
     "format:check": "prettier --check --config ./.prettierrc --ignore-unknown \".prettierrc\" \"*.{cjs,css,html,js,json,jsonc,md,mjs,ts,yaml,yml}\"",
     "fix-all": "pnpm -r run fix-all && pnpm run format:root",
-    "preview": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run preview",
-    "deploy": "pnpm --filter @cs-tipitaka/legacy-next --fail-if-no-match run deploy",
+    "preview": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run preview",
+    "deploy": "pnpm --filter @cs-tipitaka/web --fail-if-no-match run deploy",
     "file-length": "./file_length.sh"
   },
   "devDependencies": {
