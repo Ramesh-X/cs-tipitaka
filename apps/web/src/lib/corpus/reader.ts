@@ -1,7 +1,7 @@
 import { convert } from '@pnfo/pali-converter';
 import { CANONICAL_SCRIPT, SCRIPTS } from '@cs-tipitaka/shared';
 import type { Paragraph } from '@cs-tipitaka/corpus';
-import { classifyRend } from '@/components/reader/rend.ts';
+import { classifyRend } from './rend.ts';
 
 const TITLE_HEADING_RENDS = new Set(['chapter', 'title', 'subhead']);
 const HEADING_RENDS = new Set(['chapter', 'title', 'subhead']);

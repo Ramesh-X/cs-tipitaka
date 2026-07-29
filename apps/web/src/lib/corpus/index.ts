@@ -1,4 +1,5 @@
 export type { Paragraph } from '@cs-tipitaka/corpus';
+export { isDocument } from '@cs-tipitaka/shared';
 
 export type { Crumb, NodeWithMeta } from './constants.ts';
 export { childSummary, nodeTypeLabel } from './presentation.ts';
