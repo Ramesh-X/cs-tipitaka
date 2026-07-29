@@ -154,8 +154,7 @@ type LeafEntry = {
   intro?: boolean;
 };
 type FileSections =
-  | { kind: 'flat'; body: ON }
-  | { kind: 'div'; leaves: LeafEntry[] };
+  { kind: 'flat'; body: ON } | { kind: 'div'; leaves: LeafEntry[] };
 
 function planSections(body: ON): FileSections {
   const bodyDivs = elemChildren(body, 'div');

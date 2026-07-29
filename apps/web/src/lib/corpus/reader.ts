@@ -1,6 +1,7 @@
 import { convert } from '@pnfo/pali-converter';
 import { CANONICAL_SCRIPT, SCRIPTS } from '@cs-tipitaka/shared';
 import type { Paragraph } from '@cs-tipitaka/corpus';
+import { classifyRend } from '@/components/reader/rend.ts';
 
 const TITLE_HEADING_RENDS = new Set(['chapter', 'title', 'subhead']);
 const HEADING_RENDS = new Set(['chapter', 'title', 'subhead']);
@@ -103,4 +104,35 @@ export function deriveReaderSections(
     .filter((p) => HEADING_RENDS.has(p.rend ?? ''))
     .map((p) => ({ id: `para-${p.position}`, label: p.pali }));
   return { paragraphs: kept, sections };
+}
+
+const NATURAL_HEADING_LEVEL: Partial<Record<string, number>> = {
+  chapter: 2,
+  subhead: 3,
+  subsubhead: 4,
+};
+
+/**
+ * `classifyRend` maps chapter/subhead/subsubhead to a fixed h2/h3/h4 by rend
+ * alone, so a document whose first heading is a subsubhead would jump
+ * straight from the page's own <h1> to an <h4> — axe's heading-order rule.
+ * This walks the document's actual heading sequence and clamps each one to
+ * at most one level deeper than the previous heading (never prevents
+ * jumping back UP to a shallower level, only skipping DOWN past one level).
+ * Call on the same paragraph array that gets rendered (post-
+ * deriveReaderSections), keyed by paragraph position.
+ */
+export function computeHeadingLevels(
+  paragraphs: Paragraph[],
+): Map<number, number> {
+  const levels = new Map<number, number>();
+  let previous = 1; // the page's own <h1>, owned by [...slug].astro
+  for (const p of paragraphs) {
+    const natural = NATURAL_HEADING_LEVEL[classifyRend(p.rend)];
+    if (natural === undefined) continue;
+    const assigned = Math.min(natural, previous + 1);
+    levels.set(p.position, assigned);
+    previous = assigned;
+  }
+  return levels;
 }

@@ -61,10 +61,16 @@ const nodes = await loadNodes(db);
     />
   </head>
   <body class="flex min-h-full flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+    >
+      Skip to content
+    </a>
     <ScriptAutoDetect client:idle />
     <Transliterator client:load />
     <SiteHeader />
-    <main class="flex-1">
+    <main id="main" tabindex="-1" class="flex-1 focus:outline-none">
       <slot />
     </main>
     <SiteFooter nodes={nodes} />
@@ -75,7 +81,7 @@ const nodes = await loadNodes(db);
       import { useLayoutPreferences } from '@/lib/stores/layout-preferences';
       import { transliterate } from '@/lib/corpus/reader';
       import { applyStoredTheme } from '@/lib/theme';
-      import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
+      import { CANONICAL_SCRIPT, SCRIPT_TO_BCP47 } from '@cs-tipitaka/shared';
 
       const NAV_SCROLL = '[data-nav-scroll]';
       let navScrollTop = 0;
@@ -97,6 +103,7 @@ const nodes = await loadNodes(db);
 
         const article = doc.querySelector<HTMLElement>('[data-reader-article]');
         if (article) {
+          article.lang = SCRIPT_TO_BCP47[script] ?? 'pi-Latn';
           article.style.setProperty('--reader-font-size', `${fontSize}px`);
           article.style.setProperty('--reader-line-height', String(lineHeight));
           article.classList.toggle('font-reading', fontFamily === 'serif');
@@ -125,10 +132,35 @@ const nodes = await loadNodes(db);
         applyStoredTheme();
         const el = document.querySelector<HTMLElement>(NAV_SCROLL);
         if (el) el.scrollTop = navScrollTop;
+        // ClientRouter leaves focus on the clicked link, which the swap just
+        // removed — move it to the landmark so keyboard/AT users land
+        // somewhere sane, matching a full navigation's default behavior.
+        document.getElementById('main')?.focus();
+      }
+
+      // The pane-collapse islands mount with client:media (M7.6) — below
+      // their breakpoint they never hydrate, so their effect never clears
+      // the pre-paint data-*-pending attribute. Harmless while the pane
+      // stays hidden (the pending CSS only ever matches the "collapsed"
+      // visual, same as the real state would), but clear it once the pane
+      // is actually visible so a live viewport resize doesn't leave a
+      // stale attribute sitting on <html> indefinitely.
+      function clearStalePanePending(): void {
+        const nav = document.querySelector<HTMLElement>('[data-pane="nav"]');
+        if (nav && getComputedStyle(nav).display !== 'none') {
+          document.documentElement.removeAttribute('data-nav-pending');
+        }
+        const outline = document.querySelector<HTMLElement>(
+          '[data-pane="outline"]',
+        );
+        if (outline && getComputedStyle(outline).display !== 'none') {
+          document.documentElement.removeAttribute('data-outline-pending');
+        }
       }
 
       document.addEventListener('astro:before-swap', onBeforeSwap);
       document.addEventListener('astro:after-swap', onAfterSwap);
+      document.addEventListener('astro:page-load', clearStalePanePending);
     </script>
   </body>
 </html>

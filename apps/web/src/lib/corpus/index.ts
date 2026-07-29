@@ -1,7 +1,7 @@
 export type { Paragraph } from '@cs-tipitaka/corpus';
 
 export type { Crumb, NodeWithMeta } from './constants.ts';
-export { isDocument, childSummary, nodeTypeLabel } from './presentation.ts';
+export { childSummary, nodeTypeLabel } from './presentation.ts';
 
 export { getBreadcrumbs, getAdjacentDocuments } from './navigation.ts';
 

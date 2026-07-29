@@ -16,8 +16,10 @@
 - All apps and packages must have `lint`, `lint:fix`, `format`, and `fix-all` scripts in their `package.json`. If they don't, add them.
 - Always use `pnpm run fix-all` followed by `pnpm run build` after editing files.
 - Always use `shadcn` and `tailwindcss` for UI components and styling. Don't use custom CSS or any other UI libraries.
+- When changing files under `apps/web/src`, import other `src/` modules via the `@/` alias (defined in `apps/web/components.json` and mapped in `apps/web/tsconfig.json`), never with parent-crossing relative paths (`../`). Same-directory/child relative imports (`./foo.ts`) are fine. This doesn't apply to `apps/web/scripts/`: those run under plain Node (`node --experimental-strip-types`), not Astro/Vite, so `@/` doesn't resolve there — they must use real package imports or relative paths.
 - Always use documentation from latest package versions (use `context7` and `brave-search` tools).
 - Use feature-based packaging.
+- No duplicate functions, classes, or files anywhere in the project. Before writing new logic, search the codebase for an existing implementation and reuse or extend it. When similar-looking code already exists in more than one place, abstract the common part into its own file instead of adding another copy — cross-app logic (used by more than one of `apps/web`/`apps/api`) goes in `packages/shared`; corpus schemas, types, and DB-backed logic go in `packages/corpus` per the ownership rule above.
 - Do not ignore any kind of deprecation warnings. Always address them to solve them.
 - Do not ignore any kind of linting/formatting warnings. Always address them to solve them.
 - Always search internet for solutions for any issues encountered (like deprecation warnings, linting/formatting warnings, errors, etc.). Don't rely on your knowledge. If your knowledge was accurate, you wouldn't have encountered the issue in the first place.

@@ -51,7 +51,7 @@ function FacetGroup({
 }) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-medium">{title}</h3>
+      <h2 className="mb-2 text-sm font-medium">{title}</h2>
       <ToggleGroup
         multiple
         value={value}
@@ -102,7 +102,10 @@ export function SearchExperience() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
-      <aside className="flex flex-col gap-6 lg:order-last lg:border-l lg:border-border lg:pl-8">
+      <aside
+        aria-label="Filters"
+        className="flex flex-col gap-6 lg:order-last lg:border-l lg:border-border lg:pl-8"
+      >
         <div className="flex items-center gap-2 text-sm font-medium">
           <SlidersHorizontal className="size-4" />
           Filters
@@ -167,43 +170,48 @@ export function SearchExperience() {
 
         <Separator className="my-6" />
 
-        <div className="rounded-lg border border-dashed border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
+        <div
+          role="status"
+          className="rounded-lg border border-dashed border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground"
+        >
           Search is not wired up yet — the results below are placeholders
           illustrating citation-grounded results.
         </div>
 
-        {hasQuery && (
-          <p className="mt-6 text-sm text-muted-foreground">
-            Showing sample results for{' '}
-            <span className="font-medium text-foreground">“{submitted}”</span>
-          </p>
-        )}
+        <div role="region" aria-live="polite" aria-label="Search results">
+          {hasQuery && (
+            <p className="mt-6 text-sm text-muted-foreground">
+              Showing sample results for{' '}
+              <span className="font-medium text-foreground">“{submitted}”</span>
+            </p>
+          )}
 
-        <ul className="mt-4 flex flex-col gap-3">
-          {SAMPLE_RESULTS.map((r) => (
-            <li key={r.path}>
-              <a
-                href={r.path}
-                className="group block rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 hover:bg-muted/40"
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <span className="font-medium group-hover:underline">
-                    {r.title}
-                  </span>
-                  <Badge variant="muted" className="font-mono">
-                    {r.pts}
-                  </Badge>
-                </div>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  {r.crumb}
-                </p>
-                <p className={cn('mt-2 text-sm text-muted-foreground')}>
-                  {r.snippet}
-                </p>
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="mt-4 flex flex-col gap-3">
+            {SAMPLE_RESULTS.map((r) => (
+              <li key={r.path}>
+                <a
+                  href={r.path}
+                  className="group block rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 hover:bg-muted/40"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-medium group-hover:underline">
+                      {r.title}
+                    </span>
+                    <Badge variant="muted" className="font-mono">
+                      {r.pts}
+                    </Badge>
+                  </div>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {r.crumb}
+                  </p>
+                  <p className={cn('mt-2 text-sm text-muted-foreground')}>
+                    {r.snippet}
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

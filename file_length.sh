@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # File extensions to scan
-extensions=("ts" "tsx")
+extensions=("ts" "tsx" "astro")
 # Maximum allowed file length limits
 error_lines=400
 warn_lines=330
@@ -31,6 +31,11 @@ filter_wc() {
         }
         if (warns != "") {
             printf "[WARN] Files with between %d and %d lines:\n%s\n", wrn, err, warns
+        }
+        # Fail the build when any file crosses the hard limit — this check is
+        # meaningless as a CI gate if it always exits 0.
+        if (errors != "") {
+            exit 1
         }
     }'
 }

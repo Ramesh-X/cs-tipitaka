@@ -30,6 +30,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
   >
     <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
       <span
+        aria-hidden="true"
         class="grid size-7 place-items-center rounded-md bg-primary text-sm text-primary-foreground"
       >
         ☸
@@ -37,11 +38,12 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
       <span>Tipiṭaka</span>
     </a>
 
-    <nav class="ml-4 hidden items-center gap-1 md:flex">
+    <nav aria-label="Main" class="ml-4 hidden items-center gap-1 md:flex">
       {
         NAV.map((item) => (
           <a
             href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             class={cn(
               ghostSmClass,
               isActive(item.href) ? 'bg-muted text-foreground' : '',
@@ -122,6 +124,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
 
   <div id="mobile-menu" class="hidden border-t border-border md:hidden">
     <nav
+      aria-label="Mobile"
       class="mx-auto flex w-full max-w-[1800px] flex-col gap-2 px-4 py-3 sm:px-6 lg:px-8"
     >
       <span
@@ -133,6 +136,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
         NAV.map((item) => (
           <a
             href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             class="rounded-md px-2 py-1.5 text-sm hover:bg-muted"
           >
             {item.label}
@@ -161,6 +165,7 @@ const outlineSmClass = buttonVariants({ variant: 'outline', size: 'sm' });
       toggle.setAttribute('aria-expanded', String(!isOpen));
       menuIcon?.classList.toggle('hidden', !isOpen);
       closeIcon?.classList.toggle('hidden', isOpen);
+      if (!isOpen) menu.querySelector('a')?.focus();
     });
 
     menu.querySelectorAll('a').forEach((link) => {

@@ -16,6 +16,14 @@ const gridCols = isDocument
     ? 'xl:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)_var(--outline-width,260px)]'
     : 'xl:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)]'
   : 'lg:grid-cols-[var(--nav-width,320px)_minmax(0,1fr)]';
+
+// Matches the aside's own Tailwind visibility breakpoint below — the toggle
+// island shouldn't hydrate (or ship JS) on a viewport where its pane is
+// `display:none` anyway. See M7.6 in docs/nextjs-to-astro-migration.md.
+const navMediaQuery = isDocument
+  ? '(min-width: 1280px)'
+  : '(min-width: 1024px)';
+const outlineMediaQuery = '(min-width: 1280px)';
 ---
 
 <div
@@ -27,8 +35,9 @@ const gridCols = isDocument
 >
   <aside
     data-pane="nav"
+    aria-label="Corpus navigation"
     class={cn(
-      'border-r border-border',
+      'border-r border-border print:hidden',
       isDocument ? 'hidden xl:block' : 'hidden lg:block',
     )}
   >
@@ -36,23 +45,27 @@ const gridCols = isDocument
       data-nav-scroll
       class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-auto p-4"
     >
-      <PaneCollapseToggle pane="nav" client:load />
-      <div data-pane-content="nav">
+      <PaneCollapseToggle pane="nav" client:media={navMediaQuery} />
+      <div id="pane-content-nav" data-pane-content="nav">
         <slot name="nav" />
       </div>
     </div>
   </aside>
 
-  <main class="min-w-0 px-4 py-6 sm:px-6 lg:px-8">
+  <div class="min-w-0 px-4 py-6 sm:px-6 lg:px-8">
     <slot />
-  </main>
+  </div>
 
   {
     hasOutline && isDocument && (
-      <aside data-pane="outline" class="hidden xl:block border-l border-border">
+      <aside
+        data-pane="outline"
+        aria-label="Document outline"
+        class="hidden xl:block border-l border-border print:hidden"
+      >
         <div class="sticky top-36 max-h-[calc(100vh-9rem)] overflow-y-auto p-4">
-          <PaneCollapseToggle pane="outline" client:load />
-          <div data-pane-content="outline">
+          <PaneCollapseToggle pane="outline" client:media={outlineMediaQuery} />
+          <div id="pane-content-outline" data-pane-content="outline">
             <slot name="outline" />
           </div>
         </div>

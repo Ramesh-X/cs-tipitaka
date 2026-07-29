@@ -77,6 +77,8 @@ const { sections } = Astro.props;
         a.classList.toggle('text-foreground', isActive);
         a.classList.toggle('border-transparent', !isActive);
         a.classList.toggle('text-muted-foreground', !isActive);
+        if (isActive) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
       });
     }
 

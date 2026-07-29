@@ -4,7 +4,7 @@ import type { CorpusDB } from '@cs-tipitaka/shared';
 import { createSqliteDb } from './adapters/sqlite.ts';
 
 function findRepoRoot(start = process.cwd()): string {
-  for (let dir = start; ; ) {
+  for (let dir = start; ;) {
     if (existsSync(join(dir, 'pnpm-workspace.yaml'))) return dir;
     const parent = dirname(dir);
     if (parent === dir)

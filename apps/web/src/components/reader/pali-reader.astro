@@ -1,6 +1,8 @@
 ---
 import ParagraphBlock from '@/components/reader/paragraph-block.astro';
+import ReaderCopyActions from '@/components/reader/reader-copy-actions.astro';
 import { classifyRend } from '@/components/reader/rend.ts';
+import { computeHeadingLevels } from '@/lib/corpus/reader.ts';
 import type { Paragraph } from '@cs-tipitaka/corpus';
 
 interface Props {
@@ -8,6 +10,7 @@ interface Props {
 }
 
 const { paragraphs } = Astro.props;
+const headingLevels = computeHeadingLevels(paragraphs);
 ---
 
 {
@@ -18,13 +21,16 @@ const { paragraphs } = Astro.props;
   ) : (
     <article
       data-reader-article
-      class="mx-auto flex flex-col max-w-5xl font-reading"
+      lang="pi-Latn"
+      class="mx-auto flex flex-col max-w-5xl font-reading print:max-w-none"
       style="font-size: var(--reader-font-size, 19px); line-height: var(--reader-line-height, 1.5);"
     >
+      <ReaderCopyActions />
       {paragraphs.map((p, i) => (
         <ParagraphBlock
           paragraph={p}
           prevClass={i > 0 ? classifyRend(paragraphs[i - 1].rend) : null}
+          headingLevel={headingLevels.get(p.position)}
         />
       ))}
     </article>

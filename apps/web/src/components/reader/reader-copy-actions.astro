@@ -1,0 +1,168 @@
+---
+
+---
+
+<div
+  id="reader-copy-actions"
+  class="absolute top-0 right-0 z-20 flex items-center gap-1 opacity-0 transition-opacity pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto"
+  data-visible="false"
+>
+  <button
+    type="button"
+    data-para-action="link"
+    class="rounded p-1 text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    aria-label="Copy link to this paragraph"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-3.5"
+      aria-hidden="true"
+    >
+      <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+      <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+      <line x1="8" x2="16" y1="12" y2="12"></line>
+    </svg>
+  </button>
+  <button
+    type="button"
+    data-para-action="text"
+    class="rounded p-1 text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    aria-label="Copy this paragraph's text"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-3.5"
+      aria-hidden="true"
+    >
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+    </svg>
+  </button>
+</div>
+<p id="reader-copy-status" role="status" aria-live="polite" class="sr-only"></p>
+
+<script>
+  // One shared toolbar for the whole article instead of one per paragraph —
+  // at ~450k paragraphs sitewide, a per-paragraph copy of this markup added
+  // roughly 450MB to the build. It is relocated into whichever paragraph is
+  // hovered/focused; see docs/web/ui-behavior-notes.md for the keyboard-access
+  // trade-off this implies.
+  type ArticleWithInit = HTMLElement & { _copyActionsInit?: boolean };
+
+  function closestParaWithBody(el: Element | null): HTMLElement | null {
+    const para = el?.closest('[id^="para-"]') as HTMLElement | null;
+    return para?.querySelector(':scope > [data-para-body]') ? para : null;
+  }
+
+  function init() {
+    const article = document.querySelector(
+      '[data-reader-article]',
+    ) as ArticleWithInit | null;
+    const toolbar = document.getElementById('reader-copy-actions');
+    const status = document.getElementById('reader-copy-status');
+    if (!article || !toolbar || !status || article._copyActionsInit) return;
+    article._copyActionsInit = true;
+
+    let currentPara: HTMLElement | null = null;
+
+    function attach(para: HTMLElement) {
+      if (currentPara === para) return;
+      currentPara = para;
+      para!.insertBefore(toolbar!, para!.firstChild);
+      toolbar!.dataset.visible = 'true';
+    }
+
+    function detach() {
+      currentPara = null;
+      toolbar!.dataset.visible = 'false';
+    }
+
+    article.addEventListener('pointerover', (e) => {
+      const para = closestParaWithBody(e.target as Element);
+      if (para) attach(para);
+    });
+
+    article.addEventListener('pointerout', (e) => {
+      const related = (e as PointerEvent).relatedTarget as Element | null;
+      if (toolbar!.contains(related)) return;
+      const toPara = closestParaWithBody(related);
+      if (toPara !== currentPara) detach();
+    });
+
+    article.addEventListener('focusin', (e) => {
+      const para = closestParaWithBody(e.target as Element);
+      if (para) attach(para);
+    });
+
+    article.addEventListener('focusout', (e) => {
+      const related = (e as FocusEvent).relatedTarget as Element | null;
+      if (toolbar!.contains(related)) return;
+      const toPara = closestParaWithBody(related);
+      if (toPara !== currentPara) detach();
+    });
+
+    function announce(message: string) {
+      status!.textContent = '';
+      requestAnimationFrame(() => {
+        status!.textContent = message;
+      });
+    }
+
+    toolbar.addEventListener('click', async (e) => {
+      const btn = (e.target as HTMLElement).closest(
+        '[data-para-action]',
+      ) as HTMLElement | null;
+      if (!btn || !currentPara) return;
+
+      const action = btn.dataset.paraAction;
+      const id = currentPara.id;
+      let textToCopy = '';
+      let message = '';
+
+      if (action === 'link') {
+        textToCopy = location.origin + location.pathname + '#' + id;
+        message = 'Link copied';
+      } else {
+        const paliEl = currentPara.querySelector(
+          '[data-pali]',
+        ) as HTMLElement | null;
+        textToCopy =
+          paliEl?.dataset.latn ??
+          paliEl?.textContent ??
+          currentPara.textContent ??
+          '';
+        message = 'Paragraph copied';
+      }
+
+      await navigator.clipboard.writeText(textToCopy);
+      announce(message);
+
+      // Re-entry guarded — docs/web/ui-behavior-notes.md.
+      const svg = btn.querySelector('svg');
+      if (svg && !btn.dataset.copied) {
+        btn.dataset.copied = '1';
+        const orig = svg.innerHTML;
+        svg.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+        setTimeout(() => {
+          svg.innerHTML = orig;
+          delete btn.dataset.copied;
+        }, 1500);
+      }
+    });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

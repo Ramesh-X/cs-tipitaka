@@ -3,8 +3,8 @@
  * editing entries, see docs/web/ui-behavior-notes.md.
  */
 
-import { DHAMMAPADA_REFLECTIONS } from './reflections-dhammapada';
-import { SUTTA_REFLECTIONS } from './reflections-suttas';
+import { DHAMMAPADA_REFLECTIONS } from './reflections-dhammapada.ts';
+import { SUTTA_REFLECTIONS } from './reflections-suttas.ts';
 
 export interface Reflection {
   /** Canonical Pāli (Roman/IAST); gāthā line breaks preserved with `\n`. */

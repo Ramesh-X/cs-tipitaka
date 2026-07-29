@@ -127,7 +127,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
   {tocJsonLd && <JsonLd data={tocJsonLd} />}
 
   <div
-    class="border-b border-border bg-background/80 px-4 py-3 sm:px-6 lg:px-8"
+    class="border-b border-border bg-background/80 px-4 py-3 sm:px-6 lg:px-8 print:hidden"
   >
     <Breadcrumbs crumbs={crumbs} />
   </div>
@@ -157,7 +157,7 @@ const ogType = isDocumentNode ? 'book' : 'website';
           </div>
 
           {sections.length > 0 && (
-            <details class="mb-4 rounded-lg border border-border xl:hidden">
+            <details class="mb-4 rounded-lg border border-border xl:hidden print:hidden">
               <summary class="flex cursor-pointer select-none list-none items-center gap-2 px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

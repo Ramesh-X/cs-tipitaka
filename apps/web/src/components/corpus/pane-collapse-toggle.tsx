@@ -42,6 +42,8 @@ export default function PaneCollapseToggle({ pane }: Props) {
   const label = visibleCollapsed
     ? `Expand ${pane === 'nav' ? 'navigation' : 'outline'} pane`
     : `Collapse ${pane === 'nav' ? 'navigation' : 'outline'} pane`;
+  const controlsId =
+    pane === 'nav' ? 'pane-content-nav' : 'pane-content-outline';
 
   return (
     <div
@@ -52,6 +54,8 @@ export default function PaneCollapseToggle({ pane }: Props) {
         size="icon"
         onClick={hydrated ? toggle : undefined}
         aria-label={label}
+        aria-expanded={!visibleCollapsed}
+        aria-controls={controlsId}
         title={label}
         className="size-7 text-muted-foreground hover:text-foreground"
       >

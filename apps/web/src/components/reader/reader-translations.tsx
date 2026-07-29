@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useReaderPreferences } from '@/lib/stores/reader-preferences';
 import { site } from '@/lib/site';
+import { LANGUAGES } from '@cs-tipitaka/shared';
 import type { Translation } from '@cs-tipitaka/corpus';
 
 interface Props {
@@ -9,8 +10,45 @@ interface Props {
 
 const CELL_ATTR = 'data-translation-cell';
 const ATTRIBUTION_ID = 'reader-translation-attribution';
+const ERROR_ID = 'reader-translation-error';
+const STATUS_ID = 'reader-translation-status';
 const MAX_WIDTH_ATTR = 'data-translation-removed-max-width';
 const UNAVAILABLE_TEXT = '[Translation unavailable]';
+
+function languageName(code: string): string {
+  return LANGUAGES.find((l) => l.code === code)?.name ?? code;
+}
+
+function announce(message: string): void {
+  let status = document.getElementById(STATUS_ID);
+  if (!status) {
+    status = document.createElement('div');
+    status.id = STATUS_ID;
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.className = 'sr-only';
+    document.body.appendChild(status);
+  }
+  const el = status;
+  el.textContent = '';
+  requestAnimationFrame(() => {
+    el.textContent = message;
+  });
+}
+
+function showError(article: HTMLElement, language: string): void {
+  let error = article.querySelector<HTMLElement>(`#${ERROR_ID}`);
+  if (!error) {
+    error = document.createElement('p');
+    error.id = ERROR_ID;
+    error.setAttribute('data-nosnippet', '');
+    error.className =
+      'mt-4 rounded-md border border-dashed border-border bg-muted/30 px-4 py-3 text-center text-sm text-muted-foreground';
+    article.appendChild(error);
+  }
+  error.textContent = `${languageName(language)} translation unavailable right now — showing Pāli only.`;
+  announce(error.textContent);
+}
 
 type TranslationMap = Map<number, string>;
 
@@ -63,12 +101,15 @@ function injectTranslations(
     attribution.id = ATTRIBUTION_ID;
     attribution.setAttribute('data-nosnippet', '');
     attribution.className =
-      'mt-8 text-center text-xs italic text-muted-foreground/70';
+      'mt-8 text-center text-xs italic text-muted-foreground';
     article.appendChild(attribution);
   }
   if (attribution) {
     attribution.textContent = `AI translation rendered in browser — not part of indexed content.`;
   }
+
+  article.querySelector(`#${ERROR_ID}`)?.remove();
+  announce(`${languageName(language)} translation loaded.`);
 }
 
 function removeTranslations(article = getArticle()): void {
@@ -89,6 +130,7 @@ function removeTranslations(article = getArticle()): void {
   article.removeAttribute(MAX_WIDTH_ATTR);
 
   article.querySelector(`#${ATTRIBUTION_ID}`)?.remove();
+  article.querySelector(`#${ERROR_ID}`)?.remove();
 }
 
 function buildPosMap(translations: Translation[]): TranslationMap {
@@ -155,6 +197,7 @@ export default function ReaderTranslations({ slug }: Props) {
           return;
         }
         removeTranslations(article);
+        showError(article, language);
       });
 
     return () => {

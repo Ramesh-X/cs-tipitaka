@@ -1,11 +1,7 @@
 import type { NodeType } from '@cs-tipitaka/corpus';
-import type { CorpusDB } from '@cs-tipitaka/shared';
+import { type CorpusDB, isDocument } from '@cs-tipitaka/shared';
 import type { NodeWithMeta } from './constants.ts';
 import { getChildren } from './nodes.ts';
-
-export function isDocument(node: NodeWithMeta): boolean {
-  return node.type === 'document';
-}
 
 export function nodeTypeLabel(type: NodeType): string {
   switch (type) {

@@ -1,7 +1,6 @@
-import { asHref, type CorpusDB } from '@cs-tipitaka/shared';
+import { asHref, isDocument, type CorpusDB } from '@cs-tipitaka/shared';
 import { type NodeWithMeta, type Crumb } from './constants.ts';
 import { findNode, getDescendants, getRootNodes } from './nodes.ts';
-import { isDocument } from './presentation.ts';
 
 export async function getBreadcrumbs(
   db: CorpusDB,
