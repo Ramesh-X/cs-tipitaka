@@ -3,9 +3,6 @@
 Pāli Canon (Tipiṭaka) web application — a pnpm monorepo of Cloudflare apps and
 shared packages backed by a Cloudflare D1 database (`corpus-db`).
 
-> `apps/legacy-next` is retained as the legacy app while the Astro web app
-> (`apps/web`) continues development.
-
 ## Prerequisites
 
 ```bash

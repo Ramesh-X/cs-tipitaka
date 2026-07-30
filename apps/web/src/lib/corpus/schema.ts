@@ -2,10 +2,10 @@ import { site } from '@/lib/site';
 import { urlMerge } from '@cs-tipitaka/shared';
 
 export const WIKIDATA_VRI = 'https://www.wikidata.org/wiki/Q136657047';
-export const WIKIDATA_BUDDHAVACANA = 'https://www.wikidata.org/wiki/Q13018285';
-export const PALI_CANON_WIKIPEDIA = 'https://en.wikipedia.org/wiki/Pali_Canon';
+const WIKIDATA_BUDDHAVACANA = 'https://www.wikidata.org/wiki/Q13018285';
+const PALI_CANON_WIKIPEDIA = 'https://en.wikipedia.org/wiki/Pali_Canon';
 
-export function organizationNode() {
+function organizationNode() {
   return {
     '@type': 'Organization',
     '@id': urlMerge(site.url, '#organization'),
@@ -22,7 +22,7 @@ export function organizationNode() {
   };
 }
 
-export function developerNode() {
+function developerNode() {
   return {
     '@type': 'Organization',
     '@id': urlMerge(site.url, '#developer'),
@@ -31,7 +31,7 @@ export function developerNode() {
   };
 }
 
-export function webSiteNode() {
+function webSiteNode() {
   return {
     '@type': 'WebSite',
     '@id': urlMerge(site.url, '#website'),
@@ -53,7 +53,7 @@ export function webSiteNode() {
   };
 }
 
-export function webApplicationNode() {
+function webApplicationNode() {
   return {
     '@type': 'WebApplication',
     '@id': urlMerge(site.url, '#webapp'),

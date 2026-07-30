@@ -1,8 +1,8 @@
 # `@cs-tipitaka/web`
 
-Astro 7 static site — the target of the Next.js → Astro migration
-(`docs/nextjs-to-astro-migration.md`). Deploys as a Cloudflare Workers Static
-Assets site (`wrangler.jsonc`, no `main` entry, no adapter).
+Astro 7 static site serving `tipitakaonline.org`, migrated from Next.js in 2026
+(`docs/archive/nextjs-to-astro-migration.md`). Deploys as a Cloudflare Workers
+Static Assets site (`wrangler.jsonc`, no `main` entry, no adapter).
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ corpus through `@cs-tipitaka/corpus` at **build time**, via a local SQLite file
 5. **(Optional) Seed translations** — the `translations` table is empty by
    default; the reader degrades to "translation unavailable" until this is
    populated. See `apps/pipelines/src/translations/seed.ts` and
-   `docs/nextjs-to-astro-migration.md` §6.
+   `docs/archive/nextjs-to-astro-migration.md` §6.
 
 ## Commands
 
@@ -69,23 +69,22 @@ Or via the root aliases: `pnpm run dev:web`, `pnpm run build:web`.
 
 ## Parity & QA harness
 
-`scripts/parity/` audits the **built** `dist/` output — route coverage against
-a frozen legacy-site baseline, `<head>`/JSON-LD integrity, deep-link anchors,
-the Decision-C "canonical HTML stays translation-free" guarantee, sitemap
-correctness, and static accessibility structure. It never reads
-`apps/legacy-next` or the network at check time (only `capture-baseline.ts`
-does, and that has already been run — see `scripts/parity/baseline/`).
+`scripts/parity/` audits the **built** `dist/` output — `<head>`/JSON-LD
+integrity, deep-link anchors against a frozen pre-cutover paragraph-count
+baseline, the Decision-C "canonical HTML stays translation-free" guarantee,
+sitemap correctness, and static accessibility structure. It never reads the
+network — `scripts/parity/baseline/` is a one-time snapshot captured before
+the Next.js → Astro migration's cutover.
 
 ```sh
 pnpm --filter @cs-tipitaka/web run build   # produces dist/
 pnpm --filter @cs-tipitaka/web run parity  # checks dist/ against the baseline
 ```
 
-Known, accepted divergences from the legacy site are recorded in
-`scripts/parity/expected-exceptions.json` — see `docs/web/content-parity.md`
-for the rationale. See `docs/nextjs-to-astro-migration.md` Phase 7 and
-`docs/web/README.md` for the full QA picture, including the manual
-Lighthouse/axe/keyboard passes that the harness doesn't automate.
+Known, accepted divergences from that baseline are recorded in
+`scripts/parity/expected-exceptions.json` — see `docs/web/corpus-data-quirks.md`
+for the rationale. See `docs/web/README.md` for the full QA picture, including
+the manual Lighthouse/axe/keyboard passes that the harness doesn't automate.
 
 ## Environment variables
 

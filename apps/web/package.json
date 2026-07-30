@@ -18,7 +18,6 @@
     "format": "prettier --write . --ignore-path ../../.prettierignore",
     "fix-all": "pnpm run lint:fix && pnpm run format",
     "parity": "node --experimental-strip-types scripts/parity/check.ts",
-    "parity:baseline": "node --experimental-strip-types scripts/parity/capture-baseline.ts",
     "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {

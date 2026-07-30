@@ -1,13 +1,12 @@
 {
-  // Staging static-assets Worker for apps/web.
-  // Production route is attached at cutover (Phase 8), NOT now.
+  // Static-assets Worker for apps/web — serves tipitakaonline.org
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cs-tipitaka-web",
   "compatibility_date": "2025-08-03",
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
-    // Enforces Decision E (no trailing slash) at the edge — supersedes the
-    // Cloudflare redirect rule originally planned for M8.5.
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page",
   },
@@ -26,5 +25,5 @@
       "head_sampling_rate": 1,
     },
   },
-  // "routes": [{ "pattern": "tipitakaonline.org/*", "zone_name": "tipitakaonline.org" }]
+  "routes": [{ "pattern": "tipitakaonline.org", "custom_domain": true }],
 }

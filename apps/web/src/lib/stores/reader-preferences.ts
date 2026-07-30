@@ -4,7 +4,7 @@ import { CANONICAL_SCRIPT } from '@cs-tipitaka/shared';
 
 export type FontFamily = 'serif' | 'sans';
 /** 'default' = untouched; 'auto' = set by detection; 'user' = explicit, never auto-overridden. */
-export type ScriptSource = 'default' | 'auto' | 'user';
+type ScriptSource = 'default' | 'auto' | 'user';
 
 export interface ReaderPreferences {
   script: string;
@@ -31,7 +31,7 @@ export const TYPOGRAPHY_DEFAULTS = {
   fontFamily: 'serif' as FontFamily,
 };
 
-export const DISPLAY_DEFAULTS = {
+const DISPLAY_DEFAULTS = {
   ...TYPOGRAPHY_DEFAULTS,
   showTranslation: false,
   language: 'en',

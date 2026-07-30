@@ -2,9 +2,9 @@
 
 Measurements taken against `apps/web`'s production build (`pnpm run build` →
 `astro preview`) after the M7.1–M7.6 work landed. Static checks (`pnpm run
-parity`, see [content-parity.md](./content-parity.md)) run over all ~5,000
-pages on every invocation; the numbers below are from tools that need a real
-browser and were run against a representative sample.
+parity`) run over all ~5,000 pages on every invocation; the numbers below are
+from tools that need a real browser and were run against a representative
+sample.
 
 ## Lighthouse (desktop preset, `pnpm dlx lighthouse`)
 
@@ -80,8 +80,8 @@ audits (`focusable-controls`, `focus-traps`, `interactive-element-affordance`,
 `logical-tab-order`, `managed-focus`, `visual-order-follows-dom`) all passed
 on every page tested, which exercises much of the same ground via axe's
 static analysis, but is not a substitute for actually pressing Tab. Whoever
-runs M8.1's staging deploy should do this walkthrough for real before
-sign-off — see `docs/nextjs-to-astro-migration.md`.
+runs a staging deploy should do this walkthrough for real before sign-off —
+see `docs/archive/nextjs-to-astro-migration.md`.
 
 ## Edge configuration — verified via build output, not `wrangler dev`
 

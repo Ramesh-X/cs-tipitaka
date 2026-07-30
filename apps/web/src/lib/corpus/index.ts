@@ -1,4 +1,3 @@
-export type { Paragraph } from '@cs-tipitaka/corpus';
 export { isDocument } from '@cs-tipitaka/shared';
 
 export type { Crumb, NodeWithMeta } from './constants.ts';
@@ -10,10 +9,9 @@ export {
   findNode,
   getAllPaths,
   getChildren,
-  getDescendants,
   getRootNodes,
   getSiblingsAndSelf,
 } from './nodes.ts';
 
-export { deriveReaderSections, detectScript, transliterate } from './reader.ts';
+export { deriveReaderSections } from './reader.ts';
 export type { ReaderSection } from './reader.ts';

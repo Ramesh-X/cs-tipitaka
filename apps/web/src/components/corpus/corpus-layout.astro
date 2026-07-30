@@ -19,7 +19,7 @@ const gridCols = isDocument
 
 // Matches the aside's own Tailwind visibility breakpoint below — the toggle
 // island shouldn't hydrate (or ship JS) on a viewport where its pane is
-// `display:none` anyway. See M7.6 in docs/nextjs-to-astro-migration.md.
+// `display:none` anyway. See "Problem 2" in docs/web/hydration-and-persistence.md.
 const navMediaQuery = isDocument
   ? '(min-width: 1280px)'
   : '(min-width: 1024px)';

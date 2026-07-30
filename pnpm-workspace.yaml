@@ -8,5 +8,4 @@ allowBuilds:
   unrs-resolver: true
   workerd: true
 minimumReleaseAgeExclude:
-  - '@opennextjs/cloudflare@1.20.0'
   - astro@7.0.3

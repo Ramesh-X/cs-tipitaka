@@ -5,7 +5,7 @@ export interface SplitDocument {
   paragraphs: ParsedParagraph[];
 }
 
-export type TitleSubheadSplit =
+type TitleSubheadSplit =
   | { kind: 'document'; paragraphs: ParsedParagraph[]; reason?: string }
   | { kind: 'documents'; documents: SplitDocument[] };
 

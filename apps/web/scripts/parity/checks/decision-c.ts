@@ -9,8 +9,7 @@ const TRANSLATION_MARKERS = [
 
 // Fast combined test first (single native regex pass); only on a hit do we run the
 // per-script regexes below to name the culprit — avoids paying that cost on every page.
-// Exported so generate-exceptions.ts can detect the same thing it's excusing.
-export const NON_LATIN_RE = /[ऀ-ॿ඀-෿က-႟฀-๿]/;
+const NON_LATIN_RE = /[ऀ-ॿ඀-෿က-႟฀-๿]/;
 const NON_LATIN_SCRIPTS: [RegExp, string][] = [
   [/[ऀ-ॿ]/, 'Devanagari'],
   [/[඀-෿]/, 'Sinhala'],
@@ -25,7 +24,7 @@ const NON_LATIN_SCRIPTS: [RegExp, string][] = [
  * `knownSourceDataAnomalies` is the recorded, bounded set of pages whose
  * *source* text carries a handful of stray non-Latin combining/vowel-sign
  * codepoints (a pre-existing transcription artifact, not a build-time
- * transliteration leak) — see docs/web/content-parity.md. Anything outside
+ * transliteration leak) — see docs/web/corpus-data-quirks.md. Anything outside
  * that set still fails: this guard exists to catch a *future* leak.
  */
 export function checkDecisionC(

@@ -15,7 +15,7 @@ export function tagOf(node: ON): string {
   return '';
 }
 
-export function isText(node: ON): boolean {
+function isText(node: ON): boolean {
   return Object.prototype.hasOwnProperty.call(node, '#text');
 }
 
@@ -39,7 +39,7 @@ export function chapterCount(node: ON, tag: string): number {
     .length;
 }
 
-export function extractText(children: ON[]): string {
+function extractText(children: ON[]): string {
   let out = '';
   for (const child of children) {
     if (isText(child)) {
@@ -55,7 +55,7 @@ export function extractText(children: ON[]): string {
   return out.replace(/\s+/g, ' ').trim();
 }
 
-export function extractParanum(children: ON[]): string | undefined {
+function extractParanum(children: ON[]): string | undefined {
   for (const child of children) {
     if (tagOf(child) === 'hi' && attrOf(child, 'rend') === 'paranum') {
       const num = extractText(childrenOf(child));
@@ -65,7 +65,7 @@ export function extractParanum(children: ON[]): string | undefined {
   return undefined;
 }
 
-export function extractRefs(children: ON[]): { pts?: string; cst?: string } {
+function extractRefs(children: ON[]): { pts?: string; cst?: string } {
   const pts: string[] = [];
   const cst: string[] = [];
   const visit = (nodes: ON[]) => {

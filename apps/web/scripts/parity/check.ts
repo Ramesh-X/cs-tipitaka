@@ -1,7 +1,8 @@
 /**
- * Route/content/SEO/a11y parity checks over the BUILT apps/web/dist output.
- * Never reads apps/legacy-next or the network — that's capture-baseline.ts's
- * job, run once, before legacy is retired. See apps/web/README.md.
+ * Route/content/SEO/a11y parity checks over the BUILT apps/web/dist output,
+ * against a frozen pre-cutover baseline (scripts/parity/baseline/) captured
+ * during the Next.js → Astro migration. Never reads the network. See
+ * apps/web/README.md.
  *
  * Usage: pnpm --filter @cs-tipitaka/web run parity  (after `pnpm run build`)
  */
@@ -21,9 +22,8 @@ import {
 import { checkHead, checkJsonLd } from './checks/head.ts';
 import { checkDecisionC } from './checks/decision-c.ts';
 import { checkSize, newSizeStats, summarizeSize } from './checks/size.ts';
-import { checkUrlCoverage } from './checks/urls.ts';
 import { checkSitemap } from './checks/sitemap.ts';
-import { checkAnchors, type LegacyDocEntry } from './checks/anchors.ts';
+import { checkAnchors, type BaselineDocEntry } from './checks/anchors.ts';
 import { checkInternalLinks } from './checks/links.ts';
 import { checkA11yStatic } from './checks/a11y-static.ts';
 import type { ExpectedExceptions } from './lib/exceptions.ts';
@@ -38,11 +38,8 @@ const KNOWN_DUPLICATE_TITLE_GROUPS = 305;
 const BASELINE_DIR = join(WEB_ROOT, 'scripts', 'parity', 'baseline');
 
 function loadBaseline() {
-  const legacyUrls = readFileSync(join(BASELINE_DIR, 'legacy-urls.txt'), 'utf8')
-    .split('\n')
-    .filter(Boolean);
-  const legacyDocs: Record<string, LegacyDocEntry> = JSON.parse(
-    readFileSync(join(BASELINE_DIR, 'legacy-docs.json'), 'utf8'),
+  const baselineDocs: Record<string, BaselineDocEntry> = JSON.parse(
+    readFileSync(join(BASELINE_DIR, 'paragraph-counts.json'), 'utf8'),
   );
   const exceptions: ExpectedExceptions = JSON.parse(
     readFileSync(
@@ -50,7 +47,7 @@ function loadBaseline() {
       'utf8',
     ),
   );
-  return { legacyUrls, legacyDocs, exceptions };
+  return { baselineDocs, exceptions };
 }
 
 async function classifyCorpusPaths(): Promise<{
@@ -98,15 +95,13 @@ function checkDuplicateTitles(
 
 async function main(): Promise<void> {
   const report = new Report();
-  const { legacyUrls, legacyDocs, exceptions } = loadBaseline();
+  const { baselineDocs, exceptions } = loadBaseline();
   const { documentPaths, collectionPaths, titleBySlug } =
     await classifyCorpusPaths();
   const nonLatinSourceData = new Set(exceptions.nonLatinSourceData);
 
   const pages = listDistPages();
   const distUrlPaths = new Set(pages.map((p) => p.urlPath));
-
-  checkUrlCoverage(report, legacyUrls, distUrlPaths);
 
   const titlesByPage = new Map<string, string>();
   const sizeStats = newSizeStats();
@@ -126,7 +121,13 @@ async function main(): Promise<void> {
   checkDuplicateTitles(report, titlesByPage);
 
   checkSitemap(report, distUrlPaths);
-  await checkAnchors(report, getLocalDb(), legacyDocs, exceptions, titleBySlug);
+  await checkAnchors(
+    report,
+    getLocalDb(),
+    baselineDocs,
+    exceptions,
+    titleBySlug,
+  );
   checkInternalLinks(report, distUrlPaths);
 
   report.print();

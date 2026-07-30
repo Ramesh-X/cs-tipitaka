@@ -12,5 +12,5 @@ This folder explains _how the current implementation works and why_, for whoever
 - [scripts-and-transliteration.md](./scripts-and-transliteration.md) — canonical Roman/IAST + client-side transliteration into 17 scripts, glossary linking, and the escaping rules around both.
 - [corpus-data-layer.md](./corpus-data-layer.md) — the `apps/web/src/lib/corpus` presentation layer over `packages/corpus`: shape, caching assumptions.
 - [ui-behavior-notes.md](./ui-behavior-notes.md) — smaller, self-contained decisions (reset semantics, copy-button feedback, carousel a11y, daily reflection, editorial content rules) that don't need their own page.
-- [content-parity.md](./content-parity.md) — measured divergences between `apps/legacy-next` and `apps/web`'s corpus output (the 379 reshaped URLs, 4 paragraph-count deltas, 26 source-data anomalies) and the `scripts/parity/` harness that guards them.
+- [corpus-data-quirks.md](./corpus-data-quirks.md) — non-obvious corpus data properties (the 379 nodes that render as collections instead of documents, `deriveReaderSections`'s anchor-dropping behavior, 26 source-data anomalies) that `scripts/parity/` guards against regressing.
 - [qa-baseline.md](./qa-baseline.md) — Lighthouse/axe numbers, what they found (and what got fixed), and what this environment couldn't verify live (keyboard walkthrough, `wrangler dev`).

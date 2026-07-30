@@ -10,7 +10,7 @@ import type { Node, Paragraph, Translation } from '@cs-tipitaka/corpus';
 import type { SeedArgs } from './args.ts';
 import { warn } from './logger.ts';
 
-export function esc(s: string | null | undefined): string {
+function esc(s: string | null | undefined): string {
   if (s == null) return 'NULL';
   return `'${String(s).replace(/'/g, "''")}'`;
 }
@@ -47,7 +47,7 @@ export class SqlWriter {
   }
 }
 
-export function buildNodeInsert(
+function buildNodeInsert(
   data: unknown,
   conflict: SeedArgs['conflict'],
 ): { sql: string | null; error: string | null } {
@@ -65,7 +65,7 @@ export function buildNodeInsert(
   return { sql, error: null };
 }
 
-export function buildParagraphInsert(
+function buildParagraphInsert(
   data: unknown,
   conflict: SeedArgs['conflict'],
 ): { sql: string | null; error: string | null } {
@@ -83,7 +83,7 @@ export function buildParagraphInsert(
   return { sql, error: null };
 }
 
-export function buildTranslationInsert(
+function buildTranslationInsert(
   data: unknown,
   conflict: SeedArgs['conflict'],
 ): { sql: string | null; error: string | null } {

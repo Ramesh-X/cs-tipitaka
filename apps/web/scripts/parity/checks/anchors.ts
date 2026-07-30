@@ -6,7 +6,7 @@ import { DIST_DIR, readDistFile } from '../lib/dist-walk.ts';
 import { deriveReaderSections } from '../../../src/lib/corpus/reader.ts';
 import type { ExpectedExceptions } from '../lib/exceptions.ts';
 
-export interface LegacyDocEntry {
+export interface BaselineDocEntry {
   n: number;
   sha: string;
 }
@@ -16,41 +16,30 @@ const SAMPLE_SPREAD = 30;
 
 /**
  * Deep-link (#para-N) parity: queries D1 once for paragraph counts per
- * document (cheaper than scanning the whole dist tree) — the RAW row count,
- * for data parity against legacy — then confirms actual id="para-N"
- * presence on a stratified sample of built pages, run through the same
- * deriveReaderSections() the reader itself uses: it can drop the one
+ * document (cheaper than scanning the whole dist tree), then confirms actual
+ * id="para-N" presence on a stratified sample of built pages, run through the
+ * same deriveReaderSections() the reader itself uses: it can drop the one
  * paragraph that just repeats the document's own title, so the rendered id
- * set isn't always a naive 1..N (docs/web/content-parity.md).
+ * set isn't always a naive 1..N (docs/web/corpus-data-quirks.md).
  */
 export async function checkAnchors(
   report: Report,
   db: CorpusDB,
-  legacyDocs: Record<string, LegacyDocEntry>,
+  baselineDocs: Record<string, BaselineDocEntry>,
   exceptions: ExpectedExceptions,
   titleBySlug: Map<string, string>,
 ): Promise<void> {
-  const slugs = Object.keys(legacyDocs).filter(
+  const slugs = Object.keys(baselineDocs).filter(
     (s) => !(s in exceptions.collectionized),
   );
-  const results: { slug: string; legacyN: number; webN: number }[] = [];
+  const results: { slug: string; webN: number }[] = [];
 
   for (const slug of slugs) {
     const webN = (await getParagraphs(db, slug)).length;
-    const legacyN = legacyDocs[slug].n;
-    results.push({ slug, legacyN, webN });
-
-    if (slug in exceptions.countDelta) continue; // already recorded, with its reason
-    if (webN !== legacyN) {
-      report.fail(
-        'anchors',
-        `paragraph count mismatch: legacy=${legacyN} web=${webN}`,
-        '/' + slug,
-      );
-    }
+    results.push({ slug, webN });
   }
   report.log(
-    `[anchors] ${results.length} documents checked against D1 paragraph counts`,
+    `[anchors] ${results.length} documents' paragraph counts read from D1`,
   );
 
   await checkSampleIds(report, db, results, exceptions, titleBySlug);
@@ -59,7 +48,7 @@ export async function checkAnchors(
 async function checkSampleIds(
   report: Report,
   db: CorpusDB,
-  results: { slug: string; legacyN: number; webN: number }[],
+  results: { slug: string; webN: number }[],
   exceptions: ExpectedExceptions,
   titleBySlug: Map<string, string>,
 ): Promise<void> {

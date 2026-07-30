@@ -15,7 +15,6 @@ apps/*/out
 apps/*/dist
 apps/*/.open-next
 apps/*/.wrangler
-apps/legacy-next/lib/corpus/generated
 apps/web/scripts/parity/baseline
 apps/web/scripts/parity/expected-exceptions.json
 node_modules

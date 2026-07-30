@@ -7,7 +7,6 @@
 - The repo-root `wrangler.jsonc` is a shared, non-deployed config for supplementary D1 CLI work only. Helpers reference it with `--config ../../wrangler.jsonc`; don't give them their own Wrangler config. Deployed Workers (`apps/web`, `apps/api`) keep their own configs and must hold their own bindings — keep their `database_name`/`database_id` in sync with the root config.
 - `apps/pipelines` owns corpus source-file processing, XML parsing, D1 migrations, and seeding. It uses the shared root Wrangler config for D1 CLI work.
 - `packages/corpus` owns schemas, types, repositories, DB adapters, and DB-backed transformations for web/API consumers. It must not process source files or own Wrangler D1 CLI scripts.
-- `apps/legacy-next` is the legacy app. Do not add a Wrangler config there.
 - Use the packages already declared in the relevant workspace package. Read latest package documentation before making framework or dependency changes.
 - `docs/web/` documents non-obvious `apps/web` implementation decisions (hydration/FOUC, soft navigation, the corpus tree, transliteration, the corpus data layer). Read it before changing related code, and add to it — not to inline comments — when you make a similarly non-obvious choice.
 
@@ -15,6 +14,7 @@
 
 - All apps and packages must have `lint`, `lint:fix`, `format`, and `fix-all` scripts in their `package.json`. If they don't, add them.
 - Always use `pnpm run fix-all` followed by `pnpm run build` after editing files.
+- AI agents must never commit changes, under any circumstances — nor create, merge, fast-forward, delete, or push branches. Commit and branch management is strictly a human responsibility. An agent may stage or prepare changes and describe what it would commit, but must then ask the human to review and commit/push themselves.
 - Always use `shadcn` and `tailwindcss` for UI components and styling. Don't use custom CSS or any other UI libraries.
 - When changing files under `apps/web/src`, import other `src/` modules via the `@/` alias (defined in `apps/web/components.json` and mapped in `apps/web/tsconfig.json`), never with parent-crossing relative paths (`../`). Same-directory/child relative imports (`./foo.ts`) are fine. This doesn't apply to `apps/web/scripts/`: those run under plain Node (`node --experimental-strip-types`), not Astro/Vite, so `@/` doesn't resolve there — they must use real package imports or relative paths.
 - Always use documentation from latest package versions (use `context7` and `brave-search` tools).

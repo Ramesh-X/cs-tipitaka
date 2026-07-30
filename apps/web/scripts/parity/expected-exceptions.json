@@ -5,8 +5,8 @@
         "abhidhamma/dhammasangganipali/atthakathakandam/dukaatthuddharo",
         "abhidhamma/dhammasangganipali/atthakathakandam/tikaatthuddharo"
       ],
-      "legacyParas": 255,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 255
     },
     "abhidhamma/dhammasangganipali/cittuppadakandam": {
       "children": [
@@ -21,16 +21,16 @@
         "abhidhamma/dhammasangganipali/cittuppadakandam/rupavacarakusalam",
         "abhidhamma/dhammasangganipali/cittuppadakandam/tebhumakakusalam"
       ],
-      "legacyParas": 776,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 776
     },
     "abhidhamma/dhammasangganipali/matika": {
       "children": [
         "abhidhamma/dhammasangganipali/matika/dukamatika",
         "abhidhamma/dhammasangganipali/matika/tikamatika"
       ],
-      "legacyParas": 384,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 384
     },
     "abhidhamma/dhammasangganipali/nikkhepakandam": {
       "children": [
@@ -38,8 +38,8 @@
         "abhidhamma/dhammasangganipali/nikkhepakandam/suttantikadukanikkhepam",
         "abhidhamma/dhammasangganipali/nikkhepakandam/tikanikkhepam"
       ],
-      "legacyParas": 431,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 431
     },
     "abhidhamma/dhammasangganipali/rupakandam": {
       "children": [
@@ -47,106 +47,106 @@
         "abhidhamma/dhammasangganipali/rupakandam/rupavibhatti",
         "abhidhamma/dhammasangganipali/rupakandam/uddeso"
       ],
-      "legacyParas": 587,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 587
     },
     "abhidhamma/dhatukathapali/atthamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/atthamanayo/vippayuttenasampayuttapadaniddeso"
       ],
-      "legacyParas": 10,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 10
     },
     "abhidhamma/dhatukathapali/catutthanayo": {
       "children": [
         "abhidhamma/dhatukathapali/catutthanayo/sanggahitenasanggahitapadaniddeso"
       ],
-      "legacyParas": 10,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 10
     },
     "abhidhamma/dhatukathapali/chatthanayo": {
       "children": [
         "abhidhamma/dhatukathapali/chatthanayo/sampayogavippayogapadaniddeso"
       ],
-      "legacyParas": 93,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 93
     },
     "abhidhamma/dhatukathapali/cuddasamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/cuddasamanayo/vippayuttenasanggahitasanggahitapadaniddeso"
       ],
-      "legacyParas": 77,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 77
     },
     "abhidhamma/dhatukathapali/dasamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/dasamanayo/vippayuttenavippayuttapadaniddeso"
       ],
-      "legacyParas": 67,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 67
     },
     "abhidhamma/dhatukathapali/dutiyanayo": {
       "children": [
         "abhidhamma/dhatukathapali/dutiyanayo/sanggahitenaasanggahitapadaniddeso"
       ],
-      "legacyParas": 15,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 15
     },
     "abhidhamma/dhatukathapali/dvadasamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/dvadasamanayo/sampayuttenasanggahitasanggahitapadaniddeso"
       ],
-      "legacyParas": 40,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 40
     },
     "abhidhamma/dhatukathapali/ekadasamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/ekadasamanayo/sanggahitenasampayuttavippayuttapadaniddeso"
       ],
-      "legacyParas": 13,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 13
     },
     "abhidhamma/dhatukathapali/navamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/navamanayo/sampayuttenasampayuttapadaniddeso"
       ],
-      "legacyParas": 43,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 43
     },
     "abhidhamma/dhatukathapali/pancamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/pancamanayo/asanggahitenaasanggahitapadaniddeso"
       ],
-      "legacyParas": 44,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 44
     },
     "abhidhamma/dhatukathapali/pathamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/pathamanayo/sanggahasanggahapadaniddeso"
       ],
-      "legacyParas": 193,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 193
     },
     "abhidhamma/dhatukathapali/sattamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/sattamanayo/sampayuttenavippayuttapadaniddeso"
       ],
-      "legacyParas": 20,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 20
     },
     "abhidhamma/dhatukathapali/tatiyanayo": {
       "children": [
         "abhidhamma/dhatukathapali/tatiyanayo/asanggahitenasanggahitapadaniddeso"
       ],
-      "legacyParas": 19,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 19
     },
     "abhidhamma/dhatukathapali/terasamanayo": {
       "children": [
         "abhidhamma/dhatukathapali/terasamanayo/asanggahitenasampayuttavippayuttapadaniddeso"
       ],
-      "legacyParas": 15,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 15
     },
     "abhidhamma/kathavatthupali/atthamavaggo": {
       "children": [
@@ -162,8 +162,8 @@
         "abhidhamma/kathavatthupali/atthamavaggo/atthamavaggo-8",
         "abhidhamma/kathavatthupali/atthamavaggo/atthamavaggo-9"
       ],
-      "legacyParas": 160,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 160
     },
     "abhidhamma/kathavatthupali/attharasamavaggo": {
       "children": [
@@ -177,8 +177,8 @@
         "abhidhamma/kathavatthupali/attharasamavaggo/attharasamavaggo-7",
         "abhidhamma/kathavatthupali/attharasamavaggo/attharasamavaggo-8"
       ],
-      "legacyParas": 91,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 91
     },
     "abhidhamma/kathavatthupali/bavisatimavaggo": {
       "children": [
@@ -191,8 +191,8 @@
         "abhidhamma/kathavatthupali/bavisatimavaggo/bavisatimavaggo-6",
         "abhidhamma/kathavatthupali/bavisatimavaggo/bavisatimavaggo-7"
       ],
-      "legacyParas": 56,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 56
     },
     "abhidhamma/kathavatthupali/catutthavaggo": {
       "children": [
@@ -207,8 +207,8 @@
         "abhidhamma/kathavatthupali/catutthavaggo/catutthavaggo-8",
         "abhidhamma/kathavatthupali/catutthavaggo/catutthavaggo-9"
       ],
-      "legacyParas": 202,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 202
     },
     "abhidhamma/kathavatthupali/chatthavaggo": {
       "children": [
@@ -223,8 +223,8 @@
         "abhidhamma/kathavatthupali/chatthavaggo/chatthavaggo-8",
         "abhidhamma/kathavatthupali/chatthavaggo/chatthavaggo-9"
       ],
-      "legacyParas": 95,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 95
     },
     "abhidhamma/kathavatthupali/cuddasamavaggo": {
       "children": [
@@ -238,8 +238,8 @@
         "abhidhamma/kathavatthupali/cuddasamavaggo/cuddasamavaggo-7",
         "abhidhamma/kathavatthupali/cuddasamavaggo/cuddasamavaggo-8"
       ],
-      "legacyParas": 93,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 93
     },
     "abhidhamma/kathavatthupali/dasamavaggo": {
       "children": [
@@ -255,8 +255,8 @@
         "abhidhamma/kathavatthupali/dasamavaggo/dasamavaggo-8",
         "abhidhamma/kathavatthupali/dasamavaggo/dasamavaggo-9"
       ],
-      "legacyParas": 103,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 103
     },
     "abhidhamma/kathavatthupali/dvadasamavaggo": {
       "children": [
@@ -271,8 +271,8 @@
         "abhidhamma/kathavatthupali/dvadasamavaggo/dvadasamavaggo-8",
         "abhidhamma/kathavatthupali/dvadasamavaggo/dvadasamavaggo-9"
       ],
-      "legacyParas": 79,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 79
     },
     "abhidhamma/kathavatthupali/ekadasamavaggo": {
       "children": [
@@ -285,8 +285,8 @@
         "abhidhamma/kathavatthupali/ekadasamavaggo/ekadasamavaggo-6",
         "abhidhamma/kathavatthupali/ekadasamavaggo/ekadasamavaggo-7"
       ],
-      "legacyParas": 86,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 86
     },
     "abhidhamma/kathavatthupali/ekavisatimavaggo": {
       "children": [
@@ -299,8 +299,8 @@
         "abhidhamma/kathavatthupali/ekavisatimavaggo/ekavisatimavaggo-6",
         "abhidhamma/kathavatthupali/ekavisatimavaggo/ekavisatimavaggo-7"
       ],
-      "legacyParas": 54,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 54
     },
     "abhidhamma/kathavatthupali/ekunavisatimavaggo": {
       "children": [
@@ -313,8 +313,8 @@
         "abhidhamma/kathavatthupali/ekunavisatimavaggo/ekunavisatimavaggo-6",
         "abhidhamma/kathavatthupali/ekunavisatimavaggo/ekunavisatimavaggo-7"
       ],
-      "legacyParas": 81,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 81
     },
     "abhidhamma/kathavatthupali/navamavaggo": {
       "children": [
@@ -330,8 +330,8 @@
         "abhidhamma/kathavatthupali/navamavaggo/navamavaggo-8",
         "abhidhamma/kathavatthupali/navamavaggo/navamavaggo-9"
       ],
-      "legacyParas": 103,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 103
     },
     "abhidhamma/kathavatthupali/pancamavaggo": {
       "children": [
@@ -346,8 +346,8 @@
         "abhidhamma/kathavatthupali/pancamavaggo/pancamavaggo-8",
         "abhidhamma/kathavatthupali/pancamavaggo/pancamavaggo-9"
       ],
-      "legacyParas": 93,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 93
     },
     "abhidhamma/kathavatthupali/pannarasamavaggo": {
       "children": [
@@ -363,8 +363,8 @@
         "abhidhamma/kathavatthupali/pannarasamavaggo/pannarasamavaggo-8",
         "abhidhamma/kathavatthupali/pannarasamavaggo/pannarasamavaggo-9"
       ],
-      "legacyParas": 99,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 99
     },
     "abhidhamma/kathavatthupali/parihanikatha": {
       "children": [
@@ -372,8 +372,8 @@
         "abhidhamma/kathavatthupali/parihanikatha/suttasadhanaparihani",
         "abhidhamma/kathavatthupali/parihanikatha/vadayuttiparihani"
       ],
-      "legacyParas": 150,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 150
     },
     "abhidhamma/kathavatthupali/puggalakatha": {
       "children": [
@@ -400,8 +400,8 @@
         "abhidhamma/kathavatthupali/puggalakatha/upadapannattanuyogo",
         "abhidhamma/kathavatthupali/puggalakatha/vacanasodhanam"
       ],
-      "legacyParas": 430,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 430
     },
     "abhidhamma/kathavatthupali/sattamavaggo": {
       "children": [
@@ -416,8 +416,8 @@
         "abhidhamma/kathavatthupali/sattamavaggo/sattamavaggo-8",
         "abhidhamma/kathavatthupali/sattamavaggo/sattamavaggo-9"
       ],
-      "legacyParas": 154,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 154
     },
     "abhidhamma/kathavatthupali/sattarasamavaggo": {
       "children": [
@@ -433,8 +433,8 @@
         "abhidhamma/kathavatthupali/sattarasamavaggo/sattarasamavaggo-8",
         "abhidhamma/kathavatthupali/sattarasamavaggo/sattarasamavaggo-9"
       ],
-      "legacyParas": 120,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 120
     },
     "abhidhamma/kathavatthupali/solasamavaggo": {
       "children": [
@@ -449,8 +449,8 @@
         "abhidhamma/kathavatthupali/solasamavaggo/solasamavaggo-8",
         "abhidhamma/kathavatthupali/solasamavaggo/solasamavaggo-9"
       ],
-      "legacyParas": 107,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 107
     },
     "abhidhamma/kathavatthupali/tatiyavaggo": {
       "children": [
@@ -467,8 +467,8 @@
         "abhidhamma/kathavatthupali/tatiyavaggo/tatiyavaggo-8",
         "abhidhamma/kathavatthupali/tatiyavaggo/tatiyavaggo-9"
       ],
-      "legacyParas": 243,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 243
     },
     "abhidhamma/kathavatthupali/terasamavaggo": {
       "children": [
@@ -483,8 +483,8 @@
         "abhidhamma/kathavatthupali/terasamavaggo/terasamavaggo-8",
         "abhidhamma/kathavatthupali/terasamavaggo/terasamavaggo-9"
       ],
-      "legacyParas": 87,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 87
     },
     "abhidhamma/kathavatthupali/tevisatimavaggo": {
       "children": [
@@ -494,8 +494,8 @@
         "abhidhamma/kathavatthupali/tevisatimavaggo/tevisatimavaggo-3",
         "abhidhamma/kathavatthupali/tevisatimavaggo/tevisatimavaggo-4"
       ],
-      "legacyParas": 44,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 44
     },
     "abhidhamma/kathavatthupali/visatimavaggo": {
       "children": [
@@ -506,23 +506,23 @@
         "abhidhamma/kathavatthupali/visatimavaggo/visatimavaggo-4",
         "abhidhamma/kathavatthupali/visatimavaggo/visatimavaggo-5"
       ],
-      "legacyParas": 72,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 72
     },
     "abhidhamma/patthanapali-1/pucchavaro": {
       "children": [
         "abhidhamma/patthanapali-1/pucchavaro/dumulakadi",
         "abhidhamma/patthanapali-1/pucchavaro/paccayanulomam"
       ],
-      "legacyParas": 87,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 87
     },
     "abhidhamma/patthanapali-3/6-7-oghayogagocchakam": {
       "children": [
         "abhidhamma/patthanapali-3/6-7-oghayogagocchakam/32-43-oghadidukani"
       ],
-      "legacyParas": 5,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 5
     },
     "abhidhamma/patthanapali-5/dhammanulomapaccaniye-dukadukapatthanam": {
       "children": [
@@ -556,8 +556,8 @@
         "abhidhamma/patthanapali-5/dhammanulomapaccaniye-dukadukapatthanam/7-13-1-culantaradukadi-hetudukam",
         "abhidhamma/patthanapali-5/dhammanulomapaccaniye-dukadukapatthanam/83-1-pitthiduka-hetudukam"
       ],
-      "legacyParas": 226,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 226
     },
     "abhidhamma/patthanapali-5/dhammanulomapaccaniye-tikatikapatthanam": {
       "children": [
@@ -598,8 +598,8 @@
         "abhidhamma/patthanapali-5/dhammanulomapaccaniye-tikatikapatthanam/akusalapadam",
         "abhidhamma/patthanapali-5/dhammanulomapaccaniye-tikatikapatthanam/paccaniyam"
       ],
-      "legacyParas": 168,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 168
     },
     "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukadukapatthanam": {
       "children": [
@@ -628,8 +628,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukadukapatthanam/anuttarapadam",
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukadukapatthanam/panhavaro"
       ],
-      "legacyParas": 205,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 205
     },
     "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukapatthanam": {
       "children": [
@@ -644,8 +644,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukapatthanam/paccaniyam",
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukapatthanam/saranadukam"
       ],
-      "legacyParas": 128,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 128
     },
     "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukatikapatthanam": {
       "children": [
@@ -706,8 +706,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukatikapatthanam/paccaniyam",
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-dukatikapatthanam/panhavaro"
       ],
-      "legacyParas": 327,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 327
     },
     "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikadukapatthanam": {
       "children": [
@@ -748,8 +748,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikadukapatthanam/5-1-samkilitthattika-hetudukam",
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikadukapatthanam/6-11-1-vitakkadittikani-hetudukam"
       ],
-      "legacyParas": 261,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 261
     },
     "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikatikapatthanam": {
       "children": [
@@ -812,8 +812,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikatikapatthanam/8-1-dassanattika-kusalattikam",
         "abhidhamma/patthanapali-5/dhammapaccaniyanulome-tikatikapatthanam/9-1-dassanahetuttika-kusalattikam"
       ],
-      "legacyParas": 252,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 252
     },
     "abhidhamma/patthanapali-5/dhammapaccaniye-dukadukapatthanam": {
       "children": [
@@ -838,8 +838,8 @@
         "abhidhamma/patthanapali-5/dhammapaccaniye-dukadukapatthanam/7-13-1-culantaradukani-hetudukam",
         "abhidhamma/patthanapali-5/dhammapaccaniye-dukadukapatthanam/83-1-pitthiduka-hetudukam"
       ],
-      "legacyParas": 210,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 210
     },
     "abhidhamma/vibhanggapali/appamannavibhanggo": {
       "children": [
@@ -847,8 +847,8 @@
         "abhidhamma/vibhanggapali/appamannavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/appamannavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 109,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 109
     },
     "abhidhamma/vibhanggapali/ayatanavibhanggo": {
       "children": [
@@ -856,8 +856,8 @@
         "abhidhamma/vibhanggapali/ayatanavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/ayatanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 62,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 62
     },
     "abhidhamma/vibhanggapali/bojjhanggavibhanggo": {
       "children": [
@@ -865,8 +865,8 @@
         "abhidhamma/vibhanggapali/bojjhanggavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/bojjhanggavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 52,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 52
     },
     "abhidhamma/vibhanggapali/dhammahadayavibhanggo": {
       "children": [
@@ -881,8 +881,8 @@
         "abhidhamma/vibhanggapali/dhammahadayavibhanggo/uppadakakammaayuppamanavaro",
         "abhidhamma/vibhanggapali/dhammahadayavibhanggo/uppattanuppattivaro"
       ],
-      "legacyParas": 325,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 325
     },
     "abhidhamma/vibhanggapali/dhatuvibhanggo": {
       "children": [
@@ -890,8 +890,8 @@
         "abhidhamma/vibhanggapali/dhatuvibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/dhatuvibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 92,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 92
     },
     "abhidhamma/vibhanggapali/iddhipadavibhanggo": {
       "children": [
@@ -899,16 +899,16 @@
         "abhidhamma/vibhanggapali/iddhipadavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/iddhipadavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 87,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 87
     },
     "abhidhamma/vibhanggapali/indriyavibhanggo": {
       "children": [
         "abhidhamma/vibhanggapali/indriyavibhanggo/abhidhammabhajaniyam",
         "abhidhamma/vibhanggapali/indriyavibhanggo/panhapucchakam"
       ],
-      "legacyParas": 74,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 74
     },
     "abhidhamma/vibhanggapali/jhanavibhanggo": {
       "children": [
@@ -916,8 +916,8 @@
         "abhidhamma/vibhanggapali/jhanavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/jhanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 225,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 225
     },
     "abhidhamma/vibhanggapali/khandhavibhanggo": {
       "children": [
@@ -925,8 +925,8 @@
         "abhidhamma/vibhanggapali/khandhavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/khandhavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 535,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 535
     },
     "abhidhamma/vibhanggapali/khuddakavatthuvibhanggo": {
       "children": [
@@ -943,8 +943,8 @@
         "abhidhamma/vibhanggapali/khuddakavatthuvibhanggo/tanhavicaritaniddeso",
         "abhidhamma/vibhanggapali/khuddakavatthuvibhanggo/tikaniddeso"
       ],
-      "legacyParas": 591,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 591
     },
     "abhidhamma/vibhanggapali/magganggavibhanggo": {
       "children": [
@@ -952,24 +952,24 @@
         "abhidhamma/vibhanggapali/magganggavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/magganggavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 56,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 56
     },
     "abhidhamma/vibhanggapali/nanavibhanggo": {
       "children": [
         "abhidhamma/vibhanggapali/nanavibhanggo/ekakamatika",
         "abhidhamma/vibhanggapali/nanavibhanggo/matika"
       ],
-      "legacyParas": 429,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 429
     },
     "abhidhamma/vibhanggapali/paticcasamuppadavibhanggo": {
       "children": [
         "abhidhamma/vibhanggapali/paticcasamuppadavibhanggo/abhidhammabhajaniyam",
         "abhidhamma/vibhanggapali/paticcasamuppadavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 413,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 413
     },
     "abhidhamma/vibhanggapali/patisambhidavibhanggo": {
       "children": [
@@ -977,8 +977,8 @@
         "abhidhamma/vibhanggapali/patisambhidavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/patisambhidavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 83,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 83
     },
     "abhidhamma/vibhanggapali/saccavibhanggo": {
       "children": [
@@ -986,8 +986,8 @@
         "abhidhamma/vibhanggapali/saccavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/saccavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 136,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 136
     },
     "abhidhamma/vibhanggapali/sammappadhanavibhanggo": {
       "children": [
@@ -995,8 +995,8 @@
         "abhidhamma/vibhanggapali/sammappadhanavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/sammappadhanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 51,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 51
     },
     "abhidhamma/vibhanggapali/satipatthanavibhanggo": {
       "children": [
@@ -1004,16 +1004,16 @@
         "abhidhamma/vibhanggapali/satipatthanavibhanggo/panhapucchakam",
         "abhidhamma/vibhanggapali/satipatthanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 66,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 66
     },
     "abhidhamma/vibhanggapali/sikkhapadavibhanggo": {
       "children": [
         "abhidhamma/vibhanggapali/sikkhapadavibhanggo/abhidhammabhajaniyam",
         "abhidhamma/vibhanggapali/sikkhapadavibhanggo/panhapucchakam"
       ],
-      "legacyParas": 38,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 38
     },
     "abhidhamma/yamakapali-2/anusayayamakam": {
       "children": [
@@ -1029,15 +1029,15 @@
         "abhidhamma/yamakapali-2/anusayayamakam/sanusayavaro",
         "abhidhamma/yamakapali-2/anusayayamakam/uppattitthanavaro"
       ],
-      "legacyParas": 2381,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 2381
     },
     "anna/buddha-vandana-gantha-sanggaho/mahapanamapatha/mahapanamapatha": {
       "children": [
         "anna/buddha-vandana-gantha-sanggaho/mahapanamapatha/mahapanamapatha/buddhavandana"
       ],
-      "legacyParas": 332,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 332
     },
     "anna/byakarana-gantha-sanggaho/abhidhanappadipikapatha/bhukanda": {
       "children": [
@@ -1048,15 +1048,15 @@
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikapatha/bhukanda/patalavagga",
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikapatha/bhukanda/puravagga"
       ],
-      "legacyParas": 1104,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1104
     },
     "anna/byakarana-gantha-sanggaho/abhidhanappadipikapatha/samannakanda": {
       "children": [
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikapatha/samannakanda/abyayavagga"
       ],
-      "legacyParas": 184,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 184
     },
     "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/bhukanda": {
       "children": [
@@ -1068,8 +1068,8 @@
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/bhukanda/naravaggavannana",
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/bhukanda/patalavaggavannana"
       ],
-      "legacyParas": 1323,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1323
     },
     "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/samannakanda": {
       "children": [
@@ -1078,8 +1078,8 @@
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/samannakanda/samkinnavaggavannana",
         "anna/byakarana-gantha-sanggaho/abhidhanappadipikatika/samannakanda/visesyadhinavaggavannana"
       ],
-      "legacyParas": 845,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 845
     },
     "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/namakanda": {
       "children": [
@@ -1095,8 +1095,8 @@
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/namakanda/sangkhya",
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/namakanda/upasagganipata"
       ],
-      "legacyParas": 434,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 434
     },
     "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/samasakanda": {
       "children": [
@@ -1109,8 +1109,8 @@
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/samasakanda/suddhatappurisasamasa",
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/samasakanda/ubhe-tappurisa-samasa"
       ],
-      "legacyParas": 116,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 116
     },
     "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/sandhi-kanda": {
       "children": [
@@ -1120,8 +1120,8 @@
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/sandhi-kanda/sarasandhi",
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/sandhi-kanda/vomissaka-sandhi"
       ],
-      "legacyParas": 139,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 139
     },
     "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/taddhitakanda": {
       "children": [
@@ -1133,15 +1133,15 @@
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/taddhitakanda/sangkhyataddhita",
         "anna/byakarana-gantha-sanggaho/balavatara-ganthipadatthavinicchayasara/taddhitakanda/visesataddhita"
       ],
-      "legacyParas": 112,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 112
     },
     "anna/byakarana-gantha-sanggaho/kaccayanabyakaranam/sandhikappa": {
       "children": [
         "anna/byakarana-gantha-sanggaho/kaccayanabyakaranam/sandhikappa/pathamakanda"
       ],
-      "legacyParas": 232,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 232
     },
     "anna/byakarana-gantha-sanggaho/moggallanapancika/pathamakandavannana": {
       "children": [
@@ -1149,24 +1149,24 @@
         "anna/byakarana-gantha-sanggaho/moggallanapancika/pathamakandavannana/sannadhikara",
         "anna/byakarana-gantha-sanggaho/moggallanapancika/pathamakandavannana/saralopadi-vannana"
       ],
-      "legacyParas": 165,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 165
     },
     "anna/byakarana-gantha-sanggaho/payogasiddhipatha/khadikanda": {
       "children": [
         "anna/byakarana-gantha-sanggaho/payogasiddhipatha/khadikanda/bhavakammesu-tabbaniya",
         "anna/byakarana-gantha-sanggaho/payogasiddhipatha/khadikanda/payogasiddhi-nigamanam"
       ],
-      "legacyParas": 304,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 304
     },
     "anna/byakarana-gantha-sanggaho/payogasiddhipatha/namakanda": {
       "children": [
         "anna/byakarana-gantha-sanggaho/payogasiddhipatha/namakanda/dve-dvekanekesu-namasma-siyo-amyo-na-hi-sa-nam-sma-hi-sa-nam-smim-su",
         "anna/byakarana-gantha-sanggaho/payogasiddhipatha/namakanda/sangkhyakanda"
       ],
-      "legacyParas": 793,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 793
     },
     "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/bhavavabodha-pancamapariccheda": {
       "children": [
@@ -1191,8 +1191,8 @@
         "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/bhavavabodha-pancamapariccheda/vimhayatthayibhava",
         "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/bhavavabodha-pancamapariccheda/viratthayibhava"
       ],
-      "legacyParas": 100,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 100
     },
     "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/dosavabodha-pathamapariccheda": {
       "children": [
@@ -1206,8 +1206,8 @@
         "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/dosavabodha-pathamapariccheda/vakyatthadosa-niddesa",
         "anna/byakarana-gantha-sanggaho/subodhalangkarapatha/dosavabodha-pathamapariccheda/vakyatthadosauddesa"
       ],
-      "legacyParas": 163,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 163
     },
     "anna/byakarana-gantha-sanggaho/vuttodayapatha/chappaccayavibhaga-chatthapariccheda": {
       "children": [
@@ -1219,16 +1219,16 @@
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/chappaccayavibhaga-chatthapariccheda/vuttaaddhanaya",
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/chappaccayavibhaga-chatthapariccheda/vuttasangkhyanaya"
       ],
-      "legacyParas": 32,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 32
     },
     "anna/byakarana-gantha-sanggaho/vuttodayapatha/mattavuttiniddesa-dutiyapariccheda": {
       "children": [
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/mattavuttiniddesa-dutiyapariccheda/gananiyama",
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/mattavuttiniddesa-dutiyapariccheda/yatiniyama"
       ],
-      "legacyParas": 62,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 62
     },
     "anna/byakarana-gantha-sanggaho/vuttodayapatha/sannaparibhasaniddesa-pathamapariccheda": {
       "children": [
@@ -1240,39 +1240,39 @@
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/sannaparibhasaniddesa-pathamapariccheda/nimitta",
         "anna/byakarana-gantha-sanggaho/vuttodayapatha/sannaparibhasaniddesa-pathamapariccheda/ratanattayappanama"
       ],
-      "legacyParas": 42,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 42
     },
     "anna/ledi-sayado-gantha-sanggaho/paramatthadipani-sanggahamahatikapatha/gantharabbhakatha": {
       "children": [
         "anna/ledi-sayado-gantha-sanggaho/paramatthadipani-sanggahamahatikapatha/gantharabbhakatha/sanggaha-mahatika-patha"
       ],
-      "legacyParas": 28,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 28
     },
     "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkha-thomana-asisa": {
       "children": [
         "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkha-thomana-asisa/gatha",
         "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkha-thomana-asisa/naradakkha-thomana-asisa"
       ],
-      "legacyParas": 24,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 24
     },
     "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkhadipani": {
       "children": [
         "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkhadipani/naradakkhadipani",
         "anna/niti-gantha-sanggaho/naradakkhadipani/naradakkhadipani/naradakkhadipani-2"
       ],
-      "legacyParas": 28,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 28
     },
     "anna/niti-gantha-sanggaho/surassatiniti/surassatiniti": {
       "children": [
         "anna/niti-gantha-sanggaho/surassatiniti/surassatiniti/surassatiniti",
         "anna/niti-gantha-sanggaho/surassatiniti/surassatiniti/surassatiniti-2"
       ],
-      "legacyParas": 357,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 357
     },
     "anna/pakinnaka-gantha-sanggaho/rasavahini/dhammasondakavaggo": {
       "children": [
@@ -1287,8 +1287,8 @@
         "anna/pakinnaka-gantha-sanggaho/rasavahini/dhammasondakavaggo/tinnamjananam-vatthumhi-ayamanupubbikatha",
         "anna/pakinnaka-gantha-sanggaho/rasavahini/dhammasondakavaggo/vessamittaya-vatthumhi-ayamanupubbikatha"
       ],
-      "legacyParas": 478,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 478
     },
     "anna/pakinnaka-gantha-sanggaho/rasavahini/mahasenavaggo": {
       "children": [
@@ -1303,8 +1303,8 @@
         "anna/pakinnaka-gantha-sanggaho/rasavahini/mahasenavaggo/suvannatilakaya-vatthumhi-ayamanupubbikatha",
         "anna/pakinnaka-gantha-sanggaho/rasavahini/mahasenavaggo/tebhatikamadhuvanijakanam-vatthumhi-ayamanupubbikatha"
       ],
-      "legacyParas": 485,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 485
     },
     "anna/pakinnaka-gantha-sanggaho/rasavahini/nandiyarajavaggo": {
       "children": [
@@ -1319,8 +1319,8 @@
         "anna/pakinnaka-gantha-sanggaho/rasavahini/nandiyarajavaggo/sahayassa-pariccattajivitakassa-vatthumhi-ayamanupubbikatha",
         "anna/pakinnaka-gantha-sanggaho/rasavahini/nandiyarajavaggo/visamalomakumarassa-vatthumhi-ayamanupubbikatha"
       ],
-      "legacyParas": 295,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 295
     },
     "anna/pakinnaka-gantha-sanggaho/rasavahini/yakkhavancitavaggo": {
       "children": [
@@ -1335,15 +1335,15 @@
         "anna/pakinnaka-gantha-sanggaho/rasavahini/yakkhavancitavaggo/uttarasamanerassa-vatthumhi-ayamanupubbikatha",
         "anna/pakinnaka-gantha-sanggaho/rasavahini/yakkhavancitavaggo/yakkhavancita-vatthumhi-ayamanupubbikatha"
       ],
-      "legacyParas": 514,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 514
     },
     "anna/sanggayana-puccha-vissajjana/dighanikaya-pu-vi/silakkhandhavaggasutta": {
       "children": [
         "anna/sanggayana-puccha-vissajjana/dighanikaya-pu-vi/silakkhandhavaggasutta/samgayanassa-puccha-vissajjana"
       ],
-      "legacyParas": 10,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 10
     },
     "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/khandhavaggasamyuttapali": {
       "children": [
@@ -1353,8 +1353,8 @@
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/khandhavaggasamyuttapali/samgayanassa-puccha-vissajjana",
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/khandhavaggasamyuttapali/sariputtasamyutta"
       ],
-      "legacyParas": 109,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 109
     },
     "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/mahavaggasamyuttapali": {
       "children": [
@@ -1370,8 +1370,8 @@
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/mahavaggasamyuttapali/silatthitivagga",
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/mahavaggasamyuttapali/sotapattisamyutta"
       ],
-      "legacyParas": 156,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 156
     },
     "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/nidanavaggapali": {
       "children": [
@@ -1386,8 +1386,8 @@
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/nidanavaggapali/opammasamyutta",
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/nidanavaggapali/rahulasamyutta"
       ],
-      "legacyParas": 171,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 171
     },
     "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/sagathavaggapali": {
       "children": [
@@ -1404,8 +1404,8 @@
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/sagathavaggapali/vanggisasamyutta",
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/sagathavaggapali/yakkhasamyutta"
       ],
-      "legacyParas": 632,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 632
     },
     "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/salayatanavaggasamyuttapali": {
       "children": [
@@ -1427,8 +1427,8 @@
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/salayatanavaggasamyuttapali/samuddavagga",
         "anna/sanggayana-puccha-vissajjana/samyuttanikaya-pu-vi/salayatanavaggasamyuttapali/vedanasamyutta"
       ],
-      "legacyParas": 185,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 185
     },
     "anna/sanggayana-puccha-vissajjana/vinayapitaka-pu-vi/nissaggipacittiya": {
       "children": [
@@ -1437,24 +1437,24 @@
         "anna/sanggayana-puccha-vissajjana/vinayapitaka-pu-vi/nissaggipacittiya/civaravagga-1-pathamakathina-sikkhapuccha",
         "anna/sanggayana-puccha-vissajjana/vinayapitaka-pu-vi/nissaggipacittiya/patidesaniya"
       ],
-      "legacyParas": 612,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 612
     },
     "anna/visuddhimagga/visuddhimagga-2/indriyasaccaniddeso": {
       "children": [
         "anna/visuddhimagga/visuddhimagga-2/indriyasaccaniddeso/dukkhaniddesakatha",
         "anna/visuddhimagga/visuddhimagga-2/indriyasaccaniddeso/indriyavittharakatha"
       ],
-      "legacyParas": 238,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 238
     },
     "anna/visuddhimagga/visuddhimagga-mahatika-2/indriyasaccaniddesavannana": {
       "children": [
         "anna/visuddhimagga/visuddhimagga-mahatika-2/indriyasaccaniddesavannana/dukkhaniddesakathavannana",
         "anna/visuddhimagga/visuddhimagga-mahatika-2/indriyasaccaniddesavannana/indriyavittharakathavannana"
       ],
-      "legacyParas": 170,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 170
     },
     "atthakatha/abhidhamma/dhammasanggani-atthakatha/atthakathakando": {
       "children": [
@@ -1462,16 +1462,16 @@
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/atthakathakando/nigamanakatha",
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/atthakathakando/tikaatthuddharavannana"
       ],
-      "legacyParas": 80,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 80
     },
     "atthakatha/abhidhamma/dhammasanggani-atthakatha/gantharambhakatha": {
       "children": [
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/gantharambhakatha/atthasalini-nama",
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/gantharambhakatha/sumedhakatha"
       ],
-      "legacyParas": 830,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 830
     },
     "atthakatha/abhidhamma/dhammasanggani-atthakatha/nikkhepakando": {
       "children": [
@@ -1479,8 +1479,8 @@
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/nikkhepakando/suttantikadukanikkhepakatha",
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/nikkhepakando/tikanikkhepakatha"
       ],
-      "legacyParas": 224,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 224
     },
     "atthakatha/abhidhamma/dhammasanggani-atthakatha/rupakando": {
       "children": [
@@ -1489,16 +1489,16 @@
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/rupakando/rupavibhattiekakaniddesavannana",
         "atthakatha/abhidhamma/dhammasanggani-atthakatha/rupakando/uddesavannana"
       ],
-      "legacyParas": 218,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 218
     },
     "atthakatha/abhidhamma/pancapakarana-atthakatha/anusayayamakam": {
       "children": [
         "atthakatha/abhidhamma/pancapakarana-atthakatha/anusayayamakam/mahavaro",
         "atthakatha/abhidhamma/pancapakarana-atthakatha/anusayayamakam/paricchedaparicchinnuddesavaravannana"
       ],
-      "legacyParas": 59,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 59
     },
     "atthakatha/abhidhamma/pancapakarana-atthakatha/kusalattikavannana": {
       "children": [
@@ -1512,8 +1512,8 @@
         "atthakatha/abhidhamma/pancapakarana-atthakatha/kusalattikavannana/sampayuttavaravannana",
         "atthakatha/abhidhamma/pancapakarana-atthakatha/kusalattikavannana/samsatthavaravannana"
       ],
-      "legacyParas": 260,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 260
     },
     "atthakatha/abhidhamma/pancapakarana-atthakatha/niddesavannana": {
       "children": [
@@ -1527,15 +1527,15 @@
         "atthakatha/abhidhamma/pancapakarana-atthakatha/niddesavannana/sattakaniddesavannana",
         "atthakatha/abhidhamma/pancapakarana-atthakatha/niddesavannana/tikaniddesavannana"
       ],
-      "legacyParas": 278,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 278
     },
     "atthakatha/abhidhamma/pancapakarana-atthakatha/puggalakatha": {
       "children": [
         "atthakatha/abhidhamma/pancapakarana-atthakatha/puggalakatha/suddhasaccikattho"
       ],
-      "legacyParas": 162,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 162
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/appamannavibhanggo": {
       "children": [
@@ -1543,8 +1543,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/appamannavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/appamannavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 20,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 20
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/ayatanavibhanggo": {
       "children": [
@@ -1552,8 +1552,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/ayatanavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/ayatanavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 43,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 43
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/bojjhanggavibhanggo": {
       "children": [
@@ -1561,8 +1561,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/bojjhanggavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/bojjhanggavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 39,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 39
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhammahadayavibhanggo": {
       "children": [
@@ -1574,8 +1574,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhammahadayavibhanggo/uppadakakammaayuppamanavaravannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhammahadayavibhanggo/uppattanuppattivaravannana"
       ],
-      "legacyParas": 58,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 58
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhatuvibhanggo": {
       "children": [
@@ -1583,8 +1583,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhatuvibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/dhatuvibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 94,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 94
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/iddhipadavibhanggo": {
       "children": [
@@ -1592,16 +1592,16 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/iddhipadavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/iddhipadavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 24,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 24
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/indriyavibhanggo": {
       "children": [
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/indriyavibhanggo/abhidhammabhajaniyavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/indriyavibhanggo/panhapucchakavannana"
       ],
-      "legacyParas": 25,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 25
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/jhanavibhanggo": {
       "children": [
@@ -1609,8 +1609,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/jhanavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/jhanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 204,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 204
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/khandhavibhanggo": {
       "children": [
@@ -1618,8 +1618,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/khandhavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/khandhavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 172,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 172
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/khuddakavatthuvibhanggo": {
       "children": [
@@ -1634,8 +1634,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/khuddakavatthuvibhanggo/9-navakaniddesavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/khuddakavatthuvibhanggo/ekakamatikadivannana"
       ],
-      "legacyParas": 230,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 230
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/magganggavibhanggo": {
       "children": [
@@ -1643,8 +1643,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/magganggavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/magganggavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 29,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 29
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/nanavibhanggo": {
       "children": [
@@ -1659,16 +1659,16 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/nanavibhanggo/dasakamatikavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/nanavibhanggo/ekakamatikadivannana"
       ],
-      "legacyParas": 256,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 256
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/paticcasamuppadavibhanggo": {
       "children": [
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/paticcasamuppadavibhanggo/abhidhammabhajaniyavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/paticcasamuppadavibhanggo/suttantabhajaniyam-uddesavaravannana"
       ],
-      "legacyParas": 514,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 514
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/patisambhidavibhanggo": {
       "children": [
@@ -1676,8 +1676,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/patisambhidavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/patisambhidavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 37,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 37
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/saccavibhanggo": {
       "children": [
@@ -1685,8 +1685,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/saccavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/saccavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 241,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 241
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/sammappadhanavibhanggo": {
       "children": [
@@ -1694,8 +1694,8 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/sammappadhanavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/sammappadhanavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 48,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 48
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/satipatthanavibhanggo": {
       "children": [
@@ -1703,32 +1703,32 @@
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/satipatthanavibhanggo/panhapucchakavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/satipatthanavibhanggo/suttantabhajaniyam-uddesavaravannana"
       ],
-      "legacyParas": 280,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 280
     },
     "atthakatha/abhidhamma/sammohavinodani-atthakatha/sikkhapadavibhanggo": {
       "children": [
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/sikkhapadavibhanggo/abhidhammabhajaniyavannana",
         "atthakatha/abhidhamma/sammohavinodani-atthakatha/sikkhapadavibhanggo/panhapucchakavannana"
       ],
-      "legacyParas": 28,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 28
     },
     "atthakatha/sutta/an/dasakanipata-atthakatha/14-4-sadhuvaggavannana": {
       "children": [
         "atthakatha/sutta/an/dasakanipata-atthakatha/14-4-sadhuvaggavannana/14-4-sadhuvaggavannana",
         "atthakatha/sutta/an/dasakanipata-atthakatha/14-4-sadhuvaggavannana/catutthapannasakam"
       ],
-      "legacyParas": 16,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 16
     },
     "atthakatha/sutta/an/ekakanipata-atthakatha/atthanapali": {
       "children": [
         "atthakatha/sutta/an/ekakanipata-atthakatha/atthanapali/15-1-atthanapali-pathamavaggavannana",
         "atthakatha/sutta/an/ekakanipata-atthakatha/atthanapali/atthanapali"
       ],
-      "legacyParas": 58,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 58
     },
     "atthakatha/sutta/an/ekakanipata-atthakatha/ekadhammapali": {
       "children": [
@@ -1737,8 +1737,8 @@
         "atthakatha/sutta/an/ekakanipata-atthakatha/ekadhammapali/ekadhammapali-2",
         "atthakatha/sutta/an/ekakanipata-atthakatha/ekadhammapali/ekadhammapali-3"
       ],
-      "legacyParas": 75,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 75
     },
     "atthakatha/sutta/an/ekakanipata-atthakatha/etadaggavaggo": {
       "children": [
@@ -1750,46 +1750,46 @@
         "atthakatha/sutta/an/ekakanipata-atthakatha/etadaggavaggo/etadaggavaggo-5",
         "atthakatha/sutta/an/ekakanipata-atthakatha/etadaggavaggo/etadaggavaggo-6"
       ],
-      "legacyParas": 881,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 881
     },
     "atthakatha/sutta/an/ekakanipata-atthakatha/gantharambhakatha": {
       "children": [
         "atthakatha/sutta/an/ekakanipata-atthakatha/gantharambhakatha/gantharambhakatha",
         "atthakatha/sutta/an/ekakanipata-atthakatha/gantharambhakatha/samkhepakatha"
       ],
-      "legacyParas": 150,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 150
     },
     "atthakatha/sutta/an/navakanipata-atthakatha/samannavaggo": {
       "children": [
         "atthakatha/sutta/an/navakanipata-atthakatha/samannavaggo/dutiyapannasakavannana",
         "atthakatha/sutta/an/navakanipata-atthakatha/samannavaggo/sambadhasuttavannana"
       ],
-      "legacyParas": 16,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 16
     },
     "atthakatha/sutta/kn/culaniddesa-atthakatha-saddhammappajotika-2/khaggavisanasuttaniddeso": {
       "children": [
         "atthakatha/sutta/kn/culaniddesa-atthakatha-saddhammappajotika-2/khaggavisanasuttaniddeso/khaggavisanasuttaniddesavannana"
       ],
-      "legacyParas": 257,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 257
     },
     "atthakatha/sutta/kn/dhammapada-atthakatha/dhammapada-atthakatha": {
       "children": [
         "atthakatha/sutta/kn/dhammapada-atthakatha/dhammapada-atthakatha/pathamo-bhago"
       ],
-      "legacyParas": 26,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 26
     },
     "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/dukanipato": {
       "children": [
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/dukanipato/dutiyavaggo",
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/dukanipato/pathamavaggo"
       ],
-      "legacyParas": 443,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 443
     },
     "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/ekakanipato": {
       "children": [
@@ -1797,8 +1797,8 @@
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/ekakanipato/pathamavaggo",
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/ekakanipato/tatiyavaggo"
       ],
-      "legacyParas": 269,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 269
     },
     "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/tikanipato": {
       "children": [
@@ -1808,8 +1808,8 @@
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/tikanipato/pathamavaggo",
         "atthakatha/sutta/kn/itivuttaka-atthakatha-paramatthadipani-2/tikanipato/tatiyavaggo"
       ],
-      "legacyParas": 642,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 642
     },
     "atthakatha/sutta/kn/jataka-atthakatha-1/ekakanipato": {
       "children": [
@@ -1829,15 +1829,15 @@
         "atthakatha/sutta/kn/jataka-atthakatha-1/ekakanipato/silavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-1/ekakanipato/varunavaggo"
       ],
-      "legacyParas": 1961,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1961
     },
     "atthakatha/sutta/kn/jataka-atthakatha-1/gantharambhakatha": {
       "children": [
         "atthakatha/sutta/kn/jataka-atthakatha-1/gantharambhakatha/pathamo-bhago"
       ],
-      "legacyParas": 862,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 862
     },
     "atthakatha/sutta/kn/jataka-atthakatha-2/dukanipato": {
       "children": [
@@ -1852,8 +1852,8 @@
         "atthakatha/sutta/kn/jataka-atthakatha-2/dukanipato/singgalavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-2/dukanipato/upahanavaggo"
       ],
-      "legacyParas": 1477,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1477
     },
     "atthakatha/sutta/kn/jataka-atthakatha-2/tikanipato": {
       "children": [
@@ -1863,8 +1863,8 @@
         "atthakatha/sutta/kn/jataka-atthakatha-2/tikanipato/sangkappavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-2/tikanipato/udapanavaggo"
       ],
-      "legacyParas": 1021,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1021
     },
     "atthakatha/sutta/kn/jataka-atthakatha-3/catukkanipato": {
       "children": [
@@ -1872,16 +1872,16 @@
         "atthakatha/sutta/kn/jataka-atthakatha-3/catukkanipato/kalinggavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-3/catukkanipato/kokilavaggo"
       ],
-      "legacyParas": 1026,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1026
     },
     "atthakatha/sutta/kn/jataka-atthakatha-3/chakkanipato": {
       "children": [
         "atthakatha/sutta/kn/jataka-atthakatha-3/chakkanipato/avariyavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-3/chakkanipato/kharaputtavaggo"
       ],
-      "legacyParas": 673,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 673
     },
     "atthakatha/sutta/kn/jataka-atthakatha-3/pancakanipato": {
       "children": [
@@ -1889,16 +1889,16 @@
         "atthakatha/sutta/kn/jataka-atthakatha-3/pancakanipato/manikundalavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-3/pancakanipato/vannarohavaggo"
       ],
-      "legacyParas": 600,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 600
     },
     "atthakatha/sutta/kn/jataka-atthakatha-3/sattakanipato": {
       "children": [
         "atthakatha/sutta/kn/jataka-atthakatha-3/sattakanipato/gandharavaggo",
         "atthakatha/sutta/kn/jataka-atthakatha-3/sattakanipato/kukkuvaggo"
       ],
-      "legacyParas": 750,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 750
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/2-yuganaddhavaggo": {
       "children": [
@@ -1913,8 +1913,8 @@
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/2-yuganaddhavaggo/viragakatha",
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/2-yuganaddhavaggo/yuganaddhakatha"
       ],
-      "legacyParas": 210,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 210
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/ditthikatha": {
       "children": [
@@ -1932,29 +1932,29 @@
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/ditthikatha/sassataditthiniddesavannana",
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/ditthikatha/ucchedaditthiniddesavannana"
       ],
-      "legacyParas": 135,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 135
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/gantharambhakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/gantharambhakatha/pathamo-bhago"
       ],
-      "legacyParas": 71,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 71
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/gatikatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/gatikatha/gatikathavannana"
       ],
-      "legacyParas": 16,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 16
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/iddhikatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/iddhikatha/iddhikathavannana"
       ],
-      "legacyParas": 113,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 113
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/indriyakatha": {
       "children": [
@@ -1964,36 +1964,36 @@
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/indriyakatha/pathamasuttantaniddesavannana",
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/indriyakatha/tatiyasuttantaniddesavannana"
       ],
-      "legacyParas": 103,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 103
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/kammakathavannana": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/kammakathavannana/kammakathavannana"
       ],
-      "legacyParas": 11,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 11
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/maggakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/maggakatha/maggakathavannana"
       ],
-      "legacyParas": 5,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 5
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/mahapannakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/mahapannakatha/mahapannakathavannana"
       ],
-      "legacyParas": 46,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 46
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/mandapeyyakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/mandapeyyakatha/mandapeyyakathavannana"
       ],
-      "legacyParas": 12,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 12
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/nanakatha": {
       "children": [
@@ -2045,30 +2045,30 @@
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/nanakatha/viriyarambhanananiddesavannana",
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/nanakatha/yamakapatihiranananiddesavannana"
       ],
-      "legacyParas": 1449,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1449
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/vimokkhakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/vimokkhakatha/vimokkhaniddesavannana",
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/vimokkhakatha/vimokkhuddesavannana"
       ],
-      "legacyParas": 55,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 55
     },
     "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/vipallasakatha": {
       "children": [
         "atthakatha/sutta/kn/patisambhidamagga-atthakatha-saddhammappakasini/vipallasakatha/vipallasakathavannana"
       ],
-      "legacyParas": 6,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 6
     },
     "atthakatha/sutta/kn/suttanipata-atthakatha-paramatthajotika-2/uragavaggo": {
       "children": [
         "atthakatha/sutta/kn/suttanipata-atthakatha-paramatthajotika-2/uragavaggo/pathamo-bhago"
       ],
-      "legacyParas": 999,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 999
     },
     "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/dukanipato": {
       "children": [
@@ -2078,8 +2078,8 @@
         "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/dukanipato/pathamavaggo",
         "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/dukanipato/tatiyavaggo"
       ],
-      "legacyParas": 1509,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1509
     },
     "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/ekakanipato": {
       "children": [
@@ -2096,15 +2096,15 @@
         "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/ekakanipato/sattamavaggo",
         "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/ekakanipato/tatiyavaggo"
       ],
-      "legacyParas": 2881,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 2881
     },
     "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/gantharambhakatha": {
       "children": [
         "atthakatha/sutta/kn/theragatha-atthakatha-1-paramatthadipani-5/gantharambhakatha/pathamo-bhago"
       ],
-      "legacyParas": 94,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 94
     },
     "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/itthivimanam": {
       "children": [
@@ -2113,8 +2113,8 @@
         "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/itthivimanam/paricchattakavaggo",
         "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/itthivimanam/pithavaggo"
       ],
-      "legacyParas": 1777,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1777
     },
     "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/purisavimanam": {
       "children": [
@@ -2122,16 +2122,16 @@
         "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/purisavimanam/payasivaggo",
         "atthakatha/sutta/kn/vimanavatthu-atthakatha-paramatthadipani-3/purisavimanam/sunikkhittavimanavaggo"
       ],
-      "legacyParas": 1304,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1304
     },
     "atthakatha/sutta/sn/khandhavagga-atthakatha/ditthisamyuttam": {
       "children": [
         "atthakatha/sutta/sn/khandhavagga-atthakatha/ditthisamyuttam/dutiyagamanadivaggavannana",
         "atthakatha/sutta/sn/khandhavagga-atthakatha/ditthisamyuttam/sotapattivaggo"
       ],
-      "legacyParas": 31,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 31
     },
     "atthakatha/sutta/sn/khandhavagga-atthakatha/khandhasamyuttam": {
       "children": [
@@ -2151,8 +2151,8 @@
         "atthakatha/sutta/sn/khandhavagga-atthakatha/khandhasamyuttam/theravaggo",
         "atthakatha/sutta/sn/khandhavagga-atthakatha/khandhasamyuttam/upayavaggo"
       ],
-      "legacyParas": 397,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 397
     },
     "atthakatha/sutta/sn/khandhavagga-atthakatha/radhasamyuttam": {
       "children": [
@@ -2160,24 +2160,24 @@
         "atthakatha/sutta/sn/khandhavagga-atthakatha/radhasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/khandhavagga-atthakatha/radhasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 15,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 15
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/anapanasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/mahavagga-atthakatha/anapanasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/anapanasamyuttam/ekadhammavaggo"
       ],
-      "legacyParas": 44,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 44
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/anuruddhasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/mahavagga-atthakatha/anuruddhasamyuttam/dutiyavaggavannana",
         "atthakatha/sutta/sn/mahavagga-atthakatha/anuruddhasamyuttam/rahogatavaggo"
       ],
-      "legacyParas": 16,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 16
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/bojjhanggasamyuttam": {
       "children": [
@@ -2190,8 +2190,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/bojjhanggasamyuttam/sakacchavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/bojjhanggasamyuttam/udayivaggo"
       ],
-      "legacyParas": 179,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 179
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/iddhipadasamyuttam": {
       "children": [
@@ -2199,8 +2199,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/iddhipadasamyuttam/capalavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/iddhipadasamyuttam/pasadakampanavaggo"
       ],
-      "legacyParas": 58,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 58
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/indriyasamyuttam": {
       "children": [
@@ -2212,8 +2212,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/indriyasamyuttam/sukarakhatavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/indriyasamyuttam/sukhindriyavaggo"
       ],
-      "legacyParas": 105,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 105
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/maggasamyuttam": {
       "children": [
@@ -2229,8 +2229,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/maggasamyuttam/suriyapeyyalavaggavannana",
         "atthakatha/sutta/sn/mahavagga-atthakatha/maggasamyuttam/viharavaggo"
       ],
-      "legacyParas": 120,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 120
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/saccasamyuttam": {
       "children": [
@@ -2245,8 +2245,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/saccasamyuttam/sisapavanavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/saccasamyuttam/tatiyaamakadhannapeyyalavaggo"
       ],
-      "legacyParas": 125,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 125
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/satipatthanasamyuttam": {
       "children": [
@@ -2256,8 +2256,8 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/satipatthanasamyuttam/nalandavaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/satipatthanasamyuttam/silatthitivaggo"
       ],
-      "legacyParas": 219,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 219
     },
     "atthakatha/sutta/sn/mahavagga-atthakatha/sotapattisamyuttam": {
       "children": [
@@ -2269,16 +2269,16 @@
         "atthakatha/sutta/sn/mahavagga-atthakatha/sotapattisamyuttam/sarananivaggo",
         "atthakatha/sutta/sn/mahavagga-atthakatha/sotapattisamyuttam/veludvaravaggo"
       ],
-      "legacyParas": 102,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 102
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/anamataggasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/nidanavagga-atthakatha/anamataggasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/anamataggasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 35,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 35
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/dhatusamyuttam": {
       "children": [
@@ -2287,8 +2287,8 @@
         "atthakatha/sutta/sn/nidanavagga-atthakatha/dhatusamyuttam/kammapathavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/dhatusamyuttam/nanattavaggo"
       ],
-      "legacyParas": 130,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 130
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/labhasakkarasamyuttam": {
       "children": [
@@ -2297,16 +2297,16 @@
         "atthakatha/sutta/sn/nidanavagga-atthakatha/labhasakkarasamyuttam/pathamavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/labhasakkarasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 51,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 51
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/lakkhanasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/nidanavagga-atthakatha/lakkhanasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/lakkhanasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 44,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 44
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/nidanasamyuttam": {
       "children": [
@@ -2320,32 +2320,32 @@
         "atthakatha/sutta/sn/nidanavagga-atthakatha/nidanasamyuttam/mahavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/nidanasamyuttam/samanabrahmanavaggo"
       ],
-      "legacyParas": 472,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 472
     },
     "atthakatha/sutta/sn/nidanavagga-atthakatha/rahulasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/nidanavagga-atthakatha/rahulasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/nidanavagga-atthakatha/rahulasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 20,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 20
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmanasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmanasamyuttam/arahantavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmanasamyuttam/upasakavaggo"
       ],
-      "legacyParas": 149,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 149
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/brahmasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 107,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 107
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/devaputtasamyuttam": {
       "children": [
@@ -2353,8 +2353,8 @@
         "atthakatha/sutta/sn/sagathavagga-atthakatha/devaputtasamyuttam/nanatitthiyavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/devaputtasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 111,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 111
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/devatasamyuttam": {
       "children": [
@@ -2367,8 +2367,8 @@
         "atthakatha/sutta/sn/sagathavagga-atthakatha/devatasamyuttam/sattivaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/devatasamyuttam/satullapakayikavaggo"
       ],
-      "legacyParas": 459,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 459
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/kosalasamyuttam": {
       "children": [
@@ -2376,8 +2376,8 @@
         "atthakatha/sutta/sn/sagathavagga-atthakatha/kosalasamyuttam/pathamavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/kosalasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 149,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 149
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/marasamyuttam": {
       "children": [
@@ -2385,8 +2385,8 @@
         "atthakatha/sutta/sn/sagathavagga-atthakatha/marasamyuttam/pathamavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/marasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 102,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 102
     },
     "atthakatha/sutta/sn/sagathavagga-atthakatha/sakkasamyuttam": {
       "children": [
@@ -2394,24 +2394,24 @@
         "atthakatha/sutta/sn/sagathavagga-atthakatha/sakkasamyuttam/pathamavaggo",
         "atthakatha/sutta/sn/sagathavagga-atthakatha/sakkasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 80,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 80
     },
     "atthakatha/sutta/sn/salayatanavagga-atthakatha/asangkhatasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/asangkhatasamyuttam/dutiyavaggo",
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/asangkhatasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 12,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 12
     },
     "atthakatha/sutta/sn/salayatanavagga-atthakatha/matugamasamyuttam": {
       "children": [
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/matugamasamyuttam/balavaggo",
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/matugamasamyuttam/pathamapeyyalavaggo"
       ],
-      "legacyParas": 13,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 13
     },
     "atthakatha/sutta/sn/salayatanavagga-atthakatha/salayatanasamyuttam": {
       "children": [
@@ -2435,8 +2435,8 @@
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/salayatanasamyuttam/yamakavaggo",
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/salayatanasamyuttam/yogakkhemivaggo"
       ],
-      "legacyParas": 586,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 586
     },
     "atthakatha/sutta/sn/salayatanavagga-atthakatha/vedanasamyuttam": {
       "children": [
@@ -2444,8 +2444,8 @@
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/vedanasamyuttam/rahogatavaggo",
         "atthakatha/sutta/sn/salayatanavagga-atthakatha/vedanasamyuttam/sagathavaggo"
       ],
-      "legacyParas": 57,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 57
     },
     "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam": {
       "children": [
@@ -2459,8 +2459,8 @@
         "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam/sappanakavaggo",
         "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam/surapanavaggo"
       ],
-      "legacyParas": 786,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 786
     },
     "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam-bhikkhunivibhanggavannana": {
       "children": [
@@ -2474,16 +2474,16 @@
         "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam-bhikkhunivibhanggavannana/naggavaggo",
         "atthakatha/vinaya/pacittiya-atthakatha/pacittiyakandam-bhikkhunivibhanggavannana/tuvattavaggo"
       ],
-      "legacyParas": 360,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 360
     },
     "atthakatha/vinaya/parajikakanda-atthakatha/gantharambhakatha": {
       "children": [
         "atthakatha/vinaya/parajikakanda-atthakatha/gantharambhakatha/bahiranidanakatha",
         "atthakatha/vinaya/parajikakanda-atthakatha/gantharambhakatha/gantharambhakatha"
       ],
-      "legacyParas": 489,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 489
     },
     "atthakatha/vinaya/parajikakanda-atthakatha/nissaggiyakandam": {
       "children": [
@@ -2491,8 +2491,8 @@
         "atthakatha/vinaya/parajikakanda-atthakatha/nissaggiyakandam/kosiyavaggo",
         "atthakatha/vinaya/parajikakanda-atthakatha/nissaggiyakandam/pattavaggo"
       ],
-      "legacyParas": 443,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 443
     },
     "atthakatha/vinaya/parajikakanda-atthakatha/parajikakandam": {
       "children": [
@@ -2501,31 +2501,31 @@
         "atthakatha/vinaya/parajikakanda-atthakatha/parajikakandam/pathamaparajikam",
         "atthakatha/vinaya/parajikakanda-atthakatha/parajikakandam/tatiyaparajikam"
       ],
-      "legacyParas": 1169,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1169
     },
     "atthakatha/vinaya/parivara-atthakatha/pancavaggo": {
       "children": [
         "atthakatha/vinaya/parivara-atthakatha/pancavaggo/kammavaggavannana",
         "atthakatha/vinaya/parivara-atthakatha/pancavaggo/nigamanakatha"
       ],
-      "legacyParas": 146,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 146
     },
     "sutta/kn/culaniddesapali/khaggavisanasutto": {
       "children": [
         "sutta/kn/culaniddesapali/khaggavisanasutto/khaggavisanasuttaniddeso"
       ],
-      "legacyParas": 0,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 0
     },
     "sutta/kn/itivuttakapali/dukanipato": {
       "children": [
         "sutta/kn/itivuttakapali/dukanipato/dutiyavaggo",
         "sutta/kn/itivuttakapali/dukanipato/pathamavaggo"
       ],
-      "legacyParas": 218,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 218
     },
     "sutta/kn/itivuttakapali/ekakanipato": {
       "children": [
@@ -2533,8 +2533,8 @@
         "sutta/kn/itivuttakapali/ekakanipato/pathamavaggo",
         "sutta/kn/itivuttakapali/ekakanipato/tatiyavaggo"
       ],
-      "legacyParas": 239,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 239
     },
     "sutta/kn/itivuttakapali/tikanipato": {
       "children": [
@@ -2544,8 +2544,8 @@
         "sutta/kn/itivuttakapali/tikanipato/pathamavaggo",
         "sutta/kn/itivuttakapali/tikanipato/tatiyavaggo"
       ],
-      "legacyParas": 554,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 554
     },
     "sutta/kn/jatakapali-1/catukkanipato": {
       "children": [
@@ -2555,16 +2555,16 @@
         "sutta/kn/jatakapali-1/catukkanipato/kutidusakavaggo",
         "sutta/kn/jatakapali-1/catukkanipato/pucimandavaggo"
       ],
-      "legacyParas": 538,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 538
     },
     "sutta/kn/jatakapali-1/chakkanipato": {
       "children": [
         "sutta/kn/jatakapali-1/chakkanipato/avariyavaggo",
         "sutta/kn/jatakapali-1/chakkanipato/kharaputtavaggo"
       ],
-      "legacyParas": 344,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 344
     },
     "sutta/kn/jatakapali-1/dukanipato": {
       "children": [
@@ -2579,8 +2579,8 @@
         "sutta/kn/jatakapali-1/dukanipato/singgalavaggo",
         "sutta/kn/jatakapali-1/dukanipato/upahanavaggo"
       ],
-      "legacyParas": 690,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 690
     },
     "sutta/kn/jatakapali-1/ekakanipato": {
       "children": [
@@ -2600,8 +2600,8 @@
         "sutta/kn/jatakapali-1/ekakanipato/silavaggo",
         "sutta/kn/jatakapali-1/ekakanipato/varunavaggo"
       ],
-      "legacyParas": 695,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 695
     },
     "sutta/kn/jatakapali-1/pancakanipato": {
       "children": [
@@ -2609,16 +2609,16 @@
         "sutta/kn/jatakapali-1/pancakanipato/manikundalavaggo",
         "sutta/kn/jatakapali-1/pancakanipato/vannarohavaggo"
       ],
-      "legacyParas": 351,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 351
     },
     "sutta/kn/jatakapali-1/sattakanipato": {
       "children": [
         "sutta/kn/jatakapali-1/sattakanipato/gandharavaggo",
         "sutta/kn/jatakapali-1/sattakanipato/kukkuvaggo"
       ],
-      "legacyParas": 387,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 387
     },
     "sutta/kn/jatakapali-1/tikanipato": {
       "children": [
@@ -2628,8 +2628,8 @@
         "sutta/kn/jatakapali-1/tikanipato/sangkappavaggo",
         "sutta/kn/jatakapali-1/tikanipato/udapanavaggo"
       ],
-      "legacyParas": 433,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 433
     },
     "sutta/kn/milindapanhapali/2-3-milindapanho": {
       "children": [
@@ -2643,8 +2643,8 @@
         "sutta/kn/milindapanhapali/2-3-milindapanho/sativaggo",
         "sutta/kn/milindapanhapali/2-3-milindapanho/vicaravaggo"
       ],
-      "legacyParas": 574,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 574
     },
     "sutta/kn/milindapanhapali/anumanapanho": {
       "children": [
@@ -2653,8 +2653,8 @@
         "sutta/kn/milindapanhapali/anumanapanho/nippapancavaggo",
         "sutta/kn/milindapanhapali/anumanapanho/vessantaravaggo"
       ],
-      "legacyParas": 553,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 553
     },
     "sutta/kn/milindapanhapali/mendakapanho": {
       "children": [
@@ -2664,8 +2664,8 @@
         "sutta/kn/milindapanhapali/mendakapanho/sabbannutananavaggo",
         "sutta/kn/milindapanhapali/mendakapanho/santhavavaggo"
       ],
-      "legacyParas": 580,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 580
     },
     "sutta/kn/milindapanhapali/opammakathapanho": {
       "children": [
@@ -2678,8 +2678,8 @@
         "sutta/kn/milindapanhapali/opammakathapanho/sihavaggo",
         "sutta/kn/milindapanhapali/opammakathapanho/upacikavaggo"
       ],
-      "legacyParas": 657,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 657
     },
     "sutta/kn/patisambhidamaggapali/mahavaggo": {
       "children": [
@@ -2695,8 +2695,8 @@
         "sutta/kn/patisambhidamaggapali/mahavaggo/vimokkhakatha",
         "sutta/kn/patisambhidamaggapali/mahavaggo/vipallasakatha"
       ],
-      "legacyParas": 1346,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1346
     },
     "sutta/kn/patisambhidamaggapali/pannavaggo": {
       "children": [
@@ -2711,8 +2711,8 @@
         "sutta/kn/patisambhidamaggapali/pannavaggo/vipassanakatha",
         "sutta/kn/patisambhidamaggapali/pannavaggo/vivekakatha"
       ],
-      "legacyParas": 225,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 225
     },
     "sutta/kn/patisambhidamaggapali/yuganaddhavaggo": {
       "children": [
@@ -2727,8 +2727,8 @@
         "sutta/kn/patisambhidamaggapali/yuganaddhavaggo/viragakatha",
         "sutta/kn/patisambhidamaggapali/yuganaddhavaggo/yuganaddhakatha"
       ],
-      "legacyParas": 441,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 441
     },
     "sutta/kn/theragathapali/dukanipato": {
       "children": [
@@ -2738,8 +2738,8 @@
         "sutta/kn/theragathapali/dukanipato/pathamavaggo",
         "sutta/kn/theragathapali/dukanipato/tatiyavaggo"
       ],
-      "legacyParas": 334,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 334
     },
     "sutta/kn/theragathapali/ekakanipato": {
       "children": [
@@ -2757,8 +2757,8 @@
         "sutta/kn/theragathapali/ekakanipato/sattamavaggo",
         "sutta/kn/theragathapali/ekakanipato/tatiyavaggo"
       ],
-      "legacyParas": 568,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 568
     },
     "sutta/kn/vimanavatthupali/itthivimanam": {
       "children": [
@@ -2767,8 +2767,8 @@
         "sutta/kn/vimanavatthupali/itthivimanam/paricchattakavaggo",
         "sutta/kn/vimanavatthupali/itthivimanam/pithavaggo"
       ],
-      "legacyParas": 1357,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1357
     },
     "sutta/kn/vimanavatthupali/purisavimanam": {
       "children": [
@@ -2776,8 +2776,8 @@
         "sutta/kn/vimanavatthupali/purisavimanam/payasivaggo",
         "sutta/kn/vimanavatthupali/purisavimanam/sunikkhittavaggo"
       ],
-      "legacyParas": 885,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 885
     },
     "sutta/sn/khandhavaggapali/ditthisamyuttam": {
       "children": [
@@ -2786,8 +2786,8 @@
         "sutta/sn/khandhavaggapali/ditthisamyuttam/sotapattivaggo",
         "sutta/sn/khandhavaggapali/ditthisamyuttam/tatiyagamanavaggo"
       ],
-      "legacyParas": 141,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 141
     },
     "sutta/sn/khandhavaggapali/khandhasamyuttam": {
       "children": [
@@ -2807,8 +2807,8 @@
         "sutta/sn/khandhavaggapali/khandhasamyuttam/theravaggo",
         "sutta/sn/khandhavaggapali/khandhasamyuttam/upayavaggo"
       ],
-      "legacyParas": 886,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 886
     },
     "sutta/sn/khandhavaggapali/radhasamyuttam": {
       "children": [
@@ -2817,24 +2817,24 @@
         "sutta/sn/khandhavaggapali/radhasamyuttam/pathamavaggo",
         "sutta/sn/khandhavaggapali/radhasamyuttam/upanisinnavaggo"
       ],
-      "legacyParas": 102,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 102
     },
     "sutta/sn/mahavaggapali/anapanasamyuttam": {
       "children": [
         "sutta/sn/mahavaggapali/anapanasamyuttam/dutiyavaggo",
         "sutta/sn/mahavaggapali/anapanasamyuttam/ekadhammavaggo"
       ],
-      "legacyParas": 144,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 144
     },
     "sutta/sn/mahavaggapali/anuruddhasamyuttam": {
       "children": [
         "sutta/sn/mahavaggapali/anuruddhasamyuttam/dutiyavaggo",
         "sutta/sn/mahavaggapali/anuruddhasamyuttam/rahogatavaggo"
       ],
-      "legacyParas": 83,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 83
     },
     "sutta/sn/mahavaggapali/balasamyuttam": {
       "children": [
@@ -2845,8 +2845,8 @@
         "sutta/sn/mahavaggapali/balasamyuttam/oghavaggo",
         "sutta/sn/mahavaggapali/balasamyuttam/oghavaggo-2"
       ],
-      "legacyParas": 50,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 50
     },
     "sutta/sn/mahavaggapali/bojjhanggasamyuttam": {
       "children": [
@@ -2869,8 +2869,8 @@
         "sutta/sn/mahavaggapali/bojjhanggasamyuttam/sakacchavaggo",
         "sutta/sn/mahavaggapali/bojjhanggasamyuttam/udayivaggo"
       ],
-      "legacyParas": 455,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 455
     },
     "sutta/sn/mahavaggapali/iddhipadasamyuttam": {
       "children": [
@@ -2880,8 +2880,8 @@
         "sutta/sn/mahavaggapali/iddhipadasamyuttam/oghavaggo",
         "sutta/sn/mahavaggapali/iddhipadasamyuttam/pasadakampanavaggo"
       ],
-      "legacyParas": 215,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 215
     },
     "sutta/sn/mahavaggapali/indriyasamyuttam": {
       "children": [
@@ -2897,16 +2897,16 @@
         "sutta/sn/mahavaggapali/indriyasamyuttam/sukarakhatavaggo",
         "sutta/sn/mahavaggapali/indriyasamyuttam/sukhindriyavaggo"
       ],
-      "legacyParas": 307,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 307
     },
     "sutta/sn/mahavaggapali/jhanasamyuttam": {
       "children": [
         "sutta/sn/mahavaggapali/jhanasamyuttam/ganggapeyyalavaggo",
         "sutta/sn/mahavaggapali/jhanasamyuttam/oghavaggo"
       ],
-      "legacyParas": 28,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 28
     },
     "sutta/sn/mahavaggapali/maggasamyuttam": {
       "children": [
@@ -2925,8 +2925,8 @@
         "sutta/sn/mahavaggapali/maggasamyuttam/suriyapeyyalavaggo",
         "sutta/sn/mahavaggapali/maggasamyuttam/viharavaggo"
       ],
-      "legacyParas": 410,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 410
     },
     "sutta/sn/mahavaggapali/saccasamyuttam": {
       "children": [
@@ -2942,8 +2942,8 @@
         "sutta/sn/mahavaggapali/saccasamyuttam/sisapavanavaggo",
         "sutta/sn/mahavaggapali/saccasamyuttam/tatiyaamakadhannapeyyalavaggo"
       ],
-      "legacyParas": 416,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 416
     },
     "sutta/sn/mahavaggapali/sammappadhanasamyuttam": {
       "children": [
@@ -2953,8 +2953,8 @@
         "sutta/sn/mahavaggapali/sammappadhanasamyuttam/ganggapeyyalavaggo",
         "sutta/sn/mahavaggapali/sammappadhanasamyuttam/oghavaggo"
       ],
-      "legacyParas": 35,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 35
     },
     "sutta/sn/mahavaggapali/satipatthanasamyuttam": {
       "children": [
@@ -2969,8 +2969,8 @@
         "sutta/sn/mahavaggapali/satipatthanasamyuttam/oghavaggo",
         "sutta/sn/mahavaggapali/satipatthanasamyuttam/silatthitivaggo"
       ],
-      "legacyParas": 274,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 274
     },
     "sutta/sn/mahavaggapali/sotapattisamyuttam": {
       "children": [
@@ -2982,16 +2982,16 @@
         "sutta/sn/mahavaggapali/sotapattisamyuttam/sarananivaggo",
         "sutta/sn/mahavaggapali/sotapattisamyuttam/veludvaravaggo"
       ],
-      "legacyParas": 409,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 409
     },
     "sutta/sn/nidanavaggapali/anamataggasamyuttam": {
       "children": [
         "sutta/sn/nidanavaggapali/anamataggasamyuttam/dutiyavaggo",
         "sutta/sn/nidanavaggapali/anamataggasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 82,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 82
     },
     "sutta/sn/nidanavaggapali/dhatusamyuttam": {
       "children": [
@@ -3000,8 +3000,8 @@
         "sutta/sn/nidanavaggapali/dhatusamyuttam/kammapathavaggo",
         "sutta/sn/nidanavaggapali/dhatusamyuttam/nanattavaggo"
       ],
-      "legacyParas": 196,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 196
     },
     "sutta/sn/nidanavaggapali/labhasakkarasamyuttam": {
       "children": [
@@ -3010,16 +3010,16 @@
         "sutta/sn/nidanavaggapali/labhasakkarasamyuttam/pathamavaggo",
         "sutta/sn/nidanavaggapali/labhasakkarasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 102,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 102
     },
     "sutta/sn/nidanavaggapali/lakkhanasamyuttam": {
       "children": [
         "sutta/sn/nidanavaggapali/lakkhanasamyuttam/dutiyavaggo",
         "sutta/sn/nidanavaggapali/lakkhanasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 69,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 69
     },
     "sutta/sn/nidanavaggapali/nidanasamyuttam": {
       "children": [
@@ -3033,32 +3033,32 @@
         "sutta/sn/nidanavaggapali/nidanasamyuttam/mahavaggo",
         "sutta/sn/nidanavaggapali/nidanasamyuttam/samanabrahmanavaggo"
       ],
-      "legacyParas": 624,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 624
     },
     "sutta/sn/nidanavaggapali/rahulasamyuttam": {
       "children": [
         "sutta/sn/nidanavaggapali/rahulasamyuttam/dutiyavaggo",
         "sutta/sn/nidanavaggapali/rahulasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 51,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 51
     },
     "sutta/sn/sagathavaggapali/brahmanasamyuttam": {
       "children": [
         "sutta/sn/sagathavaggapali/brahmanasamyuttam/arahantavaggo",
         "sutta/sn/sagathavaggapali/brahmanasamyuttam/upasakavaggo"
       ],
-      "legacyParas": 345,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 345
     },
     "sutta/sn/sagathavaggapali/brahmasamyuttam": {
       "children": [
         "sutta/sn/sagathavaggapali/brahmasamyuttam/dutiyavaggo",
         "sutta/sn/sagathavaggapali/brahmasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 270,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 270
     },
     "sutta/sn/sagathavaggapali/devaputtasamyuttam": {
       "children": [
@@ -3066,8 +3066,8 @@
         "sutta/sn/sagathavaggapali/devaputtasamyuttam/nanatitthiyavaggo",
         "sutta/sn/sagathavaggapali/devaputtasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 418,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 418
     },
     "sutta/sn/sagathavaggapali/devatasamyuttam": {
       "children": [
@@ -3080,8 +3080,8 @@
         "sutta/sn/sagathavaggapali/devatasamyuttam/sattivaggo",
         "sutta/sn/sagathavaggapali/devatasamyuttam/satullapakayikavaggo"
       ],
-      "legacyParas": 840,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 840
     },
     "sutta/sn/sagathavaggapali/kosalasamyuttam": {
       "children": [
@@ -3089,8 +3089,8 @@
         "sutta/sn/sagathavaggapali/kosalasamyuttam/pathamavaggo",
         "sutta/sn/sagathavaggapali/kosalasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 340,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 340
     },
     "sutta/sn/sagathavaggapali/marasamyuttam": {
       "children": [
@@ -3098,8 +3098,8 @@
         "sutta/sn/sagathavaggapali/marasamyuttam/pathamavaggo",
         "sutta/sn/sagathavaggapali/marasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 317,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 317
     },
     "sutta/sn/sagathavaggapali/sakkasamyuttam": {
       "children": [
@@ -3107,16 +3107,16 @@
         "sutta/sn/sagathavaggapali/sakkasamyuttam/pathamavaggo",
         "sutta/sn/sagathavaggapali/sakkasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 320,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 320
     },
     "sutta/sn/salayatanavaggapali/asangkhatasamyuttam": {
       "children": [
         "sutta/sn/salayatanavaggapali/asangkhatasamyuttam/dutiyavaggo",
         "sutta/sn/salayatanavaggapali/asangkhatasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 60,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 60
     },
     "sutta/sn/salayatanavaggapali/matugamasamyuttam": {
       "children": [
@@ -3124,8 +3124,8 @@
         "sutta/sn/salayatanavaggapali/matugamasamyuttam/dutiyapeyyalavaggo",
         "sutta/sn/salayatanavaggapali/matugamasamyuttam/pathamapeyyalavaggo"
       ],
-      "legacyParas": 95,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 95
     },
     "sutta/sn/salayatanavaggapali/salayatanasamyuttam": {
       "children": [
@@ -3149,8 +3149,8 @@
         "sutta/sn/salayatanavaggapali/salayatanasamyuttam/yamakavaggo",
         "sutta/sn/salayatanavaggapali/salayatanasamyuttam/yogakkhemivaggo"
       ],
-      "legacyParas": 1248,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1248
     },
     "sutta/sn/salayatanavaggapali/vedanasamyuttam": {
       "children": [
@@ -3158,8 +3158,8 @@
         "sutta/sn/salayatanavaggapali/vedanasamyuttam/rahogatavaggo",
         "sutta/sn/salayatanavaggapali/vedanasamyuttam/sagathavaggo"
       ],
-      "legacyParas": 178,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 178
     },
     "tika/abhidhamma/abhidhammamatikapali/dhammasangganimatika": {
       "children": [
@@ -3167,16 +3167,16 @@
         "tika/abhidhamma/abhidhammamatikapali/dhammasangganimatika/suttantikadukamatikatthavannana",
         "tika/abhidhamma/abhidhammamatikapali/dhammasangganimatika/tikapadatthavannana"
       ],
-      "legacyParas": 495,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 495
     },
     "tika/abhidhamma/abhidhammamatikapali/patthanamatikatthavannana": {
       "children": [
         "tika/abhidhamma/abhidhammamatikapali/patthanamatikatthavannana/nigamanakatha",
         "tika/abhidhamma/abhidhammamatikapali/patthanamatikatthavannana/pakinnakavinicchayo"
       ],
-      "legacyParas": 206,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 206
     },
     "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedavannana": {
       "children": [
@@ -3184,82 +3184,82 @@
         "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedavannana/samathakammatthanam",
         "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedavannana/vipassanakammatthanam"
       ],
-      "legacyParas": 129,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 129
     },
     "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedo": {
       "children": [
         "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedo/samathakammatthanam",
         "tika/abhidhamma/abhidhammatthasanggaho/kammatthanaparicchedo/vipassanakammatthanam"
       ],
-      "legacyParas": 153,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 153
     },
     "tika/abhidhamma/abhidhammatthasanggaho/vithiparicchedavannana": {
       "children": [
         "tika/abhidhamma/abhidhammatthasanggaho/vithiparicchedavannana/manodvaravithi",
         "tika/abhidhamma/abhidhammatthasanggaho/vithiparicchedavannana/vithichakkavannana"
       ],
-      "legacyParas": 105,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 105
     },
     "tika/abhidhamma/abhidhammavatara-puranatika/pathamo-paricchedo": {
       "children": [
         "tika/abhidhamma/abhidhammavatara-puranatika/pathamo-paricchedo/cittaniddeso"
       ],
-      "legacyParas": 323,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 323
     },
     "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/atthamo-paricchedo-2227": {
       "children": [
         "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/atthamo-paricchedo-2227/cetasikavibhago"
       ],
-      "legacyParas": 65,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 65
     },
     "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/attharasamo-paricchedo-2237": {
       "children": [
         "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/attharasamo-paricchedo-2237/rupavibhago"
       ],
-      "legacyParas": 115,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 115
     },
     "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/pathamo-paricchedo-2220": {
       "children": [
         "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/pathamo-paricchedo-2220/cittavibhago"
       ],
-      "legacyParas": 93,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 93
     },
     "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/sattavisatimo-paricchedo": {
       "children": [
         "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/sattavisatimo-paricchedo/pannattivibhago"
       ],
-      "legacyParas": 49,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 49
     },
     "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/tevisatimo-paricchedo-2242": {
       "children": [
         "tika/abhidhamma/abhidhammavataro-namarupaparicchedo/tevisatimo-paricchedo-2242/nibbanavibhago"
       ],
-      "legacyParas": 97,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 97
     },
     "tika/abhidhamma/dhammasanggani-anutika/atthakathakandam": {
       "children": [
         "tika/abhidhamma/dhammasanggani-anutika/atthakathakandam/dukaatthuddharavannana",
         "tika/abhidhamma/dhammasanggani-anutika/atthakathakandam/tikaatthuddharavannana"
       ],
-      "legacyParas": 47,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 47
     },
     "tika/abhidhamma/dhammasanggani-anutika/dukamatikapadavannana": {
       "children": [
         "tika/abhidhamma/dhammasanggani-anutika/dukamatikapadavannana/dukamatikapadavannana",
         "tika/abhidhamma/dhammasanggani-anutika/dukamatikapadavannana/suttantikadukamatikapadavannana"
       ],
-      "legacyParas": 26,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 26
     },
     "tika/abhidhamma/dhammasanggani-anutika/nikkhepakandam": {
       "children": [
@@ -3267,8 +3267,8 @@
         "tika/abhidhamma/dhammasanggani-anutika/nikkhepakandam/suttantikadukanikkhepakathavannana",
         "tika/abhidhamma/dhammasanggani-anutika/nikkhepakandam/tikanikkhepakathavannana"
       ],
-      "legacyParas": 100,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 100
     },
     "tika/abhidhamma/dhammasanggani-anutika/rupakandam": {
       "children": [
@@ -3276,32 +3276,32 @@
         "tika/abhidhamma/dhammasanggani-anutika/rupakandam/rupavibhatti",
         "tika/abhidhamma/dhammasanggani-anutika/rupakandam/uddesavannana"
       ],
-      "legacyParas": 88,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 88
     },
     "tika/abhidhamma/dhammasanggani-anutika/visatigathavannana": {
       "children": [
         "tika/abhidhamma/dhammasanggani-anutika/visatigathavannana/nidanakathavannana",
         "tika/abhidhamma/dhammasanggani-anutika/visatigathavannana/visatigathavannana"
       ],
-      "legacyParas": 76,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 76
     },
     "tika/abhidhamma/dhammasanggani-mulatika/atthakathakandam": {
       "children": [
         "tika/abhidhamma/dhammasanggani-mulatika/atthakathakandam/dukaatthuddharavannana",
         "tika/abhidhamma/dhammasanggani-mulatika/atthakathakandam/tikaatthuddharavannana"
       ],
-      "legacyParas": 40,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 40
     },
     "tika/abhidhamma/dhammasanggani-mulatika/dukamatikapadavannana": {
       "children": [
         "tika/abhidhamma/dhammasanggani-mulatika/dukamatikapadavannana/dukamatikapadavannana",
         "tika/abhidhamma/dhammasanggani-mulatika/dukamatikapadavannana/suttantikadukamatikapadavannana"
       ],
-      "legacyParas": 26,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 26
     },
     "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalam": {
       "children": [
@@ -3311,8 +3311,8 @@
         "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalam/niddesavarakathavannana",
         "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalam/rupavacarakusalam"
       ],
-      "legacyParas": 205,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 205
     },
     "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalapadabhajaniyavannana": {
       "children": [
@@ -3320,8 +3320,8 @@
         "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalapadabhajaniyavannana/kamavacarakusalam",
         "tika/abhidhamma/dhammasanggani-mulatika/kamavacarakusalapadabhajaniyavannana/kamavacarakusalapadabhajaniyavannana"
       ],
-      "legacyParas": 127,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 127
     },
     "tika/abhidhamma/dhammasanggani-mulatika/nikkhepakandam": {
       "children": [
@@ -3329,16 +3329,16 @@
         "tika/abhidhamma/dhammasanggani-mulatika/nikkhepakandam/suttantikadukanikkhepakathavannana",
         "tika/abhidhamma/dhammasanggani-mulatika/nikkhepakandam/tikanikkhepakathavannana"
       ],
-      "legacyParas": 114,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 114
     },
     "tika/abhidhamma/dhammasanggani-mulatika/rupakandam": {
       "children": [
         "tika/abhidhamma/dhammasanggani-mulatika/rupakandam/dukaniddeso",
         "tika/abhidhamma/dhammasanggani-mulatika/rupakandam/uddesavannana"
       ],
-      "legacyParas": 72,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 72
     },
     "tika/abhidhamma/pancapakarana-anutika/kathavatthupakarana-anutika": {
       "children": [
@@ -3346,8 +3346,8 @@
         "tika/abhidhamma/pancapakarana-anutika/kathavatthupakarana-anutika/gantharambhavannana",
         "tika/abhidhamma/pancapakarana-anutika/kathavatthupakarana-anutika/mahavaggo"
       ],
-      "legacyParas": 704,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 704
     },
     "tika/abhidhamma/pancapakarana-anutika/patthanapakarana-anutika": {
       "children": [
@@ -3356,8 +3356,8 @@
         "tika/abhidhamma/pancapakarana-anutika/patthanapakarana-anutika/paticcavaro",
         "tika/abhidhamma/pancapakarana-anutika/patthanapakarana-anutika/pucchavaro"
       ],
-      "legacyParas": 373,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 373
     },
     "tika/abhidhamma/pancapakarana-anutika/yamakapakarana-anutika": {
       "children": [
@@ -3369,16 +3369,16 @@
         "tika/abhidhamma/pancapakarana-anutika/yamakapakarana-anutika/pannattivaro-4",
         "tika/abhidhamma/pancapakarana-anutika/yamakapakarana-anutika/pannattivaro-5"
       ],
-      "legacyParas": 222,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 222
     },
     "tika/abhidhamma/pancapakarana-mulatika/dhatukathapakarana-mulatika": {
       "children": [
         "tika/abhidhamma/pancapakarana-mulatika/dhatukathapakarana-mulatika/gantharambhavannana",
         "tika/abhidhamma/pancapakarana-mulatika/dhatukathapakarana-mulatika/pathamanayo-sanggahasanggahapadavannana"
       ],
-      "legacyParas": 96,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 96
     },
     "tika/abhidhamma/pancapakarana-mulatika/kathavatthupakarana-mulatika": {
       "children": [
@@ -3386,8 +3386,8 @@
         "tika/abhidhamma/pancapakarana-mulatika/kathavatthupakarana-mulatika/gantharambhakathavannana",
         "tika/abhidhamma/pancapakarana-mulatika/kathavatthupakarana-mulatika/mahavaggo"
       ],
-      "legacyParas": 664,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 664
     },
     "tika/abhidhamma/pancapakarana-mulatika/patthanapakarana-mulatika": {
       "children": [
@@ -3396,8 +3396,8 @@
         "tika/abhidhamma/pancapakarana-mulatika/patthanapakarana-mulatika/paticcavaro",
         "tika/abhidhamma/pancapakarana-mulatika/patthanapakarana-mulatika/pucchavaro"
       ],
-      "legacyParas": 429,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 429
     },
     "tika/abhidhamma/pancapakarana-mulatika/yamakapakarana-mulatika": {
       "children": [
@@ -3410,16 +3410,16 @@
         "tika/abhidhamma/pancapakarana-mulatika/yamakapakarana-mulatika/pannattivaro-5",
         "tika/abhidhamma/pancapakarana-mulatika/yamakapakarana-mulatika/pavattivaro"
       ],
-      "legacyParas": 194,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 194
     },
     "tika/abhidhamma/vibhangga-mulatika/appamannavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/appamannavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/appamannavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 12,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 12
     },
     "tika/abhidhamma/vibhangga-mulatika/ayatanavibhanggo": {
       "children": [
@@ -3427,16 +3427,16 @@
         "tika/abhidhamma/vibhangga-mulatika/ayatanavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/ayatanavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 46,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 46
     },
     "tika/abhidhamma/vibhangga-mulatika/bojjhanggavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/bojjhanggavibhanggo/abhidhammabhajaniyavannana",
         "tika/abhidhamma/vibhangga-mulatika/bojjhanggavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 22,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 22
     },
     "tika/abhidhamma/vibhangga-mulatika/dhatuvibhanggo": {
       "children": [
@@ -3444,8 +3444,8 @@
         "tika/abhidhamma/vibhangga-mulatika/dhatuvibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/dhatuvibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 40,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 40
     },
     "tika/abhidhamma/vibhangga-mulatika/iddhipadavibhanggo": {
       "children": [
@@ -3453,16 +3453,16 @@
         "tika/abhidhamma/vibhangga-mulatika/iddhipadavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/iddhipadavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 18,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 18
     },
     "tika/abhidhamma/vibhangga-mulatika/indriyavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/indriyavibhanggo/abhidhammabhajaniyavannana",
         "tika/abhidhamma/vibhangga-mulatika/indriyavibhanggo/panhapucchakavannana"
       ],
-      "legacyParas": 19,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 19
     },
     "tika/abhidhamma/vibhangga-mulatika/jhanavibhanggo": {
       "children": [
@@ -3470,8 +3470,8 @@
         "tika/abhidhamma/vibhangga-mulatika/jhanavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/jhanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 68,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 68
     },
     "tika/abhidhamma/vibhangga-mulatika/khandhavibhanggo": {
       "children": [
@@ -3479,8 +3479,8 @@
         "tika/abhidhamma/vibhangga-mulatika/khandhavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/khandhavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 121,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 121
     },
     "tika/abhidhamma/vibhangga-mulatika/khuddakavatthuvibhanggo": {
       "children": [
@@ -3494,15 +3494,15 @@
         "tika/abhidhamma/vibhangga-mulatika/khuddakavatthuvibhanggo/pancakaniddesavannana",
         "tika/abhidhamma/vibhangga-mulatika/khuddakavatthuvibhanggo/tikaniddesavannana"
       ],
-      "legacyParas": 95,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 95
     },
     "tika/abhidhamma/vibhangga-mulatika/magganggavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/magganggavibhanggo/abhidhammabhajaniyavannana"
       ],
-      "legacyParas": 8,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 8
     },
     "tika/abhidhamma/vibhangga-mulatika/nanavibhanggo": {
       "children": [
@@ -3518,16 +3518,16 @@
         "tika/abhidhamma/vibhangga-mulatika/nanavibhanggo/sattakaniddesavannana",
         "tika/abhidhamma/vibhangga-mulatika/nanavibhanggo/tikaniddesavannana"
       ],
-      "legacyParas": 98,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 98
     },
     "tika/abhidhamma/vibhangga-mulatika/paticcasamuppadavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/paticcasamuppadavibhanggo/abhidhammabhajaniyavannana",
         "tika/abhidhamma/vibhangga-mulatika/paticcasamuppadavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 231,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 231
     },
     "tika/abhidhamma/vibhangga-mulatika/patisambhidavibhanggo": {
       "children": [
@@ -3535,8 +3535,8 @@
         "tika/abhidhamma/vibhangga-mulatika/patisambhidavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/patisambhidavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 29,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 29
     },
     "tika/abhidhamma/vibhangga-mulatika/saccavibhanggo": {
       "children": [
@@ -3544,40 +3544,40 @@
         "tika/abhidhamma/vibhangga-mulatika/saccavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/saccavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 108,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 108
     },
     "tika/abhidhamma/vibhangga-mulatika/sammappadhanavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/sammappadhanavibhanggo/panhapucchakavannana",
         "tika/abhidhamma/vibhangga-mulatika/sammappadhanavibhanggo/suttantabhajaniyavannana"
       ],
-      "legacyParas": 16,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 16
     },
     "tika/abhidhamma/vibhangga-mulatika/satipatthanavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/satipatthanavibhanggo/abhidhammabhajaniyavannana",
         "tika/abhidhamma/vibhangga-mulatika/satipatthanavibhanggo/suttantabhajaniyam"
       ],
-      "legacyParas": 90,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 90
     },
     "tika/abhidhamma/vibhangga-mulatika/sikkhapadavibhanggo": {
       "children": [
         "tika/abhidhamma/vibhangga-mulatika/sikkhapadavibhanggo/abhidhammabhajaniyavannana",
         "tika/abhidhamma/vibhangga-mulatika/sikkhapadavibhanggo/panhapucchakavannana"
       ],
-      "legacyParas": 13,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 13
     },
     "tika/sutta/an/atthakadinipata-tika/12-2-paccorohanivaggo": {
       "children": [
         "tika/sutta/an/atthakadinipata-tika/12-2-paccorohanivaggo/1-4-pathamaadhammasuttadivannana",
         "tika/sutta/an/atthakadinipata-tika/12-2-paccorohanivaggo/catutthapannasakam"
       ],
-      "legacyParas": 19,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 19
     },
     "tika/sutta/an/ekakanipata-tika/ekadhammapali": {
       "children": [
@@ -3586,8 +3586,8 @@
         "tika/sutta/an/ekakanipata-tika/ekadhammapali/ekadhammapali-2",
         "tika/sutta/an/ekakanipata-tika/ekadhammapali/ekadhammapali-3"
       ],
-      "legacyParas": 61,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 61
     },
     "tika/sutta/an/ekakanipata-tika/etadaggavaggo": {
       "children": [
@@ -3599,8 +3599,8 @@
         "tika/sutta/an/ekakanipata-tika/etadaggavaggo/etadaggavaggo-5",
         "tika/sutta/an/ekakanipata-tika/etadaggavaggo/etadaggavaggo-6"
       ],
-      "legacyParas": 328,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 328
     },
     "tika/sutta/dn/mahavagga-tika/mahasatipatthanasuttavannana": {
       "children": [
@@ -3609,8 +3609,8 @@
         "tika/sutta/dn/mahavagga-tika/mahasatipatthanasuttavannana/uddesavarakathavannana",
         "tika/sutta/dn/mahavagga-tika/mahasatipatthanasuttavannana/vedananupassanavannana"
       ],
-      "legacyParas": 235,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 235
     },
     "tika/sutta/mn/mulapannasa-tika/mulapariyayavaggo": {
       "children": [
@@ -3618,16 +3618,16 @@
         "tika/sutta/mn/mulapannasa-tika/mulapariyayavaggo/pancavidhanayavannana",
         "tika/sutta/mn/mulapannasa-tika/mulapariyayavaggo/solasaharavannana"
       ],
-      "legacyParas": 1193,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1193
     },
     "tika/sutta/sn/khandhavagga-tika/ditthisamyuttam": {
       "children": [
         "tika/sutta/sn/khandhavagga-tika/ditthisamyuttam/dutiyagamanadivaggavannana",
         "tika/sutta/sn/khandhavagga-tika/ditthisamyuttam/sotapattivaggo"
       ],
-      "legacyParas": 40,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 40
     },
     "tika/sutta/sn/khandhavagga-tika/khandhasamyuttam": {
       "children": [
@@ -3647,8 +3647,8 @@
         "tika/sutta/sn/khandhavagga-tika/khandhasamyuttam/theravaggo",
         "tika/sutta/sn/khandhavagga-tika/khandhasamyuttam/upayavaggo"
       ],
-      "legacyParas": 405,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 405
     },
     "tika/sutta/sn/khandhavagga-tika/radhasamyuttam": {
       "children": [
@@ -3656,24 +3656,24 @@
         "tika/sutta/sn/khandhavagga-tika/radhasamyuttam/dutiyavaggo",
         "tika/sutta/sn/khandhavagga-tika/radhasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 21,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 21
     },
     "tika/sutta/sn/mahavagga-tika/anapanasamyuttam": {
       "children": [
         "tika/sutta/sn/mahavagga-tika/anapanasamyuttam/dutiyavaggo",
         "tika/sutta/sn/mahavagga-tika/anapanasamyuttam/ekadhammavaggo"
       ],
-      "legacyParas": 39,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 39
     },
     "tika/sutta/sn/mahavagga-tika/anuruddhasamyuttam": {
       "children": [
         "tika/sutta/sn/mahavagga-tika/anuruddhasamyuttam/dutiyavaggavannana",
         "tika/sutta/sn/mahavagga-tika/anuruddhasamyuttam/rahogatavaggo"
       ],
-      "legacyParas": 14,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 14
     },
     "tika/sutta/sn/mahavagga-tika/bojjhanggasamyuttam": {
       "children": [
@@ -3686,8 +3686,8 @@
         "tika/sutta/sn/mahavagga-tika/bojjhanggasamyuttam/sakacchavaggo",
         "tika/sutta/sn/mahavagga-tika/bojjhanggasamyuttam/udayivaggo"
       ],
-      "legacyParas": 174,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 174
     },
     "tika/sutta/sn/mahavagga-tika/iddhipadasamyuttam": {
       "children": [
@@ -3695,8 +3695,8 @@
         "tika/sutta/sn/mahavagga-tika/iddhipadasamyuttam/capalavaggo",
         "tika/sutta/sn/mahavagga-tika/iddhipadasamyuttam/pasadakampanavaggo"
       ],
-      "legacyParas": 53,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 53
     },
     "tika/sutta/sn/mahavagga-tika/indriyasamyuttam": {
       "children": [
@@ -3708,8 +3708,8 @@
         "tika/sutta/sn/mahavagga-tika/indriyasamyuttam/sukarakhatavaggo",
         "tika/sutta/sn/mahavagga-tika/indriyasamyuttam/sukhindriyavaggo"
       ],
-      "legacyParas": 91,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 91
     },
     "tika/sutta/sn/mahavagga-tika/maggasamyuttam": {
       "children": [
@@ -3725,8 +3725,8 @@
         "tika/sutta/sn/mahavagga-tika/maggasamyuttam/suriyapeyyalavaggavannana",
         "tika/sutta/sn/mahavagga-tika/maggasamyuttam/viharavaggo"
       ],
-      "legacyParas": 122,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 122
     },
     "tika/sutta/sn/mahavagga-tika/saccasamyuttam": {
       "children": [
@@ -3741,8 +3741,8 @@
         "tika/sutta/sn/mahavagga-tika/saccasamyuttam/sisapavanavaggo",
         "tika/sutta/sn/mahavagga-tika/saccasamyuttam/tatiyaamakadhannapeyyalavaggo"
       ],
-      "legacyParas": 99,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 99
     },
     "tika/sutta/sn/mahavagga-tika/satipatthanasamyuttam": {
       "children": [
@@ -3752,8 +3752,8 @@
         "tika/sutta/sn/mahavagga-tika/satipatthanasamyuttam/nalandavaggo",
         "tika/sutta/sn/mahavagga-tika/satipatthanasamyuttam/silatthitivaggo"
       ],
-      "legacyParas": 148,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 148
     },
     "tika/sutta/sn/mahavagga-tika/sotapattisamyuttam": {
       "children": [
@@ -3765,16 +3765,16 @@
         "tika/sutta/sn/mahavagga-tika/sotapattisamyuttam/sarananivaggo",
         "tika/sutta/sn/mahavagga-tika/sotapattisamyuttam/veludvaravaggo"
       ],
-      "legacyParas": 89,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 89
     },
     "tika/sutta/sn/nidanavagga-tika/anamataggasamyuttam": {
       "children": [
         "tika/sutta/sn/nidanavagga-tika/anamataggasamyuttam/dutiyavaggo",
         "tika/sutta/sn/nidanavagga-tika/anamataggasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 54,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 54
     },
     "tika/sutta/sn/nidanavagga-tika/dhatusamyuttam": {
       "children": [
@@ -3783,8 +3783,8 @@
         "tika/sutta/sn/nidanavagga-tika/dhatusamyuttam/kammapathavaggo",
         "tika/sutta/sn/nidanavagga-tika/dhatusamyuttam/nanattavaggo"
       ],
-      "legacyParas": 135,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 135
     },
     "tika/sutta/sn/nidanavagga-tika/labhasakkarasamyuttam": {
       "children": [
@@ -3793,16 +3793,16 @@
         "tika/sutta/sn/nidanavagga-tika/labhasakkarasamyuttam/pathamavaggo",
         "tika/sutta/sn/nidanavagga-tika/labhasakkarasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 73,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 73
     },
     "tika/sutta/sn/nidanavagga-tika/lakkhanasamyuttam": {
       "children": [
         "tika/sutta/sn/nidanavagga-tika/lakkhanasamyuttam/dutiyavaggo",
         "tika/sutta/sn/nidanavagga-tika/lakkhanasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 47,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 47
     },
     "tika/sutta/sn/nidanavagga-tika/nidanasamyuttam": {
       "children": [
@@ -3816,32 +3816,32 @@
         "tika/sutta/sn/nidanavagga-tika/nidanasamyuttam/mahavaggo",
         "tika/sutta/sn/nidanavagga-tika/nidanasamyuttam/samanabrahmanavaggo"
       ],
-      "legacyParas": 460,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 460
     },
     "tika/sutta/sn/nidanavagga-tika/rahulasamyuttam": {
       "children": [
         "tika/sutta/sn/nidanavagga-tika/rahulasamyuttam/dutiyavaggo",
         "tika/sutta/sn/nidanavagga-tika/rahulasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 25,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 25
     },
     "tika/sutta/sn/sagathavagga-tika/brahmanasamyuttam": {
       "children": [
         "tika/sutta/sn/sagathavagga-tika/brahmanasamyuttam/arahantavaggo",
         "tika/sutta/sn/sagathavagga-tika/brahmanasamyuttam/upasakavaggo"
       ],
-      "legacyParas": 153,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 153
     },
     "tika/sutta/sn/sagathavagga-tika/brahmasamyuttam": {
       "children": [
         "tika/sutta/sn/sagathavagga-tika/brahmasamyuttam/dutiyavaggo",
         "tika/sutta/sn/sagathavagga-tika/brahmasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 112,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 112
     },
     "tika/sutta/sn/sagathavagga-tika/devaputtasamyuttam": {
       "children": [
@@ -3849,8 +3849,8 @@
         "tika/sutta/sn/sagathavagga-tika/devaputtasamyuttam/nanatitthiyavaggo",
         "tika/sutta/sn/sagathavagga-tika/devaputtasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 137,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 137
     },
     "tika/sutta/sn/sagathavagga-tika/devatasamyuttam": {
       "children": [
@@ -3863,8 +3863,8 @@
         "tika/sutta/sn/sagathavagga-tika/devatasamyuttam/sattivaggo",
         "tika/sutta/sn/sagathavagga-tika/devatasamyuttam/satullapakayikavaggo"
       ],
-      "legacyParas": 554,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 554
     },
     "tika/sutta/sn/sagathavagga-tika/kosalasamyuttam": {
       "children": [
@@ -3872,8 +3872,8 @@
         "tika/sutta/sn/sagathavagga-tika/kosalasamyuttam/pathamavaggo",
         "tika/sutta/sn/sagathavagga-tika/kosalasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 143,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 143
     },
     "tika/sutta/sn/sagathavagga-tika/marasamyuttam": {
       "children": [
@@ -3881,8 +3881,8 @@
         "tika/sutta/sn/sagathavagga-tika/marasamyuttam/pathamavaggo",
         "tika/sutta/sn/sagathavagga-tika/marasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 134,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 134
     },
     "tika/sutta/sn/sagathavagga-tika/sakkasamyuttam": {
       "children": [
@@ -3890,24 +3890,24 @@
         "tika/sutta/sn/sagathavagga-tika/sakkasamyuttam/pathamavaggo",
         "tika/sutta/sn/sagathavagga-tika/sakkasamyuttam/tatiyavaggo"
       ],
-      "legacyParas": 104,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 104
     },
     "tika/sutta/sn/salayatanavagga-tika/asangkhatasamyuttam": {
       "children": [
         "tika/sutta/sn/salayatanavagga-tika/asangkhatasamyuttam/dutiyavaggo",
         "tika/sutta/sn/salayatanavagga-tika/asangkhatasamyuttam/pathamavaggo"
       ],
-      "legacyParas": 12,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 12
     },
     "tika/sutta/sn/salayatanavagga-tika/matugamasamyuttam": {
       "children": [
         "tika/sutta/sn/salayatanavagga-tika/matugamasamyuttam/balavaggo",
         "tika/sutta/sn/salayatanavagga-tika/matugamasamyuttam/pathamapeyyalavaggo"
       ],
-      "legacyParas": 18,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 18
     },
     "tika/sutta/sn/salayatanavagga-tika/salayatanasamyuttam": {
       "children": [
@@ -3931,8 +3931,8 @@
         "tika/sutta/sn/salayatanavagga-tika/salayatanasamyuttam/yamakavaggo",
         "tika/sutta/sn/salayatanavagga-tika/salayatanasamyuttam/yogakkhemivaggo"
       ],
-      "legacyParas": 480,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 480
     },
     "tika/sutta/sn/salayatanavagga-tika/vedanasamyuttam": {
       "children": [
@@ -3940,8 +3940,8 @@
         "tika/sutta/sn/salayatanavagga-tika/vedanasamyuttam/rahogatavaggo",
         "tika/sutta/sn/salayatanavagga-tika/vedanasamyuttam/sagathavaggo"
       ],
-      "legacyParas": 67,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 67
     },
     "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/pacittiyakando": {
       "children": [
@@ -3956,8 +3956,8 @@
         "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/pacittiyakando/rattandhakaravaggo",
         "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/pacittiyakando/tuvattavaggo"
       ],
-      "legacyParas": 375,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 375
     },
     "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/parajikakando": {
       "children": [
@@ -3965,16 +3965,16 @@
         "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/parajikakando/parajikakando",
         "tika/vinaya/dvematikapali-kangkhavitarani-atthakatha/parajikakando/sadharanaparajikam"
       ],
-      "legacyParas": 28,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 28
     },
     "tika/vinaya/kangkhavitaranipurana-tika/nissaggiyakandam": {
       "children": [
         "tika/vinaya/kangkhavitaranipurana-tika/nissaggiyakandam/civaravaggo",
         "tika/vinaya/kangkhavitaranipurana-tika/nissaggiyakandam/pattavaggo"
       ],
-      "legacyParas": 40,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 40
     },
     "tika/vinaya/kangkhavitaranipurana-tika/pacittiyakandam": {
       "children": [
@@ -3988,8 +3988,8 @@
         "tika/vinaya/kangkhavitaranipurana-tika/pacittiyakandam/rattandhakaravaggo",
         "tika/vinaya/kangkhavitaranipurana-tika/pacittiyakandam/tuvattavaggo"
       ],
-      "legacyParas": 233,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 233
     },
     "tika/vinaya/kangkhavitaranipurana-tika/parajikakandam": {
       "children": [
@@ -3997,24 +3997,24 @@
         "tika/vinaya/kangkhavitaranipurana-tika/parajikakandam/parajikakandam",
         "tika/vinaya/kangkhavitaranipurana-tika/parajikakandam/sadharanaparajikam"
       ],
-      "legacyParas": 27,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 27
     },
     "tika/vinaya/kangkhavitaranipurana-tika/sekhiyakandam": {
       "children": [
         "tika/vinaya/kangkhavitaranipurana-tika/sekhiyakandam/adhikaranasamathavannana",
         "tika/vinaya/kangkhavitaranipurana-tika/sekhiyakandam/parimandalasikkhapadavannana"
       ],
-      "legacyParas": 116,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 116
     },
     "tika/vinaya/khuddasikkha-mulasikkha/khuddasikkha-abhinavatika": {
       "children": [
         "tika/vinaya/khuddasikkha-mulasikkha/khuddasikkha-abhinavatika/chandadananiddesavannana",
         "tika/vinaya/khuddasikkha-mulasikkha/khuddasikkha-abhinavatika/matikavannana"
       ],
-      "legacyParas": 738,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 738
     },
     "tika/vinaya/pacityadiyojanapali/pacittiyayojana": {
       "children": [
@@ -4031,16 +4031,16 @@
         "tika/vinaya/pacityadiyojanapali/pacittiyayojana/sekhiyakandam",
         "tika/vinaya/pacityadiyojanapali/pacittiyayojana/surapanavaggo"
       ],
-      "legacyParas": 664,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 664
     },
     "tika/vinaya/saratthadipani-tika-1/gantharambhakatha": {
       "children": [
         "tika/vinaya/saratthadipani-tika-1/gantharambhakatha/bahiranidanakatha",
         "tika/vinaya/saratthadipani-tika-1/gantharambhakatha/gantharambhakathavannana"
       ],
-      "legacyParas": 816,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 816
     },
     "tika/vinaya/saratthadipani-tika-2/nissaggiyakandam": {
       "children": [
@@ -4048,8 +4048,8 @@
         "tika/vinaya/saratthadipani-tika-2/nissaggiyakandam/kosiyavaggo",
         "tika/vinaya/saratthadipani-tika-2/nissaggiyakandam/pattavaggo"
       ],
-      "legacyParas": 263,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 263
     },
     "tika/vinaya/saratthadipani-tika-2/parajikakandam": {
       "children": [
@@ -4058,8 +4058,8 @@
         "tika/vinaya/saratthadipani-tika-2/parajikakandam/pathamaparajikam",
         "tika/vinaya/saratthadipani-tika-2/parajikakandam/tatiyaparajikam"
       ],
-      "legacyParas": 1111,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1111
     },
     "tika/vinaya/saratthadipani-tika-3/antarapeyyalam": {
       "children": [
@@ -4067,8 +4067,8 @@
         "tika/vinaya/saratthadipani-tika-3/antarapeyyalam/khandhakapucchavaro",
         "tika/vinaya/saratthadipani-tika-3/antarapeyyalam/samathabhedam"
       ],
-      "legacyParas": 50,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 50
     },
     "tika/vinaya/saratthadipani-tika-3/pacittiyakandam": {
       "children": [
@@ -4082,8 +4082,8 @@
         "tika/vinaya/saratthadipani-tika-3/pacittiyakandam/sappanakavaggo",
         "tika/vinaya/saratthadipani-tika-3/pacittiyakandam/surapanavaggo"
       ],
-      "legacyParas": 511,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 511
     },
     "tika/vinaya/vajirabuddhi-tika/culavaggavannana": {
       "children": [
@@ -4100,8 +4100,8 @@
         "tika/vinaya/vajirabuddhi-tika/culavaggavannana/senasanakkhandhakavannana",
         "tika/vinaya/vajirabuddhi-tika/culavaggavannana/vattakkhandhakavannana"
       ],
-      "legacyParas": 211,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 211
     },
     "tika/vinaya/vajirabuddhi-tika/pacittiyavannana": {
       "children": [
@@ -4126,8 +4126,8 @@
         "tika/vinaya/vajirabuddhi-tika/pacittiyavannana/surapanavaggo",
         "tika/vinaya/vajirabuddhi-tika/pacittiyavannana/tuvattavaggavannana"
       ],
-      "legacyParas": 716,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 716
     },
     "tika/vinaya/vajirabuddhi-tika/parajikavannana": {
       "children": [
@@ -4140,8 +4140,8 @@
         "tika/vinaya/vajirabuddhi-tika/parajikavannana/tatiyaparajikam",
         "tika/vinaya/vajirabuddhi-tika/parajikavannana/veranjakando"
       ],
-      "legacyParas": 826,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 826
     },
     "tika/vinaya/vajirabuddhi-tika/parivaravannana": {
       "children": [
@@ -4163,24 +4163,24 @@
         "tika/vinaya/vajirabuddhi-tika/parivaravannana/solasamahavaravannana",
         "tika/vinaya/vajirabuddhi-tika/parivaravannana/upalipancakavannana"
       ],
-      "legacyParas": 246,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 246
     },
     "tika/vinaya/vimativinodani-tika/adhikaranabhedam": {
       "children": [
         "tika/vinaya/vimativinodani-tika/adhikaranabhedam/dutiyagathasangganikam",
         "tika/vinaya/vimativinodani-tika/adhikaranabhedam/ukkotanabhedadikathavannana"
       ],
-      "legacyParas": 26,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 26
     },
     "tika/vinaya/vimativinodani-tika/gantharambhakatha": {
       "children": [
         "tika/vinaya/vimativinodani-tika/gantharambhakatha/bahiranidanakatha",
         "tika/vinaya/vimativinodani-tika/gantharambhakatha/gantharambhakathavannana"
       ],
-      "legacyParas": 125,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 125
     },
     "tika/vinaya/vimativinodani-tika/nissaggiyakando": {
       "children": [
@@ -4188,8 +4188,8 @@
         "tika/vinaya/vimativinodani-tika/nissaggiyakando/kosiyavaggo",
         "tika/vinaya/vimativinodani-tika/nissaggiyakando/pattavaggo"
       ],
-      "legacyParas": 223,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 223
     },
     "tika/vinaya/vimativinodani-tika/pacittiyakandam-4": {
       "children": [
@@ -4200,8 +4200,8 @@
         "tika/vinaya/vimativinodani-tika/pacittiyakandam-4/naggavaggo",
         "tika/vinaya/vimativinodani-tika/pacittiyakandam-4/tuvattavaggo"
       ],
-      "legacyParas": 49,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 49
     },
     "tika/vinaya/vimativinodani-tika/pacittiyakandam-5": {
       "children": [
@@ -4215,8 +4215,8 @@
         "tika/vinaya/vimativinodani-tika/pacittiyakandam-5/sappanakavaggo",
         "tika/vinaya/vimativinodani-tika/pacittiyakandam-5/surapanavaggo"
       ],
-      "legacyParas": 421,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 421
     },
     "tika/vinaya/vimativinodani-tika/parajikakando": {
       "children": [
@@ -4225,55 +4225,55 @@
         "tika/vinaya/vimativinodani-tika/parajikakando/pathamaparajikam",
         "tika/vinaya/vimativinodani-tika/parajikakando/tatiyaparajikam"
       ],
-      "legacyParas": 429,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 429
     },
     "tika/vinaya/vinayalangkara-tika/catupaccayabhajaniyavinicchayakatha": {
       "children": [
         "tika/vinaya/vinayalangkara-tika/catupaccayabhajaniyavinicchayakatha/civarabhajanakathavannana",
         "tika/vinaya/vinayalangkara-tika/catupaccayabhajaniyavinicchayakatha/viharavinicchayakathavannana"
       ],
-      "legacyParas": 176,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 176
     },
     "tika/vinaya/vinayalangkara-tika/gantharambhakatha": {
       "children": [
         "tika/vinaya/vinayalangkara-tika/gantharambhakatha/gantharambhakathavannana",
         "tika/vinaya/vinayalangkara-tika/gantharambhakatha/muttaharadinayagatha"
       ],
-      "legacyParas": 67,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 67
     },
     "tika/vinaya/vinayalangkara-tika/pabbajjavinicchayakatha": {
       "children": [
         "tika/vinaya/vinayalangkara-tika/pabbajjavinicchayakatha/pabbajjavinicchayakatha",
         "tika/vinaya/vinayalangkara-tika/pabbajjavinicchayakatha/upasampadavinicchayakatha"
       ],
-      "legacyParas": 137,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 137
     },
     "tika/vinaya/vinayalangkara-tika/pakinnakavinicchayakatha": {
       "children": [
         "tika/vinaya/vinayalangkara-tika/pakinnakavinicchayakatha/ganabhojanakatha",
         "tika/vinaya/vinayalangkara-tika/pakinnakavinicchayakatha/nigamanakathavannana"
       ],
-      "legacyParas": 452,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 452
     },
     "tika/vinaya/vinayalangkara-tika/simavinicchayakatha": {
       "children": [
         "tika/vinaya/vinayalangkara-tika/simavinicchayakatha/simabandhanavinicchayakatha",
         "tika/vinaya/vinayalangkara-tika/simavinicchayakatha/simavinicchayakatha"
       ],
-      "legacyParas": 138,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 138
     },
     "tika/vinaya/vinayavinicchaya-tika/gantharambhakatha": {
       "children": [
         "tika/vinaya/vinayavinicchaya-tika/gantharambhakatha/pathamo-bhago"
       ],
-      "legacyParas": 209,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 209
     },
     "tika/vinaya/vinayavinicchaya-uttaravinicchaya/bhikkhuvibhanggo": {
       "children": [
@@ -4285,8 +4285,8 @@
         "tika/vinaya/vinayavinicchaya-uttaravinicchaya/bhikkhuvibhanggo/sangghadisesakatha",
         "tika/vinaya/vinayavinicchaya-uttaravinicchaya/bhikkhuvibhanggo/sekhiyakatha"
       ],
-      "legacyParas": 4232,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 4232
     },
     "tika/vinaya/vinayavinicchaya-uttaravinicchaya/mahavaggo": {
       "children": [
@@ -4299,8 +4299,8 @@
         "tika/vinaya/vinayavinicchaya-uttaravinicchaya/mahavaggo/uposathakkhandhakakatha",
         "tika/vinaya/vinayavinicchaya-uttaravinicchaya/mahavaggo/vassupanayikakkhandhakakatha"
       ],
-      "legacyParas": 653,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 653
     },
     "vinaya/pacittiyapali/pacittiyakandam": {
       "children": [
@@ -4314,8 +4314,8 @@
         "vinaya/pacittiyapali/pacittiyakandam/sappanakavaggo",
         "vinaya/pacittiyapali/pacittiyakandam/surapanavaggo"
       ],
-      "legacyParas": 1635,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1635
     },
     "vinaya/pacittiyapali/pacittiyakandam-bhikkhunivibhanggo": {
       "children": [
@@ -4329,8 +4329,8 @@
         "vinaya/pacittiyapali/pacittiyakandam-bhikkhunivibhanggo/naggavaggo",
         "vinaya/pacittiyapali/pacittiyakandam-bhikkhunivibhanggo/tuvattavaggo"
       ],
-      "legacyParas": 990,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 990
     },
     "vinaya/pacittiyapali/patidesaniyakandam": {
       "children": [
@@ -4339,8 +4339,8 @@
         "vinaya/pacittiyapali/patidesaniyakandam/pathamapatidesaniyasikkhapadam",
         "vinaya/pacittiyapali/patidesaniyakandam/tatiyapatidesaniyasikkhapadam"
       ],
-      "legacyParas": 82,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 82
     },
     "vinaya/pacittiyapali/sekhiyakandam": {
       "children": [
@@ -4352,24 +4352,24 @@
         "vinaya/pacittiyapali/sekhiyakandam/surusuruvaggo",
         "vinaya/pacittiyapali/sekhiyakandam/ujjagghikavaggo"
       ],
-      "legacyParas": 429,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 429
     },
     "vinaya/pacittiyapali/sekhiyakandam-bhikkhunivibhanggo": {
       "children": [
         "vinaya/pacittiyapali/sekhiyakandam-bhikkhunivibhanggo/padukavaggo",
         "vinaya/pacittiyapali/sekhiyakandam-bhikkhunivibhanggo/parimandalavaggo"
       ],
-      "legacyParas": 19,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 19
     },
     "vinaya/parajikapali/aniyatakandam": {
       "children": [
         "vinaya/parajikapali/aniyatakandam/dutiyaaniyatasikkhapadam",
         "vinaya/parajikapali/aniyatakandam/pathamaaniyatasikkhapadam"
       ],
-      "legacyParas": 62,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 62
     },
     "vinaya/parajikapali/parajikakandam": {
       "children": [
@@ -4378,8 +4378,8 @@
         "vinaya/parajikapali/parajikakandam/pathamaparajikam",
         "vinaya/parajikapali/parajikakandam/tatiyaparajikam"
       ],
-      "legacyParas": 763,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 763
     },
     "vinaya/parajikapali/sangghadisesakandam": {
       "children": [
@@ -4397,38 +4397,38 @@
         "vinaya/parajikapali/sangghadisesakandam/sukkavissatthisikkhapadam",
         "vinaya/parajikapali/sangghadisesakandam/viharakarasikkhapadam"
       ],
-      "legacyParas": 1050,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 1050
     },
     "vinaya/parivarapali/antarapeyyalam": {
       "children": [
         "vinaya/parivarapali/antarapeyyalam/katipucchavaro",
         "vinaya/parivarapali/antarapeyyalam/samathabhedo"
       ],
-      "legacyParas": 329,
-      "reason": "split"
+      "reason": "split",
+      "baselineParas": 329
     }
   },
   "countDelta": {
     "atthakatha/sutta/mn/mulapannasa-atthakatha/gantharambhakatha": {
-      "legacy": 41,
       "web": 43,
-      "reason": "book-part-heading"
+      "reason": "book-part-heading",
+      "baseline": 41
     },
     "sutta/kn/culaniddesapali/parayanavagganiddeso": {
-      "legacy": 481,
       "web": 1471,
-      "reason": "legacy-defect"
+      "reason": "baseline-defect",
+      "baseline": 481
     },
     "sutta/kn/culaniddesapali/parayanavaggo": {
-      "legacy": 1471,
       "web": 472,
-      "reason": "legacy-defect"
+      "reason": "baseline-defect",
+      "baseline": 1471
     },
     "tika/sutta/mn/mulapannasa-tika/gantharambhakathavannana": {
-      "legacy": 84,
       "web": 86,
-      "reason": "book-part-heading"
+      "reason": "book-part-heading",
+      "baseline": 84
     }
   },
   "nonLatinSourceData": [

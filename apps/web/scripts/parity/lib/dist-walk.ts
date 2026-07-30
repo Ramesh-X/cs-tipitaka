@@ -26,7 +26,7 @@ function walk(
 }
 
 /** Astro's routing shape: `index.html` per route, `<name>.html` for the odd bare route (404). */
-export function urlPathForDistFile(file: string): string {
+function urlPathForDistFile(file: string): string {
   const rel = relative(DIST_DIR, file);
   if (rel === 'index.html') return '/';
   if (rel.endsWith('/index.html')) {
